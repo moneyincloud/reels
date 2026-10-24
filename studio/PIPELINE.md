@@ -80,7 +80,7 @@ tag ~1225, pill ~1430. Output `../out/<slug>_thumbnail.jpg`; check `$ST/frames/t
 ```
 cd $ST/vox; (for k in 0 1; do python3 render_mod.py $k 2 SLUG & done; wait) && cd ../src && printf "file 'SLUG_part0.mp4'\nfile 'SLUG_part1.mp4'\n" > SLUG_list.txt && ffmpeg -y -loglevel error -loop 1 -t 0.5 -i ../out/SLUG_thumbnail.jpg -f lavfi -t 0.5 -i anullsrc=r=48000:cl=mono -vf "scale=1080:1920,fps=30,format=yuv420p" -c:v libx264 -crf 18 -preset veryfast -c:a pcm_s16le -ar 48000 -ac 1 SLUG_cover.mkv && ffmpeg -y -loglevel error -f concat -safe 0 -i SLUG_list.txt -c copy SLUG_vid.mp4 && ffmpeg -y -loglevel error -i SLUG_cover.mkv -i SLUG_vid.mp4 -i ../SLUG/SLUG_mix.wav -filter_complex "[1:v]fps=30,format=yuv420p[mv];[2:a]aresample=48000,aformat=channel_layouts=mono[ma];[0:v][0:a][mv][ma]concat=n=2:v=1:a=1[v][a]" -map "[v]" -map "[a]" -c:v libx264 -crf 22 -maxrate 7M -bufsize 14M -preset veryfast -pix_fmt yuv420p -c:a aac -b:a 192k -movflags +faststart ../out/SLUG_reel.mp4 && echo RENDERED
 ```
-(The thumbnail is the first 0.5 s so it becomes the cover.)
+(The thumbnail is the first 0.5 s so it becomes the cover.) GitHub rejects files over 100 MB: if the mp4 is larger, re-encode with -crf 26.
 
 ## 9. Host + schedule
 1. Copy `out/<slug>_reel.mp4` and `out/<slug>_thumbnail.jpg` to `/home/claude/reels/YYYY-MM-DD/` (post date),
