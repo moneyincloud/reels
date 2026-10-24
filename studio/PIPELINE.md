@@ -41,6 +41,16 @@ Create `$ST/<slug>/script.json`: a JSON list of 9 lines (scene 0 = hook, scene 8
 line 0. End line: "Save this … and follow moneyincloud. Education only, not investment advice."
 Voice: `mkdir -p $ST/<slug>/vo && cd $ST/kokoro && python3 vo.py ../<slug> <voice> <speed>` → prints durations.
 
+### 4b. Hook + caption tools (from Jakeschincariol/instagram-agent-skill, MIT, offline)
+- Write 3 hook options for line 0, save one per line to a file, run
+  `python3 -I $ST/ig-skills/ig-reel/hookscore.py hooks.txt` and use the top one (must score 50+, rewrite if not).
+- Time the script: `python3 -I $ST/ig-skills/ig-reel/beats.py script.txt --target 75` (one line per beat).
+- Lint the caption: `python3 -I $ST/ig-skills/ig-caption/caption.py caption.txt --keywords "<primary keyword>"`;
+  the first 125 characters must carry the hook + keyword.
+- Caption/script de-slop: `python3 -I $ST/ig-skills/ig-human/humanize.py <file>` is fine for wording, but ALWAYS
+  keep the AI-content labels (isAiGenerated) and the compliance lines; never use it to hide that content is AI-made.
+- Other playbooks in `ig-skills/*/SKILL.md` (ig-story, ig-carousel, ig-reply, ig-plan, ig-audit) can be read when useful.
+
 ## 5. Animation module (paper Vox template — light paper, NOT dark, NOT 3D)
 Copy the working example `vox/lows.py` to `vox/<slug>.py` and change:
 - `SH = ROOT + '<slug>/'`
