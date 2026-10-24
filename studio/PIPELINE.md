@@ -77,6 +77,30 @@ Colours: INK RED GRN CREAM YEL NAVY BLUE GREY GOLD PINK TEAL ORG SOFT.
 Check stills: `cd $ST/vox && MOD=<slug> python3 still.py <t1> <t2> ...` → `$ST/frames/still.jpg`; Read it; fix overlaps
 (especially labels vs captions).
 
+## 5b. Save + share standards (MANDATORY in every reel — owner's standing request)
+Helpers live in `vox/saveshare.py` (`import saveshare as SS`). Every reel must include:
+1. **Cheat-sheet ending** — `SS.cheat_sheet()` freeze-frame summary in the last content scene (all key numbers on one
+   screenshot-able card) with the bouncing bookmark "SAVE THIS".
+2. **"Send this to…" frame** — `SS.send_frame(c, t, t0, who)` naming a specific person ("the friend who buys every dip",
+   "your dad who only trusts FDs") with the flying paper plane; the voice says the same line.
+3. **Myth vs Fact** — `SS.myth_fact()` paper-tear split screen whenever the topic has a common misconception.
+4. Save/share icons pulse when the voice says "save" or "send" (`SS.save_pulse`, `SS.plane_icon`).
+5. Spoken CTA names who to send it to, then "save this", then follow — not just "follow".
+Recurring formats (use 2–3 times a week): **self-ticking checklist** (`SS.checklist`), **calculator / rolling number**
+(`SS.roll_number` + `SS.coin_stack`, past or clearly illustrative maths only, never a return promise),
+**quiz with countdown** (`SS.countdown_ring`, 3-second pause before the answer), **step ladder** (IPO in 4 steps),
+**tear reveal** of a shock number (`SS.tear_reveal`), **two-character mini story** (panic seller vs patient investor).
+SFX: pop on save, whoosh on the plane, ding per checklist tick, rip (whoosh + hit) on tears, beep per countdown second.
+No subtitles. Keep everything compliant (section 3).
+
+## 5c. Growth automation
+- **First comment** on every reel: set `firstCommentText` in createScheduledPost to an engaging question
+  (e.g. "Which stock should I break down next? 👇").
+- **Results-day reels**: check the results calendar (INDmoney news "board meeting … results") — when a big company
+  reports, prefer a "results explained in 60 seconds" reel that evening (facts from the filing/news, no buy/sell call).
+- **Learn from the weekly report**: read `state.json` → `next_ideas` and `winning_patterns` (written by the weekly
+  report) and prefer those topics/hook styles.
+
 ## 6. Audio
 Copy `vox/lows2_audio.py` → `vox/<slug>_audio.py` and run `python3 <slug>_audio.py <slug>` (writes `$ST/<slug>/mix.wav`).
 Replace the custom SFX block (between `put(drum(3)` and `mix=vo+mus`) with SFX timed to your scenes:

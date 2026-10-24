@@ -1,11 +1,47 @@
 {
   "last_voice": "male",
   "history": [
-    {"date": "2026-10-23", "slug": "jio", "topic": "Jio IPO lottery explained"},
-    {"date": "2026-10-23", "slug": "tmpv", "topic": "Tata Motors Passenger Vehicles business"},
-    {"date": "2026-10-24", "slug": "king", "topic": "King's Test kids investing story ep1"},
-    {"date": "2026-10-24", "slug": "crash", "topic": "Indian market crashes in 30 years"},
-    {"date": "2026-10-25", "slug": "jio2", "topic": "Jio IPO allotment check, 22x subscribed"},
-    {"date": "2026-10-26", "slug": "lows", "topic": "Big companies at 52-week lows (HUL, Maruti, DMart, Swiggy, NTPC)"}
+    {
+      "date": "2026-10-23",
+      "slug": "jio",
+      "topic": "Jio IPO lottery explained"
+    },
+    {
+      "date": "2026-10-23",
+      "slug": "tmpv",
+      "topic": "Tata Motors Passenger Vehicles business"
+    },
+    {
+      "date": "2026-10-24",
+      "slug": "king",
+      "topic": "King's Test kids investing story ep1"
+    },
+    {
+      "date": "2026-10-24",
+      "slug": "crash",
+      "topic": "Indian market crashes in 30 years"
+    },
+    {
+      "date": "2026-10-25",
+      "slug": "jio2",
+      "topic": "Jio IPO allotment check, 22x subscribed"
+    },
+    {
+      "date": "2026-10-26",
+      "slug": "lows",
+      "topic": "Big companies at 52-week lows (HUL, Maruti, DMart, Swiggy, NTPC)"
+    }
+  ],
+  "next_ideas": [
+    "Jio IPO listing day (28 Oct): listing price vs issue price, what allotted investors should know (facts only)",
+    "Q2 results in 60 seconds: Maruti (27 Oct), HUL (28 Oct), NTPC (31 Oct)",
+    "Myth vs Fact: low share price = cheap stock (Yes Bank ~₹16 vs MRF ~₹1.18 lakh)",
+    "Quiz: one MRF share or a small car, which costs more? (countdown reveal)",
+    "Checklist: 5 checks before applying for any IPO",
+    "Past maths: ₹10,000 in Nifty vs gold vs FD 5 years ago (past ≠ future)",
+    "Why Swiggy fell 59%: the quick-commerce cash burn explained",
+    "Panic seller vs patient investor: two-character mini story through a market crash",
+    "Diwali Muhurat trading explained: what it is and why one hour matters",
+    "King's Treasury Ep2: The Golden Seeds (kids' investing story)"
   ]
 }
