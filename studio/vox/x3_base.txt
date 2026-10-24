@@ -1,0 +1,137 @@
+"""VIRAL 3X STOCKS — fact check (paper Vox, Heart voice)"""
+import os as _os; ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))) + '/'
+import math, json, functools, random
+import numpy as np
+from PIL import Image, ImageDraw
+from lib import *
+from scenes import words_line, slam, stamp_c, bgs
+from fridge import follow_btn
+import tea as TEA
+
+SH = ROOT + 'x3/'
+SCRIPT = json.load(open(SH + 'script.json'))
+DURS = json.load(open(SH + 'vo/durs.json'))
+LEAD, TAIL = 0.15, 0.3
+STARTS, VO = [], []
+_t = 0.0
+for i, d in enumerate(DURS):
+    STARTS.append(_t); VO.append(_t + (0.1 if i == 0 else LEAD)); _t = VO[-1] + d + TAIL
+DUR = _t + 1.8
+B = STARTS[1:]
+SOFT = (253, 251, 246); NAVY = (30, 60, 120); BLUE = (40, 100, 200); GREY = (120, 116, 108); GOLD = (214, 160, 40)
+PINK = (230, 90, 140); TEAL = (20, 140, 130); ORG = (230, 120, 30)
+card_box = TEA.card_box; label = TEA.label; coin = TEA.coin
+
+def at(i, phrase, off=0.0):
+    s = SCRIPT[i]; k = s.find(phrase)
+    assert k >= 0, phrase
+    return VO[i] + DURS[i] * (k / len(s)) + off
+
+
+def inr(v):
+    v = int(round(v)); s = str(abs(v))
+    if len(s) > 3:
+        h, t3 = s[:-3], s[-3:]; parts = []
+        while len(h) > 2: parts.insert(0, h[-2:]); h = h[:-2]
+        if h: parts.insert(0, h)
+        s = ','.join(parts) + ',' + t3
+    return ('-' if v < 0 else '') + '₹' + s
+
+
+def short(v):
+    if v >= 1e7: return f'₹{v / 1e7:.2f} Cr'
+    if v >= 1e5: return f'₹{v / 1e5:.1f} L'
+    return inr(v)
+
+
+
+def biz_card(name, col, tags, w=900):
+    h = 150 + 70 * len(tags)
+    im = card_box(w, h, SOFT); comp(im, text_img(name, 'anton', 80, col), 40, 24)
+    for k, t in enumerate(tags):
+        comp(im, text_img('•  ' + t, 'osw', 44, INK), 50, 140 + k * 70)
+    return im
+
+
+def value_line(c, t, t0, v, y=1430, col=GRN, dur=1.2):
+    if t < t0: return
+    p = eo(prog(t, t0, dur)); vv = 100000 + (v - 100000) * p
+    place(c, card_box(820, 200, SOFT), 540, y)
+    place(c, text_img('₹1 lakh', 'osw', 56, GREY), 260, y)
+    marker_line(c, [(370, y), (450, y)], 1, GREY, 8, head=True, head_size=22)
+    place(c, text_img(inr(vv), 'anton', 96, col), 700, y)
+
+
+def stock_header(c, t, i, n, key):
+    nm, col, v, mult = STOCKS[key][:4]
+    t0 = STARTS[i] + 0.05
+    if t > t0:
+        sc, a = slam(t, t0); place(c, stamp_c(f'#{n}', col, 110, -6, 950 + n), 160, 290, sc, 0, a)
+    place_text(c, nm, 'anton', 104, INK, 620, 290, t, f'nm{i}', t0 + 0.1, 'pop')
+
+
+def spark(c, pts, p, col, w=12):
+    n = len(pts) - 1; f = p * n; k = int(f); out = pts[:k + 1]
+    if k < n: a, b = pts[k], pts[k + 1]; fr = f - k; out = out + [(a[0] + (b[0] - a[0]) * fr, a[1] + (b[1] - a[1]) * fr)]
+    if len(out) >= 2: stroke(c, out, w, col)
+
+
+
+#SCENES#
+def header(c, dark):
+    col = CREAM if dark else INK
+    c.alpha_composite(text_img('@moneyincloud', 'type', 30, col, 1), (52, 64))
+    b = text_img('FACT CHECK', 'type', 30, RED, 1); c.alpha_composite(b, (W - 52 - b.size[0], 64))
+    ImageDraw.Draw(c).line((60, 118, W - 60, 118), fill=col, width=2)
+    ImageDraw.Draw(c).line((60, 118, 300, 118), fill=col, width=6)
+
+
+def transition(c, t):
+    cols = [(TEAL, INK), (GOLD, INK), (ORG, CREAM), (RED, YEL), (PINK, CREAM), (YEL, INK), (BLUE, CREAM), (INK, RED), (YEL, NAVY)]
+    for bi, b in enumerate(B):
+        d = 0.5
+        if abs(t - b) > d / 2 + 0.12: continue
+        for layer, delay in ((0, -0.05), (1, 0.0)):
+            p = (t - (b - d / 2) - delay) / d
+            if p <= 0 or p >= 1: continue
+            p = eio(p); SWd, skew = 2050, 320
+            xl = (W + 60) + p * (-(SWd + skew) - (W + 60) - 40)
+            r = random.Random(bi * 10 + layer + 7900)
+            left = [(xl + r.uniform(-14, 14) - skew * (y / H), y) for y in range(0, H + 1, 40)]
+            right = [(xl + SWd + r.uniform(-14, 14) - skew * (y / H), y) for y in range(H, -1, -40)]
+            if layer == 0:
+                left = [(x - 70, y) for x, y in left]; right = [(x + 70, y) for x, y in right]
+            poly_fill(c, left + right, cols[bi % len(cols)][layer], 255, S=1)
+
+
+def slam_times():
+    return SLAMS()
+
+
+def scene_at(t):
+    k = 0
+    for i, s in enumerate(STARTS):
+        if t >= s: k = i
+    return k
+
+
+def render(t):
+    pbg, dbg = bgs()
+    i = scene_at(t); dark = (i == 8)
+    c = (dbg if dark else pbg).copy()
+    st = STARTS[i]; en = STARTS[i + 1] if i + 1 < len(STARTS) else DUR
+    SCENES[i](c, t)
+    z = 1.0 + 0.035 * clamp((t - st) / (en - st))
+    sx = sy = 0
+    for ts in slam_times():
+        if 0 <= t - ts < 0.35:
+            k = math.exp(-(t - ts) * 14) * 8
+            sx += k * math.sin((t - ts) * 90); sy += k * math.cos((t - ts) * 77)
+    cw, ch = W / z, H / z
+    cx, cy = W / 2 + sx, max(ch / 2, H * 0.47) + sy
+    c = c.transform((W, H), Image.EXTENT, (cx - cw / 2, cy - ch / 2, cx + cw / 2, cy + ch / 2), Image.BICUBIC)
+    header(c, dark); transition(c, t)
+    arr = np.asarray(c.convert('RGB')).astype(np.float32)
+    g = grain_frames()[int(t * FPS) % 6]
+    fl = 1 + 0.012 * math.sin(t * 37) * math.sin(t * 13)
+    return np.clip(arr * fl + g[..., None], 0, 255).astype(np.uint8)

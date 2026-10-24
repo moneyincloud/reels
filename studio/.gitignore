@@ -1,0 +1,8 @@
+kokoro/*.onnx
+kokoro/*.bin
+out/
+src/
+frames/
+*/vo/*.wav
+*_mix.wav
+__pycache__/
