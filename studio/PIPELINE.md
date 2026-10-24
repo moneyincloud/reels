@@ -54,7 +54,8 @@ Voice: `mkdir -p $ST/<slug>/vo && cd $ST/kokoro && python3 vo.py ../<slug> <voic
 ## 5. Animation module (paper Vox template v2 — light paper, NOT dark, NOT 3D)
 Copy the reference template `vox/lows2.py` to `vox/<slug>.py`. It already contains every standard upgrade —
 keep them in every reel:
-- **Word-by-word captions** (bottom, y≈1665, current word yellow) — automatic from the script (`captions()`).
+- **NO subtitles/captions** — the owner does not want on-screen subtitles. Captions are OFF by default (`CAPS_ON`);
+  never turn them on unless the owner asks.
 - **Progress bar** in the header rule — automatic.
 - **Loop ending** — last 0.6 s cross-fades back to the hook frame; end the script with a line that echoes the hook.
 - **Real charts** — fetch weekly closes with `get_indian_stocks_ohlc(interval=1week, lookback=1y)` (or 1day/14d for
@@ -65,7 +66,7 @@ keep them in every reel:
 - **Icons** — simple drawn icons per company/topic (`icon()`); never real company logos.
 Change in your copy: `SH` default dir (`os.environ.get('LDIR', '<slug>')`), `CLOSES` path, header label text,
 `STK`/`ORDER`/`TA`, and the scene functions `s1..s9`, `SCENES`, `SLAMS()`. Keep `dark = (i == 8)`.
-Layout: content between y≈170 and y≈1500 (captions own 1600–1720). Keep reasons/labels above y≈1500.
+Layout: content between y≈170 and y≈1700.
 Helpers: `place_text(c, text, font, size, colour, x, y, t, key, t0, mode='pop'|'slide'|'fade', rot=)`,
 `words_line`, `slam(t,t0)->(scale,alpha)`, `stamp_c(text, colour, size, rot, seed)`, `card_box(w,h,SOFT)`,
 `label(text, colour)`, `text_img(text, font, size, colour)`, `place(c, img, x, y, scale, rot, alpha)`,
@@ -87,9 +88,6 @@ In the render command (section 8) use `../SLUG/mix.wav` as the audio path.
 - **Hook B trial reel**: a second script folder with a different line 0, module `<slug>b.py` =
   `import os; os.environ['LDIR']='<slug>b'; from <slug> import *`, render it, schedule as Instagram
   `TRIAL_REEL` (instagram only) 30 min after the main reel.
-- **Tamil-subtitle version**: fill `TA` (one Tamil line per script line), module `<slug>ta.py` =
-  `import os; os.environ['CAP']='ta'; os.environ['LDIR']='<slug>'; from <slug> import *`; render; post to YouTube
-  only (or keep for the owner's Tamil channel).
 - **Carousel**: adapt `vox/carousel_lows.py` (7 slides, 1080x1350) and schedule as an Instagram POST with all slide
   URLs in `media`, the next day at 13:00.
 

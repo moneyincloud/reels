@@ -11,6 +11,7 @@ import tea as TEA
 import os
 SH = ROOT + '' + os.environ.get('LDIR', 'lows2') + '/'
 CAP = os.environ.get('CAP', 'en')
+CAPS_ON = os.environ.get('CAPS', '0') == '1'  # owner prefers NO on-screen subtitles
 FONTS['ta'] = FD + 'noto-sans-tamil-tamil-800-normal.woff'
 SCRIPT = json.load(open(SH + 'script.json'))
 DURS = json.load(open(SH + 'vo/durs.json'))
@@ -417,7 +418,7 @@ def _render(t, loop=False):
     cw, ch = W / z, H / z
     cx, cy = W / 2 + sx, max(ch / 2, H * 0.47) + sy
     c = c.transform((W, H), Image.EXTENT, (cx - cw / 2, cy - ch / 2, cx + cw / 2, cy + ch / 2), Image.BICUBIC)
-    if not loop: captions(c, t)
+    if not loop and (CAPS_ON or CAP == 'ta'): captions(c, t)
     header(c, dark, t if not loop else 0); transition(c, t)
     arr = np.asarray(c.convert('RGB')).astype(np.float32)
     g = grain_frames()[int(t * FPS) % 6]
