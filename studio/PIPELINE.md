@@ -158,6 +158,9 @@ cd $ST/vox; (for k in 0 1; do python3 render_mod.py $k 2 SLUG & done; wait) && c
    `youtubeData {title: "<hook title> #shorts", type: short, privacy: public, category: EDUCATION, madeForKids: false, isAiGeneratedContent: false, tags: [...]}`.
    Caption: primary keyword in the first line, short facts with sources + dates, "Education only, not investment advice.",
    3–5 hashtags incl. #moneyincloud.
-3. Story ("master" story for the reel): a second `createScheduledPost` 15 min after the reel, provider instagram only,
-   `instagramData {type: STORY, isAiGenerated: true}`, media = the raw thumbnail jpg URL, no text.
+3. Story ("master" story for the reel): make the Story image with
+   `python3 vox/story_card.py out/<slug>_thumbnail.jpg out/<slug>_story.jpg` (adds "NEW REEL · OUT NOW" and
+   "TAP @moneyincloud TO WATCH"; Instagram's API cannot add clickable link stickers, so the Story points to the profile).
+   Host it, then a second `createScheduledPost` 15 min after the reel, provider instagram only,
+   `instagramData {type: STORY, isAiGenerated: true}`, media = the raw story jpg URL, no text, autoPublish true.
 4. Always schedule at least 30 min ahead so the owner can review in the Metricool app.
