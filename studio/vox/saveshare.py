@@ -103,29 +103,30 @@ def checklist(c, t, items, y0=520, gap=170):
                 else: d.line([pts[0], pts[1], (pts[1][0] + (pts[2][0] - pts[1][0]) * (q - .5) * 2, pts[1][1] + (pts[2][1] - pts[1][1]) * (q - .5) * 2)], fill=GRN, width=10)
 
 
-def myth_fact(c, t, t0, myth, fact, y=900):
+def myth_fact(c, t, t0, myth, fact, y=900, y0=300, y1=1560):
     if t < t0: return
     q = eio(prog(t, t0, 0.5)); gapx = 14 * q
-    r = random.Random(42); tear = [(540 + r.uniform(-18, 18), yy) for yy in range(300, 1560, 45)]
+    r = random.Random(42); tear = [(540 + r.uniform(-18, 18), yy) for yy in range(y0, y1, 45)] + [(540, y1)]
     left = Image.new('RGBA', c.size, (0, 0, 0, 0)); dl = ImageDraw.Draw(left)
-    dl.polygon([(60, 300)] + [(x - gapx, yy) for x, yy in tear] + [(60, 1560)], fill=(255, 226, 222))
+    dl.polygon([(60, y0)] + [(x - gapx, yy) for x, yy in tear] + [(60, y1)], fill=(255, 226, 222))
     right = Image.new('RGBA', c.size, (0, 0, 0, 0)); dr = ImageDraw.Draw(right)
-    dr.polygon([(1020, 300)] + [(x + gapx, yy) for x, yy in tear] + [(1020, 1560)], fill=(222, 245, 228))
+    dr.polygon([(1020, y0)] + [(x + gapx, yy) for x, yy in tear] + [(1020, y1)], fill=(222, 245, 228))
     c.alpha_composite(left); c.alpha_composite(right)
     d = ImageDraw.Draw(c); d.line([(x - gapx, yy) for x, yy in tear], fill=INK, width=4); d.line([(x + gapx, yy) for x, yy in tear], fill=INK, width=4)
-    place(c, text_img('MYTH', 'anton', 100, RED), 300, 400, q); place(c, text_img('FACT', 'anton', 100, GRN), 780, 400, q)
-    for k, ln in enumerate(myth): place(c, text_img(ln, 'osw', 46, INK), 300, 600 + k * 70, q)
+    place(c, text_img('MYTH', 'anton', 100, RED), 300, y0 + 100, q); place(c, text_img('FACT', 'anton', 100, GRN), 780, y0 + 100, q)
+    ym = y0 + int((y1 - y0) * 0.68)
+    for k, ln in enumerate(myth): place(c, text_img(ln, 'osw', 46, INK), 300, y0 + 280 + k * 70, q)
     tf = t0 + 1.0
     if t > tf:
-        for k, ln in enumerate(fact): place(c, text_img(ln, 'osw', 46, INK), 780, 600 + k * 70, eo(prog(t, tf, 0.3)))
+        for k, ln in enumerate(fact): place(c, text_img(ln, 'osw', 46, INK), 780, y0 + 280 + k * 70, eo(prog(t, tf, 0.3)))
     tx = t0 + 0.6
     if t > tx:
         s_, a = (1.0 + 0.6 * (1 - eo(prog(t, tx, 0.25))), 1)
         d2 = ImageDraw.Draw(c); k = 70 * s_
-        d2.line((300 - k, 1150 - k, 300 + k, 1150 + k), fill=RED, width=22); d2.line((300 + k, 1150 - k, 300 - k, 1150 + k), fill=RED, width=22)
+        d2.line((300 - k, ym - k, 300 + k, ym + k), fill=RED, width=22); d2.line((300 + k, ym - k, 300 - k, ym + k), fill=RED, width=22)
     if t > tf + 0.4:
         k = 70 * (1.0 + 0.6 * (1 - eo(prog(t, tf + 0.4, 0.25))))
-        ImageDraw.Draw(c).line((780 - k, 1150, 780 - k * 0.3, 1150 + k * 0.7, 780 + k, 1150 - k * 0.8), fill=GRN, width=24)
+        ImageDraw.Draw(c).line((780 - k, ym, 780 - k * 0.3, ym + k * 0.7, 780 + k, ym - k * 0.8), fill=GRN, width=24)
 
 
 def countdown_ring(c, t, t0, secs=3, x=540, y=1350, r=110):

@@ -13,6 +13,28 @@ Paths: `ST=/home/claude/reels/studio`. Renderer code is in `$ST/vox`, voice in `
 Git commits: user `Claude <noreply@anthropic.com>`, and end every message with
 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
 
+## 0b. Daily posting plan (owner's standing request, timings from Metricool best-time data)
+Every day (IST):
+| Time | Item | Made by |
+|---|---|---|
+| 10:00 | Reel A → Instagram REEL + YouTube Short (same video) | Morning agent (runs 06:41) |
+| 10:15 | Story = Reel A thumbnail | Morning agent |
+| 12:00 | Single-image feed post (`vox/post_card.py`: quiz / stat / myth-vs-fact / fact) | Morning agent |
+| 16:00 | Carousel, EVERY OTHER DAY (skip if a carousel was posted yesterday) | Morning agent |
+| 18:00 | Reel B → Instagram REEL + YouTube Short | Evening agent (runs 13:37) |
+| 18:15 | Story = Reel B thumbnail | Evening agent |
+Instagram peaks are 10:00 and 18:00; YouTube peaks 15:00–17:00, so 10:00 and 18:00 suit both.
+Topic split: Reel A = today's market news (results, IPO, big movers). Reel B = evergreen viral format
+(myth vs fact, quiz, checklist, calculator/past maths, two-character story, kids' story series).
+The daily post and carousel support the day's reels (stat card from Reel A, quiz/myth card, carousel recap of a reel).
+Before creating anything, check getScheduledPosts for that slot (±60 min) and skip items already planned.
+Single-image post: write a spec JSON (see docstring in `vox/post_card.py`), run
+`python3 post_card.py spec.json ../out/<slug>_post.jpg`, host it like the reel, schedule an Instagram POST with a
+caption (hook line first, facts with source/date, question to drive comments, "Education only, not investment advice.",
+3–5 hashtags) and `firstCommentText` (quiz answer or a question).
+Carousel: adapt `vox/carousel_lows.py` (7 slides, 1080x1350, cheat-sheet last slide with SAVE THIS), schedule as
+an Instagram POST with all slide URLs in `media`.
+
 ## 1. State
 `$ST/state.json` holds `last_voice` (`male` or `female`) and `history` (date, slug, topic, scheduled time).
 - Voice ALTERNATES every reel: male = Kokoro `am_michael` (speed ~1.12), female = `af_heart` (speed ~1.08).
