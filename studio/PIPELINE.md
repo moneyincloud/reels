@@ -14,19 +14,23 @@ Git commits: user `Claude <noreply@anthropic.com>`, and end every message with
 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
 
 ## 0b. Daily posting plan (owner's standing request, timings from Metricool best-time data)
-Every day (IST):
-| Time | Item | Made by |
-|---|---|---|
-| 10:00 | Reel A → Instagram REEL + YouTube Short (same video) | Morning agent (runs 06:41) |
-| 10:15 | Story = Reel A thumbnail | Morning agent |
-| 12:00 | Single-image feed post (`vox/post_card.py`: quiz / stat / myth-vs-fact / fact) | Morning agent |
-| 16:00 | Carousel, EVERY OTHER DAY (skip if a carousel was posted yesterday) | Morning agent |
-| 18:00 | Reel B → Instagram REEL + YouTube Short | Evening agent (runs 13:37) |
-| 18:15 | Story = Reel B thumbnail | Evening agent |
-Instagram peaks are 10:00 and 18:00; YouTube peaks 15:00–17:00, so 10:00 and 18:00 suit both.
-Topic split: Reel A = today's market news (results, IPO, big movers). Reel B = evergreen viral format
-(myth vs fact, quiz, checklist, calculator/past maths, two-character story, kids' story series).
-The daily post and carousel support the day's reels (stat card from Reel A, quiz/myth card, carousel recap of a reel).
+ONE reel per day, except Friday = TWO reels. (IST)
+| Time | Item | Days | Made by |
+|---|---|---|---|
+| 10:00 | Reel A → Instagram REEL + YouTube Short (same video) | every day | Morning agent (runs 06:41) |
+| 10:15 | Story = story_card of Reel A | every day | Morning agent |
+| 12:00 | Single-image feed post (`vox/post_card.py`: quiz / stat / myth-vs-fact / fact) | every day | Morning agent |
+| 16:00 | Carousel (skip if a carousel was posted yesterday) | every other day | Morning agent |
+| 18:00 | Reel B → Instagram REEL + YouTube Short — ANIMAL-THEMED finance story | FRIDAY only | Friday evening agent (runs 13:37 Fri) |
+| 18:15 | Story = story_card of Reel B | FRIDAY only | Friday evening agent |
+Instagram peaks are 10:00 and 18:00; YouTube peaks 15:00–17:00.
+Reel A topic: alternate between today's market news (results, IPO, big movers) and evergreen viral formats
+(myth vs fact, quiz, checklist, past maths, two-character story) — check the last 2 history entries and switch.
+Friday Reel B ("Animal Friday" series): money lessons told with animal characters drawn in the paper style —
+e.g. bull vs bear markets, tortoise vs hare (compounding), ant vs grasshopper (SIP/saving), squirrel's emergency fund,
+sheep following the herd (FOMO), owl doing research, monkey trading every day (overtrading), elephant's long memory
+(staying invested). Keep it educational with real numbers where used; no return promises.
+The daily post and carousel support recent reels (stat card, quiz/myth card, carousel recap).
 Before creating anything, check getScheduledPosts for that slot (±60 min) and skip items already planned.
 Single-image post: write a spec JSON (see docstring in `vox/post_card.py`), run
 `python3 post_card.py spec.json ../out/<slug>_post.jpg`, host it like the reel, schedule an Instagram POST with a
