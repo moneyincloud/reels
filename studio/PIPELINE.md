@@ -168,3 +168,15 @@ cd $ST/vox; (for k in 0 1; do python3 render_mod.py $k 2 SLUG & done; wait) && c
    Host it, then a second `createScheduledPost` 15 min after the reel, provider instagram only,
    `instagramData {type: STORY, isAiGenerated: true}`, media = the raw story jpg URL, no text, autoPublish true.
 4. Always schedule at least 30 min ahead so the owner can review in the Metricool app.
+
+## 10. Friday YouTube long video (weekly recap, YouTube only)
+Every Friday the week's reels (Sat→Fri, 6–8 of them, ~8–10 min total) are compiled into ONE 16:9 YouTube video:
+`python3 vox/weekly_compile.py plan.json` (see its docstring). It adds an intro card with a voice-over, a side panel per
+part ("PART n/N", title, SAVE THIS / SUBSCRIBE, disclaimer), an outro, chapter timestamps (`<out>.chapters.txt`) and a
+16:9 thumbnail (`<out>_thumbnail.jpg`). The mp4 is kept under ~95 MB so it can be hosted in this repo.
+Pick the reels from the dated folders of the last 7 days (prefer *_v2_reel.mp4 over older versions; skip trial reels);
+if fewer than 5 exist, include the strongest older reels. Order: best hook first.
+Schedule with Metricool: provider youtube only, `youtubeData {type: "video", title: "This Week in the Indian Market
+(<dates>): <top story> & more", category: EDUCATION, madeForKids: false, privacy: public, tags: [...]}`, media = raw mp4
+URL, videoThumbnailUrl = raw thumbnail URL, text = description (2-line summary, the chapter list, sources, "Education
+only, not investment advice."). Publish Friday 16:00 IST (YouTube peak).
