@@ -13,31 +13,30 @@ Paths: `ST=/home/claude/reels/studio`. Renderer code is in `$ST/vox`, voice in `
 Git commits: user `Claude <noreply@anthropic.com>`, and end every message with
 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
 
-## 0b. Daily posting plan (owner's standing request, timings from Metricool best-time data)
-ONE reel per day, except Friday = TWO reels. (IST)
-| Time | Item | Days | Made by |
+## 0b. Posting plan — Metricool FREE plan (max 20 scheduled posts per calendar month)
+A post to Instagram + YouTube together counts as ONE post. Stories and single-image posts are NOT scheduled
+(they would use up the 20) — the owner shares each reel to his Story from the Instagram app (✈️ → "Add reel to your
+story", which is clickable). Weekly plan (IST):
+| Day | Time | Item | Agent |
 |---|---|---|---|
-| 10:00 | Reel A → Instagram REEL + YouTube Short (same video) | every day | Morning agent (runs 06:41) |
-| 10:15 | Story = story_card of Reel A | every day | Morning agent |
-| 12:00 | Single-image feed post (`vox/post_card.py`: quiz / stat / myth-vs-fact / fact) | every day | Morning agent |
-| 16:00 | Carousel (skip if a carousel was posted yesterday) | every other day | Morning agent |
-| 18:00 | Reel B → Instagram REEL + YouTube Short — ANIMAL-THEMED finance story | FRIDAY only | Friday evening agent (runs 13:37 Fri) |
-| 18:15 | Story = story_card of Reel B | FRIDAY only | Friday evening agent |
-Instagram peaks are 10:00 and 18:00; YouTube peaks 15:00–17:00.
-Reel A topic: alternate between today's market news (results, IPO, big movers) and evergreen viral formats
-(myth vs fact, quiz, checklist, past maths, two-character story) — check the last 2 history entries and switch.
-Friday Reel B ("Animal Friday" series): money lessons told with animal characters drawn in the paper style —
-e.g. bull vs bear markets, tortoise vs hare (compounding), ant vs grasshopper (SIP/saving), squirrel's emergency fund,
-sheep following the herd (FOMO), owl doing research, monkey trading every day (overtrading), elephant's long memory
-(staying invested). Keep it educational with real numbers where used; no return promises.
-The daily post and carousel support recent reels (stat card, quiz/myth card, carousel recap).
-Before creating anything, check getScheduledPosts for that slot (±60 min) and skip items already planned.
-Single-image post: write a spec JSON (see docstring in `vox/post_card.py`), run
-`python3 post_card.py spec.json ../out/<slug>_post.jpg`, host it like the reel, schedule an Instagram POST with a
-caption (hook line first, facts with source/date, question to drive comments, "Education only, not investment advice.",
-3–5 hashtags) and `firstCommentText` (quiz answer or a question).
-Carousel: adapt `vox/carousel_lows.py` (7 slides, 1080x1350, cheat-sheet last slide with SAVE THIS), schedule as
-an Instagram POST with all slide URLs in `media`.
+| Mon | 10:00 | Reel → IG REEL + YouTube Short | Morning agent (runs 06:41 Mon & Wed) |
+| Wed | 10:00 | Reel → IG REEL + YouTube Short | Morning agent |
+| Fri | 16:00 | YouTube long video — weekly recap (YouTube only) | Weekly recap agent (11:23 Fri) |
+| Fri | 18:00 | "Animal Friday" reel → IG REEL + YouTube Short | Animal Friday agent (13:37 Fri) |
+| 1st Mon/Wed run of the month | 16:00 | ONE carousel (Instagram) | Morning agent |
+≈ 13 reels + 4–5 weekly videos + 1 carousel ≈ 18–20 per month.
+BUDGET CHECK (every agent, before scheduling anything): call getScheduledPosts for the whole current calendar month
+(1st 00:00 → last day 23:59, all statuses: published, pending, error) and count the posts. Limit = 20.
+If count + items you plan ≥ 20, drop items in this order until it fits: carousel first, then the reel.
+Never schedule past the limit; report "Monthly Metricool limit reached (<n>/20)" in the final message.
+Reel topics: Mon = today's market news (results, IPO, big movers) with real data; Wed = evergreen viral format
+(myth vs fact, quiz, checklist, past maths, two-character story). Friday evening = Animal Friday: money lessons with
+original paper-style animal characters (bull vs bear, tortoise vs hare = compounding, ant vs grasshopper = saving,
+squirrel's emergency fund, sheep following the herd = FOMO, owl doing research, monkey overtrading, elephant staying
+invested). Educational, real numbers only, no return promises.
+Carousel: adapt `vox/carousel_lows.py` (7–8 slides, 1080x1350, cheat-sheet last slide with SAVE THIS), schedule as an
+Instagram POST with all slide URLs in `media`. `vox/post_card.py` and `vox/story_card.py` stay available: put their
+images in the final message so the owner can post them manually if he wants.
 
 ## 1. State
 `$ST/state.json` holds `last_voice` (`male` or `female`) and `history` (date, slug, topic, scheduled time).
