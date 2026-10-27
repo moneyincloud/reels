@@ -12,7 +12,7 @@ import saveshare as SS
 
 FONTS['ta'] = FD + 'noto-sans-tamil-tamil-800-normal.woff'
 FR = _os.environ.get('STORY_FR', '/tmp/claude-0/-home-claude/32ef0837-6367-50a7-8b18-d49a84afef86/scratchpad/d3/frst/')
-SH = ROOT + 'storyta/'
+SH = ROOT + _os.environ.get('STORY_SLUG', 'storyta') + '/'
 SCN = ['hook', 'lift', 'cab', 'why', 'scam', 'fight', 'turn', 'home', 'end']
 RDUR, RFPS = 9.5, 15
 DURS = json.load(open(SH + 'vo/durs.json'))
@@ -26,13 +26,13 @@ B = STARTS[1:]
 GREY = (120, 116, 108); NAVY = (30, 60, 120)
 
 
-from storyta_txt import text_ta
+from storyta_txt import text_ta, L
 import paperscenes as PS
 
 
 @functools.lru_cache(maxsize=256)
 def chip(txt, size=58, bg=(20, 20, 22, 225), fg=CREAM, pad=34):
-    lines = txt.split('\n'); ims = [text_ta(l, size, fg) for l in lines]
+    lines = L(txt).split('\n'); ims = [text_ta(l, size, fg) for l in lines]
     w = max(m.size[0] for m in ims) + pad * 2; h = sum(m.size[1] for m in ims) + 14 * (len(ims) - 1) + pad * 1.4
     im = Image.new('RGBA', (int(w), int(h)), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     d.rounded_rectangle((0, 0, w - 1, h - 1), 26, fill=bg); y = pad * 0.7
@@ -42,7 +42,7 @@ def chip(txt, size=58, bg=(20, 20, 22, 225), fg=CREAM, pad=34):
 
 @functools.lru_cache(maxsize=128)
 def bubble(txt, size=54):
-    lines = txt.split('\n'); ims = [text_ta(l, size, INK) for l in lines]
+    lines = L(txt).split('\n'); ims = [text_ta(l, size, INK) for l in lines]
     w = max(m.size[0] for m in ims) + 70; h = sum(m.size[1] for m in ims) + 14 * (len(ims) - 1) + 56
     im = Image.new('RGBA', (w + 10, h + 60), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     d.rounded_rectangle((8, 8, w + 7, h + 7), 30, fill=INK); d.rounded_rectangle((0, 0, w - 1, h - 1), 30, fill=(255, 255, 255), outline=INK, width=6)
@@ -54,7 +54,7 @@ def bubble(txt, size=54):
 
 @functools.lru_cache(maxsize=64)
 def stamp(txt, col=RED, size=110, rot=-6):
-    ls = [text_ta(l, size, col) for l in txt.split('\n')]
+    ls = [text_ta(l, size, col) for l in L(txt).split('\n')]
     t = Image.new('RGBA', (max(m.size[0] for m in ls), sum(m.size[1] for m in ls) + 10 * (len(ls) - 1)), (0, 0, 0, 0)); y = 0
     for m in ls: t.alpha_composite(m, ((t.size[0] - m.size[0]) // 2, y)); y += m.size[1] + 10
     w, h = t.size[0] + 70, t.size[1] + 50
