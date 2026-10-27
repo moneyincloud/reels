@@ -6,3 +6,4 @@ frames/
 */vo/*.wav
 *_mix.wav
 __pycache__/
+mix.wav
