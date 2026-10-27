@@ -87,6 +87,32 @@ Voice: `mkdir -p $ST/<slug>/vo && cd $ST/kokoro && python3 vo.py ../<slug> <voic
   keep the AI-content labels (isAiGenerated) and the compliance lines; never use it to hide that content is AI-made.
 - Other playbooks in `ig-skills/*/SKILL.md` (ig-story, ig-carousel, ig-reply, ig-plan, ig-audit) can be read when useful.
 
+### 4c. VIRAL RULES (mandatory — owner's goal: every reel built to reach 1M views; length stays 70–85 s)
+Use the tools every time: if the Skill tool lists `going-viral`, `viral-hook-writer`, `trend-spotter` or `ig-viral`, invoke
+them; always run `ig-skills/ig-reel/hookscore.py` (hook must score ≥ 70; rewrite until it does — test 5 options) and
+`ig-skills/ig-reel/beats.py` (fix any beat > 4 s of static visuals), and `ig-skills/ig-caption/caption.py`.
+1. **Pick ONE goal per reel** and its emotion: SAVE (relief + fear of forgetting → a numbered system that assembles on
+   one frame) · SHARE (awe / indignation / status → "almost nobody knows", "you're being misled", "send this to…")
+   · FOLLOW (don't fall behind → a recurring series with a recognisable look). High-arousal beats calm: surprise,
+   shock numbers, "this changes how you see X". Make the sharer look smart.
+2. **Frame 0 IS the hook**: the biggest element already on screen and MOVING (count-up number, falling chart, stamp
+   slam), ≥40% of the frame, readable on mute. No fade-in, no logo intro. Order: motion (~1 s) → lock → the one-line
+   claim lands at ~1.2–1.6 s.
+3. **Promise → withhold → escalate → pay off** (matches section 4's structure): tease the payoff in the hook
+   ("…and number 5 is the scariest"), use a visible finish line (1/5 → 5/5, countdown), each beat out-does the last,
+   the best/most surprising beat comes LAST, then pay it off for real. Never resolve the loop early; never tease what
+   you don't deliver.
+4. **Nothing static**: every element has idle motion; every line gets a visual; rehook at ~4 s / 9 s / 15 s and at the
+   section-4 rehook line ("but here's the part nobody tells you…").
+5. **Rotate the angle every reel** (contrarian · result-first · myth-busting · POV · numbered · story) — check the last
+   3 history entries and don't repeat the angle. Ride timely news (results day, IPO day, a crash/rally) the same day.
+6. **Identity + honesty**: real, sourced numbers only; no clickbait that the reel doesn't pay off; original words and
+   visuals (model techniques, never copy scripts). Compliance (section 3) always wins over virality.
+7. **One CTA** matched to the goal (save / send to someone specific / follow for the series) + first comment that
+   asks a question people want to answer. Do NOT promise "comment WORD and I'll DM you" (no auto-DM tool connected).
+8. **Caption**: first line = hook + main search keyword; value in 3–6 short lines; question at the end; 3–5 hashtags.
+9. **Thumbnail/cover**: one shock number or 3–5 word question, readable at thumbnail size, inside the safe zone.
+
 ## 5. Animation module (paper Vox template v2 — light paper, NOT dark, NOT 3D)
 Copy the reference template `vox/lows2.py` to `vox/<slug>.py`. It already contains every standard upgrade —
 keep them in every reel:
