@@ -60,10 +60,21 @@ Checklist: (1) no return predictions; (2) source + date on every number (on scre
 (5) general disclosure "I may hold some of these stocks" when naming stocks (never name actual holdings);
 (6) no buy/sell calls.
 
-## 4. Script
-Create `$ST/<slug>/script.json`: a JSON list of 9 lines (scene 0 = hook, scene 8 = CTA end card, dark).
-~70-85 s total. Write numbers in words for the voice ("thirty two percent"). Hook: a question or shock number in
-line 0. End line: "Save this … and follow moneyincloud. Education only, not investment advice."
+## 4. Script — RETENTION STRUCTURE (owner's standing rule for every reel)
+Hook → Question/Delay #1 → Rehook → Question/Delay #2 → Answer. The answer (payoff) lands only at ~80% of the reel.
+Create `$ST/<slug>/script.json`: a JSON list of 9 lines mapped like this:
+| Line | Beat | Share of time | What it does |
+|---|---|---|---|
+| 0 | HOOK | 0–10% | shock number or bold question that promises an answer ("HUL is down 32%. Bargain or trap?") |
+| 1–2 | QUESTION / DELAY #1 | 10–35% | context + raise the question, build curiosity, DON'T answer yet ("Most people think… but") |
+| 3 | REHOOK | 35–45% | a twist or new open loop to stop the drop-off ("But that's not the strange part…", "Wait, it gets worse") |
+| 4–6 | QUESTION / DELAY #2 | 45–80% | evidence, clues, the second tension, stakes — still hold back the final answer |
+| 7 | ANSWER | 80–95% | the payoff / reveal / lesson in one clear line (cheat-sheet freeze frame here) |
+| 8 | CTA + LOOP | last 5–10% | "send this to…", save, follow, disclaimer, and a final line that echoes the hook so it loops |
+Animate to the beats: big slam/stamp on the hook, a visible "?" or countdown during each delay, a scene-shift
+whoosh + colour flash on the rehook, and the cheat-sheet/answer reveal (tear_reveal or stamp) at line 7.
+~70-85 s total. Write numbers in words for the voice ("thirty two percent"). End line: "Save this … and follow
+moneyincloud. Education only, not investment advice."
 Voice: `mkdir -p $ST/<slug>/vo && cd $ST/kokoro && python3 vo.py ../<slug> <voice> <speed>` → prints durations.
 
 ### 4b. Hook + caption tools (from Jakeschincariol/instagram-agent-skill, MIT, offline)
