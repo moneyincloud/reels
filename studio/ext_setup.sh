@@ -18,4 +18,6 @@ npx -y skills add hypit-ai/hypit -g -y >/dev/null 2>&1 || true
 npm install --global @hypit/hypit >/dev/null 2>&1 || true
 # Skill finder (skills.sh CLI + find-skills). Search needs skills.sh, which is blocked here; installing from GitHub works
 npx -y skills add vercel-labs/skills --skill find-skills -g -y >/dev/null 2>&1 || true
+# Dalal Street Skills (NSE/BSE analysis, paper trading only). Data needs query1/query2.finance.yahoo.com, nsearchives.nseindia.com, niftyindices.com, news.google.com allowed
+npx -y skills add Adityaraj0421/dalal-street-skills -g -y >/dev/null 2>&1 || true
 echo "ext ok · export HYPERFRAMES_BROWSER_PATH=$HYPERFRAMES_BROWSER_PATH PLAYWRIGHT_CHROME=$PLAYWRIGHT_CHROME"
