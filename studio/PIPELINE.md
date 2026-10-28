@@ -205,6 +205,15 @@ cd $ST/vox; (for k in 0 1; do python3 render_mod.py $k 2 SLUG & done; wait) && c
    `instagramData {type: STORY, isAiGenerated: true}`, media = the raw story jpg URL, no text, autoPublish true.
 4. Always schedule at least 30 min ahead so the owner can review in the Metricool app.
 
+## 9b. POST PACK — deliver with EVERY final video + thumbnail (owner's standing rule)
+Whenever a final reel video and thumbnail are sent to the owner, ALSO send the ready-to-paste content for
+YouTube, Instagram and X, filled from `templates/post_pack.md` and saved as `out/<slug>_post.md`
+(send the file AND paste it in the message). It must contain: Instagram caption (hook line ≤125 chars, facts with
+numbers, save/send CTA, sources + dates, disclaimer, SEO keyword line, 3–5 hashtags), first comment, alt text;
+YouTube Shorts title (≤100 chars + #shorts), description, tags (≤500 chars), pinned comment; X single post
+(≤280 chars) + optional 3-post thread; schedule slot + monthly budget count. Run humanize/caption lint where available.
+The same caption is used for the Metricool post.
+
 ## 10. Friday YouTube long video (weekly recap, YouTube only)
 Every Friday the week's reels (Sat→Fri, 6–8 of them, ~8–10 min total) are compiled into ONE 16:9 YouTube video:
 `python3 vox/weekly_compile.py plan.json` (see its docstring). It adds an intro card with a voice-over, a side panel per
