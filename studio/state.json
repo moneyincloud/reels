@@ -1,5 +1,5 @@
 {
-  "last_voice": "male",
+  "last_voice": "female",
   "history": [
     {
       "date": "2026-10-23",
@@ -30,10 +30,16 @@
       "date": "2026-10-26",
       "slug": "lows",
       "topic": "Big companies at 52-week lows (HUL, Maruti, DMart, Swiggy, NTPC)"
+    },
+    {
+      "date": "2026-10-28",
+      "slug": "quiz3",
+      "topic": "Money quiz: rule of 72, inflation halving, loss recovery (-50% needs +100%, Nifty -14% needs +16%)",
+      "angle": "quiz",
+      "scheduled": "2026-10-28 10:00 IST IG REEL + YT Short"
     }
   ],
   "next_ideas": [
-    "Jio listing day (28 Oct) explained: issue price vs listing price, what 'listing gain' means, why GMP is unofficial (facts only, no listing prediction)",
     "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at ₹468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
     "'Turnaround or trap?' story format (like the PC Jeweller reel, without 'multibagger'): how to check a 'debt-free' claim - borrowings, cash flow, dilution, promoter holding"
   ]
