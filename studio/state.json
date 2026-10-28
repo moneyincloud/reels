@@ -1,46 +1,54 @@
 {
-  "last_voice": "female",
-  "history": [
-    {
-      "date": "2026-10-23",
-      "slug": "jio",
-      "topic": "Jio IPO lottery explained"
-    },
-    {
-      "date": "2026-10-23",
-      "slug": "tmpv",
-      "topic": "Tata Motors Passenger Vehicles business"
-    },
-    {
-      "date": "2026-10-24",
-      "slug": "king",
-      "topic": "King's Test kids investing story ep1"
-    },
-    {
-      "date": "2026-10-24",
-      "slug": "crash",
-      "topic": "Indian market crashes in 30 years"
-    },
-    {
-      "date": "2026-10-25",
-      "slug": "jio2",
-      "topic": "Jio IPO allotment check, 22x subscribed"
-    },
-    {
-      "date": "2026-10-26",
-      "slug": "lows",
-      "topic": "Big companies at 52-week lows (HUL, Maruti, DMart, Swiggy, NTPC)"
-    },
-    {
-      "date": "2026-10-28",
-      "slug": "quiz3",
-      "topic": "Money quiz: rule of 72, inflation halving, loss recovery (-50% needs +100%, Nifty -14% needs +16%)",
-      "angle": "quiz",
-      "scheduled": "2026-10-28 10:00 IST IG REEL + YT Short"
-    }
-  ],
-  "next_ideas": [
-    "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at ₹468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
-    "'Turnaround or trap?' story format (like the PC Jeweller reel, without 'multibagger'): how to check a 'debt-free' claim - borrowings, cash flow, dilution, promoter holding"
-  ]
+ "last_voice": "af_heart",
+ "history": [
+  {
+   "date": "2026-10-23",
+   "slug": "jio",
+   "topic": "Jio IPO lottery explained"
+  },
+  {
+   "date": "2026-10-23",
+   "slug": "tmpv",
+   "topic": "Tata Motors Passenger Vehicles business"
+  },
+  {
+   "date": "2026-10-24",
+   "slug": "king",
+   "topic": "King's Test kids investing story ep1"
+  },
+  {
+   "date": "2026-10-24",
+   "slug": "crash",
+   "topic": "Indian market crashes in 30 years"
+  },
+  {
+   "date": "2026-10-25",
+   "slug": "jio2",
+   "topic": "Jio IPO allotment check, 22x subscribed"
+  },
+  {
+   "date": "2026-10-26",
+   "slug": "lows",
+   "topic": "Big companies at 52-week lows (HUL, Maruti, DMart, Swiggy, NTPC)"
+  },
+  {
+   "date": "2026-10-28",
+   "slug": "quiz3",
+   "topic": "Money quiz: rule of 72, inflation halving, loss recovery (-50% needs +100%, Nifty -14% needs +16%)",
+   "angle": "quiz",
+   "scheduled": "2026-10-28 10:00 IST IG REEL + YT Short"
+  },
+  {
+   "date": "2026-10-29",
+   "slot": "10:00",
+   "slug": "recharge",
+   "voice": "af_heart",
+   "engine": "hyperframes-dataviz",
+   "metricool_id": 409245918
+  }
+ ],
+ "next_ideas": [
+  "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at \u20b9468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
+  "'Turnaround or trap?' story format (like the PC Jeweller reel, without 'multibagger'): how to check a 'debt-free' claim - borrowings, cash flow, dilution, promoter holding"
+ ]
 }
