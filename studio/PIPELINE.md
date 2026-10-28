@@ -113,6 +113,17 @@ them; always run `ig-skills/ig-reel/hookscore.py` (hook must score ≥ 70; rewri
 8. **Caption**: first line = hook + main search keyword; value in 3–6 short lines; question at the end; 3–5 hashtags.
 9. **Thumbnail/cover**: one shock number or 3–5 word question, readable at thumbnail size, inside the safe zone.
 
+## 4d. External animation toolkits (owner asked to use them, 28 Oct 2026) — run `sh ext_setup.sh`
+Status in this cloud workspace (only package registries + GitHub are reachable; CDNs and HuggingFace are blocked):
+| Tool | Licence | Status here | How we use it |
+|---|---|---|---|
+| HyperFrames (heygen-com/hyperframes) | Apache-2.0 | WORKS (test render OK). Set `HYPERFRAMES_BROWSER_PATH` (see ext_setup.sh). CDN scripts are blocked: `npm i gsap` and reference the local `gsap.min.js`, never jsdelivr | HTML/GSAP motion scenes, registry transitions/charts/maps; render 1080x1920 clips and overlay or replace Pillow scenes. Load the `hyperframes` skill first |
+| Lemo-Opuscar styles (lemomo-ai/lemo-opuscar) | MIT code, styles CC BY 4.0 (credit "Style: Lemo-Opuscar / LemoLab" in the caption when a style is used) | Engine runs with `PLAYWRIGHT_CHROME`; demo assets are LFS (not downloaded), so build our own content | Style grammar: `dataviz` (Data Storytelling, cream paper + pencil = closest to our paper look) for results reels; `satellite-briefing` for map scenes; `halftone-dossier`, `news-package`, `whiteboard` for variety |
+| Claude Animation Base (JohnHeibel) | MIT | WORKS but software GL: ~65 s/frame with watercolour fills — too slow; usable only with fills replaced by flat fills | Hand-drawn p5.brush character animation for story reels. Never use the Clawd character (brand mascot) — draw our own characters |
+| onetake (feitangyuan) | PolyForm NONCOMMERCIAL | Do NOT use its code/assets (monetised channel) | Only the general idea: carry one element across each scene boundary instead of hard wipes |
+| Collage B-roll (pyang5166) | MIT | Needs a paid `GEMINI_API_KEY` + Codex image_gen — not available | Only with the owner's Gemini key; otherwise imitate halftone paper-collage in Pillow |
+| faster-whisper | MIT | Model download blocked (HuggingFace) | Use existing sherpa-onnx whisper (scratchpad asr) for WORD TIMINGS to sync animations; captions stay OFF |
+
 ## 5. Animation module (paper Vox template v2 — light paper, NOT dark, NOT 3D)
 Copy the reference template `vox/lows2.py` to `vox/<slug>.py`. It already contains every standard upgrade —
 keep them in every reel:
