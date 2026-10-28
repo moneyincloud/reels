@@ -13,4 +13,7 @@ done
   && sed -i 's#<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=block">#<style>@font-face{font-family:"Permanent Marker";src:url(fonts_pm.woff2) format("woff2");font-display:block}</style>#' studio.html \
   && sed -i "s/{ waitUntil: 'networkidle0' }/{ waitUntil: 'load' }/" render.mjs) || true
 npx -y hyperframes@latest --version >/dev/null 2>&1 || true
+# Hypit (video cloning / SVML workflows): skill + executable
+npx -y skills add hypit-ai/hypit -g -y >/dev/null 2>&1 || true
+npm install --global @hypit/hypit >/dev/null 2>&1 || true
 echo "ext ok · export HYPERFRAMES_BROWSER_PATH=$HYPERFRAMES_BROWSER_PATH PLAYWRIGHT_CHROME=$PLAYWRIGHT_CHROME"

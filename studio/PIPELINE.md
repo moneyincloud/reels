@@ -122,6 +122,7 @@ Status in this cloud workspace (only package registries + GitHub are reachable; 
 | Claude Animation Base (JohnHeibel) | MIT | WORKS but software GL: ~65 s/frame with watercolour fills — too slow; usable only with fills replaced by flat fills | Hand-drawn p5.brush character animation for story reels. Never use the Clawd character (brand mascot) — draw our own characters |
 | onetake (feitangyuan) | PolyForm NONCOMMERCIAL | Do NOT use its code/assets (monetised channel) | Only the general idea: carry one element across each scene boundary instead of hard wipes |
 | Collage B-roll (pyang5166) | MIT | Needs a paid `GEMINI_API_KEY` + Codex image_gen — not available | Only with the owner's Gemini key; otherwise imitate halftone paper-collage in Pillow |
+| Hypit (hypit-ai/hypit) | Apache-2.0 + conditions (own-channel commercial use OK; no reselling/hosting for others; keep its name/logo in CLI reports) | Skill + `@hypit/hypit` 0.3.1 installed via ext_setup.sh | Clone a viral reel's structure (hook, captions-off, B-roll, effects) into a re-runnable workflow; code-rendered visuals need no paid model; AI-generated footage needs a model-service key |
 | faster-whisper | MIT | Model download blocked (HuggingFace) | Use existing sherpa-onnx whisper (scratchpad asr) for WORD TIMINGS to sync animations; captions stay OFF |
 
 ## 5. Animation module (paper Vox template v2 — light paper, NOT dark, NOT 3D)
