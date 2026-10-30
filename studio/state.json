@@ -1,5 +1,5 @@
 {
- "last_voice": "af_heart",
+ "last_voice": "am_michael",
  "history": [
   {
    "date": "2026-10-23",
@@ -45,10 +45,66 @@
    "voice": "af_heart",
    "engine": "hyperframes-dataviz",
    "metricool_id": 409245918
+  },
+  {
+   "date": "2026-10-30",
+   "slug": "suzlon",
+   "topic": "Suzlon multibagger or trap, Q2 FY27",
+   "voice": "af_heart",
+   "posted": "manual"
+  },
+  {
+   "date": "2026-10-30",
+   "slug": "friends",
+   "topic": "3 friends FD vs gold vs Nifty 2006-2026",
+   "voice": "am_michael",
+   "posted": "manual"
+  },
+  {
+   "date": "2026-10-30",
+   "slug": "iepf",
+   "topic": "Forgotten shares IEPF ₹89,000 Cr",
+   "voice": "af_heart",
+   "posted": "manual"
+  },
+  {
+   "date": "2026-10-30",
+   "slug": "ipo",
+   "topic": "IPO regret club, 9 IPOs",
+   "voice": "am_michael",
+   "posted": "manual"
+  },
+  {
+   "date": "2026-10-30",
+   "slug": "cupid",
+   "topic": "Cupid deep dive",
+   "voice": "am_michael",
+   "posted": "manual"
+  },
+  {
+   "date": "2026-10-30",
+   "slug": "itstocks",
+   "topic": "40 IT stocks, 7 passed",
+   "voice": "am_michael",
+   "posted": "manual"
+  },
+  {
+   "date": "2026-10-30",
+   "slug": "sjvn",
+   "topic": "SJVN multibagger or trap, Q2 FY27",
+   "voice": "af_heart",
+   "posted": "manual"
+  },
+  {
+   "date": "2026-10-30",
+   "slug": "pcj2",
+   "topic": "PC Jeweller part 2",
+   "voice": "am_michael",
+   "posted": "manual"
   }
  ],
  "next_ideas": [
-  "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at \u20b9468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
+  "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at ₹468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
   "'Turnaround or trap?' story format (like the PC Jeweller reel, without 'multibagger'): how to check a 'debt-free' claim - borrowings, cash flow, dilution, promoter holding"
  ]
 }
