@@ -237,3 +237,13 @@ Schedule with Metricool: provider youtube only, `youtubeData {type: "video", tit
 (<dates>): <top story> & more", category: EDUCATION, madeForKids: false, privacy: public, tags: [...]}`, media = raw mp4
 URL, videoThumbnailUrl = raw thumbnail URL, text = description (2-line summary, the chapter list, sources, "Education
 only, not investment advice."). Publish Friday 16:00 IST (YouTube peak).
+
+## 11. Canvas renderer (optional, ~15x faster than Pillow)
+`canvas/` is a browser `<canvas>` port of the LISTX engine: `engine.js` (helpers from `vox/lib.py` + `vox/listx.py`),
+one `<slug>.js` per reel (first port: `usstock.js`), `index.html` (opens in a browser and plays the reel live) and
+`render.mjs` (headless Chromium → ffmpeg). Voice + audio mix are unchanged (`kokoro/vo.py`, `vox/<slug>_audio.py`).
+```
+node canvas/render.mjs <slug> stills 1.5,22,46 ../frames/canvas.png   # contact sheet to check
+node canvas/render.mjs <slug> video out/<slug>_reel.mp4 <slug>/mix.wav # full 1080x1920 reel, ~2 min
+```
+Then add the thumbnail cover and host/schedule exactly as in sections 8–9.

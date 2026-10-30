@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Canvas reel</title>
+<style>html,body{margin:0;background:#000}canvas{display:block;width:100vh;max-width:100%;aspect-ratio:9/16;height:auto}</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="engine.js"></script>
+<script>
+// ?reel=<slug> loads canvas/<slug>.js; render.mjs drives window.seek(t), a browser just plays it in real time.
+const slug = new URLSearchParams(location.search).get('reel') || 'usstock';
+const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+window.seek = t => { REEL.drawFrame(ctx, t); };
+window.READY = new Promise(res => {
+  const s = document.createElement('script'); s.src = slug + '.js';
+  s.onload = async () => { await loadAssets('../'); const dur = await REEL.init('../'); res(dur); };
+  document.head.appendChild(s);
+});
+if (!navigator.webdriver) READY.then(dur => {
+  const t0 = performance.now();
+  (function tick() { seek(((performance.now() - t0) / 1000) % dur); requestAnimationFrame(tick); })();
+});
+</script>
+</body>
+</html>
