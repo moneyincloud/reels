@@ -1,5 +1,5 @@
 {
- "last_voice": "am_michael",
+ "last_voice": "af_heart",
  "history": [
   {
    "date": "2026-10-23",
@@ -63,7 +63,7 @@
   {
    "date": "2026-10-30",
    "slug": "iepf",
-   "topic": "Forgotten shares IEPF ₹89,000 Cr",
+   "topic": "Forgotten shares IEPF \u20b989,000 Cr",
    "voice": "af_heart",
    "posted": "manual"
   },
@@ -101,10 +101,17 @@
    "topic": "PC Jeweller part 2",
    "voice": "am_michael",
    "posted": "manual"
+  },
+  {
+   "slug": "invest4",
+   "date": "2026-10-30",
+   "style": "listx",
+   "voice": "af_heart",
+   "status": "ready, unposted"
   }
  ],
  "next_ideas": [
-  "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at ₹468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
+  "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at \u20b9468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
   "'Turnaround or trap?' story format (like the PC Jeweller reel, without 'multibagger'): how to check a 'debt-free' claim - borrowings, cash flow, dilution, promoter holding"
  ]
 }
