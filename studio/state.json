@@ -1,5 +1,5 @@
 {
- "last_voice": "af_heart",
+ "last_voice": "am_michael",
  "history": [
   {
    "date": "2026-10-23",
@@ -63,7 +63,7 @@
   {
    "date": "2026-10-30",
    "slug": "iepf",
-   "topic": "Forgotten shares IEPF ₹89,000 Cr",
+   "topic": "Forgotten shares IEPF \u20b989,000 Cr",
    "voice": "af_heart",
    "posted": "manual"
   },
@@ -124,17 +124,24 @@
    "date": "2026-10-30",
    "slug": "tortoise",
    "tag": "animal-friday",
-   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (₹5k from 25 vs ₹10k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
+   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (\u20b95k from 25 vs \u20b910k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
    "angle": "story",
    "voice": "af_heart",
    "length_s": 75.6,
    "scheduled": "2026-10-31 18:00 IST IG REEL + YT Short (run fired late, 22:17 IST Fri, after the Fri 18:00 slot)",
    "metricool_id": 411468262,
    "files": "2026-10-31/tortoise_*"
+  },
+  {
+   "slug": "usstock",
+   "date": "2026-10-30",
+   "style": "listx",
+   "voice": "am_michael",
+   "status": "ready, unposted"
   }
  ],
  "next_ideas": [
-  "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at ₹468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
+  "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at \u20b9468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
   "'Turnaround or trap?' story format (like the PC Jeweller reel, without 'multibagger'): how to check a 'debt-free' claim - borrowings, cash flow, dilution, promoter holding"
  ]
 }
