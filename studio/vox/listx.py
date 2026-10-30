@@ -96,11 +96,11 @@ def headline(c, t, words, accent, x0=70, y0=215, size=66, maxw=940, col=INKL, t_
         c.alpha_composite(ti, (int(xx), int(yy + dy)))
 
 
-def hud(c, t, idx, slug, done, total, dark):
+def hud(c, t, idx, slug, done, total, dark, word='SET UP'):
     col = MUTE if not dark else (150, 150, 150)
     left = f'// {idx:02d} · {slug}'
     c.alpha_composite(text_img(left, 'type', 30, col, 2), (70, 150))
-    r = text_img(f'SET UP', 'type', 30, col, 2); n = text_img(f'{done}/{total}', 'type', 30, ACC, 2)
+    r = text_img(word, 'type', 30, col, 2); n = text_img(f'{done}/{total}', 'type', 30, ACC, 2)
     c.alpha_composite(r, (W - 70 - n.size[0] - 20 - r.size[0], 150)); c.alpha_composite(n, (W - 70 - n.size[0], 150))
 
 
@@ -139,7 +139,7 @@ def shelf(c, t, x0, y0, slots, filled_times, icons, w=520, dark=False, label='TH
             cx, cy = (bx0 + bx1) / 2, (by0 + by1) / 2; hw = (bx1 - bx0) / 2 * q; hh = (by1 - by0) / 2 * q
             d.rounded_rectangle((cx - hw, cy - hh, cx + hw, cy + hh), 10, fill=(250, 250, 248), outline=line, width=3)
             d.rectangle((cx - hw, cy - hh, cx + hw, cy - hh + 10 * q), fill=ACC)
-            if q > 0.7 and icons[k]: icons[k](c, cx, cy + 4, 0.42)
+            if q > 0.7 and icons[k]: icons[k](c, cx, cy + 4, 0.42 * min(1.0, 4 / slots))
         else:
             for s in range(0, int(bx1 - bx0), 14):
                 d.line((bx0 + s, by0, bx0 + s + 7, by0), fill=line, width=2); d.line((bx0 + s, by1, bx0 + s + 7, by1), fill=line, width=2)
@@ -243,3 +243,48 @@ def ico_plant(c, cx, cy, s, t=0):
     for k, (dx, dy) in enumerate(((-50, -20), (50, -50), (-40, -80))):
         x1, y1 = cx + dx * s, cy + dy * s
         d.ellipse((min(cx, x1) - 6 * s, y1 - 18 * s, max(cx, x1) + 6 * s, y1 + 18 * s), fill=ACC, outline=INKL, width=max(1, int(4 * s)))
+
+
+def ico_phone(c, cx, cy, s, t=0):
+    d = ImageDraw.Draw(c); w, h = 110 * s, 190 * s
+    d.rounded_rectangle((cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2), 18 * s, fill=(252, 252, 250), outline=INKL, width=lw(s))
+    d.rounded_rectangle((cx - w / 2 + 12 * s, cy - h / 2 + 22 * s, cx + w / 2 - 12 * s, cy + h / 2 - 30 * s), 6 * s, fill=(232, 240, 235))
+    d.line((cx - 20 * s, cy - h / 2 + 11 * s, cx + 20 * s, cy - h / 2 + 11 * s), fill=INKL, width=max(2, int(4 * s)))
+    pts = [(cx - 32 * s, cy + 30 * s), (cx - 10 * s, cy + 5 * s), (cx + 8 * s, cy + 15 * s), (cx + 32 * s, cy - 30 * s)]
+    d.line(pts, fill=ACC, width=lw(s))
+    d.ellipse((cx - 10 * s, cy + h / 2 - 22 * s, cx + 10 * s, cy + h / 2 - 8 * s), outline=INKL, width=max(1, int(3 * s)))
+
+
+def ico_swap(c, cx, cy, s, t=0):
+    d = ImageDraw.Draw(c); r = 46 * s
+    for dx, sym, col in ((-50, 'R', (252, 252, 250)), (50, '$', ACC)):
+        x = cx + dx * s
+        d.ellipse((x - r, cy - r, x + r, cy + r), fill=col, outline=INKL, width=lw(s))
+        f = font('pop', int(60 * s)); txt = '₹' if sym == 'R' else '$'
+        d.text((x, cy + 2 * s), txt, font=f, fill=INKL, anchor='mm')
+    d.line((cx - 20 * s, cy - r - 14 * s, cx + 20 * s, cy - r - 14 * s), fill=INKL, width=lw(s))
+    d.polygon([(cx + 22 * s, cy - r - 24 * s), (cx + 36 * s, cy - r - 14 * s), (cx + 22 * s, cy - r - 4 * s)], fill=INKL)
+
+
+def ico_taxdoc(c, cx, cy, s, t=0):
+    d = ImageDraw.Draw(c); w, h = 130 * s, 170 * s
+    d.polygon([(cx - w / 2, cy - h / 2), (cx + w / 2 - 30 * s, cy - h / 2), (cx + w / 2, cy - h / 2 + 30 * s), (cx + w / 2, cy + h / 2), (cx - w / 2, cy + h / 2)], fill=(252, 252, 250))
+    d.line([(cx - w / 2, cy - h / 2), (cx + w / 2 - 30 * s, cy - h / 2), (cx + w / 2, cy - h / 2 + 30 * s), (cx + w / 2, cy + h / 2), (cx - w / 2, cy + h / 2), (cx - w / 2, cy - h / 2)], fill=INKL, width=lw(s))
+    for k in range(3): d.line((cx - w / 2 + 18 * s, cy - 30 * s + k * 26 * s, cx + w / 2 - 22 * s, cy - 30 * s + k * 26 * s), fill=(170, 170, 170), width=max(2, int(5 * s)))
+    d.text((cx, cy + 58 * s), '%', font=font('pop', int(44 * s)), fill=ACC, anchor='mm')
+
+
+def ico_scale(c, cx, cy, s, t=0):
+    d = ImageDraw.Draw(c); W2 = 90 * s
+    d.line((cx, cy - 70 * s, cx, cy + 70 * s), fill=INKL, width=lw(s)); d.line((cx - 40 * s, cy + 70 * s, cx + 40 * s, cy + 70 * s), fill=INKL, width=lw(s))
+    d.line((cx - W2, cy - 50 * s, cx + W2, cy - 50 * s), fill=INKL, width=lw(s))
+    for dx, col in ((-W2, ACC), (W2, (230, 90, 80))):
+        x = cx + dx; d.line((x, cy - 50 * s, x - 30 * s, cy + 10 * s), fill=INKL, width=max(2, int(3 * s))); d.line((x, cy - 50 * s, x + 30 * s, cy + 10 * s), fill=INKL, width=max(2, int(3 * s)))
+        d.chord((x - 36 * s, cy - 10 * s, x + 36 * s, cy + 34 * s), 0, 180, fill=col, outline=INKL, width=lw(s))
+
+
+def ico_grid10(c, cx, cy, s, t=0):
+    d = ImageDraw.Draw(c); cs = 34 * s
+    for k in range(10):
+        r, q = divmod(k, 5); x = cx - 2.5 * cs + q * cs; y = cy - cs + r * cs
+        d.rounded_rectangle((x + 3 * s, y + 3 * s, x + cs - 3 * s, y + cs - 3 * s), 6 * s, fill=ACC if (k % 3 == 0) else (252, 252, 250), outline=INKL, width=max(2, int(4 * s)))
