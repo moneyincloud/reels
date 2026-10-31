@@ -20,4 +20,14 @@ npm install --global @hypit/hypit >/dev/null 2>&1 || true
 npx -y skills add vercel-labs/skills --skill find-skills -g -y >/dev/null 2>&1 || true
 # Dalal Street Skills (NSE/BSE analysis, paper trading only). Data needs query1/query2.finance.yahoo.com, nsearchives.nseindia.com, niftyindices.com, news.google.com allowed
 npx -y skills add Adityaraj0421/dalal-street-skills -g -y >/dev/null 2>&1 || true
+# MadeToScale "Top 15 Claude Code skills" guide (owner asked to install all, 31 Oct 2026).
+# Already built in: superpowers, mattpocock-skills, ponytail, anthropic document skills, career-ops.
+for r in affaan-m/ECC nextlevelbuilder/ui-ux-pro-max-skill JuliusBrussee/caveman addyosmani/agent-skills \
+         Panniantong/Agent-Reach Leonxlnx/taste-skill Egonex-AI/Understand-Anything tt-a1i/archify; do
+  npx -y skills add $r -g -y >/dev/null 2>&1 && echo "skill ok: $r" || echo "skill FAILED: $r"
+done
+[ -d ~/.claude/skills/gstack ] || git clone -q --single-branch --depth 1 https://github.com/garrytan/gstack.git ~/.claude/skills/gstack
+(cd ~/.claude/skills/gstack && ./setup </dev/null >/dev/null 2>&1) && echo "skill ok: gstack" || echo "skill FAILED: gstack setup"
+# claude-mem needs a browser sign-in (hosted trial) or a local --provider; it may stop here without one
+timeout 120 npx -y claude-mem install </dev/null >/dev/null 2>&1 && echo "ok: claude-mem" || echo "claude-mem not installed (needs sign-in)"
 echo "ext ok · export HYPERFRAMES_BROWSER_PATH=$HYPERFRAMES_BROWSER_PATH PLAYWRIGHT_CHROME=$PLAYWRIGHT_CHROME"
