@@ -1,5 +1,5 @@
 {
- "last_voice": "af_heart",
+ "last_voice": "am_michael",
  "history": [
   {
    "date": "2026-10-23",
@@ -145,6 +145,13 @@
    "style": "race-bars",
    "voice": "af_heart",
    "status": "ready, unposted"
+  },
+  {
+   "slug": "onepoint",
+   "date": "2026-10-31",
+   "style": "listx+avatar",
+   "voice": "am_michael",
+   "status": "ready for 1 Nov, unposted"
   }
  ],
  "next_ideas": [
