@@ -79,8 +79,18 @@ def pop_in(t, t0, d=0.3):
 
 
 # reveal times: the moment the value is spoken
+WORDS_ALL = [w for seg in WORDS for w in seg]
+P = lambda tag, k=0: LX.POSE[tag][k]
 REVEAL = [at(2, 'Still one lakh'), at(3, 'One lakh eighty'), at(5, 'Two lakh'), at(6, 'Four lakh')]
 INTRO = at(1, 'Same one lakh')
+CUES = sorted([(0, P('idea')), (at(0, 'probably', -0.1), P('smug')),
+        (VO[1], P('inspect')), (VO[2], P('shrug')), (at(2, 'But prices', -0.1), P('stress')), (at(2, 'only what', -0.1), P('cry')),
+        (VO[3], P('cross')), (at(3, 'barely', -0.1), P('bored')),
+        (VO[4], P('think')), (at(4, 'Most people', -0.1), P('secret')),
+        (VO[5], P('typing')), (at(5, 'Two lakh', -0.1), P('proud')), (at(5, 'through', -0.1), P('nervous', 1)),
+        (VO[6], P('shock', 3)), (at(6, 'Four lakh', 0.2), P('celebrate', 1)), (at(6, 'Almost five', -0.1), P('celebrate')),
+        (VO[7], P('stop')), (at(7, 'fallen', -0.1), P('shock', 4)), (at(7, "The last", -0.1), P('idea')),
+        (VO[8], P('think')), (at(8, 'Comment', -0.1), P('point')), (at(8, 'send', -0.1), P('proud', 1))])
 X0, X1 = 360, 1010; PER = (X1 - X0) / 5.0
 LANE_Y = [800, 1000, 1200, 1400]
 
@@ -172,7 +182,7 @@ def year_ticker(c, t, dark):
     q = eo(prog(t, t0, max(0.5, t1 - t0)))
     yr = 2016 + int(round(10 * q))
     fg = LIGHTT if dark else INKL; d = ImageDraw.Draw(c)
-    x0, x1, y = 120, 960, 1640
+    x0, x1, y = 110, 620, 1630
     d.line((x0, y, x1, y), fill=(120, 120, 120), width=4)
     for k in range(11):
         x = x0 + (x1 - x0) * k / 10; d.line((x, y - 10, x, y + 10), fill=(120, 120, 120), width=3)
@@ -232,7 +242,7 @@ def v_twist(c, t):
         y = LANE_Y[3]; q = eo(prog(t, t0, 0.6))
         place(c, arrow_img(), X0 + PER * 3.7, y - 70, 0.6 * q)
         LX.sticker(c, t, at(7, 'twenty two'), '-22% FROM 2026 PEAK', 600, 1560, -4, 42)
-    LX.sticker(c, t, at(7, "don't promise"), 'PAST IS NOT A PROMISE', 560, 1690, 3, 36)
+    LX.sticker(c, t, at(7, "don't promise"), 'PAST IS NOT A PROMISE', 380, 1680, 3, 34)
 
 
 @functools.lru_cache(2)
@@ -244,9 +254,9 @@ def arrow_img():
 
 
 def v_cta(c, t):
-    LX.sticker(c, t, at(8, 'gold'), 'GOLD', 330, 1580, -6, 60)
-    LX.sticker(c, t, at(8, 'Nifty'), 'NIFTY', 740, 1580, 6, 60)
-    LX.sticker(c, t, at(8, 'send'), 'SEND TO YOUR FD FRIEND', 540, 1730, -3, 38)
+    LX.sticker(c, t, at(8, 'gold'), 'GOLD', 230, 1560, -6, 60)
+    LX.sticker(c, t, at(8, 'Nifty'), 'NIFTY', 540, 1560, 6, 60)
+    LX.sticker(c, t, at(8, 'send'), 'SEND TO YOUR FD FRIEND', 380, 1680, -3, 34)
 
 
 EXTRA = {0: v_intro, 2: v_cash_extra, 3: v_fd_extra, 4: v_guess, 6: v_gold_extra, 7: v_twist, 8: v_cta}
@@ -267,10 +277,21 @@ def _render(t, loop=False):
     src1 = 'Sep 2016-Sep 2026 · Trade Brains, 26 Oct 2026 · FD pre-tax · ~5%/yr inflation assumed'
     src2 = 'Gold -22% from 52-wk high: Gold BeES ₹148.14 -> ₹115.23, INDmoney, 30 Oct 2026'
     col = (150, 150, 150) if dark else MUTE
-    if i >= 1: c.alpha_composite(text_img(src1, 'type', 20, col), (50, 1830))
-    if i >= 7: c.alpha_composite(text_img(src2, 'type', 20, col), (50, 1862))
-    elif i >= 1: c.alpha_composite(text_img('Past returns, not a promise. Not a buy/sell call. Education only.', 'type', 20, col), (50, 1862))
-    else: c.alpha_composite(text_img('Not a buy/sell call. Education only.', 'type', 20, col), (50, 1862))
+    parts = []
+    if i >= 1: parts.append(src1)
+    if i >= 7: parts.append(src2)
+    parts.append('Past returns, not a promise. Not a buy/sell call. Education only.' if i >= 1 else 'Not a buy/sell call. Education only.')
+    rows = []
+    for ptxt in parts:
+        cur = ''
+        for wd in ptxt.split(' '):
+            nxt = (cur + ' ' + wd).strip()
+            if text_w(nxt, 'type', 19) > 640 and cur: rows.append(cur); cur = wd
+            else: cur = nxt
+        rows.append(cur)
+    for r, row in enumerate(rows[-5:]):
+        c.alpha_composite(text_img(row, 'type', 19, col), (50, 1900 - 30 * (len(rows[-5:]) - r)))
+    LX.draw_pose(c, t, CUES, WORDS_ALL, 880, 1920 - 205 + 30, 410)
     LX.flash(c, t, SWITCH)
     return np.asarray(c.convert('RGB'))
 

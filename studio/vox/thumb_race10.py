@@ -1,6 +1,7 @@
 from PIL import Image, ImageDraw
 from lib import *
 import hook as HK
+import listx as LX
 c=HK.rays_bg('night',cy=1050)
 place(c,HK.fit_text("₹1 LAKH IN 2016",150,CREAM),540,300)
 place(c,HK.band('4 CHOICES. 1 WINNER.',112),540,470)
@@ -14,6 +15,7 @@ for k,(n,v,col) in enumerate(rows):
     lab='₹?.??L' if n=='?' else f'₹{v:.2f}L'
     t=text_img(lab,'pop',40,INK); art.alpha_composite(t,(x0+w-t.size[0]-14 if n=='?' else x0+w+12,y-28))
 HK.art_glow(c,art,540,960,1.0,-1.5)
-place(c,HK.tag('YOUR FAVOURITE LOST?',RED,CREAM,96,-5,sub='10 YEARS · REAL DATA'),540,1480)
-place(c,HK.pill('WAIT FOR THE TWIST',YEL,INK,64,maxw=860),540,1730)
+place(c,HK.tag('YOURS LOST?',RED,CREAM,100,-5,sub='10 YEARS · REAL DATA'),400,1450)
+place(c,HK.pill('WAIT FOR THE TWIST',YEL,INK,58,maxw=560),340,1740)
+place(c,LX.pose_img(24,400),860,1735)
 HK.finish(c,'../out/race10_thumbnail.jpg')

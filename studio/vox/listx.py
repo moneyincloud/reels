@@ -290,3 +290,48 @@ def ico_grid10(c, cx, cy, s, t=0):
     for k in range(10):
         r, q = divmod(k, 5); x = cx - 2.5 * cs + q * cs; y = cy - cs + r * cs
         d.rounded_rectangle((x + 3 * s, y + 3 * s, x + cs - 3 * s, y + cs - 3 * s), 6 * s, fill=ACC if (k % 3 == 0) else (252, 252, 250), outline=INKL, width=max(2, int(4 * s)))
+
+
+# ---------------- emotion avatar (40 poses, 31 Oct 2026) ----------------
+POSE_DIR = ROOT + 'host/poses/'
+POSE = {  # emotion tag -> pose ids in host/poses/pNN.png
+    'laugh': [0], 'cry': [1], 'sad': [13], 'shock': [2, 8, 16, 24, 37], 'stop': [8], 'bored': [3, 9, 25, 32],
+    'shy': [4], 'smug': [5, 10, 27, 28], 'gross': [6], 'dizzy': [7], 'stress': [12, 21, 22], 'facepalm': [30],
+    'think': [14], 'inspect': [34], 'secret': [15], 'proud': [17, 39], 'nervous': [18, 33], 'calm': [19, 38],
+    'typing': [23], 'idea': [26], 'shrug': [29], 'confident': [35], 'point': [36], 'celebrate': [11, 20], 'wave': [31],
+    'cross': [28],
+}
+
+
+@functools.lru_cache(64)
+def pose_img(pid, h):
+    im = Image.open(POSE_DIR + f'p{pid:02d}.png').convert('RGBA')
+    w = int(im.size[0] * h / im.size[1]); im = im.resize((w, h), Image.LANCZOS)
+    pad = 14; S = Image.new('RGBA', (w + pad * 2, h + pad * 2), (0, 0, 0, 0))
+    a = im.getchannel('A')
+    border = Image.new('RGBA', S.size, (0, 0, 0, 0)); ba = Image.new('L', S.size, 0); ba.paste(a, (pad, pad))
+    ba = ba.filter(ImageFilter.MaxFilter(13)); border.putalpha(ba)
+    wb = Image.new('RGBA', S.size, (255, 255, 255, 255)); wb.putalpha(ba)
+    sh = Image.new('RGBA', S.size, (0, 0, 0, 255)); sh.putalpha(ba.point(lambda v: v * 70 // 255))
+    S.alpha_composite(sh.filter(ImageFilter.GaussianBlur(5)), (6, 8)) if False else None
+    out = Image.new('RGBA', (S.size[0] + 10, S.size[1] + 12), (0, 0, 0, 0))
+    out.alpha_composite(sh.filter(ImageFilter.GaussianBlur(5)), (8, 10)); out.alpha_composite(wb, (0, 0)); out.alpha_composite(im, (pad, pad))
+    return out
+
+
+def pose_at(cues, t):
+    """cues: list of (time, pose_id) sorted. returns (pose_id, time it started)"""
+    pid, t0 = cues[0][1], -9
+    for tc, p in cues:
+        if t >= tc: pid, t0 = p, tc
+    return pid, t0
+
+
+def draw_pose(c, t, cues, words, x, y, h=380):
+    pid, t0 = pose_at(cues, t)
+    s = 0.82 + 0.18 * eback(clamp((t - t0) / 0.22), 2.2) if t0 > -9 else 1.0
+    kick = 0
+    for w, tw in words:
+        if 0 <= t - tw < 0.18: kick = max(kick, math.exp(-(t - tw) * 18))
+    bob = math.sin(t * 2.4) * 5
+    place(c, pose_img(pid, h), x, y + bob, s * (1 + 0.015 * kick), math.sin(t * 1.4) * 1.5)
