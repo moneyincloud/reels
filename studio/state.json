@@ -1,5 +1,5 @@
 {
- "last_voice": "am_michael",
+ "last_voice": "af_heart",
  "history": [
   {
    "date": "2026-10-23",
@@ -137,6 +137,16 @@
    "date": "2026-10-30",
    "style": "listx",
    "voice": "am_michael",
+   "status": "ready, unposted"
+  },
+  {
+   "date": "2026-10-31",
+   "slug": "devops",
+   "topic": "DevOps in 5 steps: app broke at 9 PM, fixed by 10 (Git, GitHub Actions, Docker, tests, Kubernetes, Prometheus/Grafana)",
+   "angle": "story",
+   "style": "listx-canvas",
+   "voice": "af_heart",
+   "length_s": 76.5,
    "status": "ready, unposted"
   }
  ],

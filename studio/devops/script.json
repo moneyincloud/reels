@@ -1,0 +1,14 @@
+[
+"Your app broke at nine PM, and was fixed by ten. Here's how, in five DevOps steps.",
+"One. Plan and code.",
+"Nine PM. Users report the pay button freezes. A developer finds the bug, writes a three line fix, and pushes it to GitHub. Git tracks every change, so nothing gets lost.",
+"Two. Build.",
+"That push wakes up GitHub Actions, the robot of the pipeline. It builds the app, and packs it into a Docker container, so it runs the same on a laptop and on the server.",
+"Three. Test. This step saves your weekend.",
+"Hundreds of automatic tests run in minutes, even fake payments. If one test fails, the pipeline stops, and the bug never reaches your phone.",
+"Four. Deploy.",
+"All tests pass. Kubernetes rolls out the new version slowly. Ten percent of users first, then everyone. Old servers keep running till the new ones are ready. Zero downtime.",
+"Five. Monitor.",
+"Prometheus and Grafana watch the live app every second. If errors jump, an alert fires, and one command rolls back to the old version. Ten PM. Fixed.",
+"Plan, code, build, test, deploy, monitor, on loop. That's DevOps. Save this, and send it to the friend learning cloud."
+]

@@ -1,0 +1,20 @@
+DevOps explained with one real bug: the app broke at 9 PM and was fixed by 10 ⏱
+
+1️⃣ Plan & code: the pay button freezes, a developer writes a 3-line fix and pushes it to GitHub (Git tracks every change)
+2️⃣ Build: GitHub Actions builds the app and packs it into a Docker container, so it runs the same on a laptop and a server
+3️⃣ Test: hundreds of automatic tests run in minutes. One fails? The pipeline stops and the bug never ships
+4️⃣ Deploy: Kubernetes rolls the new version out to 10% of users first, then everyone. Zero downtime
+5️⃣ Monitor: Prometheus + Grafana watch the live app. Errors jump → alert → one command rolls back
+
+Plan → code → build → test → deploy → monitor, on loop. That's DevOps.
+
+💾 Save this and send it to the friend learning cloud.
+
+Which step do you want explained next? 👇
+
+This is an illustrative example of a typical CI/CD pipeline; real teams use different tools and timings.
+Education only.
+
+devops explained | what is devops | CI/CD pipeline | devops roadmap | github actions | docker | kubernetes | devops for beginners
+
+#devops #cicd #kubernetes #cloudcomputing #moneyincloud

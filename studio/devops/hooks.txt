@@ -1,0 +1,5 @@
+Your app changed 50 times today. You never noticed.
+Big apps ship code 50 times a day and never crash. Here's how.
+Your app broke at 9 PM and was fixed by 10. Here's how.
+Stop deploying code by hand. These 5 DevOps steps do it for you.
+1 bug, 1 hour, millions of phones fixed. That's DevOps.
