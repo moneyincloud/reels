@@ -1,5 +1,5 @@
 {
- "last_voice": "af_heart",
+ "last_voice": "am_michael",
  "history": [
   {
    "date": "2026-10-23",
@@ -148,6 +148,17 @@
    "voice": "af_heart",
    "length_s": 76.5,
    "status": "ready, unposted"
+  },
+  {
+   "date": "2026-10-31",
+   "slug": "giants",
+   "topic": "Reliance -21%, HDFC Bank -29%, Infosys -20% vs Laurus Labs +145% in the same year (\u20b91 lakh each); market pays for growth",
+   "angle": "result-first",
+   "style": "pro-canvas, no host",
+   "voice": "am_michael",
+   "length_s": 69.7,
+   "status": "ready, unposted",
+   "best_slot": "2026-11-02 10:00 IST"
   }
  ],
  "next_ideas": [

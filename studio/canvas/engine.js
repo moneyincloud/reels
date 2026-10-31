@@ -4,7 +4,7 @@ const W = 1080, H = 1920, FPS = 30;
 const rgb = (a, al = 1) => `rgba(${a[0]},${a[1]},${a[2]},${al})`;
 const INKL = [20, 20, 22], ACC = [34, 170, 110], ACC_SOFT = [200, 236, 214], MUTE = [140, 140, 140];
 const LIGHT = [240, 240, 238], DARK_BG = [16, 17, 18], PAPERW = [252, 252, 250], OFFW = [250, 250, 248];
-const FONT = { pop: '"pop"', type: '"type", "pop"', mono: '"mono", "pop"' };
+const FONT = { pop: '"pop"', type: '"type", "pop"', mono: '"mono", "pop"', anton: '"anton", "pop"' };
 
 // ---------------- easing (same maths as lib.py) ----------------
 const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
@@ -256,6 +256,7 @@ function icoGrid10(c, cx, cy, s) {
 // ---------------- boot: fonts + host image, then the reel module sets window.drawFrame ----------------
 async function loadAssets(root) {
   const faces = [new FontFace('pop', `url(${root}fonts/Poppins-Bold.ttf)`), new FontFace('type', `url(${root}fonts/special-elite-latin-400-normal.woff)`),
+    new FontFace('anton', `url(${root}fonts/anton-latin-400-normal.woff)`),
     new FontFace('mono', `url(${root}fonts/ibm-plex-mono-latin-500-normal.woff2)`)];
   for (const f of faces) document.fonts.add(await f.load());
   HOST.src = root + 'host/host.png'; await HOST.decode();
