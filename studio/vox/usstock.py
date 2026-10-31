@@ -5,6 +5,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 from lib import *
 import listx as LX
+LX.USE_HOST = True  # published with the avatar before the no-avatar rule
 from listx import INKL, ACC, MUTE
 
 SH = ROOT + 'usstock/'

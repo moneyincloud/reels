@@ -13,6 +13,7 @@ L.FONTS['pop'] = ROOT + 'fonts/Poppins-Bold.ttf'
 LIGHT = (240, 240, 238); DARK_BG = (16, 17, 18)
 ACC = (34, 170, 110); ACC_SOFT = (200, 236, 214); INKL = (20, 20, 22); MUTE = (140, 140, 140)
 HOST_PNG = ROOT + 'host/host.png'
+USE_HOST = False  # user rule (31 Oct 2026): no cartoon avatar in new reels
 
 
 def timing(script, durs, lead=0.15, tail=0.25):
@@ -62,6 +63,7 @@ def host_card(w=300, h=330, dark=True):
 
 
 def draw_host(c, t, words, big=True, x=None, y=None):
+    if not USE_HOST: return
     """big: full host bottom-left; else card. Pulses slightly on word onsets (talking feel)."""
     kick = 0
     for w, tw in words:

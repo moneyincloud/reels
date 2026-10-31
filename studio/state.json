@@ -1,5 +1,5 @@
 {
- "last_voice": "am_michael",
+ "last_voice": "af_heart",
  "history": [
   {
    "date": "2026-10-23",
@@ -138,10 +138,20 @@
    "style": "listx",
    "voice": "am_michael",
    "status": "ready, unposted"
+  },
+  {
+   "slug": "race10",
+   "date": "2026-10-31",
+   "style": "race-bars",
+   "voice": "af_heart",
+   "status": "ready, unposted"
   }
  ],
  "next_ideas": [
   "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at \u20b9468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
   "'Turnaround or trap?' story format (like the PC Jeweller reel, without 'multibagger'): how to check a 'debt-free' claim - borrowings, cash flow, dilution, promoter holding"
- ]
+ ],
+ "rules": {
+  "no_avatar": "31 Oct 2026: user asked to remove his cartoon from all new reels"
+ }
 }
