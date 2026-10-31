@@ -300,6 +300,14 @@ POSE = {  # emotion tag -> pose ids in host/poses/pNN.png
     'think': [14], 'inspect': [34], 'secret': [15], 'proud': [17, 39], 'nervous': [18, 33], 'calm': [19, 38],
     'typing': [23], 'idea': [26], 'shrug': [29], 'confident': [35], 'point': [36], 'celebrate': [11, 20], 'wave': [31],
     'cross': [28],
+    # trader set (p40-p83)
+    'bull': [40], 'bear': [41], 'analysis': [42], 'panic_sell': [43], 'hodl': [44], 'rich_phone': [45], 'money_rain': [46],
+    'broke': [47], 'insider': [48], 'speculator': [49], 'jackpot': [50], 'rocket_shock': [51], 'sold_early': [52],
+    'watcher': [53], 'yolo': [54], 'fomo': [55], 'guru_returns': [56], 'math': [57], 'sleepless': [58], 'scam': [59],
+    'wholesome_win': [60], 'alert': [61], 'scalper': [62], 'divergence': [63], 'dip_buyer': [64], 'moon_point': [65],
+    'moon_rocket': [66], 'taxman': [67], 'bagholder': [68], 'diamond_hands': [69], 'paper_hands': [70], 'eureka_up': [71],
+    'gap_up': [72], 'gap_down': [73], 'whale': [74], 'penny_gambler': [75], 'chaser': [76], 'short_squeeze': [77],
+    'buy_high_sell_low': [78], 'noob': [79], 'algo': [80], 'market_closed': [81], 'liquidated': [82], 'zen_guru': [83],
 }
 
 

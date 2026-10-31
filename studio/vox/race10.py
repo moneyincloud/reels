@@ -84,12 +84,12 @@ P = lambda tag, k=0: LX.POSE[tag][k]
 REVEAL = [at(2, 'Still one lakh'), at(3, 'One lakh eighty'), at(5, 'Two lakh'), at(6, 'Four lakh')]
 INTRO = at(1, 'Same one lakh')
 CUES = sorted([(0, P('idea')), (at(0, 'probably', -0.1), P('smug')),
-        (VO[1], P('inspect')), (VO[2], P('shrug')), (at(2, 'But prices', -0.1), P('stress')), (at(2, 'only what', -0.1), P('cry')),
+        (VO[1], P('inspect')), (VO[2], P('shrug')), (at(2, 'But prices', -0.1), P('stress')), (at(2, 'only what', -0.1), P('broke')),
         (VO[3], P('cross')), (at(3, 'barely', -0.1), P('bored')),
         (VO[4], P('think')), (at(4, 'Most people', -0.1), P('secret')),
-        (VO[5], P('typing')), (at(5, 'Two lakh', -0.1), P('proud')), (at(5, 'through', -0.1), P('nervous', 1)),
-        (VO[6], P('shock', 3)), (at(6, 'Four lakh', 0.2), P('celebrate', 1)), (at(6, 'Almost five', -0.1), P('celebrate')),
-        (VO[7], P('stop')), (at(7, 'fallen', -0.1), P('shock', 4)), (at(7, "The last", -0.1), P('idea')),
+        (VO[5], P('typing')), (at(5, 'Two lakh', -0.1), P('bull')), (at(5, 'through', -0.1), P('nervous', 1)),
+        (VO[6], P('shock', 3)), (at(6, 'Four lakh', 0.2), P('jackpot')), (at(6, 'Almost five', -0.1), P('money_rain')),
+        (VO[7], P('stop')), (at(7, 'fallen', -0.1), P('bear')), (at(7, "The last", -0.1), P('idea')),
         (VO[8], P('think')), (at(8, 'Comment', -0.1), P('point')), (at(8, 'send', -0.1), P('proud', 1))])
 X0, X1 = 360, 1010; PER = (X1 - X0) / 5.0
 LANE_Y = [800, 1000, 1200, 1400]
@@ -241,7 +241,7 @@ def v_twist(c, t):
     if t > t0:
         y = LANE_Y[3]; q = eo(prog(t, t0, 0.6))
         place(c, arrow_img(), X0 + PER * 3.7, y - 70, 0.6 * q)
-        LX.sticker(c, t, at(7, 'twenty two'), '-22% FROM 2026 PEAK', 600, 1560, -4, 42)
+        LX.sticker(c, t, at(7, 'twenty two'), '-22% FROM 2026 PEAK', 400, 1555, -4, 40)
     LX.sticker(c, t, at(7, "don't promise"), 'PAST IS NOT A PROMISE', 380, 1680, 3, 34)
 
 
