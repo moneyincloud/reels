@@ -63,7 +63,7 @@
   {
    "date": "2026-10-30",
    "slug": "iepf",
-   "topic": "Forgotten shares IEPF ₹89,000 Cr",
+   "topic": "Forgotten shares IEPF \u20b989,000 Cr",
    "voice": "af_heart",
    "posted": "manual"
   },
@@ -124,7 +124,7 @@
    "date": "2026-10-30",
    "slug": "tortoise",
    "tag": "animal-friday",
-   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (₹5k from 25 vs ₹10k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
+   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (\u20b95k from 25 vs \u20b910k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
    "angle": "story",
    "voice": "af_heart",
    "length_s": 75.6,
@@ -179,12 +179,19 @@
    "scheduled": "2026-11-02 16:00 IST IG POST (carousel)",
    "metricool_id": 413452635,
    "files": "2026-11-02/results5_*.jpg"
+  },
+  {
+   "slug": "reliance",
+   "date": "2026-11-02",
+   "style": "listx+avatar",
+   "voice": "am_michael",
+   "status": "ready for 2 Nov evening, unposted"
   }
  ],
  "next_ideas": [
-  "Ather Energy 'Hype or real?' results-day decode (same decode format as the Suzlon reel, last week's top, without 'multibagger' per compliance rules): stock +5.6% to a 52-week high of ₹1,756 (INDmoney, last session); what it makes, where it sells, Q2 numbers, the catch. Education only, no buy/sell call",
-  "Sagility follow-up: it passed my 5 rules in the under-₹50 reel, then fell 5.8% to ₹42.08 in one session (INDmoney). What a fundamentals checklist can and can't tell you - checklists are not price predictions",
-  "HDFC Bank near its 52-week low: ₹692.8 vs high ₹1,017.5 (~32% below, INDmoney). Same 52-week-low format: why it fell, and 3 questions before calling any big stock 'cheap'. No buy/sell call"
+  "Ather Energy 'Hype or real?' results-day decode (same decode format as the Suzlon reel, last week's top, without 'multibagger' per compliance rules): stock +5.6% to a 52-week high of \u20b91,756 (INDmoney, last session); what it makes, where it sells, Q2 numbers, the catch. Education only, no buy/sell call",
+  "Sagility follow-up: it passed my 5 rules in the under-\u20b950 reel, then fell 5.8% to \u20b942.08 in one session (INDmoney). What a fundamentals checklist can and can't tell you - checklists are not price predictions",
+  "HDFC Bank near its 52-week low: \u20b9692.8 vs high \u20b91,017.5 (~32% below, INDmoney). Same 52-week-low format: why it fell, and 3 questions before calling any big stock 'cheap'. No buy/sell call"
  ],
  "rules": {
   "no_avatar": "31 Oct 2026: old caricature removed; use emotion pose avatar host/poses (40 poses) via listx.draw_pose"
