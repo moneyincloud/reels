@@ -1,0 +1,249 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Pop;src:url(Poppins-Bold.ttf)}
+@font-face{font-family:Anton;src:url(anton-latin-400-normal.woff)}
+@font-face{font-family:Osw;font-weight:500;src:url(oswald-latin-500-normal.woff)}
+@font-face{font-family:Osw;font-weight:700;src:url(oswald-latin-700-normal.woff)}
+@font-face{font-family:Play;font-weight:800;src:url(playfair-display-latin-800-normal.woff)}
+@font-face{font-family:PlayI;font-style:italic;src:url(playfair-display-latin-700-italic.woff)}
+:root{--gold:#ffc94a;--saff:#ff8a1f;--mag:#ff3d7f;--cream:#fff4dc;--mute:#c9b48a;--glass:rgba(255,220,150,.08);--line:rgba(255,201,74,.35);--green:#3ee08f;--red:#ff5a5a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0d0722}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;color:var(--cream);font-family:Pop,sans-serif}
+canvas.full{position:absolute;inset:0}
+.hud{position:absolute;left:60px;right:60px;top:92px;display:flex;justify-content:space-between;font-family:Osw;font-weight:500;letter-spacing:4px;font-size:28px;color:var(--mute)}
+.hud b{color:var(--gold);font-weight:700}
+#cap{position:absolute;left:60px;top:170px;width:960px;font-size:62px;line-height:1.14}
+#cap span{display:inline-block;margin-right:16px;opacity:0}
+#cap span.acc{color:var(--gold);text-shadow:0 0 24px rgba(255,201,74,.6)}
+.scene{position:absolute;inset:0;opacity:0}
+.glass{position:absolute;background:var(--glass);border:2px solid var(--line);border-radius:36px;backdrop-filter:blur(16px);box-shadow:0 30px 80px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,230,180,.2)}
+.goldtxt{background:linear-gradient(100deg,#b8862a 0%,#ffe9a8 30%,#ffc94a 45%,#fff6d8 50%,#ffc94a 55%,#b8862a 100%);background-size:300% 100%;-webkit-background-clip:text;color:transparent}
+.pill{display:inline-block;font-family:Osw;font-weight:700;letter-spacing:4px;font-size:40px;padding:10px 32px;border-radius:999px;background:linear-gradient(90deg,var(--saff),var(--mag));color:#fff;box-shadow:0 12px 40px rgba(255,61,127,.4)}
+.tl{position:absolute;left:90px;width:900px;height:70px;border-radius:20px;background:rgba(255,255,255,.07);border:2px solid var(--line);overflow:hidden}
+.tl i{position:absolute;top:0;bottom:0}
+.tlab{position:absolute;font-family:Osw;font-weight:500;font-size:26px;letter-spacing:2px;color:var(--cream);white-space:nowrap}
+.flip{display:inline-block;font-family:Anton;font-size:250px;line-height:1;padding:10px 40px;border-radius:30px;background:linear-gradient(180deg,#2a1546,#160a2c);border:3px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.badge{position:absolute;font-family:Anton;font-size:64px;padding:16px 34px;border-radius:24px;border:3px solid var(--gold);background:rgba(255,201,74,.12);color:var(--gold)}
+.badge small{display:block;font-family:Osw;font-size:26px;letter-spacing:3px;color:var(--cream)}
+.receipt{left:150px;top:600px;width:780px;height:600px;padding:40px;background:#fff8e6;color:#2b1a05;border-radius:18px;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.receipt h3{font-family:Osw;font-weight:700;letter-spacing:4px;font-size:34px;border-bottom:3px dashed #c9a462;padding-bottom:14px}
+.rl{font-family:Osw;font-weight:500;font-size:32px;display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #ecd9ae}
+.stamp{position:absolute;font-family:Anton;font-size:84px;color:var(--green);border:8px solid var(--green);border-radius:20px;padding:6px 26px;letter-spacing:3px;background:rgba(14,40,20,.6)}
+.chipx{position:absolute;font-family:Osw;font-weight:700;font-size:36px;letter-spacing:2px;padding:14px 30px;border-radius:999px;white-space:nowrap}
+.dotg{position:absolute;left:90px;top:620px;width:900px;display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.dot{height:120px;border-radius:24px;display:flex;align-items:center;justify-content:center;font-family:Anton;font-size:40px;color:#0d0722}
+.sam{position:absolute;left:70px;top:620px;width:940px;display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.st{height:170px;border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px solid var(--line)}
+.st b{font-family:Anton;font-size:44px}
+.st small{font-family:Osw;font-size:22px;letter-spacing:2px;color:var(--mute)}
+.btn{position:absolute;height:120px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-family:Anton;font-size:60px;letter-spacing:3px;color:#1b0c00}
+#av{position:absolute;right:-10px;bottom:-20px;width:480px;height:480px;display:flex;justify-content:flex-end;align-items:flex-end;transform-origin:70% 100%}
+#av img{max-width:480px;max-height:480px;display:block;filter:drop-shadow(0 20px 30px rgba(0,0,0,.6))}
+#glow{position:absolute;right:20px;bottom:90px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(255,201,74,.45),rgba(255,138,31,0) 65%)}
+#src{position:absolute;left:60px;bottom:56px;width:520px;font-family:Osw;font-size:21px;letter-spacing:.5px;line-height:1.35;color:#a8946a}
+</style></head>
+<body><div id="stage">
+<canvas id="bg" class="full" width="1080" height="1920"></canvas>
+<canvas id="fw" class="full" width="1080" height="1920"></canvas>
+<div class="hud"><div>MUHURAT TRADING · <b>SAMVAT 2083</b></div><div><b>SUN 8 NOV</b> · NSE / BSE</div></div>
+<div id="cap"></div>
+
+<div class="scene" id="s0">
+  <div style="position:absolute;left:0;right:0;top:640px;text-align:center">
+    <div id="t0a" class="goldtxt" style="font-family:Play;font-weight:800;font-size:190px;line-height:1">Muhurat</div>
+    <div id="t0b" style="font-family:Osw;font-weight:700;letter-spacing:22px;font-size:64px;color:var(--cream);margin-top:10px">TRADING 2026</div>
+    <div id="t0c" style="margin-top:50px"><span class="pill">SUNDAY · 8 NOVEMBER</span></div>
+  </div>
+</div>
+<div class="scene" id="s1">
+  <canvas id="clock" width="560" height="560" style="position:absolute;left:260px;top:560px"></canvas>
+  <div class="tl" id="tl" style="top:1180px"><i id="tlp" style="background:var(--saff)"></i><i id="tlt" style="background:linear-gradient(90deg,#ffc94a,#ffe39a)"></i><i id="tlc" style="background:var(--mag)"></i></div>
+  <div class="tlab" id="lb1" style="left:90px;top:1265px">PRE-OPEN 2:05</div>
+  <div class="tlab" id="lb2" style="left:330px;top:1265px">TRADING 2:20 – 3:30</div>
+  <div class="tlab" id="lb3" style="left:780px;top:1265px;color:var(--mag)">AUCTION 3:20</div>
+</div>
+<div class="scene" id="s2">
+  <div style="position:absolute;left:0;right:0;top:590px;text-align:center"><div style="font-family:Osw;font-weight:700;letter-spacing:10px;font-size:40px;color:var(--mute);margin-bottom:20px">SAMVAT</div><div class="flip" id="flip"><span id="flipn" class="goldtxt">2082</span></div></div>
+  <div class="badge" id="b1" style="left:110px;top:1080px"><small>BSE STARTED</small>1957</div>
+  <div class="badge" id="b2" style="left:560px;top:1080px"><small>NSE JOINED</small>1992</div>
+</div>
+<div class="scene" id="s3">
+  <div class="receipt" id="rcp" style="position:absolute"><h3>CONTRACT NOTE · 8 NOV 2026</h3>
+    <div class="rl"><span>Session</span><span>Muhurat 2:20–3:30 PM</span></div>
+    <div class="rl"><span>Order</span><span>BUY · LIMIT</span></div>
+    <div class="rl"><span>Settlement</span><span>Like any normal day</span></div>
+    <div class="rl"><span>Closing</span><span>Auction 3:20–3:30</span></div></div>
+  <div class="stamp" id="stamp" style="left:360px;top:930px">REAL TRADE</div>
+  <div class="chipx" id="cas" style="left:170px;top:1250px;background:var(--mag);color:#fff">NEW THIS YEAR: CLOSING AUCTION</div>
+</div>
+<div class="scene" id="s4">
+  <div style="position:absolute;left:0;right:0;top:620px;text-align:center;perspective:1200px">
+    <div id="coin" style="width:420px;height:420px;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff3c4,#ffc94a 40%,#b8862a 80%);border:14px solid #e2a93a;display:flex;align-items:center;justify-content:center;font-family:Anton;font-size:240px;color:#7a4f0a;box-shadow:0 0 80px rgba(255,201,74,.6)">₹</div>
+    <div id="lucky" class="goldtxt" style="font-family:Play;font-weight:800;font-size:150px;margin-top:30px">Lucky?</div>
+  </div>
+</div>
+<div class="scene" id="s5">
+  <div style="position:absolute;left:90px;top:560px;font-family:Osw;font-weight:500;font-size:30px;letter-spacing:3px;color:var(--mute)">NIFTY IN 20 MUHURAT SESSIONS · 2006–2025 (15 UP · 5 DOWN)</div>
+  <div class="dotg" id="dots"></div>
+  <div class="chipx" id="c08" style="left:120px;top:1260px;background:var(--gold);color:#1b0c00">2008: +6.35% · THE BEST</div>
+  <div class="chipx" id="c1p" style="left:120px;top:1360px;background:rgba(255,255,255,.1);border:2px solid var(--line);color:var(--cream)">19 OF 20 MOVES SMALLER THAN 1%</div>
+</div>
+<div class="scene" id="s6">
+  <div style="position:absolute;left:70px;top:560px;font-family:Osw;font-weight:500;font-size:30px;letter-spacing:3px;color:var(--mute)">NIFTY, FULL SAMVAT YEARS 2072–2081</div>
+  <div class="sam" id="sam"></div>
+  <div style="position:absolute;left:70px;top:1020px;display:flex;align-items:baseline;gap:24px"><div id="avg" class="goldtxt" style="font-family:Anton;font-size:180px;line-height:1">0%</div><div style="font-family:Osw;font-size:34px;letter-spacing:3px;color:var(--cream)">AVERAGE<br>PER YEAR</div></div>
+</div>
+<div class="scene" id="s7">
+  <div class="glass" style="left:90px;top:600px;width:900px;height:640px"></div>
+  <canvas id="fam" width="900" height="640" style="position:absolute;left:90px;top:600px"></canvas>
+  <div class="chipx" id="trad" style="left:150px;top:640px;background:var(--mag);color:#fff;transform:rotate(-3deg)">TRADITION, NOT A SIGNAL</div>
+  <div class="chipx" id="tok" style="left:210px;top:1130px;background:var(--gold);color:#1b0c00">SMALL TOKEN BUY · HOLD FOR YEARS</div>
+</div>
+<div class="scene" id="s8">
+  <div id="hd" class="goldtxt" style="position:absolute;left:0;right:0;top:620px;text-align:center;font-family:PlayI;font-style:italic;font-size:150px;line-height:1.05">Happy<br>Diwali</div>
+  <div class="btn" id="bsave" style="left:90px;top:1060px;width:330px;background:linear-gradient(90deg,#ffc94a,#ffe39a)">SAVE</div>
+  <div class="btn" id="bsend" style="left:450px;top:1060px;width:360px;background:linear-gradient(90deg,var(--saff),var(--mag));color:#fff">SEND</div>
+</div>
+
+<canvas id="diya" class="full" width="1080" height="1920"></canvas>
+<div id="glow"></div>
+<canvas id="waves" class="full" width="1080" height="1920"></canvas>
+<div id="av"><img id="avimg" src=""></div>
+<div id="src">Timings: NSE/BSE via Business Today (19 Oct 2026). History: Finnovate (21 Oct 2026), Nifty 2006–2025 sessions, Samvat 2072–2081. Not a buy/sell call. Education only.</div>
+<canvas id="flashc" class="full" width="1080" height="1920"></canvas>
+</div>
+<script src="data.js"></script>
+<script>
+const W=1080,H=1920,FPS=30,M=D.marks;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eo=p=>1-Math.pow(1-clamp(p),3);
+const eb=(p,s=1.7)=>{p=clamp(p);const c=s+1;return 1+c*Math.pow(p-1,3)+s*Math.pow(p-1,2)};
+const prog=(t,t0,d)=>clamp((t-t0)/d);
+function R(n){let x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x)}
+const ACC=[["Diwali","Muhurat","timings."],["Sunday,","seventy","minutes.","Two","twenty","three","thirty","two","oh","five."],["Muhurat","Samvat","twenty","eighty","three,","nineteen","fifty","seven,"],["real","trades.","normal","day.","closing","auction"],["luck?"],["fifteen","six","percent.","smaller","than","one","percent."],["eight","ten","twelve","percent.","thirty","eight","three"],["tradition,","signal.","token","years."],["Save","Send","happy","Diwali!"]];
+// ---------- background ----------
+const bg=document.getElementById('bg').getContext('2d');
+const STARS=[...Array(140)].map((_,i)=>({x:R(i)*W,y:R(i+500)*H*0.75,r:0.6+R(i+900)*1.8,p:R(i+1300)*6}));
+const LANT=[...Array(5)].map((_,i)=>({x:80+R(i+40)*920,s:0.6+R(i+70)*0.6,v:28+R(i+90)*30,o:R(i+20)*2000}));
+function rangoli(c,cx,cy,r,rot,a){c.save();c.translate(cx,cy);c.rotate(rot);c.globalAlpha=a;c.lineWidth=3;
+  for(let ring=0;ring<4;ring++){const rr=r*(0.35+ring*0.22),n=8+ring*4;c.strokeStyle=['#ffc94a','#ff8a1f','#ff3d7f','#ffe39a'][ring];
+    for(let k=0;k<n;k++){const a0=k/n*Math.PI*2;c.beginPath();c.ellipse(Math.cos(a0)*rr,Math.sin(a0)*rr,rr*0.22,rr*0.09,a0,0,7);c.stroke()}
+    c.beginPath();c.arc(0,0,rr*0.8,0,7);c.stroke()}
+  c.restore();c.globalAlpha=1}
+function drawBg(t){const g=bg.createLinearGradient(0,0,0,H);g.addColorStop(0,'#0d0722');g.addColorStop(.55,'#2a0d3a');g.addColorStop(1,'#3a1206');bg.fillStyle=g;bg.fillRect(0,0,W,H);
+  STARS.forEach(s=>{bg.fillStyle=`rgba(255,240,200,${0.3+0.6*Math.abs(Math.sin(t*1.5+s.p))})`;bg.beginPath();bg.arc(s.x,s.y,s.r,0,7);bg.fill()});
+  rangoli(bg,540,1000,520,t*0.08,0.13);
+  // sky lanterns
+  LANT.forEach(l=>{const y=H+120-((t*l.v+l.o)%(H+300));const x=l.x+Math.sin(t*0.6+l.o)*20;const s=l.s*0.7;
+    const lg=bg.createRadialGradient(x,y,0,x,y,90*s);lg.addColorStop(0,'rgba(255,170,60,.35)');lg.addColorStop(1,'rgba(255,170,60,0)');bg.fillStyle=lg;bg.fillRect(x-90*s,y-90*s,180*s,180*s);
+    bg.fillStyle='rgba(255,180,80,.5)';bg.beginPath();bg.moveTo(x-22*s,y-30*s);bg.lineTo(x+22*s,y-30*s);bg.lineTo(x+16*s,y+28*s);bg.lineTo(x-16*s,y+28*s);bg.closePath();bg.fill()});
+  // string of lights (toran)
+  for(let k=0;k<22;k++){const x=k*52+10,y=40+Math.sin(k/21*Math.PI)*28;const on=0.4+0.6*Math.abs(Math.sin(t*3+k*0.9));const col=['255,201,74','255,61,127','255,138,31','120,220,255'][k%4];
+    const rg=bg.createRadialGradient(x,y,0,x,y,22);rg.addColorStop(0,`rgba(${col},${on})`);rg.addColorStop(1,`rgba(${col},0)`);bg.fillStyle=rg;bg.fillRect(x-22,y-22,44,44)}
+  bg.strokeStyle='rgba(255,220,160,.25)';bg.lineWidth=2;bg.beginPath();for(let k=0;k<22;k++){const x=k*52+10,y=40+Math.sin(k/21*Math.PI)*28;k?bg.lineTo(x,y):bg.moveTo(x,y)}bg.stroke()}
+// ---------- fireworks ----------
+const fw=document.getElementById('fw').getContext('2d');
+const BUR=D.bursts.map((t0,i)=>({t0,x:180+R(i*7+1)*720,y:300+R(i*7+2)*520,col:['#ffc94a','#ff3d7f','#3ee08f','#7ad7ff','#ff8a1f'][i%5],n:70}));
+function drawFW(t){fw.clearRect(0,0,W,H);BUR.forEach((b,i)=>{const dt=t-b.t0;if(dt<0||dt>2.2)return;
+  // rising trail
+  if(dt<0.35){const q=dt/0.35;fw.fillStyle='rgba(255,230,180,.9)';fw.beginPath();fw.arc(b.x,H*0.7-(H*0.7-b.y)*eo(q),4,0,7);fw.fill();return}
+  const e=dt-0.35,fade=clamp(1-e/1.8);
+  for(let k=0;k<b.n;k++){const a=k/b.n*Math.PI*2+R(i*100+k)*0.2,sp=180+R(i*100+k+50)*220;const x=b.x+Math.cos(a)*sp*(1-Math.exp(-e*2.6))/1.2,y=b.y+Math.sin(a)*sp*(1-Math.exp(-e*2.6))/1.2+60*e*e;
+    fw.globalAlpha=fade*(0.6+0.4*Math.sin(e*30+k));fw.fillStyle=k%3?b.col:'#fff6d8';fw.beginPath();fw.arc(x,y,3.2*fade+1,0,7);fw.fill()}
+  fw.globalAlpha=1;if(e<0.15){const rg=fw.createRadialGradient(b.x,b.y,0,b.x,b.y,200);rg.addColorStop(0,`rgba(255,240,200,${0.6*(1-e/0.15)})`);rg.addColorStop(1,'rgba(255,240,200,0)');fw.fillStyle=rg;fw.fillRect(b.x-200,b.y-200,400,400)}})}
+// ---------- diyas ----------
+const dy=document.getElementById('diya').getContext('2d');
+function drawDiyas(t,amp){dy.clearRect(0,0,W,H);const xs=[110,250,390];xs.forEach((x,k)=>{const y=1700;
+  dy.fillStyle='#c4581c';dy.beginPath();dy.ellipse(x,y,58,26,0,0,Math.PI);dy.fill();dy.fillStyle='#e9883a';dy.beginPath();dy.ellipse(x,y,58,12,0,0,7);dy.fill();
+  const fl=1+0.12*Math.sin(t*17+k*2)+0.08*Math.sin(t*29+k);const h=62*fl*(1+amp*0.25);
+  const rg=dy.createRadialGradient(x,y-40,0,x,y-40,110);rg.addColorStop(0,'rgba(255,190,80,.45)');rg.addColorStop(1,'rgba(255,190,80,0)');dy.fillStyle=rg;dy.fillRect(x-110,y-150,220,220);
+  const sw=Math.sin(t*5+k)*6;dy.fillStyle='#ffb238';dy.beginPath();dy.moveTo(x-14,y-4);dy.quadraticCurveTo(x-16+sw,y-h*0.6,x+sw,y-h);dy.quadraticCurveTo(x+16+sw,y-h*0.6,x+14,y-4);dy.closePath();dy.fill();
+  dy.fillStyle='#fff3c4';dy.beginPath();dy.moveTo(x-6,y-6);dy.quadraticCurveTo(x-7+sw*.5,y-h*0.45,x+sw*.6,y-h*0.7);dy.quadraticCurveTo(x+7+sw*.5,y-h*0.45,x+6,y-6);dy.closePath();dy.fill()})}
+// ---------- captions ----------
+function pages(i){const ws=D.words[i];const out=[];let st=0;ws.forEach(([w],k)=>{const txt=ws.slice(st,k+1).map(x=>x[0]).join(' ');if(/[.?!]$/.test(w)&&k<ws.length-1&&k-st>=2&&txt.length>22){out.push([st,k+1]);st=k+1}});out.push([st,ws.length]);return out}
+const PG=D.words.map((_,i)=>pages(i));const cap=document.getElementById('cap');let capKey='';
+function drawCap(t,i){let pg=PG[i][0];PG[i].forEach(([a,b])=>{if(t>=D.words[i][a][1]-0.05)pg=[a,b]});
+  const key=i+'_'+pg[0];const ws=D.words[i].slice(pg[0],pg[1]);
+  if(key!==capKey){capKey=key;cap.innerHTML='';const len=ws.map(w=>w[0]).join(' ').length;cap.style.fontSize=(len<40?70:len<80?62:56)+'px';
+    ws.forEach(([w])=>{const s=document.createElement('span');s.textContent=w;if(ACC[i].includes(w)||ACC[i].includes(w.replace(/[.,?!]/g,'')))s.className='acc';cap.appendChild(s)})}
+  [...cap.children].forEach((s,k)=>{const q=eo(prog(t,ws[k][1]-0.06,0.2));s.style.opacity=q;s.style.transform=`translateY(${(1-q)*26}px) scale(${1+0.14*(1-q)})`;s.style.filter=`blur(${(1-q)*6}px)`})}
+function seg(t){let i=0;D.starts.forEach((s,k)=>{if(t>=s)i=k});return i}
+function vis(id,t0,t){const e=document.getElementById(id);const q=eo(prog(t,t0,0.4));e.style.opacity=q;return q}
+function popIn(id,t0,t,rot=0){const e=document.getElementById(id);const q=eb(prog(t,t0,0.35));e.style.opacity=t>=t0?clamp(q*1.4):0;e.style.transform=`scale(${t>=t0?q:0.01}) rotate(${rot}deg)`}
+// ---------- scenes ----------
+function s0(t){const sh=(t*40)%300;document.getElementById('t0a').style.backgroundPosition=`${100-sh}% 0`;
+  document.getElementById('t0a').style.transform=`scale(${eb(prog(t,0.1,0.6))})`;document.getElementById('t0b').style.opacity=eo(prog(t,0.6,0.4));document.getElementById('t0b').style.letterSpacing=(40-18*eo(prog(t,0.6,0.6)))+'px';
+  popIn('t0c',1.4,t)}
+const ck=document.getElementById('clock').getContext('2d');
+function s1(t){const c=ck;c.clearRect(0,0,560,560);const cx=280,cy=280,r=240;
+  c.fillStyle='rgba(30,14,50,.85)';c.beginPath();c.arc(cx,cy,r,0,7);c.fill();c.lineWidth=8;c.strokeStyle='#ffc94a';c.stroke();
+  for(let k=0;k<60;k++){const a=k/60*Math.PI*2;const l=k%5?10:26;c.strokeStyle=k%5?'rgba(255,220,160,.4)':'#ffc94a';c.lineWidth=k%5?2:5;c.beginPath();c.moveTo(cx+Math.sin(a)*(r-20),cy-Math.cos(a)*(r-20));c.lineTo(cx+Math.sin(a)*(r-20-l),cy-Math.cos(a)*(r-20-l));c.stroke()}
+  // minutes since 12:00
+  const tA=M.time,tB=M.pre;let mins;
+  if(t<tA)mins=140*eo(prog(t,D.starts[1]+0.2,tA-D.starts[1]-0.3));else mins=140+70*eo(prog(t,tA+0.2,1.6));
+  // arc 2:20 -> current
+  if(t>tA){const a0=140/60*Math.PI*2-Math.PI/2,a1=mins/60*Math.PI*2-Math.PI/2;c.strokeStyle='rgba(255,201,74,.55)';c.lineWidth=28;c.beginPath();c.arc(cx,cy,r-60,(140%60)/60*Math.PI*2-Math.PI/2,(140%60)/60*Math.PI*2-Math.PI/2+(mins-140)/60*Math.PI*2);c.stroke()}
+  const ha=(mins/60)/12*Math.PI*2,ma=(mins%60)/60*Math.PI*2;
+  c.lineCap='round';c.strokeStyle='#fff4dc';c.lineWidth=14;c.beginPath();c.moveTo(cx,cy);c.lineTo(cx+Math.sin(ha)*120,cy-Math.cos(ha)*120);c.stroke();
+  c.strokeStyle='#ffc94a';c.lineWidth=8;c.beginPath();c.moveTo(cx,cy);c.lineTo(cx+Math.sin(ma)*190,cy-Math.cos(ma)*190);c.stroke();
+  c.fillStyle='#ff3d7f';c.beginPath();c.arc(cx,cy,14,0,7);c.fill();
+  const hh=Math.floor(mins/60)||12,mm=Math.floor(mins%60);c.fillStyle='#fff4dc';c.font='64px Anton';c.textAlign='center';c.fillText(`${hh}:${String(mm).padStart(2,'0')} PM`,cx,cy+120);
+  if(t>M.seventy){c.fillStyle='#ffc94a';c.font='40px Osw';c.fillText('70 MINUTES',cx,cy-90)}
+  // timeline (2:00 -> 3:40 scale)
+  const X=m=>(m-120)/100*900;const q=eo(prog(t,tA,0.8)),qp=eo(prog(t,tB,0.6)),qc=eo(prog(t,tB+0.6,0.6));
+  const tp=document.getElementById('tlp');tp.style.left=X(125)+'px';tp.style.width=(X(140)-X(125))*qp+'px';
+  const tt=document.getElementById('tlt');tt.style.left=X(140)+'px';tt.style.width=(X(210)-X(140))*q+'px';
+  const tc=document.getElementById('tlc');tc.style.left=X(200)+'px';tc.style.width=(X(210)-X(200))*qc+'px';
+  document.getElementById('lb2').style.opacity=q;document.getElementById('lb1').style.opacity=qp;document.getElementById('lb3').style.opacity=qc;
+  document.getElementById('tl').style.opacity=eo(prog(t,D.starts[1]+0.3,0.4))}
+function s2(t){const fl=document.getElementById('flip');const ts=M.samvat;const p=prog(t,ts,0.6);const ang=p<0.5?p*2*90:(1-p)*2*-90;fl.style.transform=`perspective(900px) rotateX(${ang}deg) scale(${1+0.1*Math.sin(p*Math.PI)})`;
+  document.getElementById('flipn').textContent=p<0.5?'2082':'2083';document.getElementById('flipn').style.backgroundPosition=`${100-((t*40)%300)}% 0`;
+  popIn('b1',M.bse,t,-4);popIn('b2',M.nse,t,3)}
+function s3(t){const r=document.getElementById('rcp');const q=eo(prog(t,D.starts[3]+0.1,0.5));r.style.transform=`translateY(${(1-q)*300}px) rotate(${(1-q)*-6}deg)`;r.style.opacity=q;
+  const st=document.getElementById('stamp');const sq=prog(t,M.real+0.2,0.25);st.style.opacity=t>M.real+0.2?1:0;st.style.transform=`rotate(-12deg) scale(${2.4-1.4*eo(sq)})`;
+  [...r.querySelectorAll('.rl')].forEach((e,k)=>{e.style.opacity=eo(prog(t,D.starts[3]+0.5+k*0.35,0.3))});
+  popIn('cas',M.cas,t,-2)}
+function s4(t){const c=document.getElementById('coin');const t0=D.starts[4];c.style.transform=`rotateY(${(t-t0)*720}deg) scale(${eb(prog(t,t0,0.4))})`;document.getElementById('lucky').style.backgroundPosition=`${100-((t*60)%300)}% 0`;
+  document.getElementById('lucky').style.transform=`scale(${eb(prog(t,t0+0.2,0.4))})`}
+const dots=document.getElementById('dots');for(let k=0;k<20;k++){const d=document.createElement('div');d.className='dot';dots.appendChild(d)}
+function s5(t){const reds=[15,16,17,18,19];[...dots.children].forEach((d,k)=>{const q=eb(prog(t,M.rose+0.1+k*0.07,0.3));d.style.transform=`scale(${q})`;d.style.opacity=clamp(q);
+  const red=reds.includes(k);d.style.background=red?'linear-gradient(135deg,#ff7a7a,#c63a3a)':'linear-gradient(135deg,#7af0b4,#22a86a)';d.textContent=red?'–':'+';
+  if(t>M.small&&k!==0){d.style.transform=`scale(${q*0.86})`;d.style.filter='saturate(.6) brightness(.85)'}else d.style.filter='';
+  if(t>M.big08&&k===0){d.style.background='linear-gradient(135deg,#fff3c4,#ffc94a)';d.textContent='2008';d.style.boxShadow='0 0 40px rgba(255,201,74,.8)';d.style.fontSize='34px'}else if(k===0){d.style.boxShadow='';d.style.fontSize='40px'}});
+  popIn('c08',M.big08,t,-2);popIn('c1p',M.small,t,1)}
+const SAM=[['2072','+'],['2073','+'],['2074','+'],['2075','+'],['2076','−2.1%'],['2077','+38.5%'],['2078','−1.2%'],['2079','+'],['2080','+'],['2081','+']];
+const sam=document.getElementById('sam');SAM.forEach(([y,v])=>{const d=document.createElement('div');d.className='st';d.innerHTML=`<b>${v}</b><small>${y}</small>`;sam.appendChild(d)});
+function s6(t){[...sam.children].forEach((d,k)=>{const q=eb(prog(t,M.full+0.1+k*0.09,0.3));d.style.transform=`scale(${q})`;d.style.opacity=clamp(q);const v=SAM[k][1];const red=v.startsWith('−');
+  d.style.background=red?'rgba(255,90,90,.18)':'rgba(62,224,143,.16)';d.querySelector('b').style.color=red?'#ff7a7a':'#3ee08f';
+  const hot=(k===5&&t>M.best)||(red&&t>M.red);d.style.boxShadow=hot?`0 0 40px ${red?'rgba(255,90,90,.6)':'rgba(255,201,74,.7)'}`:'';d.style.borderColor=hot?(red?'#ff5a5a':'#ffc94a'):'';if(k===5&&t>M.best)d.style.transform=`scale(${q*(1.08+0.04*Math.sin(t*8))})`});
+  const a=11.7*eo(prog(t,M.avg,1.0));document.getElementById('avg').textContent=(t>M.avg?'~'+a.toFixed(1):'0')+'%';document.getElementById('avg').style.backgroundPosition=`${100-((t*40)%300)}% 0`}
+const fam=document.getElementById('fam').getContext('2d');
+function s7(t){const c=fam;c.clearRect(0,0,900,640);const t0=D.starts[7];
+  // coin stack growing slowly (token)
+  const n=Math.floor(6*eo(prog(t,M.token,1.2)));for(let k=0;k<6;k++){const y=520-k*34;const on=k<n;c.globalAlpha=on?1:0.18;c.fillStyle='#b8862a';c.beginPath();c.ellipse(450,y+8,120,30,0,0,7);c.fill();c.fillStyle='#ffc94a';c.beginPath();c.ellipse(450,y,120,30,0,0,7);c.fill();c.strokeStyle='#7a4f0a';c.lineWidth=3;c.stroke()}
+  c.globalAlpha=1;c.fillStyle='#fff4dc';c.font='42px Pop';c.textAlign='center';c.fillText('A small buy you keep for years',450,200);
+  // years axis
+  const q=eo(prog(t,M.token+0.3,1.6));c.strokeStyle='#ffc94a';c.lineWidth=6;c.beginPath();c.moveTo(120,600);c.lineTo(120+660*q,600);c.stroke();c.fillStyle='#c9b48a';c.font='26px Osw';c.textAlign='left';c.fillText('SAMVAT 2083 →',120,590-20);
+  popIn('trad',M.trad,t,-3);popIn('tok',M.token+0.5,t,2)}
+function s8(t){const h=document.getElementById('hd');h.style.backgroundPosition=`${100-((t*50)%300)}% 0`;h.style.transform=`scale(${eb(prog(t,M.diwali-0.3,0.5))})`;h.style.opacity=t>M.diwali-0.3?1:0;
+  popIn('bsave',M.save-0.1,t);popIn('bsend',M.send-0.1,t)}
+const SC=[s0,s1,s2,s3,s4,s5,s6,s7,s8];
+// ---------- avatar ----------
+const av=document.getElementById('av'),avimg=document.getElementById('avimg'),wv=document.getElementById('waves').getContext('2d');let curPose=-1;
+function drawAvatar(t){let pid=D.cues[0][1],tc=-9;D.cues.forEach(([c,p])=>{if(t>=c){pid=p;tc=c}});
+  if(pid!==curPose){curPose=pid;avimg.src='poses/p'+String(pid).padStart(2,'0')+'.png';window._pending=avimg.decode().catch(()=>0)}
+  const a=D.amp[Math.min(D.amp.length-1,Math.floor(t*FPS))]||0;const pop=tc>-9?0.84+0.16*eb(prog(t,tc,0.24),2.2):1;
+  av.style.transform=`translateY(${Math.sin(t*2.4)*6-a*10}px) scale(${pop*(1+a*0.035)},${pop*(1+a*0.05)}) rotate(${Math.sin(t*1.3)*1.6+a*1.5}deg)`;
+  const gl=document.getElementById('glow');gl.style.transform=`scale(${0.9+a*0.35})`;gl.style.opacity=0.5+a*0.5;
+  wv.clearRect(0,0,W,H);const cx=760,cy=1560;for(let k=0;k<3;k++){const ph=((t*1.6+k/3)%1);wv.strokeStyle=`rgba(255,201,74,${a*(1-ph)*0.9})`;wv.lineWidth=8;wv.lineCap='round';wv.beginPath();wv.arc(cx,cy,60+ph*120,Math.PI*0.8,Math.PI*1.2);wv.stroke()}
+  return a}
+const fc=document.getElementById('flashc').getContext('2d');
+function seek(t){const i=seg(t);drawBg(t);drawFW(t);drawCap(t,i);
+  ['s0','s1','s2','s3','s4','s5','s6','s7','s8'].forEach((id,k)=>{document.getElementById(id).style.opacity=k===i?eo(prog(t,D.starts[i],0.35))*(1-eo(prog(t,(D.starts[i+1]||D.dur+9)-0.25,0.25))):0});
+  SC[i](t);const a=drawAvatar(t);drawDiyas(t,a);
+  fc.clearRect(0,0,W,H);D.starts.forEach(s=>{if(s>0&&t>=s&&t-s<0.14){fc.fillStyle=`rgba(255,236,190,${0.4*(1-(t-s)/0.14)})`;fc.fillRect(0,0,W,H)}});
+  const p=window._pending;window._pending=null;return p||true}
+window.seek=seek;window.ready=document.fonts.ready.then(()=>Promise.all([...new Set(D.cues.map(c=>c[1]))].map(p=>new Promise(r=>{const im=new Image();im.onload=r;im.onerror=r;im.src='poses/p'+String(p).padStart(2,'0')+'.png'}))));
+</script></body></html>
