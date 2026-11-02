@@ -1,5 +1,5 @@
 {
- "last_voice": "af_heart",
+ "last_voice": "am_michael",
  "history": [
   {
    "date": "2026-10-23",
@@ -63,7 +63,7 @@
   {
    "date": "2026-10-30",
    "slug": "iepf",
-   "topic": "Forgotten shares IEPF \u20b989,000 Cr",
+   "topic": "Forgotten shares IEPF ₹89,000 Cr",
    "voice": "af_heart",
    "posted": "manual"
   },
@@ -124,7 +124,7 @@
    "date": "2026-10-30",
    "slug": "tortoise",
    "tag": "animal-friday",
-   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (\u20b95k from 25 vs \u20b910k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
+   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (₹5k from 25 vs ₹10k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
    "angle": "story",
    "voice": "af_heart",
    "length_s": 75.6,
@@ -159,10 +159,30 @@
    "style": "html-css-canvas+avatar",
    "voice": "af_heart",
    "status": "ready, unposted"
+  },
+  {
+   "date": "2026-11-02",
+   "slug": "twomoves",
+   "topic": "Q2 results: sales grew but Intellect Design -16% vs Laurus Labs +7% record (30 Oct 2026); stocks move on surprise",
+   "angle": "result-first contrast + myth vs fact",
+   "voice": "am_michael",
+   "length_s": 81.6,
+   "scheduled": "2026-11-02 10:00 IST IG REEL + YT Short",
+   "metricool_id": 413452586,
+   "files": "2026-11-02/twomoves_*"
+  },
+  {
+   "date": "2026-11-02",
+   "slug": "results5_carousel",
+   "topic": "Carousel: read quarterly results in 5 checks (Laurus, Trent, Intellect), 8 slides",
+   "angle": "carousel cheat sheet",
+   "scheduled": "2026-11-02 16:00 IST IG POST (carousel)",
+   "metricool_id": 413452635,
+   "files": "2026-11-02/results5_*.jpg"
   }
  ],
  "next_ideas": [
-  "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at \u20b9468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
+  "Upper circuit explained with a real example: Steel Strips Wheels hit its 20% upper circuit at ₹468.75 (INDmoney, last session) - what circuit limits are, why buyers get stuck, liquidity risks",
   "'Turnaround or trap?' story format (like the PC Jeweller reel, without 'multibagger'): how to check a 'debt-free' claim - borrowings, cash flow, dilution, promoter holding"
  ],
  "rules": {
