@@ -1,5 +1,5 @@
 {
- "last_voice": "af_heart",
+ "last_voice": "am_michael",
  "history": [
   {
    "date": "2026-10-23",
@@ -193,6 +193,13 @@
    "style": "html-css-canvas diwali + avatar + festive sound",
    "voice": "af_heart",
    "status": "ready, post 4-6 Nov"
+  },
+  {
+   "slug": "lossmath",
+   "date": "2026-11-03",
+   "style": "light-theme two-character office whiteboard lesson (CSS+canvas) + emotion avatar host + Priya",
+   "voice": "am_michael (host) + af_heart (Priya)",
+   "status": "ready, suggest Thu 5 Nov 7 PM"
   }
  ],
  "next_ideas": [
