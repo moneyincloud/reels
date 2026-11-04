@@ -1,5 +1,5 @@
 {
- "last_voice": "am_michael",
+ "last_voice": "af_heart",
  "history": [
   {
    "date": "2026-10-23",
@@ -200,6 +200,17 @@
    "style": "light-theme two-character office whiteboard lesson (CSS+canvas) + emotion avatar host + Priya",
    "voice": "am_michael (host) + af_heart (Priya)",
    "status": "ready, suggest Thu 5 Nov 7 PM"
+  },
+  {
+   "date": "2026-11-04",
+   "slug": "bestdays",
+   "topic": "Past maths: missing the 5 best Nifty days in the last year (4 Nov 2025-3 Nov 2026): Rs1L -> Rs93,020 stayed vs Rs82,781 missed 5 best; best days came near worst days",
+   "angle": "past maths + quiz countdown",
+   "voice": "af_heart",
+   "length_s": 76.6,
+   "scheduled": "2026-11-04 10:00 IST IG REEL + YT Short",
+   "metricool_id": 416000650,
+   "files": "2026-11-04/bestdays_*"
   }
  ],
  "next_ideas": [
