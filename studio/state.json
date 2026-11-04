@@ -218,6 +218,20 @@
    "style": "light-theme office whiteboard, 22-stock list + top-6 business/fundamental cards + surveillance reveal",
    "voice": "af_heart (Priya lead) + am_michael (host)",
    "status": "ready, unscheduled"
+  },
+  {
+   "slug": "tasmac",
+   "date": "2026-11-04",
+   "style": "English infographic news explainer, NO branding",
+   "voice": "am_michael",
+   "status": "delivered, for another account"
+  },
+  {
+   "slug": "paragmilk",
+   "date": "2026-11-04",
+   "style": "light infographic, results-day viral (profit down, stock up), moneyincloud branding",
+   "voice": "af_heart",
+   "status": "ready, unscheduled"
   }
  ],
  "next_ideas": [
