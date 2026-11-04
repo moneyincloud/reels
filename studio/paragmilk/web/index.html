@@ -1,0 +1,190 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Pop;src:url(Poppins-Bold.ttf)}
+@font-face{font-family:Mono;src:url(DejaVuSansMono-Bold.ttf)}
+:root{--bg:#F7F3EC;--ink:#1B2235;--mute:#8C8676;--line:#E3DCCD;--or:#E87B00;--or2:#F59E0B;--red:#E5484D;--grn:#16A34A;--blue:#2F6FED;--pur:#7C5CFC}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;color:var(--ink);font-family:Pop,sans-serif}
+.full{position:absolute;left:0;top:0}
+.hud{position:absolute;left:56px;right:56px;top:70px;display:flex;justify-content:space-between;font-family:Mono;font-size:25px;letter-spacing:1px}
+.hud .l{color:var(--or)} .hud .r{color:var(--mute)} .hud{align-items:center} .logo{display:flex;align-items:center;gap:10px}
+#hdr{position:absolute;left:40px;top:150px;width:1000px;height:150px;background:#fff;border:2px solid var(--line);border-radius:26px;box-shadow:0 14px 34px rgba(60,45,20,.08);padding:22px 34px;overflow:hidden}
+#kick{font-family:Mono;font-size:24px;color:var(--mute)}
+#ttl{font-size:56px;line-height:1.15;margin-top:6px;white-space:nowrap}
+#chip{position:absolute;right:30px;top:50px;font-size:28px;color:#fff;padding:10px 26px;border-radius:999px}
+#card{position:absolute;left:40px;top:330px;width:1000px;height:980px;background:#fff;border:2px solid var(--line);border-radius:30px;box-shadow:0 22px 50px rgba(60,45,20,.10)}
+#sc{position:absolute;left:40px;top:330px}
+#host{position:absolute;left:925px;top:1720px;transform-origin:50% 100%}
+#host img{position:absolute;bottom:0;left:0;display:block}
+#hglow{position:absolute;left:760px;top:1360px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,.30),rgba(245,158,11,0) 66%)}
+#cap{position:absolute;left:56px;top:1350px;width:700px;font-size:52px;overflow-wrap:break-word;line-height:1.17;color:var(--ink)}
+#cap .a{color:var(--or)}
+#src{position:absolute;left:56px;top:1660px;width:720px;font-family:Mono;font-size:19px;line-height:1.4;color:var(--mute)}
+</style></head>
+<body><div id="stage">
+<canvas id="bg" class="full" width="1080" height="1920"></canvas>
+<div class="hud"><div class="l">RESULTS DAY</div><div class="logo"><svg width="50" height="36" viewBox="0 0 54 38"><path d="M14 36h28a11 11 0 0 0 1-22A15 15 0 0 0 15 11 12.5 12.5 0 0 0 14 36z" fill="#E87B00"/><text x="27" y="30" font-size="19" font-family="Pop" fill="#fff" text-anchor="middle">₹</text></svg><span style="font-family:Pop;font-size:30px;color:#1B2235;letter-spacing:0">money<b style="color:#E87B00">in</b>cloud</span></div><div class="r">4 NOV 2026</div></div>
+<div id="hdr"><div id="kick"></div><div id="ttl"></div><div id="chip"></div></div>
+<div id="card"></div>
+<canvas id="sc" width="1000" height="980"></canvas>
+<div id="hglow"></div>
+<div id="host"><img id="himg"></div>
+<div id="cap"></div>
+<div id="src"></div>
+</div>
+<script src="data.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eo=x=>1-Math.pow(1-cl(x),3);
+const eb=(x,s=1.8)=>{x=cl(x);const c=s+1;return 1+c*Math.pow(x-1,3)+s*Math.pow(x-1,2)};
+const pr=(t,a,d)=>cl((t-a)/d);
+const M=D.marks, VO=D.vo, ST=D.starts, DU=D.durs;
+const C={ink:'#1B2235',mute:'#8C8676',line:'#E3DCCD',or:'#E87B00',or2:'#F59E0B',red:'#E5484D',grn:'#16A34A',blue:'#2F6FED',pur:'#7C5CFC',redl:'#FDECEC',grnl:'#E7F7EC',bluel:'#E8F0FE',orl:'#FFF4E0',soft:'#F4F1EA'};
+const SCN=[0,1,2,2,3,4,5,6,7,8,9];
+const HDR=[['RESULTS DAY · 4 NOV 2026','Profit ↓ but stock ↑ 17%','NSE: PARAGMILK',C.red],['WHO IS IT?','Parag Milk Foods','DAIRY',C.blue],
+ ['Q2 FY27 · HEADLINE','Profit fell 8%','₹42 CR',C.red],['REASON 1 OF 3','Record revenue','+23%',C.grn],['REASON 2 OF 3','Real profit growth','+42%',C.grn],
+ ['REASON 3 OF 3','New growth engines','+71%',C.grn],['4 NOV CLOSE','₹291.98, up 17%','+₹42.46',C.grn],['THE LESSON','Read behind the profit','SAVE',C.or2],
+ ['BUT CAREFUL','One day ≠ trend','52-WK',C.red],['MONEYINCLOUD','Save + follow','@moneyincloud',C.or2]];
+const SR='Business Standard, Angel One (4 Nov 2026) · price: INDmoney';
+const SRC=['Price: INDmoney, 4 Nov 2026 close · results: Business Standard','Brands: company filings / Business Standard','Business Standard, 4 Nov 2026',
+ 'Angel One, Business Standard (4 Nov 2026)','Angel One, 4 Nov 2026 (ex last year one-off)','Angel One, Business Standard (4 Nov 2026)','INDmoney 5-min candles, 4 Nov 2026',
+ 'Education only · not a buy/sell call','INDmoney: 52-week high ₹376.95, low ₹177.84','Education only · not a buy/sell call'];
+const IC=[257.88,254.27,261.88,261.72,265.3,265.33,268.08,267.5,263.36,265,265.12,266.13,265.12,264.83,267.79,272.8,271.63,270.98,273.31,273.61,275,276.3,278.48,281.22,282.2,277.99,278.25,277.56,277,277.25,277.52,277.82,278.81,278.5,279.7,279.5,278.53,280.29,279.13,281.23,280.65,280.5,279.39,281,280.54,280.8,279.3,280.3,280.97,280.24,279.2,276.97,277.5,278.25,280.33,280.4,280.57,281.5,283.5,284.85,286.3,287.83,288.84,292.05,292.96,291.5,291.06,285.8,286.68,288.45,291.22,291.33,293.98,291.39,291.98];
+function lineAt(t){let i=0;for(let k=0;k<ST.length;k++)if(t>=ST[k])i=k;return i}
+function speaking(t){for(let k=0;k<VO.length;k++)if(t>=VO[k]&&t<VO[k]+DU[k])return k;return -1}
+function amp(t){return D.amp[Math.min(D.amp.length-1,Math.max(0,Math.round(t*30)))]||0}
+const inr=n=>Math.round(n).toLocaleString('en-IN');
+// background
+(function(){const c=$('bg').getContext('2d');c.fillStyle='#F7F3EC';c.fillRect(0,0,1080,1920);
+ c.fillStyle='rgba(140,134,118,.15)';for(let y=20;y<1920;y+=36)for(let x=18;x<1080;x+=36){c.beginPath();c.arc(x,y,2,0,7);c.fill()}})();
+// poses
+const POSES={};for(const [,p] of D.cues){if(!POSES[p]){const im=new Image();im.src=`poses/p${String(p).padStart(2,'0')}.png`;POSES[p]=im}}
+window.ready=Promise.all([document.fonts.load('40px Pop'),document.fonts.load('20px Mono'),document.fonts.ready,...Object.values(POSES).map(i=>i.decode())]);
+// ---------- canvas helpers ----------
+const c=$('sc').getContext('2d');
+function T(s,x,y,sz,col,al='center',f='Pop'){c.font=`${sz}px ${f}`;c.fillStyle=col;c.textAlign=al;c.textBaseline='middle';c.fillText(s,x,y)}
+function RR(x,y,w,h,r,fill,stroke,lw=3){c.beginPath();c.roundRect(x,y,w,h,r);if(fill){c.fillStyle=fill;c.fill()}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw;c.stroke()}}
+function chip(s,x,y,bg,fg='#fff',sz=26,al='center'){c.font=`${sz}px Pop`;const w=c.measureText(s).width+40,h=sz+24;const x0=al==='center'?x-w/2:al==='right'?x-w:x;RR(x0,y-h/2,w,h,h/2,bg);T(s,x0+w/2,y+1,sz,fg);return w}
+function wrapT(s,x,y,maxw,sz,col,lh=1.25,al='left',f='Pop'){c.font=`${sz}px ${f}`;const ws=s.split(' ');let line='',yy=y;for(const w of ws){const tst=line?line+' '+w:w;if(c.measureText(tst).width>maxw&&line){T(line,x,yy,sz,col,al,f);line=w;yy+=sz*lh}else line=tst}T(line,x,yy,sz,col,al,f);return yy}
+function popAt(x,y,p,fn){if(p<=0)return;c.save();c.globalAlpha=cl(p*1.5);c.translate(x,y);const s=0.6+0.4*eb(p);c.scale(s,s);fn();c.restore()}
+function stamp(s,x,y,col,p,sz=60,rot=-0.12){if(p<=0)return;c.save();c.globalAlpha=cl(p*2);c.translate(x,y);c.rotate(rot);c.scale(2-eo(p),2-eo(p));c.font=`${sz}px Pop`;const w=c.measureText(s).width+50;RR(-w/2,-sz*0.75,w,sz*1.5,16,'rgba(255,255,255,.92)',col,8);T(s,0,2,sz,col);c.restore()}
+function arrow(x1,y1,x2,y2,col,w=6,dash=0,t=0){c.save();c.strokeStyle=col;c.fillStyle=col;c.lineWidth=w;c.lineCap='round';if(dash){c.setLineDash([dash,dash]);c.lineDashOffset=-t*60}
+ const a=Math.atan2(y2-y1,x2-x1),hx=x2-Math.cos(a)*18,hy=y2-Math.sin(a)*18;c.beginPath();c.moveTo(x1,y1);c.lineTo(hx,hy);c.stroke();c.setLineDash([]);
+ c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-Math.cos(a-0.45)*28,y2-Math.sin(a-0.45)*28);c.lineTo(x2-Math.cos(a+0.45)*28,y2-Math.sin(a+0.45)*28);c.fill();c.restore()}
+// icons
+function bottle(x,y,s,t){c.save();c.translate(x,y);c.scale(s,s);
+ const g=c.createLinearGradient(-90,0,90,0);g.addColorStop(0,'#7A3E0A');g.addColorStop(0.35,'#C46A16');g.addColorStop(0.6,'#9A520F');g.addColorStop(1,'#5E2E06');
+ c.fillStyle=g;c.beginPath();c.moveTo(-28,-300);c.lineTo(28,-300);c.lineTo(28,-190);c.quadraticCurveTo(92,-160,92,-90);c.lineTo(92,260);c.quadraticCurveTo(92,300,52,300);c.lineTo(-52,300);c.quadraticCurveTo(-92,300,-92,260);c.lineTo(-92,-90);c.quadraticCurveTo(-92,-160,-28,-190);c.closePath();c.fill();
+ c.fillStyle='#2B1A0A';c.fillRect(-32,-330,64,36);
+ c.fillStyle='rgba(255,255,255,.25)';c.beginPath();c.roundRect(-70,-80,18,300,9);c.fill();
+ RR(-80,-10,160,190,12,'#FFF8EC','#C9A462',3);T('MRP',0,30,26,C.ink,'center','Mono');T('₹ ---',0,72,34,C.ink);
+ for(let i=0;i<14;i++){c.fillStyle=C.ink;c.fillRect(-56+i*8,110,i%3?3:5,46)}
+ c.restore()}
+function scanner(x,y,s){c.save();c.translate(x,y);c.scale(s,s);c.fillStyle='#24324D';c.beginPath();c.roundRect(-60,-40,130,70,18);c.fill();c.beginPath();c.moveTo(-20,20);c.lineTo(20,20);c.lineTo(0,110);c.lineTo(-36,110);c.fill();c.fillStyle='#E5484D';c.fillRect(-66,-18,10,26);c.restore()}
+function boxes(x,y){for(const [dx,dy] of [[-70,40],[30,40],[-20,-50]]){RR(x+dx-45,y+dy-40,90,80,8,'#D9A766','#9C6B2E',4);c.strokeStyle='#9C6B2E';c.lineWidth=3;c.beginPath();c.moveTo(x+dx-45,y+dy-15);c.lineTo(x+dx+45,y+dy-15);c.stroke()}}
+function wifi(x,y,col){c.strokeStyle=col;c.lineWidth=12;c.lineCap='round';for(const r of [30,62,94]){c.beginPath();c.arc(x,y+40,r,-2.4,-0.74);c.stroke()}c.fillStyle=col;c.beginPath();c.arc(x,y+40,9,0,7);c.fill()}
+function crossX(x,y,r,col){c.strokeStyle=col;c.lineWidth=12;c.lineCap='round';c.beginPath();c.moveTo(x-r,y-r);c.lineTo(x+r,y+r);c.moveTo(x+r,y-r);c.lineTo(x-r,y+r);c.stroke()}
+function crate(x,y){RR(x-110,y-10,220,90,10,'#C98A4B','#8B5A2B',4);for(let i=0;i<7;i++){const bx=x-95+i*31,h=60+((i*37)%40);c.fillStyle=i%2?'#2E7D4F':'#8B4A12';c.beginPath();c.roundRect(bx,y-h,22,h+10,6);c.fill();c.fillRect(bx+6,y-h-18,10,20)}}
+function shop(x,y,shut,s=1){c.save();c.translate(x,y);c.scale(s,s);RR(-60,-50,120,100,8,'#fff',C.ink,4);c.fillStyle=shut?'#9AA3B2':C.grn;c.fillRect(-56,-46,112,24);
+ if(shut){c.fillStyle='#C9CFDA';c.fillRect(-46,-16,92,62);c.strokeStyle='#9AA3B2';c.lineWidth=3;for(let i=0;i<5;i++){c.beginPath();c.moveTo(-46,-6+i*12);c.lineTo(46,-6+i*12);c.stroke()}}else{c.fillStyle=C.bluel;c.fillRect(-40,-12,80,54)}c.restore()}
+function building(x,y,col){RR(x-60,y-80,120,160,8,col);c.fillStyle='rgba(255,255,255,.85)';for(let r=0;r<4;r++)for(let k=0;k<3;k++)c.fillRect(x-42+k*32,y-62+r*34,18,20)}
+function person(x,y,col){c.fillStyle=col;c.beginPath();c.arc(x,y-40,26,0,7);c.fill();c.beginPath();c.roundRect(x-40,y-8,80,70,[30,30,10,10]);c.fill()}
+function coin(x,y,r=22){c.fillStyle='#F5C542';c.beginPath();c.arc(x,y,r,0,7);c.fill();c.strokeStyle='#C9971E';c.lineWidth=4;c.stroke();T('₹',x,y+1,r*1.1,'#8A5B00')}
+// dot grid (4,048 = 88 x 46)
+const SHUT=[],RAND=[];let sd=7;for(let i=0;i<4048;i++){sd=(sd*16807)%2147483647;RAND.push(sd/2147483647)}
+// ---------- scenes ----------
+function ghee(){RR(-50,-60,100,110,16,'#F5C542','#C9971E',4);RR(-56,-80,112,26,8,'#C9971E');T('GHEE',0,0,22,'#7A5200')}
+function cheese(){c.fillStyle='#FFD45C';c.beginPath();c.moveTo(-70,40);c.lineTo(70,40);c.lineTo(70,-10);c.lineTo(-70,-50);c.closePath();c.fill();c.strokeStyle='#C9971E';c.lineWidth=4;c.stroke();c.fillStyle='#E8B830';for(const [x,y,r] of [[-30,0,10],[20,15,8],[45,-5,7]]){c.beginPath();c.arc(x,y,r,0,7);c.fill()}}
+function tub(){RR(-50,-60,100,120,14,C.ink);RR(-56,-72,112,22,8,C.or);T('WHEY',0,0,22,'#fff')}
+function milk(){c.fillStyle='#fff';c.strokeStyle=C.blue;c.lineWidth=5;c.beginPath();c.moveTo(-22,-80);c.lineTo(22,-80);c.lineTo(22,-50);c.lineTo(40,-20);c.lineTo(40,70);c.lineTo(-40,70);c.lineTo(-40,-20);c.lineTo(-22,-50);c.closePath();c.fill();c.stroke();RR(-40,0,80,40,0,C.bluel);T('MILK',0,20,18,C.blue)}
+function bigArrow(x,y,up,col,s){c.save();c.translate(x,y);c.scale(s,s);if(!up)c.rotate(Math.PI);c.fillStyle=col;c.beginPath();c.moveTo(0,-90);c.lineTo(70,0);c.lineTo(28,0);c.lineTo(28,90);c.lineTo(-28,90);c.lineTo(-28,0);c.lineTo(-70,0);c.closePath();c.fill();c.restore()}
+function S0(t){const p1=pr(t,M.pf-0.4,0.4),p2=pr(t,M.jump-0.3,0.4);
+ popAt(260,380,p1,()=>{RR(-210,-280,420,560,32,C.redl,C.red,5);T('PROFIT',0,-220,34,C.red,'center','Mono');bigArrow(0,-40,false,C.red,1.1+0.05*Math.sin(t*5));T('−'+Math.round(8*eo(pr(t,M.pf,0.8)))+'%',0,170,110,C.red)});
+ popAt(740,380,p2,()=>{RR(-210,-280,420,560,32,C.grnl,C.grn,5);T('STOCK',0,-220,34,C.grn,'center','Mono');bigArrow(0,-40,true,C.grn,1.1+0.05*Math.sin(t*5+1));T('+'+Math.round(17*eo(pr(t,M.jump,0.9)))+'%',0,170,110,C.grn)});
+ const pq=pr(t,M.jump+0.8,0.4);popAt(500,380,pq,()=>{c.beginPath();c.arc(0,0,60,0,7);c.fillStyle=C.or2;c.fill();T('?',0,4,80,'#fff')});
+ popAt(500,830,pr(t,0.3,0.4),()=>chip('Q2 FY27 RESULTS · 4 NOV 2026',0,0,C.ink,'#fff',26))}
+function S1(t){popAt(500,110,pr(t,ST[1],0.4),()=>{T('PARAG MILK FOODS',0,0,64,C.ink);T('DAIRY · NSE: PARAGMILK',0,60,24,C.mute,'center','Mono')});
+ const B=[[280,380,'Gowardhan','ghee',ghee,M.brands],[720,380,'Go','cheese',cheese,M.go],[280,720,'Avvatar','whey protein',tub,M.av],[720,720,'Pride of Cows','premium milk',milk,M.av+0.4]];
+ B.forEach(([x,y,n,s,ic,m])=>popAt(x,y,pr(t,m-0.2,0.4),()=>{RR(-200,-150,400,300,28,C.soft,C.line,3);c.save();c.translate(0,-40);ic();c.restore();T(n,0,80,38,C.ink);T(s.toUpperCase(),0,122,20,C.mute,'center','Mono')}))}
+function S2(t,l){const B=500,S=7.5;T('NET PROFIT (₹ CRORE)',60,60,24,C.mute,'left','Mono');
+ const a=eo(pr(t,M.p45-0.6,0.6)),b=eo(pr(t,M.p42-0.2,0.7));
+ RR(170,B-45.65*S*a,220,45.65*S*a,[16,16,0,0],'#9AA3B2');if(a>0.5){T('₹45.6',280,B-45.65*S-36,44,C.ink);T('Q2 FY26',280,B+34,24,C.mute,'center','Mono')}
+ RR(610,B-42*S*b,220,42*S*b,[16,16,0,0],C.red);if(b>0.5){T('₹42',720,B-42*S-36,44,C.ink);T('Q2 FY27',720,B+34,24,C.mute,'center','Mono')}
+ c.strokeStyle=C.line;c.lineWidth=4;c.beginPath();c.moveTo(100,B);c.lineTo(900,B);c.stroke();
+ popAt(500,170,pr(t,M.p42+0.4,0.4),()=>chip('−8% YoY',0,0,C.red,'#fff',34));
+ popAt(500,650,pr(t,M.raw-0.2,0.4),()=>{RR(-330,-55,660,110,22,C.orl,C.or2,3);T('RAW MATERIAL COSTS ↑',0,2,34,C.or)});
+ if(l===3){for(let i=0;i<3;i++)popAt(220+i*280,850,pr(t,M.three+i*0.2,0.35),()=>{c.beginPath();c.arc(0,0,58,0,7);c.fillStyle=C.grn;c.fill();T(String(i+1),0,4,56,'#fff')})}}
+function S3(t){const B=620,S=0.36;const a=eo(pr(t,ST[4]+0.2,0.6)),b=eo(pr(t,M.rev,0.9));
+ RR(200,B-1009*S*a,240,1009*S*a,[16,16,0,0],'#9AA3B2');if(a>0.5)T('Q2 FY26',320,B+34,24,C.mute,'center','Mono');
+ RR(560,B-1241*S*b,240,1241*S*b,[16,16,0,0],C.grn);if(b>0.4){T('₹'+inr(1241*b),680,B-1241*S*b-40,50,C.ink);T('Q2 FY27',680,B+34,24,C.mute,'center','Mono')}
+ T('REVENUE (₹ CRORE)',60,60,24,C.mute,'left','Mono');c.strokeStyle=C.line;c.lineWidth=4;c.beginPath();c.moveTo(120,B);c.lineTo(880,B);c.stroke();
+ stamp('RECORD QUARTER',310,190,C.grn,pr(t,M.rev+0.6,0.35),36,-0.06);
+ popAt(680,72,pr(t,M.rev+1.0,0.4),()=>chip('+23% YoY',0,0,C.grn,'#fff',30));
+ popAt(500,790,pr(t,M.vol-0.2,0.4),()=>{RR(-320,-60,640,120,22,C.grnl,C.grn,3);T('VOLUMES +12%',0,2,44,C.grn)})}
+function S4(t){T('NET PROFIT GROWTH, YoY',60,60,24,C.mute,'left','Mono');
+ popAt(260,280,pr(t,ST[5]+0.2,0.4),()=>{RR(-210,-170,420,340,28,C.redl,C.red,4);T('REPORTED',0,-110,28,C.red,'center','Mono');T('−8%',0,10,110,C.red);T('with last year\'s one-off',0,110,22,C.mute,'center','Mono')});
+ popAt(740,280,pr(t,M.adj-0.2,0.4),()=>{RR(-210,-170,420,340,28,C.grnl,C.grn,4);T('UNDERLYING',0,-110,28,C.grn,'center','Mono');T('+'+Math.round(42*eo(pr(t,M.adj,0.9)))+'%',0,10,110,C.grn);T('one-off removed',0,110,22,C.mute,'center','Mono')});
+ if(t>M.adj)arrow(480,280,520,280,C.ink,6);
+ popAt(500,560,pr(t,M.oneoff-0.2,0.4),()=>chip('LAST YEAR = ONE-OFF BOOST',0,0,C.ink,'#fff',26));
+ const pm=pr(t,M.mar-0.2,0.4);if(pm>0){c.save();c.globalAlpha=cl(pm*2);RR(60,660,880,250,28,C.soft,C.line,3);T('EBITDA MARGIN',120,720,26,C.mute,'left','Mono');
+   const w=700*eo(pr(t,M.mar,1.0))*8.1/10;RR(120,770,700,60,14,'#fff',C.line,2);RR(120,770,w,60,14,C.grn);T('8.1%',860,800,46,C.grn,'left');T('EBITDA ₹101 CR · +37% (ex one-off)',120,872,22,C.ink,'left','Mono');c.restore()}}
+function S5(t){const p=eo(pr(t,M.new,1.0));c.lineWidth=60;c.strokeStyle=C.soft;c.beginPath();c.arc(250,300,170,0,7);c.stroke();
+ c.strokeStyle=C.or2;c.beginPath();c.arc(250,300,170,-Math.PI/2,-Math.PI/2+2*Math.PI*0.12*p);c.stroke();T(Math.round(12*p)+'%',250,285,80,C.or);T('OF REVENUE',250,345,20,C.mute,'center','Mono');
+ popAt(700,210,pr(t,M.new+0.3,0.4),()=>{T('NEW-AGE BRANDS',0,-60,26,C.mute,'center','Mono');T('₹154 CR',0,0,64,C.ink);chip('+71% YoY',0,70,C.grn,'#fff',30)});
+ popAt(700,410,pr(t,M.new+0.8,0.4),()=>T('Pride of Cows · Avvatar · was 9%',0,0,22,C.mute,'center','Mono'));
+ T('PANEER CAPACITY (TONNES/DAY)',60,560,24,C.mute,'left','Mono');const q=eo(pr(t,M.pan,1.2));
+ RR(60,600,880*20/80,80,14,'#9AA3B2');T('20 NOW',70,640,30,'#fff','left');
+ RR(60,710,880*q,80,14,C.grn);if(q>0.3)T(Math.round(20+60*q)+' BY JUNE 2027',70,750,30,'#fff','left');
+ popAt(500,880,pr(t,M.june+0.3,0.4),()=>chip('CHEESE: 60 → 120 TONNES/DAY BY FY28',0,0,C.ink,'#fff',24))}
+function S6(t){const x0=80,x1=920,y0=160,y1=760,lo=245,hi=300;const X=i=>x0+(x1-x0)*i/(IC.length-1),Y=v=>y1-(y1-y0)*(v-lo)/(hi-lo);
+ c.strokeStyle='#EEEAE2';c.lineWidth=2;for(const v of [250,260,270,280,290,300]){c.beginPath();c.moveTo(x0,Y(v));c.lineTo(x1,Y(v));c.stroke();T('₹'+v,x0-10,Y(v),18,C.mute,'right','Mono')}
+ c.setLineDash([10,8]);c.strokeStyle=C.mute;c.beginPath();c.moveTo(x0,Y(249.52));c.lineTo(x1,Y(249.52));c.stroke();c.setLineDash([]);T('PREV CLOSE ₹249.52',x1,Y(249.52)+24,18,C.mute,'right','Mono');
+ const p=eo(pr(t,ST[7],2.0)),n=Math.max(1,Math.floor(p*(IC.length-1)));c.strokeStyle=C.grn;c.lineWidth=6;c.lineJoin='round';c.beginPath();c.moveTo(X(0),Y(IC[0]));for(let i=1;i<=n;i++)c.lineTo(X(i),Y(IC[i]));c.stroke();
+ c.fillStyle=C.grn;c.beginPath();c.arc(X(n),Y(IC[n]),10,0,7);c.fill();
+ T('9:15',x0,y1+36,18,C.mute,'center','Mono');T('3:30',x1,y1+36,18,C.mute,'center','Mono');T('PARAGMILK · 4 NOV · 5-MIN',x0,110,22,C.mute,'left','Mono');
+ popAt(700,250,pr(t,M.close+0.3,0.4),()=>{RR(-200,-70,400,140,22,C.grn);T('₹291.98',0,-14,56,'#fff');T('+17.02%',0,40,26,'#fff','center','Mono')});
+ popAt(500,880,pr(t,M.close+1.0,0.4),()=>chip('DAY HIGH ₹299 · 1.5 CR SHARES TRADED',0,0,C.ink,'#fff',24))}
+function S7(t){T('HEADLINE PROFIT',250,90,30,C.red);T('WHAT\'S BEHIND IT',750,90,30,C.grn);c.strokeStyle=C.line;c.lineWidth=4;c.beginPath();c.moveTo(500,60);c.lineTo(500,900);c.stroke();
+ popAt(250,330,pr(t,ST[8]+0.2,0.4),()=>{RR(-200,-140,400,280,28,C.redl,C.red,4);T('−8%',0,-10,110,C.red);T('one number',0,90,24,C.mute,'center','Mono')});
+ const L=['Revenue growth','One-offs removed','Margin trend','New growth engines','Capacity plans'];
+ L.forEach((s,i)=>popAt(750,190+i*120,pr(t,M.lesson-0.4+i*0.25,0.35),()=>{RR(-220,-46,440,92,20,C.grnl,C.grn,3);c.fillStyle=C.grn;c.beginPath();c.arc(-175,0,24,0,7);c.fill();T('✓',-175,2,28,'#fff');T(s,-135,2,30,C.ink,'left')}))}
+function S8(t){const lo=177.84,hi=376.95,cur=291.98,x0=100,x1=900,X=v=>x0+(x1-x0)*(v-lo)/(hi-lo);
+ T('52-WEEK RANGE',x0,70,26,C.mute,'left','Mono');RR(x0,220,x1-x0,60,30,C.soft);const g=c.createLinearGradient(x0,0,x1,0);g.addColorStop(0,C.red);g.addColorStop(1,C.grn);
+ c.globalAlpha=0.25;RR(x0,220,x1-x0,60,30,g);c.globalAlpha=1;
+ T('₹177.84',x0,330,28,C.ink,'left');T('LOW',x0,370,20,C.mute,'left','Mono');T('₹376.95',x1,330,28,C.ink,'right');T('HIGH',x1,370,20,C.mute,'right','Mono');
+ const p=eo(pr(t,ST[9]+0.3,0.8));const cx=X(lo+(cur-lo)*p);c.fillStyle=C.ink;c.beginPath();c.moveTo(cx,210);c.lineTo(cx-18,180);c.lineTo(cx+18,180);c.fill();chip('TODAY ₹291.98',cx,140,C.ink,'#fff',24);
+ const ph=pr(t,M.high-0.2,0.5);if(ph>0){c.save();c.globalAlpha=ph;c.strokeStyle=C.red;c.lineWidth=5;c.setLineDash([10,8]);c.beginPath();c.moveTo(X(cur),300);c.lineTo(X(cur),440);c.lineTo(X(hi),440);c.lineTo(X(hi),300);c.stroke();c.setLineDash([]);T('≈ 23% BELOW HIGH',(X(cur)+X(hi))/2,480,30,C.red);c.restore()}
+ popAt(500,720,pr(t,M.care-0.3,0.4),()=>{RR(-380,-110,760,220,30,C.orl,C.or2,4);T('ONE GOOD DAY',0,-36,52,C.or);T('≠ A TREND',0,34,52,C.ink)})}
+function S9(t){popAt(500,300,pr(t,ST[10],0.4),()=>{c.beginPath();c.arc(0,-20,150,0,7);c.fillStyle=C.orl;c.fill();
+  c.fillStyle=C.or;c.beginPath();c.moveTo(-70,40);c.lineTo(70,40);c.arc(70,-5,45,Math.PI/2,-Math.PI/2,true);c.arc(10,-40,62,0.2,Math.PI+0.5,true);c.arc(-70,0,40,-Math.PI/2,Math.PI/2,true);c.fill();T('₹',0,4,60,'#fff');
+  T('money',-130,190,56,C.ink,'left');c.font='56px Pop';const w1=c.measureText('money').width;T('in',-130+w1,190,56,C.or,'left');const w2=c.measureText('in').width;T('cloud',-130+w1+w2,190,56,C.ink,'left')});
+ popAt(280,720,pr(t,M.save-0.2,0.4),()=>{RR(-200,-80,400,160,26,C.or2);T('SAVE THIS',0,2,48,'#fff')});
+ popAt(720,720,pr(t,M.follow-0.2,0.4),()=>{RR(-200,-80,400,160,26,C.ink);T('FOLLOW',0,-18,44,'#fff');T('@moneyincloud',0,34,24,'#fff','center','Mono')});
+ popAt(500,900,pr(t,M.follow+0.6,0.4),()=>T('Education only · not a buy/sell call',0,0,24,C.mute,'center','Mono'))}
+const SCENES=[S0,S1,S2,S3,S4,S5,S6,S7,S8,S9];
+// ---------- seek ----------
+let lastPose=-1;
+window.seek=function(t){
+ const li=lineAt(t),sc=SCN[li],s0=ST[SCN.indexOf(sc)],ps=eo(pr(t,s0,0.45));
+ const H=HDR[sc];$('kick').textContent=H[0];const tt=$('ttl');tt.textContent=H[1];tt.style.clipPath=`inset(0 ${100-eo(pr(t,s0,0.5))*100}% 0 0)`;
+ const ch=$('chip');ch.textContent=H[2];ch.style.background=H[3];ch.style.transform=`scale(${eb(pr(t,s0+0.3,0.4))})`;
+ $('src').textContent=SRC[sc];
+ c.clearRect(0,0,1000,980);c.save();c.globalAlpha=ps;c.translate(0,(1-ps)*40);c.save();SCENES[sc](t,li);c.restore();c.restore();
+ // caption
+ let pg=null;for(const p of D.pages)if(t>=p[0])pg=p;const cap=$('cap');
+ if(pg){if(cap.dataset.k!==String(pg[0])){cap.dataset.k=pg[0];cap.innerHTML=pg[1].replace(/\*([^*]+)\*/g,'<span class="a">$1</span>')}
+  const q=pr(t,pg[0],0.22);cap.style.opacity=q;cap.style.transform=`translateY(${(1-eo(q))*18}px)`}else cap.style.opacity=0;
+ // host
+ const sp=speaking(t),a=sp>=0?amp(t):0;
+ let pid=D.cues[0][1],t0=-9;for(const [tc,p] of D.cues)if(t>=tc){pid=p;t0=tc}
+ const img=$('himg');let pend=null;if(pid!==lastPose){img.src=POSES[pid].src;lastPose=pid;pend=img.decode().catch(()=>{})}
+ const iw=POSES[pid].naturalWidth;img.style.width=iw+'px';img.style.left=(-iw/2)+'px';
+ const pop=t0>-9?0.84+0.16*eb(pr(t,t0,0.25),2.2):1;
+ $('host').style.transform=`translateY(${-a*6}px) rotate(${Math.sin(t*4.2)*1.6*a}deg) scale(${pop*(1+0.025*a)})`;
+ $('hglow').style.opacity=0.4+0.6*a;
+ window._pending=pend;return pend};
+</script>
+</body></html>
