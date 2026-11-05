@@ -273,7 +273,6 @@
   "no_avatar": "31 Oct 2026: old caricature removed; use emotion pose avatar host/poses (40 poses) via listx.draw_pose"
  },
  "style_queue": [
-  "chalkboard",
   "glow sketch",
   "ps2 low-poly",
   "comic art",
@@ -284,5 +283,5 @@
   "3d macro explainer"
  ],
  "style_next": 0,
- "style_notes": "User rejected pixel art (5 Nov 2026); comic art approved for Cummins remake."
+ "style_notes": "User rejected pixel art and chalkboard (5 Nov 2026). Default back to the normal light template; ask before trying another style."
 }

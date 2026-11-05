@@ -1,0 +1,178 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Pop;src:url(Poppins-Bold.ttf)}
+@font-face{font-family:Mono;src:url(DejaVuSansMono-Bold.ttf)}
+@font-face{font-family:Chalk;src:url(Chalk.woff2)}
+@font-face{font-family:Hand;src:url(Hand.woff2)}
+:root{--wall:#F5EEDF;--ink:#1F2A22;--mute:#7C7466;--wood:#8A5A33;--wood2:#6B4223;--board:#25392D;--chalk:#F4F1E8;--yel:#F7D774;--pink:#F4A6B8;--red:#E5533F}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--wall)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;color:var(--ink);font-family:Pop,sans-serif}
+.full{position:absolute;left:0;top:0}
+.hud{position:absolute;left:56px;right:56px;top:58px;display:flex;justify-content:space-between;align-items:center;font-family:Hand;font-size:40px}
+.hud .l{color:#2E7D4F} .hud .r{color:var(--mute)} .logo{display:flex;align-items:center;gap:10px}
+#frame{position:absolute;left:22px;top:130px;width:1036px;height:1210px;background:linear-gradient(135deg,#9A6A3F,#7A4B27 60%,#8E5E35);border-radius:18px;box-shadow:0 18px 40px rgba(60,40,20,.35)}
+#boardbg{position:absolute;left:44px;top:152px;width:992px;height:1166px;border-radius:6px}
+#kick{position:absolute;left:84px;top:178px;font-family:Hand;font-size:38px;color:#B8C9B8}
+#ttl{position:absolute;left:84px;top:216px;font-family:Chalk;font-size:74px;color:var(--chalk);white-space:nowrap;text-shadow:0 0 6px rgba(255,255,255,.25)}
+#chip{position:absolute;right:76px;top:196px;font-family:Chalk;font-size:44px;padding:4px 22px;border:5px solid;border-radius:50% 46% 52% 44%/48% 54% 46% 52%}
+#hr{position:absolute;left:80px;top:316px;width:920px;height:6px}
+#sc{position:absolute;left:40px;top:330px}
+#tray{position:absolute;left:60px;top:1318px;width:960px;height:22px;background:#6B4223;border-radius:4px}
+#host{position:absolute;left:925px;top:1730px;transform-origin:50% 100%}
+#host img{position:absolute;bottom:0;left:0;display:block}
+#cap{position:absolute;left:56px;top:1392px;width:700px;font-size:52px;overflow-wrap:break-word;line-height:1.17;color:var(--ink)}
+#cap .a{color:#2E7D4F}
+#src{position:absolute;left:56px;top:1688px;width:720px;font-family:Mono;font-size:19px;line-height:1.4;color:var(--mute)}
+</style></head>
+<body><div id="stage">
+<div class="hud"><div class="l">ANIMAL FRIDAY</div><div class="logo"><svg width="50" height="36" viewBox="0 0 54 38"><path d="M14 36h28a11 11 0 0 0 1-22A15 15 0 0 0 15 11 12.5 12.5 0 0 0 14 36z" fill="#2E7D4F"/><text x="27" y="30" font-size="19" font-family="Pop" fill="#fff" text-anchor="middle">₹</text></svg><span style="font-family:Pop;font-size:30px;color:#1F2A22">money<b style="color:#2E7D4F">in</b>cloud</span></div><div class="r">6 NOV 2026</div></div>
+<div id="frame"></div>
+<canvas id="boardbg" width="992" height="1166"></canvas>
+<div id="kick"></div><div id="ttl"></div><div id="chip"></div>
+<canvas id="hr" width="920" height="6"></canvas>
+<canvas id="sc" width="1000" height="980"></canvas>
+<div id="tray"></div>
+<div id="host"><img id="himg"></div>
+<div id="cap"></div>
+<div id="src"></div>
+</div>
+<script src="data.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eo=x=>1-Math.pow(1-cl(x),3);
+const eb=(x,s=1.8)=>{x=cl(x);const c=s+1;return 1+c*Math.pow(x-1,3)+s*Math.pow(x-1,2)};
+const pr=(t,a,d)=>cl((t-a)/d);
+const M=D.marks, VO=D.vo, ST=D.starts, DU=D.durs;
+const K={w:'#F4F1E8',y:'#F7D774',p:'#F4A6B8',b:'#9FD3F5',g:'#A8E6A1',r:'#FF8A7A',o:'#FFB86B',dim:'rgba(244,241,232,.45)'};
+const HDR=[['ANIMAL FRIDAY','THE TURKEY PROBLEM','1,000 DAYS',K.y],['DAY 1, 2, 3...','FED EVERY DAY','HAPPY',K.g],['THE TURKEY\'S CHART','CONFIDENCE ↑','DAY 1,000',K.g],
+ ['DAY 1,001','THE FESTIVAL','?!',K.r],['INVESTORS TOO','REAL STOCK','NEXT',K.y],['YES BANK · AUG 2018','PEAK: ~₹400','₹1 LAKH CR+',K.g],
+ ['FEELS SAFE?','JUST LIKE THE TURKEY','',K.y],['THE MISTAKE','3 WARNING SIGNS','STAY',K.y],['SEP 2018','RBI CUTS CEO TERM','-47%',K.r],
+ ['MAR 2020','RBI TAKES OVER','-85%',K.r],['5 NOV 2026','₹16 TODAY','-96%',K.r],['THE LESSON','CALM ≠ SAFE','',K.y],
+ ['CHECK ANY STOCK','3 WARNING SIGNS','SAVE',K.y],['MONEYINCLOUD','SAVE + FOLLOW','@moneyincloud',K.p]];
+const SRC=['Turkey parable: Nassim Taleb, "The Black Swan" (2007), after Bertrand Russell · story illustration','Story illustration · education only','Story illustration · not real data',
+ 'Story illustration · not real data','Education only · not a buy/sell call','Yes Bank high ₹404 (Aug 2018), stockpricearchive.com · mcap >₹1 lakh cr, ThePrint (7 Mar 2020)','Education only · not a buy/sell call',
+ 'Education only · not a buy/sell call','RBI cut MD & CEO term to 31 Jan 2019 (ThePrint) · Aug→Sep 2018 monthly close ₹343.5→₹183.65','RBI moratorium & ₹50,000 cap, 5 Mar 2020 · ₹5.55 on BSE, 6 Mar 2020 (Business Standard)',
+ 'NSE close ₹16.24, 5 Nov 2026 (INDmoney) vs ₹404 high','Education only · not a buy/sell call','UBS report (2015), promoter pledge, RBI action: ThePrint timeline, 7 Mar 2020','Education only · not a buy/sell call · I may hold some stocks named'];
+function lineAt(t){let i=0;for(let k=0;k<ST.length;k++)if(t>=ST[k])i=k;return i}
+function speaking(t){for(let k=0;k<VO.length;k++)if(t>=VO[k]&&t<VO[k]+DU[k])return k;return -1}
+function amp(t){return D.amp[Math.min(D.amp.length-1,Math.max(0,Math.round(t*30)))]||0}
+let sd=1;const rnd=()=>{sd=(sd*16807)%2147483647;return sd/2147483647};
+// ---------- board background: green-black slate with chalk dust and old smudges ----------
+(function(){const b=$('boardbg').getContext('2d');const g=b.createRadialGradient(500,500,100,500,560,800);g.addColorStop(0,'#2C4235');g.addColorStop(1,'#1D2E24');b.fillStyle=g;b.fillRect(0,0,992,1166);
+ sd=7;for(let i=0;i<26;i++){const x=rnd()*992,y=rnd()*1166,r=80+rnd()*220;const gg=b.createRadialGradient(x,y,0,x,y,r);gg.addColorStop(0,'rgba(255,255,255,.05)');gg.addColorStop(1,'rgba(255,255,255,0)');b.fillStyle=gg;b.fillRect(x-r,y-r,2*r,2*r)}
+ for(let i=0;i<5000;i++){b.fillStyle=`rgba(255,255,255,${rnd()*0.05})`;b.fillRect(rnd()*992,rnd()*1166,1.5,1.5)}
+ b.strokeStyle='rgba(255,255,255,.035)';b.lineWidth=40;b.lineCap='round';for(let i=0;i<6;i++){b.beginPath();const y=rnd()*1166;b.moveTo(rnd()*300,y);b.quadraticCurveTo(500,y+rnd()*80-40,700+rnd()*290,y+rnd()*60-30);b.stroke()}
+ const h=$('hr').getContext('2d');h.strokeStyle='rgba(244,241,232,.55)';h.lineWidth=3;h.beginPath();h.moveTo(0,3);for(let x=0;x<920;x+=20)h.lineTo(x,3+Math.sin(x*0.07)*1.4);h.stroke()})();
+// ---------- chalk helpers ----------
+const c=$('sc').getContext('2d');
+function chalkStyle(col,w){c.strokeStyle=col;c.lineWidth=w;c.lineCap='round';c.lineJoin='round';c.shadowColor='rgba(255,255,255,.25)';c.shadowBlur=3}
+// draw a polyline progressively (draw-on), with a doubled slightly offset pass for chalk grain
+function path(pts,p,col=K.w,w=7){if(p<=0||pts.length<2)return;let L=0;const seg=[];for(let i=1;i<pts.length;i++){const d=Math.hypot(pts[i][0]-pts[i-1][0],pts[i][1]-pts[i-1][1]);seg.push(d);L+=d}
+ let left=L*cl(p);chalkStyle(col,w);for(const [dx,dy,a,ww] of [[0,0,0.85,1],[1.5,-1,0.35,0.55]]){c.globalAlpha=a;c.lineWidth=w*ww;c.beginPath();c.moveTo(pts[0][0]+dx,pts[0][1]+dy);let rem=left;
+  for(let i=1;i<pts.length;i++){if(rem<=0)break;const d=seg[i-1];if(rem>=d){c.lineTo(pts[i][0]+dx,pts[i][1]+dy);rem-=d}else{const k=rem/d;c.lineTo(pts[i-1][0]+(pts[i][0]-pts[i-1][0])*k+dx,pts[i-1][1]+(pts[i][1]-pts[i-1][1])*k+dy);rem=0}}c.stroke()}
+ c.globalAlpha=1;c.shadowBlur=0}
+function circ(cx,cy,rx,ry,p,col,w=7,a0=-1.6){const pts=[];for(let i=0;i<=48;i++){const a=a0+i/48*Math.PI*2.05;pts.push([cx+Math.cos(a)*rx*(1+Math.sin(i*1.7)*0.012),cy+Math.sin(a)*ry])}path(pts,p,col,w)}
+function line(x1,y1,x2,y2,p,col,w=7){path([[x1,y1],[(x1+x2)/2+1.5,(y1+y2)/2-1],[x2,y2]],p,col,w)}
+function arrowC(x1,y1,x2,y2,p,col,w=7){line(x1,y1,x2,y2,p,col,w);if(p>0.9){const a=Math.atan2(y2-y1,x2-x1);line(x2,y2,x2-Math.cos(a-0.5)*30,y2-Math.sin(a-0.5)*30,1,col,w);line(x2,y2,x2-Math.cos(a+0.5)*30,y2-Math.sin(a+0.5)*30,1,col,w)}}
+// write-on text: reveal left to right with a clip
+function W(s,x,y,sz,col=K.w,p=1,al='center',f='Chalk'){if(p<=0)return;c.save();c.font=`${sz}px ${f}`;c.textAlign=al;c.textBaseline='middle';const tw=c.measureText(s).width;const x0=al==='center'?x-tw/2:al==='right'?x-tw:x;
+ c.beginPath();c.rect(x0-10,y-sz,(tw+20)*eo(p),sz*2);c.clip();c.shadowColor='rgba(255,255,255,.3)';c.shadowBlur=4;c.fillStyle=col;c.globalAlpha=0.93;c.fillText(s,x,y);c.globalAlpha=0.25;c.fillText(s,x+1.5,y-1);c.restore()}
+function box(x,y,w,h,p,col,ww=6){path([[x,y],[x+w,y+2],[x+w-2,y+h],[x+2,y+h-1],[x,y]],p,col,ww)}
+function tick(x,y,p,col=K.g,s=1){path([[x-18*s,y],[x-4*s,y+16*s],[x+24*s,y-20*s]],p,col,9)}
+function cross(x,y,r,p,col=K.r){line(x-r,y-r,x+r,y+r,cl(p*2),col,9);line(x+r,y-r,x-r,y+r,cl(p*2-1),col,9)}
+function heart(x,y,s,p,col){const pts=[];for(let i=0;i<=40;i++){const a=i/40*Math.PI*2;pts.push([x+s*16*Math.pow(Math.sin(a),3),y-s*(13*Math.cos(a)-5*Math.cos(2*a)-2*Math.cos(3*a)-Math.cos(4*a))])}path(pts,p,col,6)}
+// the chalk turkey
+function turkey(x,y,s,p,t=0,mood=0){c.save();c.translate(x,y);c.scale(s,s);
+ const q=i=>cl(p*6-i);// staged draw-on
+ const fan=[K.o,K.y,K.r,K.p,K.o,K.y,K.r];for(let i=0;i<7;i++){const a=-2.6+i*0.37;path([[0,10],[Math.cos(a)*150,Math.sin(a)*150+10]],q(0),fan[i],18)}
+ circ(0,20,95,80,q(1),K.w,8);circ(0,30,55,45,q(1.5),'rgba(244,241,232,.35)',5);
+ circ(70,-55,32,32,q(2),K.w,7);path([[98,-58],[124,-48],[98,-42]],q(3),K.y,6);path([[96,-38],[104,-14],[92,-22]],q(3),K.r,8);
+ c.fillStyle=K.w;if(q(3)>0.5){c.beginPath();c.arc(78,-62,5,0,7);c.fill()}
+ if(mood===1&&q(3)>0.5){path([[62,-80],[84,-74]],1,K.w,4)}
+ line(-25,95,-30,140,q(4),K.y,7);line(25,95,30,140,q(4),K.y,7);line(-30,140,-48,148,q(4),K.y,6);line(30,140,48,148,q(4),K.y,6);
+ c.restore()}
+// eraser wipe at scene change
+function wipe(t,s0){const q=pr(t,s0-0.05,0.4);if(q<=0||q>=1)return;const x=-150+q*1300;c.save();c.fillStyle='rgba(37,57,45,.92)';c.fillRect(0,0,Math.max(0,x),980);
+ c.fillStyle='#8B6B4A';c.fillRect(x-60,380,120,200);c.fillStyle='#4A4A4A';c.fillRect(x-60,540,120,40);c.restore()}
+// ---------- scenes (1000 x 980 canvas) ----------
+function S0(t){turkey(500,380,1.6,pr(t,0.1,1.8),t);const n=Math.min(1000,Math.floor(pr(t,0.6,2.6)*1000));W('DAY '+n.toLocaleString('en-IN'),500,740,84,K.y,pr(t,0.5,0.3));
+ if(t>M.lost){cross(500,380,230,pr(t,M.lost,0.6));W('LOST EVERYTHING',500,860,72,K.r,pr(t,M.lost+0.3,0.6))}}
+function S1(t){turkey(620,520,1.25,1,t);// farmer's hand + grain
+ path([[40,140],[180,150],[230,170],[240,200],[200,210],[60,200]],pr(t,ST[1]+0.1,0.8),K.w,7);W('FARMER',130,100,44,K.b,pr(t,ST[1]+0.3,0.4),'center','Hand');
+ for(let i=0;i<14;i++){const k=(t*0.8+i/14)%1;if(t>M.feed){c.fillStyle=K.y;c.beginPath();c.arc(240+i%3*20+k*160,210+k*260,5,0,7);c.fill()}}
+ if(t>M.love-0.2){const p=pr(t,M.love-0.2,0.8);path([[380,180],[900,180],[900,330],[640,330],[600,380],[600,330],[380,330],[380,180]],p,K.w,6);W('"HUMANS LOVE ME!"',640,255,58,K.p,pr(t,M.love,0.7));heart(860,120,2.4,pr(t,M.love+0.6,0.6),K.p)}}
+function S2(t){const x0=110,y0=780,w=780,h=560;line(x0,y0,x0+w,y0,pr(t,ST[2],0.4),K.w,6);line(x0,y0,x0,y0-h,pr(t,ST[2],0.4),K.w,6);
+ W('CONFIDENCE',x0+10,y0-h-20,44,K.b,pr(t,ST[2]+0.2,0.4),'left','Hand');W('DAYS',x0+w,y0+50,44,K.b,pr(t,ST[2]+0.2,0.4),'right','Hand');
+ const pts=[];for(let i=0;i<=60;i++){const k=i/60;pts.push([x0+k*w,y0-30-(h-80)*Math.pow(k,0.8)+Math.sin(i*1.9)*8])}
+ const g=t<M.d100?0.1:t<M.d500?0.5:t<M.d1000?0.85:1;const gp=eo(pr(t,ST[2]+0.3,0.6))*0.1+ (t>M.d100?eo(pr(t,M.d100,1.2))*0.4:0)+(t>M.d500?eo(pr(t,M.d500,1.2))*0.35:0)+(t>M.d1000?eo(pr(t,M.d1000,1.0))*0.15:0);
+ path(pts,gp,K.g,9);
+ [[0.1,'100',M.d100],[0.5,'500',M.d500],[1.0,'1,000',M.d1000]].forEach(([k,l,tm])=>{if(t>tm){line(x0+k*w,y0-10,x0+k*w,y0+10,1,K.w,5);W(l,x0+k*w,y0+50,52,K.y,pr(t,tm,0.4))}});
+ if(t>M.conf-0.2){turkey(x0+w-120,y0-h-40,0.55,1,t);W('ALL-TIME HIGH!',x0+w-260,y0-h+110,52,K.y,pr(t,M.conf,0.5))}}
+function S3(t){const x0=110,y0=780,w=700,h=560;line(x0,y0,x0+w+120,y0,1,K.w,6);line(x0,y0,x0,y0-h,1,K.w,6);
+ const pts=[];for(let i=0;i<=60;i++){const k=i/60;pts.push([x0+k*w,y0-30-(h-80)*Math.pow(k,0.8)+Math.sin(i*1.9)*8])}path(pts,1,K.g,9);
+ const pf=pr(t,M.fest-0.3,0.5);if(pf>0){box(x0+w-80,120,220,170,pf,K.w);W('DAY',x0+w+30,165,40,K.b,pf,'center','Hand');W('1,001',x0+w+30,235,72,K.r,pf)}
+ if(t>M.never-0.2){line(x0+w,y0-h+50,x0+w+40,y0-10,pr(t,M.never-0.2,0.35),K.r,12);W('?!',x0+w+110,y0-200,140,K.r,pr(t,M.never+0.2,0.3))}}
+function S4(t){turkey(250,420,1.0,1,t);W('=',500,420,160,K.w,pr(t,M.inv,0.3));
+ const p=pr(t,M.inv+0.3,1.0);line(660,560,720,470,p,K.g,8);line(720,470,780,500,cl(p*1.5-0.3),K.g,8);line(780,500,880,330,cl(p*1.5-0.5),K.g,8);
+ W('INVESTOR',780,640,64,K.y,pr(t,M.inv+0.4,0.5));W('a real stock →',500,800,72,K.b,pr(t,M.real,0.6),'center','Hand')}
+// Yes Bank chart (real points; vertical log-ish scale)
+const YP=[[0,'',null],[1,'AUG 2018',404],[2,'SEP 2018',183.65],[3,'6 MAR 2020',5.55],[4,'5 NOV 2026',16.24]];
+function yb(v){return 840-Math.log10(v)/Math.log10(500)*620}
+function ybChart(t,upto,pp){const xs=[110,330,470,690,900];
+ line(80,850,960,850,1,K.w,5);W('YES BANK (₹ per share)',90,190,44,K.b,1,'left','Hand');
+ // years of rising (schematic, dashed)
+ c.setLineDash([14,14]);path([[90,yb(60)],[200,yb(140)],[300,yb(260)],[xs[1],yb(404)]],pp[0],K.dim,6);c.setLineDash([]);
+ if(pp[0]>0.5)W('years of rising',190,yb(80)+20,40,K.dim,1,'center','Hand');
+ for(let i=1;i<=upto;i++){const pi=pp[i]||1;if(i>1)line(xs[i-1],yb(YP[i-1][2]),xs[i],yb(YP[i][2]),pi,i>=4?K.y:K.r,9);
+  if(pi>0.8){c.fillStyle=i===1?K.g:i===4?K.y:K.r;c.beginPath();c.arc(xs[i],yb(YP[i][2]),11,0,7);c.fill();
+   W('₹'+YP[i][2].toLocaleString('en-IN'),xs[i]+(i===1?10:0),yb(YP[i][2])-(i===3?-60:48),58,i===1?K.g:i===4?K.y:K.r,pr(pi,0.8,0.2)||1);W(YP[i][1],xs[i],890,36,K.w,1,'center','Hand')}}}
+function S5(t){ybChart(t,1,[pr(t,M.yes,1.2),pr(t,M.r400-0.3,0.4)]);if(t>M.lakh-0.2){box(560,240,380,130,pr(t,M.lakh-0.2,0.6),K.g);W('VALUE > ₹1 LAKH CR',750,305,48,K.g,pr(t,M.lakh,0.6))}}
+function S6(t){turkey(260,460,0.9,1,t);// "feels safe" meter
+ box(560,200,120,560,pr(t,ST[6],0.5),K.w);const f=eo(pr(t,ST[6]+0.3,2.6));c.fillStyle='rgba(168,230,161,.55)';c.fillRect(566,756-548*f,108,548*f);
+ W('FEELS SAFE',620,820,52,K.g,pr(t,ST[6]+0.3,0.5));W('INVESTOR',850,460,52,K.y,pr(t,M.just-0.3,0.5));W('TURKEY',260,700,52,K.y,pr(t,M.just,0.5))}
+function S7(t){W('?',500,330,300,K.y,pr(t,ST[7]+0.1,0.4));
+ [0,1,2].forEach(i=>{const p=pr(t,M.three-0.2+i*0.25,0.4);box(90+i*290,620,240,200,p,K.w);W(String(i+1),210+i*290,690,90,K.y,p);W('???',210+i*290,770,56,K.dim,p)});W('3 WARNING SIGNS',500,900,64,K.p,pr(t,M.three+0.6,0.6))}
+function S8(t){ybChart(t,2,[1,1,pr(t,M.halved-0.4,0.8)]);if(t>M.ceo-0.2){box(520,240,430,140,pr(t,M.ceo-0.2,0.6),K.r);W('RBI CUTS CEO TERM',735,310,52,K.r,pr(t,M.ceo,0.6))}
+ if(t>M.halved)W('-47% IN A MONTH',735,450,56,K.y,pr(t,M.halved,0.5))}
+function S9(t){ybChart(t,3,[1,1,1,pr(t,M.crash-0.2,0.6)]);
+ if(t>M.board-0.3){box(450,190,500,110,pr(t,M.board-0.3,0.5),K.r);W('RBI TAKES OVER BOARD',700,247,46,K.r,pr(t,M.board,0.5))}
+ if(t>M.cap-0.3){box(450,320,500,110,pr(t,M.cap-0.3,0.5),K.o);W('WITHDRAWALS ≤ ₹50,000',700,377,46,K.o,pr(t,M.cap,0.5))}
+ if(t>M.crash+0.4)W('-85% IN ONE DAY',690,600,60,K.r,pr(t,M.crash+0.4,0.5))}
+function S10(t){ybChart(t,4,[1,1,1,1,pr(t,M.today-0.2,0.8)]);if(t>M.p96-0.3){circ(735,330,230,90,pr(t,M.p96-0.3,0.6),K.y,7);W('-96% FROM PEAK',735,332,64,K.y,pr(t,M.p96,0.5))}}
+function S11(t){turkey(500,330,1.2,1,t,1);W('LONG CALM STREAK',500,640,72,K.g,pr(t,M.calm-0.4,0.6));W('≠',500,735,110,K.r,pr(t,M.calm+0.2,0.3));W('SAFETY',500,840,80,K.w,pr(t,M.calm+0.5,0.5))}
+function S12(t){const rows=[[M.w1,'Loans growing too fast','to stressed companies','UBS report, 2015'],[M.w2,'Promoter pledged','his ENTIRE stake','by 2019'],[M.w3,'The regulator itself','raised a red flag','RBI, Sep 2018']];
+ rows.forEach(([tm,a,b,s],i)=>{const y=60+i*300,p=pr(t,tm-0.2,0.5);if(p<=0)return;box(40,y,920,260,p,K.w,5);W(String(i+1),110,y+130,120,K.y,p);
+  W(a,200,y+70,56,K.w,pr(t,tm,0.6),'left');W(b,200,y+140,56,K.p,pr(t,tm+0.3,0.6),'left');W(s,200,y+210,40,K.b,pr(t,tm+0.6,0.4),'left','Hand');cross(880,y+130,30,pr(t,tm+0.8,0.4),K.r)})}
+function S13(t){W('A RISING CHART',500,90,72,K.w,pr(t,M.proof-0.3,0.5));W('≠ PROOF OF SAFETY',500,180,72,K.y,pr(t,M.proof+0.3,0.5));
+ if(t>M.save-0.2){box(70,280,400,200,pr(t,M.save-0.2,0.5),K.y);W('SAVE THIS',270,380,72,K.y,pr(t,M.save,0.5))}
+ if(t>M.follow-0.2){box(530,280,400,200,pr(t,M.follow-0.2,0.5),K.p);W('FOLLOW',730,355,72,K.p,pr(t,M.follow,0.5));W('@moneyincloud',730,430,40,K.w,pr(t,M.follow+0.3,0.5),'center','Hand')}
+ if(t>M.still-0.3){turkey(330,740,0.8,pr(t,M.still-0.3,0.8),t);W('still the turkey?',700,740,72,K.y,pr(t,M.still+0.3,0.6),'center','Hand')}}
+const SCENES=[S0,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13];
+// poses
+const POSES={};for(const [,q] of D.cues){if(!POSES[q]){const im=new Image();im.src=`poses/p${String(q).padStart(2,'0')}.png`;POSES[q]=im}}
+window.ready=Promise.all([document.fonts.load('60px Chalk'),document.fonts.load('40px Hand'),document.fonts.load('40px Pop'),document.fonts.load('20px Mono'),document.fonts.ready,...Object.values(POSES).map(i=>i.decode())]);
+// ---------- seek ----------
+let lastPose=-1;
+window.seek=function(t){
+ const li=lineAt(t),s0=ST[li],H=HDR[li];
+ $('kick').textContent=H[0];const tt=$('ttl');tt.textContent=H[1];tt.style.clipPath=`inset(0 ${100-eo(pr(t,s0,0.7))*100}% 0 0)`;
+ const ch=$('chip');ch.textContent=H[2];ch.style.color=H[3];ch.style.borderColor=H[3];ch.style.display=H[2]?'block':'none';ch.style.clipPath=`inset(0 ${100-eo(pr(t,s0+0.4,0.5))*100}% 0 0)`;
+ $('src').textContent=SRC[li];
+ c.clearRect(0,0,1000,980);c.save();SCENES[li](t,li);c.restore();if(li>0)wipe(t,s0);
+ // caption
+ let pg=null;for(const q of D.pages)if(t>=q[0])pg=q;const cap=$('cap');
+ if(pg){if(cap.dataset.k!==String(pg[0])){cap.dataset.k=pg[0];cap.innerHTML=pg[1].replace(/\*([^*]+)\*/g,'<span class="a">$1</span>')}
+  const q=pr(t,pg[0],0.22);cap.style.opacity=q;cap.style.transform=`translateY(${(1-eo(q))*18}px)`}else cap.style.opacity=0;
+ // host
+ const sp=speaking(t),a=sp>=0?amp(t):0;
+ let pid=D.cues[0][1],t0=-9;for(const [tc,q] of D.cues)if(t>=tc){pid=q;t0=tc}
+ const img=$('himg');let pend=null;if(pid!==lastPose){img.src=POSES[pid].src;lastPose=pid;pend=img.decode().catch(()=>{})}
+ const iw=POSES[pid].naturalWidth;img.style.width=iw+'px';img.style.left=(-iw/2)+'px';
+ const pp=t0>-9?0.84+0.16*eb(pr(t,t0,0.25),2.2):1;
+ $('host').style.transform=`translateY(${-a*6}px) rotate(${Math.sin(t*4.2)*1.6*a}deg) scale(${pp*(1+0.025*a)})`;
+ window._pending=pend;return pend};
+</script>
+</body></html>

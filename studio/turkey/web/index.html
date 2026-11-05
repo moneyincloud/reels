@@ -1,0 +1,164 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Pop;src:url(Poppins-Bold.ttf)}
+@font-face{font-family:Mono;src:url(DejaVuSansMono-Bold.ttf)}
+:root{--bg:#F7F3EC;--ink:#1B2235;--mute:#8C8676;--line:#E3DCCD;--or:#E87B00;--or2:#F59E0B;--red:#E5484D;--grn:#16A34A;--blue:#2F6FED;--pur:#7C5CFC}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg)}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;color:var(--ink);font-family:Pop,sans-serif}
+.full{position:absolute;left:0;top:0}
+.hud{position:absolute;left:56px;right:56px;top:70px;display:flex;justify-content:space-between;font-family:Mono;font-size:25px;letter-spacing:1px;align-items:center}
+.hud .l{color:var(--grn)} .hud .r{color:var(--mute)} .logo{display:flex;align-items:center;gap:10px}
+#hdr{position:absolute;left:40px;top:150px;width:1000px;height:150px;background:#fff;border:2px solid var(--line);border-radius:26px;box-shadow:0 14px 34px rgba(60,45,20,.08);padding:22px 34px;overflow:hidden}
+#kick{font-family:Mono;font-size:24px;color:var(--mute)}
+#ttl{font-size:56px;line-height:1.15;margin-top:6px;white-space:nowrap}
+#chip{position:absolute;right:30px;top:50px;font-size:28px;color:#fff;padding:10px 26px;border-radius:999px}
+#card{position:absolute;left:40px;top:330px;width:1000px;height:980px;background:#fff;border:2px solid var(--line);border-radius:30px;box-shadow:0 22px 50px rgba(60,45,20,.10)}
+#sc{position:absolute;left:40px;top:330px}
+#host{position:absolute;left:925px;top:1720px;transform-origin:50% 100%}
+#host img{position:absolute;bottom:0;left:0;display:block}
+#hglow{position:absolute;left:760px;top:1360px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(22,163,74,.22),rgba(22,163,74,0) 66%)}
+#cap{position:absolute;left:56px;top:1350px;width:700px;font-size:52px;overflow-wrap:break-word;line-height:1.17;color:var(--ink)}
+#cap .a{color:var(--grn)}
+#src{position:absolute;left:56px;top:1660px;width:720px;font-family:Mono;font-size:19px;line-height:1.4;color:var(--mute)}
+</style></head>
+<body><div id="stage">
+<canvas id="bg" class="full" width="1080" height="1920"></canvas>
+<div class="hud"><div class="l">ANIMAL FRIDAY</div><div class="logo"><svg width="50" height="36" viewBox="0 0 54 38"><path d="M14 36h28a11 11 0 0 0 1-22A15 15 0 0 0 15 11 12.5 12.5 0 0 0 14 36z" fill="#16A34A"/><text x="27" y="30" font-size="19" font-family="Pop" fill="#fff" text-anchor="middle">₹</text></svg><span style="font-family:Pop;font-size:30px;color:#1B2235;letter-spacing:0">money<b style="color:#16A34A">in</b>cloud</span></div><div class="r">6 NOV 2026</div></div>
+<div id="hdr"><div id="kick"></div><div id="ttl"></div><div id="chip"></div></div>
+<div id="card"></div>
+<canvas id="sc" width="1000" height="980"></canvas>
+<div id="hglow"></div>
+<div id="host"><img id="himg"></div>
+<div id="cap"></div>
+<div id="src"></div>
+</div>
+<script src="data.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const cl=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eo=x=>1-Math.pow(1-cl(x),3);
+const eb=(x,s=1.8)=>{x=cl(x);const c=s+1;return 1+c*Math.pow(x-1,3)+s*Math.pow(x-1,2)};
+const pr=(t,a,d)=>cl((t-a)/d);
+const M=D.marks, VO=D.vo, ST=D.starts, DU=D.durs;
+const C={ink:'#1B2235',mute:'#8C8676',line:'#E3DCCD',or:'#E87B00',or2:'#F59E0B',red:'#E5484D',grn:'#16A34A',blue:'#2F6FED',pur:'#7C5CFC',redl:'#FDECEC',grnl:'#E7F7EC',bluel:'#E8F0FE',orl:'#FFF4E0',soft:'#F4F1EA',brown:'#8B5A2B',brown2:'#B07A45'};
+const HDR=[['ANIMAL FRIDAY','The Turkey Problem','1,000 DAYS',C.or2],['DAY 1, 2, 3…','Fed every day','HAPPY',C.grn],['THE TURKEY\'S CHART','Confidence keeps rising','DAY 1,000',C.grn],
+ ['DAY 1,001','The festival','?!',C.red],['INVESTORS TOO','A real stock','NEXT',C.or2],['YES BANK · AUG 2018','Peak: ~₹400','₹1 LAKH CR+',C.grn],
+ ['FEELS SAFE?','Just like the turkey','SAFE?',C.or2],['THE MISTAKE','3 warning signs','STAY',C.or2],['SEP 2018','RBI cuts CEO term','−47%',C.red],
+ ['MAR 2020','RBI takes over','−85%',C.red],['5 NOV 2026','₹16 today','−96%',C.red],['THE LESSON','Calm ≠ safe','LESSON',C.or2],
+ ['CHECK ANY STOCK','3 warning signs','SAVE',C.or2],['MONEYINCLOUD','Save + follow','@moneyincloud',C.grn]];
+const SRC=['Turkey parable: Nassim Taleb, "The Black Swan" (2007), after Bertrand Russell · story illustration','Story illustration · education only','Story illustration · not real data',
+ 'Story illustration · not real data','Education only · not a buy/sell call','Yes Bank high ₹404 (Aug 2018), stockpricearchive.com · mcap >₹1 lakh cr, ThePrint (7 Mar 2020)','Education only · not a buy/sell call',
+ 'Education only · not a buy/sell call','RBI cut MD & CEO term to 31 Jan 2019 (ThePrint) · monthly close Aug→Sep 2018: ₹343.5→₹183.65','RBI moratorium & ₹50,000 cap, 5 Mar 2020 · ₹5.55 on BSE, 6 Mar 2020 (Business Standard)',
+ 'NSE close ₹16.24, 5 Nov 2026 (INDmoney) vs ₹404 high','Education only · not a buy/sell call','UBS report (2015), promoter pledge, RBI action: ThePrint timeline, 7 Mar 2020','Education only · not a buy/sell call · I may hold some stocks named'];
+function lineAt(t){let i=0;for(let k=0;k<ST.length;k++)if(t>=ST[k])i=k;return i}
+function speaking(t){for(let k=0;k<VO.length;k++)if(t>=VO[k]&&t<VO[k]+DU[k])return k;return -1}
+function amp(t){return D.amp[Math.min(D.amp.length-1,Math.max(0,Math.round(t*30)))]||0}
+(function(){const b=$('bg').getContext('2d');b.fillStyle='#F7F3EC';b.fillRect(0,0,1080,1920);b.fillStyle='rgba(140,134,118,.15)';for(let y=20;y<1920;y+=36)for(let x=18;x<1080;x+=36){b.beginPath();b.arc(x,y,2,0,7);b.fill()}})();
+const POSES={};for(const [,p] of D.cues){if(!POSES[p]){const im=new Image();im.src=`poses/p${String(p).padStart(2,'0')}.png`;POSES[p]=im}}
+window.ready=Promise.all([document.fonts.load('40px Pop'),document.fonts.load('20px Mono'),document.fonts.ready,...Object.values(POSES).map(i=>i.decode())]);
+// ---------- canvas helpers ----------
+const c=$('sc').getContext('2d');
+function T(s,x,y,sz,col,al='center',f='Pop'){c.font=`${sz}px ${f}`;c.fillStyle=col;c.textAlign=al;c.textBaseline='middle';c.fillText(s,x,y)}
+function RR(x,y,w,h,r,fill,stroke,lw=3){c.beginPath();c.roundRect(x,y,w,h,r);if(fill){c.fillStyle=fill;c.fill()}if(stroke){c.strokeStyle=stroke;c.lineWidth=lw;c.stroke()}}
+function chip(s,x,y,bg,fg='#fff',sz=26){c.font=`${sz}px Pop`;const w=c.measureText(s).width+40,h=sz+24;RR(x-w/2,y-h/2,w,h,h/2,bg);T(s,x,y+1,sz,fg);return w}
+function popAt(x,y,p,fn){if(p<=0)return;c.save();c.globalAlpha=cl(p*1.5);c.translate(x,y);const s=0.6+0.4*eb(p);c.scale(s,s);fn();c.restore()}
+function stamp(s,x,y,col,p,sz=60,rot=-0.12){if(p<=0)return;c.save();c.globalAlpha=cl(p*2);c.translate(x,y);c.rotate(rot);c.scale(2-eo(p),2-eo(p));c.font=`${sz}px Pop`;const w=c.measureText(s).width+50;RR(-w/2,-sz*0.75,w,sz*1.5,16,'rgba(255,255,255,.92)',col,8);T(s,0,2,sz,col);c.restore()}
+function arrow(x1,y1,x2,y2,col,w=6){c.save();c.strokeStyle=col;c.fillStyle=col;c.lineWidth=w;c.lineCap='round';const a=Math.atan2(y2-y1,x2-x1),hx=x2-Math.cos(a)*18,hy=y2-Math.sin(a)*18;c.beginPath();c.moveTo(x1,y1);c.lineTo(hx,hy);c.stroke();
+ c.beginPath();c.moveTo(x2,y2);c.lineTo(x2-Math.cos(a-0.45)*28,y2-Math.sin(a-0.45)*28);c.lineTo(x2-Math.cos(a+0.45)*28,y2-Math.sin(a+0.45)*28);c.fill();c.restore()}
+function heart(x,y,s,col){c.save();c.translate(x,y);c.scale(s,s);c.fillStyle=col;c.beginPath();c.moveTo(0,10);c.bezierCurveTo(-30,-14,-12,-34,0,-18);c.bezierCurveTo(12,-34,30,-14,0,10);c.fill();c.restore()}
+function crossX(x,y,r,col,w=14){c.strokeStyle=col;c.lineWidth=w;c.lineCap='round';c.beginPath();c.moveTo(x-r,y-r);c.lineTo(x+r,y+r);c.moveTo(x+r,y-r);c.lineTo(x-r,y+r);c.stroke()}
+function tickM(x,y,s,col=C.grn){c.save();c.translate(x,y);c.scale(s,s);c.strokeStyle=col;c.lineWidth=10;c.lineCap='round';c.lineJoin='round';c.beginPath();c.moveTo(-18,0);c.lineTo(-4,14);c.lineTo(22,-16);c.stroke();c.restore()}
+// flat-vector turkey
+function turkey(x,y,s,t=0,mood=0){c.save();c.translate(x,y);c.scale(s,s);const bob=Math.sin(t*3)*3;c.translate(0,bob);
+ const fan=['#E87B00','#F59E0B','#E5484D','#C2410C','#F59E0B','#E87B00','#E5484D'];
+ for(let i=0;i<7;i++){const a=-2.75+i*0.42;c.save();c.rotate(a+Math.PI/2);c.fillStyle=fan[i];c.beginPath();c.ellipse(0,-120,34,92,0,0,7);c.fill();c.restore()}
+ c.fillStyle=C.brown;c.beginPath();c.ellipse(0,20,96,84,0,0,7);c.fill();c.fillStyle=C.brown2;c.beginPath();c.ellipse(-8,38,60,52,0,0,7);c.fill();
+ c.fillStyle=C.brown;c.beginPath();c.ellipse(64,-58,36,40,0,0,7);c.fill();
+ c.fillStyle='#fff';c.beginPath();c.arc(76,-66,11,0,7);c.fill();c.fillStyle=C.ink;c.beginPath();c.arc(79,-66,6,0,7);c.fill();
+ if(mood===1){c.strokeStyle=C.ink;c.lineWidth=5;c.beginPath();c.moveTo(64,-86);c.lineTo(90,-80);c.stroke()}
+ c.fillStyle=C.or2;c.beginPath();c.moveTo(96,-58);c.lineTo(126,-48);c.lineTo(96,-40);c.fill();
+ c.fillStyle=C.red;c.beginPath();c.ellipse(98,-26,9,20,0.2,0,7);c.fill();
+ c.strokeStyle=C.or;c.lineWidth=8;c.lineCap='round';for(const lx of [-26,26]){c.beginPath();c.moveTo(lx,96);c.lineTo(lx,138);c.lineTo(lx+18,146);c.moveTo(lx,138);c.lineTo(lx-16,148);c.stroke()}
+ c.restore()}
+function grainBag(x,y,s){c.save();c.translate(x,y);c.scale(s,s);c.fillStyle='#D9B26F';c.beginPath();c.moveTo(-60,-70);c.lineTo(60,-70);c.lineTo(75,80);c.lineTo(-75,80);c.closePath();c.fill();c.fillStyle='#B88A45';c.fillRect(-62,-84,124,20);T('GRAIN',0,10,30,'#6B4A1F');c.restore()}
+// chart frame
+function axes(x0,y0,w,h){c.strokeStyle=C.line;c.lineWidth=4;c.beginPath();c.moveTo(x0,y0-h);c.lineTo(x0,y0);c.lineTo(x0+w,y0);c.stroke()}
+function confPts(x0,y0,w,h){const pts=[];for(let i=0;i<=60;i++){const k=i/60;pts.push([x0+k*w,y0-30-(h-80)*Math.pow(k,0.8)+Math.sin(i*1.9)*8])}return pts}
+function drawPts(pts,g,col,w=8){const m=Math.max(2,Math.round(pts.length*cl(g)));c.strokeStyle=col;c.lineWidth=w;c.lineJoin='round';c.lineCap='round';c.beginPath();for(let i=0;i<m;i++)c.lineTo(pts[i][0],pts[i][1]);c.stroke()}
+// ---------- scenes ----------
+function S0(t){popAt(500,370,pr(t,0.05,0.5),()=>turkey(0,0,1.45,t));const n=Math.min(1000,Math.floor(pr(t,0.5,2.4)*1000));
+ popAt(500,730,pr(t,0.5,0.4),()=>{RR(-260,-60,520,120,28,C.orl,C.or2,4);T('DAY '+n.toLocaleString('en-IN'),0,2,64,C.or)});
+ if(t>M.lost){c.save();c.globalAlpha=pr(t,M.lost,0.3);crossX(500,370,220,C.red,22);c.restore();stamp('LOST EVERYTHING',500,870,C.red,pr(t,M.lost+0.2,0.35),52,-0.06)}}
+function S1(t){popAt(170,300,pr(t,ST[1]+0.05,0.4),()=>{grainBag(0,0,1.1)});popAt(170,450,pr(t,ST[1]+0.3,0.4),()=>T('FARMER',0,0,30,C.mute,'center','Mono'));
+ for(let i=0;i<16;i++){const k=(t*0.8+i/16)%1;if(t>M.feed){c.fillStyle=C.or2;c.beginPath();c.arc(260+(i%4)*14+k*240,260+k*360,7,0,7);c.fill()}}
+ turkey(640,600,1.15,t);
+ popAt(660,210,pr(t,M.love-0.2,0.4),()=>{RR(-280,-80,560,160,40,C.redl,C.red,4);c.fillStyle=C.redl;c.beginPath();c.moveTo(-30,78);c.lineTo(10,140);c.lineTo(40,78);c.fill();T('"Humans love me!"',0,2,50,C.red)});
+ if(t>M.love+0.5)for(let i=0;i<3;i++){const k=(t*0.6+i/3)%1;c.globalAlpha=1-k;heart(880+i*20-k*30,120-k*120,1.2,C.red);c.globalAlpha=1}}
+function S2(t){const x0=110,y0=800,w=780,h=600;axes(x0,y0,w,h);T('CONFIDENCE',x0+10,y0-h-10,28,C.mute,'left','Mono');T('DAYS →',x0+w,y0-24,28,C.mute,'right','Mono');
+ const pts=confPts(x0,y0,w,h);const gp=0.05+(t>M.d100?eo(pr(t,M.d100,1.0))*0.15:0)+(t>M.d500?eo(pr(t,M.d500,1.0))*0.35:0)+(t>M.d1000?eo(pr(t,M.d1000,1.0))*0.45:0)+eo(pr(t,ST[2]+0.2,0.5))*0.0;
+ c.save();c.beginPath();const m=Math.max(2,Math.round(pts.length*cl(gp)));for(let i=0;i<m;i++)c.lineTo(pts[i][0],pts[i][1]);c.lineTo(pts[m-1][0],y0);c.lineTo(x0,y0);c.closePath();c.fillStyle='rgba(22,163,74,.10)';c.fill();c.restore();drawPts(pts,gp,C.grn,9);
+ [[0.17,'100',M.d100],[0.5,'500',M.d500],[1.0,'1,000',M.d1000]].forEach(([k,l,tm])=>popAt(x0+k*w,y0+50,pr(t,tm,0.35),()=>chip('DAY '+l,0,0,C.ink,'#fff',24)));
+ popAt(x0+w-140,y0-h+60,pr(t,M.conf-0.2,0.4),()=>turkey(0,0,0.5,t));stamp('ALL-TIME HIGH',x0+w-360,y0-h+200,C.grn,pr(t,M.conf,0.35),40,-0.06)}
+function S3(t){const x0=110,y0=800,w=700,h=600;axes(x0,y0,w+120,h);const pts=confPts(x0,y0,w,h);drawPts(pts,1,C.grn,9);
+ popAt(x0+w+20,210,pr(t,M.fest-0.3,0.4),()=>{RR(-120,-100,240,200,20,'#fff',C.red,5);RR(-120,-100,240,56,[20,20,0,0],C.red);T('DAY',0,-72,26,'#fff','center','Mono');T('1,001',0,30,70,C.red)});
+ if(t>M.never-0.2){const q=eo(pr(t,M.never-0.2,0.35));c.strokeStyle=C.red;c.lineWidth=12;c.lineCap='round';c.beginPath();c.moveTo(x0+w,pts[60][1]);c.lineTo(x0+w+30,pts[60][1]+(y0-pts[60][1]-10)*q);c.stroke();
+  stamp('NEVER SAW IT COMING',480,860,C.red,pr(t,M.never+0.3,0.35),40,-0.05)}}
+function S4(t){popAt(240,400,pr(t,ST[4]+0.05,0.4),()=>turkey(0,0,0.95,t));popAt(500,400,pr(t,M.inv,0.3),()=>T('=',0,0,140,C.ink));
+ popAt(780,400,pr(t,M.inv+0.3,0.4),()=>{RR(-170,-170,340,340,30,C.grnl,C.grn,4);c.strokeStyle=C.grn;c.lineWidth=12;c.lineJoin='round';c.beginPath();c.moveTo(-120,90);c.lineTo(-50,10);c.lineTo(10,40);c.lineTo(120,-100);c.stroke();T('INVESTOR',0,130,30,C.ink,'center','Mono')});
+ popAt(500,760,pr(t,M.real,0.4),()=>{RR(-330,-70,660,140,30,C.ink);T('Here\'s a real stock →',0,2,46,'#fff')})}
+// Yes Bank real points, log scale
+const XS=[0,300,450,680,890],PTS=[null,404,183.65,5.55,16.24],LB=['','AUG 2018','SEP 2018','6 MAR 2020','5 NOV 2026'];
+const yb=v=>840-Math.log10(v)/Math.log10(500)*640;
+function ybChart(t,upto,pp){c.strokeStyle=C.line;c.lineWidth=4;c.beginPath();c.moveTo(70,850);c.lineTo(960,850);c.stroke();T('YES BANK · ₹ PER SHARE (LOG SCALE)',70,60,24,C.mute,'left','Mono');
+ c.setLineDash([14,12]);c.strokeStyle='#B9B2A4';c.lineWidth=6;const g0=eo(pp[0]);c.beginPath();c.moveTo(80,yb(60));c.lineTo(80+(XS[1]-80)*g0,yb(60)+(yb(404)-yb(60))*g0);c.stroke();c.setLineDash([]);
+ if(pp[0]>0.5)T('years of rising',150,yb(60)+40,26,C.mute,'left','Mono');
+ for(let i=1;i<=upto;i++){const pi=eo(pp[i]===undefined?1:pp[i]);if(pi<=0)continue;if(i>1){c.strokeStyle=i===4?C.or2:C.red;c.lineWidth=10;c.lineCap='round';c.beginPath();c.moveTo(XS[i-1],yb(PTS[i-1]));c.lineTo(XS[i-1]+(XS[i]-XS[i-1])*pi,yb(PTS[i-1])+(yb(PTS[i])-yb(PTS[i-1]))*pi);c.stroke()}
+  if(pi>0.9){const col=i===1?C.grn:i===4?C.or:C.red;c.fillStyle=col;c.beginPath();c.arc(XS[i],yb(PTS[i]),14,0,7);c.fill();c.strokeStyle='#fff';c.lineWidth=4;c.stroke();
+   chip('₹'+PTS[i].toLocaleString('en-IN'),XS[i],yb(PTS[i])+(i===3?62:-56),col,'#fff',30);T(LB[i],XS[i],892,22,C.mute,'center','Mono')}}}
+function S5(t){ybChart(t,1,[pr(t,M.yes,1.2),pr(t,M.r400-0.3,0.5)]);popAt(720,250,pr(t,M.lakh-0.2,0.4),()=>{RR(-230,-75,460,150,26,C.grnl,C.grn,4);T('MARKET VALUE',0,-28,24,C.grn,'center','Mono');T('> ₹1 lakh crore',0,26,44,C.ink)})}
+function S6(t){popAt(260,470,pr(t,ST[6]+0.05,0.4),()=>turkey(0,0,0.85,t));popAt(260,720,pr(t,M.just,0.3),()=>chip('TURKEY',0,0,C.or2,'#fff',28));
+ const f=eo(pr(t,ST[6]+0.3,2.6));RR(560,200,140,560,30,C.soft,C.line,3);RR(570,750-540*f,120,540*f,24,C.grn);T('FEELS SAFE',630,800,30,C.grn,'center','Mono');
+ popAt(840,470,pr(t,M.just-0.3,0.4),()=>{RR(-110,-110,220,220,30,C.grnl,C.grn,4);c.strokeStyle=C.grn;c.lineWidth=10;c.beginPath();c.moveTo(-70,50);c.lineTo(-20,0);c.lineTo(20,20);c.lineTo(70,-60);c.stroke()});popAt(840,620,pr(t,M.just-0.1,0.3),()=>chip('INVESTOR',0,0,C.ink,'#fff',28))}
+function S7(t){popAt(500,300,pr(t,ST[7]+0.1,0.4),()=>T('?',0,0,260,C.or2));
+ [0,1,2].forEach(i=>popAt(200+i*300,650,pr(t,M.three-0.2+i*0.25,0.35),()=>{RR(-120,-110,240,220,26,C.soft,C.line,3);T(String(i+1),0,-30,90,C.or);T('???',0,60,40,C.mute)}));
+ popAt(500,860,pr(t,M.three+0.7,0.4),()=>chip('3 WARNING SIGNS',0,0,C.red,'#fff',34))}
+function S8(t){ybChart(t,2,[1,1,pr(t,M.halved-0.4,0.8)]);popAt(720,230,pr(t,M.ceo-0.2,0.4),()=>{RR(-240,-70,480,140,26,C.redl,C.red,4);T('SEP 2018',0,-26,24,C.red,'center','Mono');T('RBI cuts CEO term',0,26,40,C.ink)});
+ stamp('−47% IN A MONTH',700,430,C.red,pr(t,M.halved,0.35),40,-0.06)}
+function S9(t){ybChart(t,3,[1,1,1,pr(t,M.crash-0.2,0.6)]);
+ popAt(745,170,pr(t,M.board-0.3,0.4),()=>{RR(-215,-55,430,110,24,C.redl,C.red,4);T('RBI takes over board',0,2,34,C.ink)});
+ popAt(745,420,pr(t,M.cap-0.3,0.4),()=>{RR(-215,-55,430,110,24,C.orl,C.or2,4);T('Withdrawals: max ₹50,000',0,2,31,C.ink)});
+ stamp('−85% IN ONE DAY',300,560,C.red,pr(t,M.crash+0.4,0.35),40,-0.06)}
+function S10(t){ybChart(t,4,[1,1,1,1,pr(t,M.today-0.2,0.8)]);stamp('−96% FROM PEAK',330,600,C.red,pr(t,M.p96,0.35),52,-0.06)}
+function S11(t){popAt(500,330,pr(t,ST[11]+0.05,0.4),()=>turkey(0,0,1.15,t,1));
+ popAt(500,660,pr(t,M.calm-0.4,0.4),()=>{RR(-340,-60,680,120,26,C.grnl,C.grn,4);T('Long calm streak',0,2,50,C.grn)});
+ popAt(500,760,pr(t,M.calm+0.2,0.3),()=>T('≠',0,0,90,C.red));popAt(500,860,pr(t,M.calm+0.5,0.4),()=>{RR(-200,-55,400,110,26,C.ink);T('SAFETY',0,2,50,'#fff')})}
+function S12(t){const rows=[[M.w1,'Loans growing too fast','to stressed companies','UBS REPORT · 2015'],[M.w2,'Promoter pledged','his entire stake','BY 2019'],[M.w3,'The regulator itself','raised a red flag','RBI · SEP 2018']];
+ rows.forEach(([tm,a,b,s],i)=>{const y=40+i*300;popAt(500,y+130,pr(t,tm-0.2,0.35),()=>{RR(-460,-130,920,260,30,i===1?C.orl:'#fff',C.line,3);c.fillStyle=C.red;c.beginPath();c.arc(-370,0,58,0,7);c.fill();T(String(i+1),-370,4,64,'#fff');
+  T(a,-280,-56,42,C.ink,'left');T(b,-280,4,42,C.red,'left');T(s,-280,64,24,C.mute,'left','Mono');c.save();c.translate(370,0);c.globalAlpha=pr(t,tm+0.8,0.3);RR(-50,-50,100,100,22,C.redl);T('!',0,4,70,C.red);c.restore()})})}
+function S13(t){popAt(500,110,pr(t,M.proof-0.3,0.4),()=>{RR(-450,-80,900,160,30,C.ink);T('A rising chart ≠ proof of safety',0,2,46,'#fff')});
+ popAt(270,380,pr(t,M.save-0.2,0.4),()=>{RR(-200,-90,400,180,30,C.or2);T('SAVE THIS',0,2,50,'#fff')});
+ popAt(730,380,pr(t,M.follow-0.2,0.4),()=>{RR(-200,-90,400,180,30,C.grn);T('FOLLOW',0,-20,46,'#fff');T('@moneyincloud',0,34,24,'#fff','center','Mono')});
+ popAt(300,720,pr(t,M.still-0.3,0.4),()=>turkey(0,0,0.85,t));popAt(700,700,pr(t,M.still+0.3,0.4),()=>{RR(-230,-80,460,160,40,C.orl,C.or2,4);T('Still the turkey?',0,2,46,C.or)})}
+const SCENES=[S0,S1,S2,S3,S4,S5,S6,S7,S8,S9,S10,S11,S12,S13];
+let lastPose=-1;
+window.seek=function(t){
+ const li=lineAt(t),s0=ST[li],ps=eo(pr(t,s0,0.45));
+ const H=HDR[li];$('kick').textContent=H[0];const tt=$('ttl');tt.textContent=H[1];tt.style.clipPath=`inset(0 ${100-eo(pr(t,s0,0.5))*100}% 0 0)`;
+ const ch=$('chip');ch.textContent=H[2];ch.style.background=H[3];ch.style.transform=`scale(${eb(pr(t,s0+0.3,0.4))})`;
+ $('src').textContent=SRC[li];
+ c.clearRect(0,0,1000,980);c.save();c.globalAlpha=ps;c.translate(0,(1-ps)*40);c.save();SCENES[li](t,li);c.restore();c.restore();
+ let pg=null;for(const p of D.pages)if(t>=p[0])pg=p;const cap=$('cap');
+ if(pg){if(cap.dataset.k!==String(pg[0])){cap.dataset.k=pg[0];cap.innerHTML=pg[1].replace(/\*([^*]+)\*/g,'<span class="a">$1</span>')}
+  const q=pr(t,pg[0],0.22);cap.style.opacity=q;cap.style.transform=`translateY(${(1-eo(q))*18}px)`}else cap.style.opacity=0;
+ const sp=speaking(t),a=sp>=0?amp(t):0;
+ let pid=D.cues[0][1],t0=-9;for(const [tc,p] of D.cues)if(t>=tc){pid=p;t0=tc}
+ const img=$('himg');let pend=null;if(pid!==lastPose){img.src=POSES[pid].src;lastPose=pid;pend=img.decode().catch(()=>{})}
+ const iw=POSES[pid].naturalWidth;img.style.width=iw+'px';img.style.left=(-iw/2)+'px';
+ const pop=t0>-9?0.84+0.16*eb(pr(t,t0,0.25),2.2):1;
+ $('host').style.transform=`translateY(${-a*6}px) rotate(${Math.sin(t*4.2)*1.6*a}deg) scale(${pop*(1+0.025*a)})`;
+ $('hglow').style.opacity=0.4+0.6*a;
+ window._pending=pend;return pend};
+</script>
+</body></html>
