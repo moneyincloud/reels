@@ -7,3 +7,5 @@ frames/
 *_mix.wav
 __pycache__/
 mix.wav
+myvoice/*.wav
+myvoice/*.opus
