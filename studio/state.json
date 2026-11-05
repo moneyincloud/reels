@@ -107,7 +107,9 @@
    "date": "2026-10-30",
    "style": "listx",
    "voice": "af_heart",
-   "status": "ready, unposted"
+   "status": "scheduled",
+   "metricool_id": 417830504,
+   "scheduled": "2026-11-10 10:00 IST IG REEL + YT Short"
   },
   {
    "date": "2026-10-30",
@@ -137,14 +139,18 @@
    "date": "2026-10-30",
    "style": "listx",
    "voice": "am_michael",
-   "status": "ready, unposted"
+   "status": "scheduled",
+   "metricool_id": 417830175,
+   "scheduled": "2026-11-11 10:00 IST IG REEL + YT Short"
   },
   {
    "slug": "race10",
    "date": "2026-10-31",
    "style": "race-bars",
    "voice": "af_heart",
-   "status": "ready, unposted"
+   "status": "scheduled",
+   "metricool_id": 417830246,
+   "scheduled": "2026-11-12 10:00 IST IG REEL + YT Short"
   },
   {
    "slug": "onepoint",
@@ -158,7 +164,9 @@
    "date": "2026-11-01",
    "style": "html-css-canvas+avatar",
    "voice": "af_heart",
-   "status": "ready, unposted"
+   "status": "scheduled",
+   "metricool_id": 417829349,
+   "scheduled": "2026-11-09 10:00 IST IG REEL + YT Short"
   },
   {
    "date": "2026-11-02",
@@ -185,7 +193,7 @@
    "date": "2026-11-02",
    "style": "listx+avatar",
    "voice": "am_michael",
-   "status": "ready for 2 Nov evening, unposted"
+   "status": "skipped: news went stale before posting"
   },
   {
    "slug": "muhurat",
@@ -199,8 +207,10 @@
    "date": "2026-11-03",
    "style": "light-theme two-character office whiteboard lesson (CSS+canvas) + emotion avatar host + Priya",
    "voice": "am_michael (host) + af_heart (Priya)",
-   "status": "ready, suggest Thu 5 Nov 7 PM",
-   "follow_overlay": true
+   "status": "scheduled",
+   "follow_overlay": true,
+   "metricool_id": 417828890,
+   "scheduled": "2026-11-07 10:00 IST IG REEL + YT Short"
   },
   {
    "date": "2026-11-04",
@@ -218,7 +228,9 @@
    "date": "2026-11-04",
    "style": "light-theme office whiteboard, 22-stock list + top-6 business/fundamental cards + surveillance reveal",
    "voice": "af_heart (Priya lead) + am_michael (host)",
-   "status": "ready, unscheduled"
+   "status": "scheduled",
+   "metricool_id": 417828985,
+   "scheduled": "2026-11-08 10:00 IST IG REEL + YT Short"
   },
   {
    "slug": "tasmac",
@@ -232,7 +244,7 @@
    "date": "2026-11-04",
    "style": "light infographic, results-day viral (profit down, stock up), moneyincloud branding",
    "voice": "af_heart",
-   "status": "ready, unscheduled",
+   "status": "skipped: news went stale before posting",
    "thumb_theme": "sky"
   },
   {
@@ -247,9 +259,11 @@
    "date": "2026-11-05",
    "style": "light infographic market-move news, moneyincloud branding",
    "voice": "am_michael",
-   "status": "ready, post 5 Nov midday",
+   "status": "scheduled",
    "thumb_theme": "oil",
-   "follow_overlay": true
+   "follow_overlay": true,
+   "metricool_id": 417827483,
+   "scheduled": "2026-11-05 20:50 IST IG REEL + YT Short"
   },
   {
    "date": "2026-11-05",
@@ -260,8 +274,10 @@
    "length_s": 89.2,
    "thumb_theme": "red",
    "follow_overlay": true,
-   "status": "ready, post Fri 6 Nov 10:00 AM IST",
-   "files": "out/cummins_*"
+   "status": "scheduled",
+   "files": "out/cummins_*",
+   "metricool_id": 417828026,
+   "scheduled": "2026-11-06 10:00 IST IG REEL + YT Short"
   },
   {
    "date": "2026-11-05",
@@ -273,8 +289,10 @@
    "length_s": 98.3,
    "thumb_theme": "blue",
    "follow_overlay": true,
-   "status": "ready, post Fri 6 Nov 6:00 PM IST",
-   "files": "out/turkey_*"
+   "status": "scheduled",
+   "files": "out/turkey_*",
+   "metricool_id": 417828220,
+   "scheduled": "2026-11-06 18:00 IST IG REEL + YT Short"
   }
  ],
  "next_ideas": [
