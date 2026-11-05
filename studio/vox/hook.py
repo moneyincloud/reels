@@ -95,3 +95,91 @@ def art_glow(c, art, cx, cy, scale=1.0, rot=0):
 def finish(c, path):
     arr = np.asarray(c.convert('RGB')).astype(np.float32) + grain_frames()[0][..., None] * 0.7
     Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8)).save(path, quality=93)
+
+
+# ---- one colour per reel, picked from the stock/topic (added 5 Nov 2026) ----
+THEMES.update({
+    'red': ((150, 18, 30), (205, 40, 50), (255, 170, 120)),
+    'orange': ((200, 80, 10), (240, 130, 30), (255, 220, 150)),
+    'gold': ((150, 105, 10), (205, 160, 40), (255, 235, 160)),
+    'pink': ((170, 30, 100), (225, 70, 145), (255, 190, 220)),
+    'oil': ((18, 18, 22), (44, 40, 36), (240, 150, 40)),
+    'sky': ((20, 130, 210), (80, 180, 245), (220, 245, 255)),
+    'emerald': ((6, 110, 70), (20, 160, 100), (150, 240, 190)),
+})
+# topic keyword -> colour (first match wins): the stock/sector first, then the mood (crash = red, rally = green).
+TOPIC_COLOURS = [
+    (('oil', 'crude', 'ongc', 'petrol', 'brent'), 'oil'),
+    (('gold', 'jewel', 'silver', 'diwali', 'muhurat'), 'gold'),
+    (('pharma', 'health', 'hospital', 'drug', 'laurus', 'syncom'), 'teal'),
+    (('it', 'tech', 'ai', 'software', 'infosys', 'tcs', 'wipro'), 'navy'),
+    (('bank', 'nbfc', 'loan', 'credit', 'hdfc', 'sbi'), 'blue'),
+    (('power', 'solar', 'wind', 'energy', 'suzlon', 'sjvn', 'ntpc', 'green'), 'emerald'),
+    (('milk', 'dairy', 'food', 'fmcg', 'tea', 'chai'), 'sky'),
+    (('ipo', 'listing', 'jio', 'telecom', 'recharge'), 'purple'),
+    (('auto', 'car', 'truck', 'tvs', 'maruti', 'tata motors'), 'orange'),
+    (('crash', 'fall', 'fell', 'loss', 'low', 'trap', 'scam', 'sebi', 'fraud', 'down'), 'red'),
+    (('jump', 'rally', 'surge', 'multibagger', 'record', 'gain'), 'green'),
+    (('women', 'beauty', 'fashion', 'wedding'), 'pink'),
+]
+SOLID = ['red', 'orange', 'gold', 'green', 'emerald', 'teal', 'sky', 'blue', 'navy', 'purple', 'pink', 'maroon']
+
+
+def theme_for(topic, recent=()):
+    """One colour for this reel: matched from the stock/topic, else a colour not used in the last few reels."""
+    import random as _r
+    import re as _re
+    t = topic.lower()
+    for keys, col in TOPIC_COLOURS:
+        if any(_re.search(r'\b' + _re.escape(k.strip()), t) for k in keys): return col
+    pool = [c for c in SOLID if c not in recent] or SOLID
+    return _r.choice(pool)
+
+
+THEME_ACCENT = {  # bright accent of each colour, for the video (headers, bars, chips) to match the thumbnail
+    k: v[1] for k, v in THEMES.items()}
+
+
+def follow_sticker(line='FOLLOW FOR DAILY MONEY TRUTHS', handle='@moneyincloud', size=64, rot=-3):
+    """Audience-gain sticker: red '+ FOLLOW' button plus a promise line."""
+    btn = text_img('+ FOLLOW', 'anton', size, (255, 255, 255))
+    ln = text_img(line, 'anton', int(size * 0.62), INK)
+    hd = text_img(handle, 'anton', int(size * 0.5), (90, 90, 90)) if handle else None
+    bw, bh = btn.size[0] + 60, btn.size[1] + 24
+    w = max(bw, ln.size[0], hd.size[0] if hd else 0) + 70
+    h = bh + ln.size[1] + (hd.size[1] + 6 if hd else 0) + 70
+    im = Image.new('RGBA', (w + 24, h + 24), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    d.rounded_rectangle((14, 18, w + 14, h + 18), 30, fill=(0, 0, 0, 100))
+    d.rounded_rectangle((0, 0, w, h), 30, fill=(255, 255, 255))
+    bx = (w - bw) // 2; d.rounded_rectangle((bx, 24, bx + bw, 24 + bh), 22, fill=(237, 50, 80))
+    im.alpha_composite(btn, (bx + 30, 24 + 4))
+    y = 24 + bh + 14; im.alpha_composite(ln, ((w - ln.size[0]) // 2, y))
+    if hd: im.alpha_composite(hd, ((w - hd.size[0]) // 2, y + ln.size[1] + 6))
+    return im.rotate(rot, expand=True, resample=Image.BICUBIC)
+
+
+def follow_pill(line='for daily money truths', handle='@moneyincloud', size=46):
+    """Compact one-line FOLLOW pill for in-video use (sits over the header strip)."""
+    btn = text_img('+ FOLLOW', 'anton', size, (255, 255, 255))
+    txt = text_img(line, 'anton', int(size * 0.8), INK)
+    hd = text_img(handle, 'anton', int(size * 0.55), (110, 110, 110)) if handle else None
+    bw, bh = btn.size[0] + 44, btn.size[1] + 16
+    tw = max(txt.size[0], hd.size[0] if hd else 0)
+    w, h = bw + tw + 70, bh + 28
+    im = Image.new('RGBA', (w + 16, h + 16), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    d.rounded_rectangle((8, 12, w + 8, h + 12), h // 2, fill=(0, 0, 0, 90))
+    d.rounded_rectangle((0, 0, w, h), h // 2, fill=(255, 255, 255))
+    d.rounded_rectangle((14, 14, 14 + bw, 14 + bh), bh // 2, fill=(237, 50, 80))
+    im.alpha_composite(btn, (14 + 22, 14 + 2))
+    if hd:
+        y = (h - txt.size[1] - hd.size[1]) // 2
+        im.alpha_composite(txt, (bw + 40, y)); im.alpha_composite(hd, (bw + 40, y + txt.size[1]))
+    else:
+        im.alpha_composite(txt, (bw + 40, (h - txt.size[1]) // 2))
+    return im
+
+
+def title_ink(theme):
+    """Title colour that reads on this theme: dark ink on light colours, cream on dark ones."""
+    r, g, b = THEMES[theme][0]
+    return INK if (0.299 * r + 0.587 * g + 0.114 * b) > 150 else (255, 250, 240)

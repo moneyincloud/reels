@@ -151,7 +151,7 @@
    "date": "2026-10-31",
    "style": "listx+avatar",
    "voice": "am_michael",
-   "status": "ready for 1 Nov, unposted"
+   "status": "posted via Metricool (see Metricool history)"
   },
   {
    "slug": "midcap6",
@@ -192,14 +192,15 @@
    "date": "2026-11-02",
    "style": "html-css-canvas diwali + avatar + festive sound",
    "voice": "af_heart",
-   "status": "ready, post 4-6 Nov"
+   "status": "posted via Metricool (see Metricool history)"
   },
   {
    "slug": "lossmath",
    "date": "2026-11-03",
    "style": "light-theme two-character office whiteboard lesson (CSS+canvas) + emotion avatar host + Priya",
    "voice": "am_michael (host) + af_heart (Priya)",
-   "status": "ready, suggest Thu 5 Nov 7 PM"
+   "status": "ready, suggest Thu 5 Nov 7 PM",
+   "follow_overlay": true
   },
   {
    "date": "2026-11-04",
@@ -231,7 +232,8 @@
    "date": "2026-11-04",
    "style": "light infographic, results-day viral (profit down, stock up), moneyincloud branding",
    "voice": "af_heart",
-   "status": "ready, unscheduled"
+   "status": "ready, unscheduled",
+   "thumb_theme": "sky"
   },
   {
    "slug": "aioffice",
@@ -245,7 +247,9 @@
    "date": "2026-11-05",
    "style": "light infographic market-move news, moneyincloud branding",
    "voice": "am_michael",
-   "status": "ready, post 5 Nov midday"
+   "status": "ready, post 5 Nov midday",
+   "thumb_theme": "oil",
+   "follow_overlay": true
   }
  ],
  "next_ideas": [
@@ -255,5 +259,18 @@
  ],
  "rules": {
   "no_avatar": "31 Oct 2026: old caricature removed; use emotion pose avatar host/poses (40 poses) via listx.draw_pose"
- }
+ },
+ "style_queue": [
+  "pixel art",
+  "chalkboard",
+  "glow sketch",
+  "ps2 low-poly",
+  "comic art",
+  "flat vector",
+  "minimal bw sketch",
+  "cgi motion",
+  "toy-brick",
+  "3d macro explainer"
+ ],
+ "style_next": 0
 }

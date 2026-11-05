@@ -2,8 +2,8 @@ from PIL import Image, ImageDraw
 from lib import *
 import hook as HK
 import listx as LX
-c=HK.rays_bg('cream',cy=1050)
-place(c,HK.fit_text("PROFIT FELL 8%",170,INK),540,260)
+_th=HK.theme_for('parag milk dairy'); c=HK.rays_bg(_th,cy=1050)
+place(c,HK.fit_text("PROFIT FELL 8%",170,HK.title_ink(_th)),540,260)
 place(c,HK.band('STOCK JUMPED 17%',116,txt=(255,255,255),bg=(22,163,74)),540,455)
 art=Image.new('RGBA',(960,560),(0,0,0,0)); d=ImageDraw.Draw(art)
 d.rounded_rectangle((0,0,959,559),34,fill=(255,255,255),outline=(36,50,77),width=10)
@@ -17,4 +17,5 @@ for x0,col,lc,lab,val,up in ((50,(253,236,236),(229,72,77),'PROFIT','−8%',Fals
 HK.art_glow(c,art,540,880,1.0,-1.2)
 place(c,HK.tag('PARAG MILK FOODS',(232,123,0),CREAM,76,-5,sub='3 HIDDEN REASONS'),380,1400)
 place(c,LX.pose_img(LX.POSE['gap_up'][0],470),840,1700)
+place(c,HK.follow_sticker(size=54),300,1760)
 HK.finish(c,'../out/paragmilk_thumbnail.jpg')

@@ -237,3 +237,9 @@ Schedule with Metricool: provider youtube only, `youtubeData {type: "video", tit
 (<dates>): <top story> & more", category: EDUCATION, madeForKids: false, privacy: public, tags: [...]}`, media = raw mp4
 URL, videoThumbnailUrl = raw thumbnail URL, text = description (2-line summary, the chapter list, sources, "Education
 only, not investment advice."). Publish Friday 16:00 IST (YouTube peak).
+
+## Standing rules added 5 Nov 2026 (user request)
+1. **Post time with every reel.** Every delivery states the exact IST slot. Metricool best-time data (IG, 6–12 Nov 2026): peak **10:00 AM** every day; second window **6:00 PM** (Tue–Thu). News reels: post the same day, as early as possible.
+2. **One colour per reel, from the stock/topic.** Thumbnail: `_th = HK.theme_for('<topic words>')`, `HK.rays_bg(_th)`, title in `HK.title_ink(_th)`. Video uses the same colour as its accent (`HK.THEME_ACCENT[_th]`). Sector first (oil=oil-black, gold/jewellery/Diwali=gold, pharma=teal, IT/AI=navy, banks=blue, power=emerald, food/dairy=sky, IPO/telecom=purple, auto=orange), then mood (crash=red, rally=green); otherwise a colour not used recently. Log it as `thumb_theme` in state.json.
+3. **Audience-gain hook.** Thumbnail: `HK.follow_sticker()` bottom-left. Video: run `python3 vox/follow_overlay.py in.mp4 out.mp4` as the last step (FOLLOW pill at 3–6 s and in the last 4 s, over the header strip).
+4. **Animation style rotation** (one style per reel, in order; see `style_queue` in state.json): pixel art, chalkboard, glow sketch, PS2 low-poly, comic art, flat vector, minimal black-and-white sketch, CGI motion (three.js), toy-brick style (no LEGO name/logo), 3D macro explainer. Inspired by the genre only; no copying any creator's characters or branding.
