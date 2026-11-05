@@ -21,8 +21,12 @@ CUES = sorted([
  (VO[13], P('wave')), (at(13, 'Because', -0.1), P('shrug'))])
 used = sorted({p for _, p in CUES})
 os.makedirs(SH + 'web/poses', exist_ok=True)
-for p in used:  # pixelate the avatar to match the pixel-art style
+PIXEL = os.environ.get('STYLE') == 'pixel'
+for p in used:
     im = LX.pose_img(p, 330).convert('RGBA'); w, h = im.size; f = 5
+    if not PIXEL:
+        im.save(SH + f'web/poses/p{p:02d}.png'); continue
+    # pixelate the avatar to match the pixel-art style
     sm = im.resize((w // f, h // f), Image.NEAREST)
     a = np.array(sm); a[..., 3] = np.where(a[..., 3] > 110, 255, 0); sm = Image.fromarray(a)
     sm.resize((w // f * f, h // f * f), Image.NEAREST).save(SH + f'web/poses/p{p:02d}.png')

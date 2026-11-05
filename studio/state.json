@@ -255,7 +255,7 @@
    "date": "2026-11-05",
    "slug": "cummins",
    "topic": "Cummins India -14% on Q2 FY27: sales +4%, profit -27%, EBITDA margin 21.9%->15.4%, ~Rs18,480 cr value lost",
-   "style": "pixel art (style 1/10) + chiptune",
+   "style": "comic art (pixel version rejected by user)",
    "voice": "af_heart",
    "length_s": 89.2,
    "thumb_theme": "red",
@@ -273,7 +273,6 @@
   "no_avatar": "31 Oct 2026: old caricature removed; use emotion pose avatar host/poses (40 poses) via listx.draw_pose"
  },
  "style_queue": [
-  "pixel art",
   "chalkboard",
   "glow sketch",
   "ps2 low-poly",
@@ -284,5 +283,6 @@
   "toy-brick",
   "3d macro explainer"
  ],
- "style_next": 1
+ "style_next": 0,
+ "style_notes": "User rejected pixel art (5 Nov 2026); comic art approved for Cummins remake."
 }

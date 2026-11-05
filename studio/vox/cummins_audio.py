@@ -112,18 +112,17 @@ def kaching():
     return y*0.7
 
 # --- ukulele-style plucks (Karplus-Strong) for a light, playful feel ---
-def pluck(f,d=0.22):
-    # 8-bit square lead with a quick decay (pixel-art / chiptune feel)
-    n=int(d*SR); tt=np.arange(n)/SR; sq=np.sign(np.sin(2*np.pi*f*tt))*0.5+0.5*np.sign(np.sin(2*np.pi*f*2*tt))*0.25
-    env=np.exp(-tt*9)*np.minimum(1,tt*400)
-    return sq*env*0.10
+def pluck(f,d=0.7):
+    n=int(d*SR); p=max(2,int(SR/f)); buf=rg.uniform(-1,1,p); out=np.zeros(n)
+    for i in range(n):
+        out[i]=buf[i%p]; buf[i%p]=0.5*(buf[i%p]+buf[(i+1)%p])*0.996
+    return out*0.22
 def blip(f=880,d=0.08,f2=None):
-    n=int(d*SR); tt=np.arange(n)/SR; ff=np.linspace(f,f2 or f,n); ph=np.cumsum(ff)/SR
-    return np.sign(np.sin(2*np.pi*ph))*np.exp(-tt*25)*0.35
+    return pop(int(f)) if not f2 else (whoosh()*0.6)
 def coinfx():
-    return np.concatenate([blip(988,0.06),blip(1319,0.22)])
+    return kaching()*0.8
 def fall():
-    return blip(900,0.6,120)*0.8
+    return rumble(0.6)*0.8
 fm=lambda m:440*2**((m-69)/12)
 cache={}
 for b in range(int(F.DUR/bar)+1):
