@@ -1,5 +1,5 @@
 {
- "last_voice": "af_heart",
+ "last_voice": "am_michael",
  "history": [
   {
    "date": "2026-10-23",
@@ -262,6 +262,19 @@
    "follow_overlay": true,
    "status": "ready, post Fri 6 Nov 10:00 AM IST",
    "files": "out/cummins_*"
+  },
+  {
+   "date": "2026-11-05",
+   "slug": "turkey",
+   "tag": "animal-friday",
+   "topic": "Animal Friday: Turkey Problem with Yes Bank (\u20b9404 Aug 2018 -> \u20b95.55 Mar 2020 -> \u20b916.24 today), 3 warning signs",
+   "style": "normal light template (chalkboard rejected)",
+   "voice": "am_michael",
+   "length_s": 98.3,
+   "thumb_theme": "blue",
+   "follow_overlay": true,
+   "status": "ready, post Fri 6 Nov 6:00 PM IST",
+   "files": "out/turkey_*"
   }
  ],
  "next_ideas": [
