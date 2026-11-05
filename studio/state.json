@@ -1,5 +1,5 @@
 {
- "last_voice": "af_heart",
+ "last_voice": "am_michael",
  "history": [
   {
    "date": "2026-10-23",
@@ -232,6 +232,20 @@
    "style": "light infographic, results-day viral (profit down, stock up), moneyincloud branding",
    "voice": "af_heart",
    "status": "ready, unscheduled"
+  },
+  {
+   "slug": "aioffice",
+   "date": "2026-11-04",
+   "style": "AI office explainer (not channel)",
+   "voice": "am_michael",
+   "status": "delivered"
+  },
+  {
+   "slug": "oilcrash",
+   "date": "2026-11-05",
+   "style": "light infographic market-move news, moneyincloud branding",
+   "voice": "am_michael",
+   "status": "ready, post 5 Nov midday"
   }
  ],
  "next_ideas": [
