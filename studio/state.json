@@ -1,5 +1,5 @@
 {
- "last_voice": "am_michael",
+ "last_voice": "af_heart",
  "history": [
   {
    "date": "2026-10-23",
@@ -250,6 +250,18 @@
    "status": "ready, post 5 Nov midday",
    "thumb_theme": "oil",
    "follow_overlay": true
+  },
+  {
+   "date": "2026-11-05",
+   "slug": "cummins",
+   "topic": "Cummins India -14% on Q2 FY27: sales +4%, profit -27%, EBITDA margin 21.9%->15.4%, ~Rs18,480 cr value lost",
+   "style": "pixel art (style 1/10) + chiptune",
+   "voice": "af_heart",
+   "length_s": 89.2,
+   "thumb_theme": "red",
+   "follow_overlay": true,
+   "status": "ready, post Fri 6 Nov 10:00 AM IST",
+   "files": "out/cummins_*"
   }
  ],
  "next_ideas": [
@@ -272,5 +284,5 @@
   "toy-brick",
   "3d macro explainer"
  ],
- "style_next": 0
+ "style_next": 1
 }
