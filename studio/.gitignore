@@ -11,3 +11,8 @@ myvoice/*.wav
 myvoice/*.opus
 castvoice/vo/
 ref/
+storyreel/sheet/
+storyreel/panels/
+storyreel/up/
+storyreel/layers/
+storyreel/up.log
