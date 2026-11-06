@@ -10,3 +10,4 @@ mix.wav
 myvoice/*.wav
 myvoice/*.opus
 castvoice/vo/
+ref/
