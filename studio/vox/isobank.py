@@ -267,7 +267,7 @@ def _render(t):
             tk = at(6, ph if ph != 'Three to six' else 'three to six', -0.2)
             if t < tk: continue
             p = prog(t, tk, 0.4)
-            place(c, tag_img(a, b, (GRN, NAVY, ORG)[k]), 540, 1380 + k * 170 + (1 - eo(p)) * 100, 1.15, 0, clamp(p * 3))
+            place(c, tag_img(a, b, (GRN, NAVY, ORG)[k]), 540, 1290 + k * 180 + (1 - eo(p)) * 100, 1.05, 0, clamp(p * 3))
     elif i == 7:
         caption(c, t, i, 300)
         tf = at(7, 'Follow', -0.1)

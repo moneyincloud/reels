@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -349,6 +349,15 @@
    "voice": "am_michael",
    "theme": "orange",
    "style": "domino reveal"
+  },
+  {
+   "date": "2026-11-06",
+   "slug": "isobank",
+   "topic": "Isometric: bank pays 2.5% savings, lends at 7.5%+",
+   "scheduled": "2026-11-14 19:00 IST (manual)",
+   "voice": "af_heart",
+   "theme": "emerald",
+   "style": "isometric"
   }
  ],
  "next_ideas": [
