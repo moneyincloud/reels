@@ -110,7 +110,7 @@ def kaching():
     return y*0.7
 at=F.at
 put(drum(3),0.05,0.8)
-put(whoosh(),0.2,0.5); put(clunk(),0.5,0.6); put(creak(0.5),0.8,0.3)
+put(pop(1100),0.45,0.55); put(whoosh(),F.PHOTO_END-0.15,0.6); put(clunk(),F.PHOTO_END+0.1,0.6); put(creak(0.5),F.PHOTO_END+0.6,0.3)
 put(pop(800),at(0,'One shop',-0.2),0.5); put(kaching(),at(0,'five hundred',-0.2),0.6); put(horn(170,0.6),at(0,'Multibagger',-0.2),0.35)
 put(ding(1318),at(1,'1993',-0.2),0.4)
 for ph in ('three hundred sixty','thirty eight','two in the US','two in the UK','one hundred thirty'):

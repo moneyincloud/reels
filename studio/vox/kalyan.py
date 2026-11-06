@@ -56,6 +56,39 @@ def bars(c, t, rows, base, maxh, vmax, x0=200, gap=230, w=150, unit='₹', suffi
 
 
 # ---------------- scenes ----------------
+
+IMG = ROOT + 'kalyan/img/'
+
+@functools.lru_cache(None)
+def _photo_src(name):
+    return Image.open(IMG + name).convert('RGB')
+
+def photo(name, w, kb=0.0, zoom=0.12, pan=(0.0, -0.04), border=16, rot=0):
+    """Ken Burns crop of a photo, printed as a paper cut-out (white border + shadow)."""
+    im = _photo_src(name); iw, ih = im.size
+    z = 1 + zoom * kb; cw, ch = iw / z, ih / z
+    cx = iw / 2 + pan[0] * iw * kb; cy = ih / 2 + pan[1] * ih * kb
+    box = (cx - cw / 2, cy - ch / 2, cx + cw / 2, cy + ch / 2)
+    h = int(w * ih / iw)
+    fr = im.transform((w, h), Image.EXTENT, box, Image.BICUBIC).convert('RGBA')
+    return cutout(fr, border=border, shadow=0.38)
+
+@functools.lru_cache(None)
+def logo_card(h=170):
+    lg = Image.open(IMG + 'logo.png').convert('RGBA'); w = int(h * lg.size[0] / lg.size[1])
+    lg = lg.resize((w, h), Image.LANCZOS)
+    card = Image.new('RGBA', (w + 60, h + 50), (255, 255, 255, 255)); card.alpha_composite(lg, (30, 25))
+    return cutout(card, border=0, shadow=0.35)
+
+def tape(c, x, y, rot):
+    t_ = Image.new('RGBA', (150, 44), (246, 226, 150, 190)); place(c, t_, x, y, 1.0, rot)
+
+def flash(c, t, t0, d=0.14, a=0.85):
+    if 0 <= t - t0 < d:
+        k = (1 - (t - t0) / d) * a
+        c.alpha_composite(Image.new('RGBA', c.size, (255, 255, 255, int(255 * k))))
+
+PHOTO_END = 2.3
 @functools.lru_cache(None)
 def store(col):
     w, h = 80, 70
@@ -69,10 +102,21 @@ def store(col):
 
 def s1(c, t):
     i = 0
-    place(c, label('PART 1', RED), 540, 230, pp(t, 0.05), -3)
-    dy, a = drop(t, 0.2, 360)
+    if t < PHOTO_END + 0.25:
+        out = eio(clamp((t - PHOTO_END) / 0.25))
+        kb = clamp(t / PHOTO_END)
+        q = pp(t, 0.0, 0.35, 1.2)
+        place(c, photo('showroom.jpg', 930, kb, 0.16, (0.0, -0.05), 18), 540 - out * 1300, 800, q, -1.5)
+        if t > 0.45:
+            place(c, logo_card(190), 540 + out * 1300, 1300, pp(t, 0.45, 0.3, 1.35), 2)
+        if t < PHOTO_END: place_text(c, 'Logo & photos: Kalyan Jewellers, for identification only. Not sponsored.', 'type', 22, GREY, 540, 1720, t, None, 0.2, 'fade', track=1)
+        flash(c, t, 0.0, 0.18, 0.9)
+        if t < PHOTO_END: return
+    flash(c, t, PHOTO_END, 0.14, 0.85)
+    place(c, label('PART 1', RED), 540, 230, pp(t, PHOTO_END), -3)
+    dy, a = drop(t, PHOTO_END + 0.05, 360)
     if a > 0:
-        hp = round(prog(t, 0.8, 0.5) * 20) / 20
+        hp = round(prog(t, PHOTO_END + 0.5, 0.5) * 20) / 20
         place(c, SZ.clipping(hp, 'KALYAN JEWELLERS', 'THE MARKET PAGE', 'JEWELLERY · NSE: KALYANKJIL'), 540, 520 + dy, 0.95, -3, a)
     ts = at(i, 'One shop', -0.2)
     if t > ts:
@@ -83,12 +127,19 @@ def s1(c, t):
         sc, a2 = slam(t, tb); place(c, stamp_c('546 SHOWROOMS', GRN, 84, -6, 3), 690, 880, sc, 0, a2)
     tm = at(i, 'Multibagger', -0.2)
     if t > tm: place_text(c, 'multibagger or trap?', 'pfi', 90, INK, 540, 1250, t, 'mt', tm, 'pop')
-    src(c, t, 'Showrooms at 30 Sep 2026 · company update (Business Today)', 1.0, 1720)
+    src(c, t, 'Showrooms at 30 Sep 2026 · company update (Business Today)', PHOTO_END + 0.5, 1720)
 
 
 def s2(c, t):
     i = 1; T0 = STARTS[i]
-    place_text(c, 'THE EMPIRE', 'anton', 120, INK, 540, 260, t, 'em', T0 + 0.05, 'pop')
+    place_text(c, 'THE EMPIRE', 'anton', 120, INK, 590, 260, t, 'em', T0 + 0.05, 'pop')
+    if t > T0 + 0.2: place(c, logo_card(110), 165, 262, pp(t, T0 + 0.2, 0.3, 1.3), -3)
+    tsr = at(i, 'Candere', -0.6) if 'Candere' in SCRIPT[i] else T0 + 6
+    if t > T0 + 2.0:
+        kb = clamp((t - T0 - 2.0) / 8)
+        place(c, photo('showroom.jpg', 400, kb, 0.10, (0.03, -0.02), 12), 500, 1495, pp(t, T0 + 2.0, 0.4, 1.2), 2.5)
+        tape(c, 500, 1318, -4)
+        place_text(c, 'a Kalyan showroom', 'mark', 34, INK, 830, 1440, t, 'ks', T0 + 2.4, 'slide', rot=-6)
     tk = at(i, '1993', -0.3)
     if t > tk: place(c, label('SINCE 1993 · THRISSUR, KERALA', NAVY), 540, 400, pp(t, tk), -1)
     rows = [('INDIA (KALYAN)', 365, RED, 'three hundred sixty'), ('MIDDLE EAST', 38, ORG, 'thirty eight'), ('USA', 2, BLUE, 'two in the US'),
@@ -153,7 +204,11 @@ def s5(c, t):
                 q = eo(prog(t, to + 0.6 + 0.1 * k, 0.4)); d = ImageDraw.Draw(c); x = 300 + k * 240
                 d.line((x, 1000 - 60 * q, x, 960), fill=GRN, width=10)
                 d.polygon([(x - 22, 1000 - 60 * q), (x + 22, 1000 - 60 * q), (x, 960 - 60 * q - 30)], fill=GRN)
-        place_text(c, 'old shops selling more = real demand', 'mark', 46, INK, 540, 1220, t, 'os', to + 0.6, 'slide', rot=-2)
+        place_text(c, 'old shops selling more = real demand', 'mark', 44, INK, 470, 1180, t, 'os', to + 0.6, 'slide', rot=-2)
+    if t > T0 + 0.6:
+        kb = clamp((t - T0 - 0.6) / 7)
+        place(c, photo('jewel.jpg', 300, kb, 0.14, (0.0, 0.05), 12), 820, 1450, pp(t, T0 + 0.6, 0.4, 1.2), -4)
+        tape(c, 820, 1235, 5)
     src(c, t, 'Q2 FY27 business update (Business Today, Kotak Neo, 7 Oct 2026)', T0 + 1.0, 1720)
 
 
@@ -229,6 +284,7 @@ def s8(c, t):
         c.alpha_composite(text_img(h1, 'anton', 60, CREAM), (220, int(y - 100)))
         c.alpha_composite(text_img(h2, 'anton', 52, col), (220, int(y - 26)))
         c.alpha_composite(text_img(note, 'type', 24, (200, 194, 182), 1), (220, int(y + 50)))
+        if k == 2: place(c, photo('jewel.jpg', 150, 0.5, 0.1, (0, 0), 8), 900, y - 10, q, 5)
     typed(c, 'Part 2: multibagger or trap? Not investment advice.', 'type', 28, (200, 194, 182), 1560, t, at(i, 'gold demand', 0.4), at(i, 'gold demand', 1.4))
 
 
@@ -237,7 +293,8 @@ def s9(c, t):
     q = pp(t, T0, 0.45, 1.2)
     place(c, SS._card(960, 860), 540, 600, q, -0.4)
     if q > 0.6:
-        place(c, text_img('KALYAN JEWELLERS · PART 1', 'anton', 56, INK), 540, 230)
+        place(c, text_img('KALYAN JEWELLERS · PART 1', 'anton', 56, INK), 600, 230)
+        place(c, logo_card(80), 150, 225, pp(t, T0 + 0.2, 0.3, 1.3), -3)
         d = ImageDraw.Draw(c); d.line((90, 272, 990, 272), fill=INK, width=4)
         rows = [('Price (5 Nov close)', '₹560 (+5.9%)', INK), ('IPO price (2021)', '₹87', INK), ('Showrooms', '546 · 4 regions', GRN), ('Sales FY26', '₹35,743 Cr', GRN),
                 ('Profit FY26', '₹1,350 Cr', GRN), ('Promoters', '62.9%', NAVY), ('FII stake', '26.2% to 13.8%', RED), ('P/E', '39.5', ORG)]
@@ -261,7 +318,7 @@ DARK_SCENES = {7}
 
 
 def slam_times():
-    return [at(0, 'five hundred', -0.3), at(2, 'four times', -0.3), at(3, 'June quarter', -0.3), at(4, 'twenty six', -0.3)] + [STARTS[k] + 0.05 for k in range(1, 8)]
+    return [PHOTO_END, at(0, 'five hundred', -0.3), at(2, 'four times', -0.3), at(3, 'June quarter', -0.3), at(4, 'twenty six', -0.3)] + [STARTS[k] + 0.05 for k in range(1, 8)]
 
 
 def header(c, dark, t=0):
@@ -310,7 +367,7 @@ def _render(t, loop=False):
     c = (dbg if dark else pbg).copy()
     st = STARTS[i]; en = STARTS[i + 1] if i + 1 < len(STARTS) else DUR
     SCENES[i](c, t)
-    z = 1.0 + 0.04 * clamp((t - st) / (en - st))
+    z = 1.0 + 0.04 * clamp((t - st) / (en - st)) + (0.06 * math.exp(-(t - st) * 9) if i > 0 else 0) + (0.05 * math.exp(-(t - PHOTO_END) * 9) if i == 0 and t > PHOTO_END else 0)
     sx = sy = 0
     for ts in slam_times():
         if 0 <= t - ts < 0.35:
