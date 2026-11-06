@@ -351,6 +351,15 @@
   "no_avatar": "31 Oct 2026: old caricature removed; use emotion pose avatar host/poses (40 poses) via listx.draw_pose"
  },
  "style_queue": [
+  "isometric",
+  "paper-cut",
+  "3d data chart",
+  "synthwave",
+  "3d explainer",
+  "maths diagram",
+  "cartoon explainer (cloud family)",
+  "domino reveal",
+  "glow atom",
   "glow sketch",
   "ps2 low-poly",
   "comic art",
@@ -361,5 +370,16 @@
   "3d macro explainer"
  ],
  "style_next": 0,
- "style_notes": "User rejected pixel art and chalkboard (5 Nov 2026). Default back to the normal light template; ask before trying another style."
+ "style_notes": "User rejected pixel art and chalkboard (5 Nov 2026). Default back to the normal light template; ask before trying another style.",
+ "style_guide": {
+  "isometric": "3D-ish isometric city/blocks: sectors as buildings, money flow between companies (e.g. how a bank makes money)",
+  "paper-cut": "layered paper cut-outs with depth shadows (our PCJ collage look, more layers): stories, company histories",
+  "3d data chart": "perspective 3D bars/lines rising with camera move: results, returns, compare stocks",
+  "synthwave": "neon grid, purple-pink sunset, glowing lines: crypto, hype, F&O, bubbles",
+  "3d explainer": "3D objects (coin stacks, vault, piggy bank) with lighting and camera orbit: how SIP/FD/NPS works",
+  "maths diagram": "clean graph paper, equations writing themselves, curves: compounding, CAGR, rule of 72, EMI maths",
+  "cartoon explainer (cloud family)": "realistic Cloud Family cast with multi-voice dialogue (kasitip engine)",
+  "domino reveal": "tiles/dominoes falling in a chain, each revealing a step: cause-and-effect (rate hike -> EMI -> spending -> stocks)",
+  "glow atom": "dark navy space, glowing orbits and labels like an atom diagram: portfolio = nucleus + orbiting assets, diversification"
+ }
 }
