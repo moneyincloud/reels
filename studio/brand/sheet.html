@@ -1,0 +1,40 @@
+<!doctype html><html><head><meta charset="utf-8"><style>@font-face{font-family:Pop;src:url(Poppins-Bold.ttf)}@font-face{font-family:Mono;src:url(DejaVuSansMono-Bold.ttf)}body{margin:0}</style></head>
+<body><canvas id="c" width="1080" height="1920"></canvas><canvas id="d" width="1080" height="1920"></canvas>
+<script src="cast.js"></script><script>
+const {draw,PAL,PROP,R,E}=CAST;
+function T(c,s,x,y,sz,col,al='center',f='Pop'){c.font=`${sz}px ${f}`;c.fillStyle=col;c.textAlign=al;c.textBaseline='middle';c.fillText(s,x,y)}
+function sky(c){const g=c.createLinearGradient(0,0,0,1920);g.addColorStop(0,'#8ED2F6');g.addColorStop(1,'#D8F0FC');c.fillStyle=g;c.fillRect(0,0,1080,1920);
+ for(const [x,y,s] of [[150,120,0.9],[880,210,1.1],[540,60,0.7],[960,900,0.8],[120,1100,0.9]]){c.globalAlpha=0.65;PROP.cloud(c,x,y,s);c.globalAlpha=1}}
+document.fonts.load('40px Pop').then(()=>{
+ const c=document.getElementById('c').getContext('2d');sky(c);
+ R(c,60,40,960,150,40,'#FFFFFF');T(c,'THE CLOUD FAMILY',540,95,62,PAL.navy);T(c,'moneyincloud house style · bold outline cartoon',540,152,26,'#5B6785','center','Mono');
+ const who=['appa','amma','arjun','paati','thatha','kasi'];
+ who.forEach((w,i)=>{const col=i%3,row=Math.floor(i/3),cx=190+col*350,cy=row?985:540;
+  R(c,cx-160,cy-330,320,440,36,'rgba(255,255,255,.55)');const ch=draw(c,w,cx,cy,0.74,{expr:['happy','smug','laugh','think','happy','smug'][i],arm:['down','hold','up','hips','hold','point'][i],hold:['','jar','','','coffee',''][i]});
+  T(c,ch.name,cx,cy+34,30,PAL.navy);
+  const words=ch.role.split(' · ');words.forEach((ln,k)=>T(c,ln,cx,cy+66+k*26,19,'#3E4A66','center','Mono'))});
+ // expression strip
+ R(c,40,1140,1000,330,36,'#FFFFFF');T(c,'EXPRESSIONS (APPA)',80,1180,26,PAL.navy,'left','Mono');
+ ['happy','shock','worried','think','laugh','smug'].forEach((e,i)=>{const x=125+i*166;c.save();c.beginPath();c.rect(x-80,1200,160,230);c.clip();draw(c,'appa',x,1610,0.88,{expr:e});c.restore();T(c,e.toUpperCase(),x,1450,20,'#3E4A66','center','Mono')});
+ // palette + props
+ R(c,40,1500,1000,380,36,'#FFFFFF');T(c,'PALETTE',80,1540,26,PAL.navy,'left','Mono');
+ [['#7EC8F2','SKY'],['#FFC531','GOLD'],['#1B2440','INK'],['#FFF7E6','CREAM'],['#2DB36B','GAIN'],['#F0524A','LOSS'],['#7D5BD6','ACCENT']].forEach(([col,l],i)=>{R(c,80+i*134,1565,110,70,18,col);T(c,l,135+i*134,1660,18,'#3E4A66','center','Mono')});
+ T(c,'PROPS · SUBTLE TAMIL NADU TOUCHES',80,1715,26,PAL.navy,'left','Mono');
+ c.fillStyle=PAL.sky;c.beginPath();c.roundRect(860,1745,120,110,20);c.fill();PROP.kolam(c,920,1800,42);
+ PROP.coffee(c,130,1830,0.9);PROP.coin(c,250,1800,30);PROP.phone(c,350,1800,0.9);PROP.jar(c,460,1830,0.8);PROP.auto(c,690,1855,0.55);
+ // ---- sample scene ----
+ const d=document.getElementById('d').getContext('2d');sky(d);
+ R(d,40,150,1000,150,40,'#FFFFFF');T(d,'SAMPLE SCENE',540,195,26,'#5B6785','center','Mono');T(d,'"Sure-shot tip, 10x guaranteed!"',540,250,46,PAL.navy);
+ R(d,40,330,1000,980,48,'#FFF7E6');
+ d.save();d.beginPath();d.roundRect(40,330,1000,980,48);d.clip();
+ d.fillStyle='#F6E2C2';d.fillRect(40,1060,1000,250);for(let x=60;x<1040;x+=120)PROP.kolam(d,x+40,1180,36);
+ 
+ draw(d,'kasi',230,1100,1.05,{expr:'smug',arm:'point'});
+ draw(d,'arjun',520,1110,0.98,{expr:'laugh',arm:'up'});
+ draw(d,'amma',800,1120,1.0,{expr:'worried',arm:'hips'});
+ d.restore();
+ PROP.bubble(d,300,420,420,110,'10x in 1 month!','left','#FFFFFF',PAL.red,40);
+ PROP.bubble(d,850,560,300,100,'Says who?','left','#FFFFFF',PAL.navy,40);
+ R(d,40,1350,1000,260,40,'#FFFFFF');T(d,'Kasi Mama has a "sure-shot tip".',80,1420,40,PAL.navy,'left');T(d,'Arjun wants in. Amma has questions.',80,1480,40,'#2B8C4E','left');T(d,'Story illustration · education only',80,1560,22,'#7A86A0','left','Mono');
+ document.title='done'});
+</script></body></html>
