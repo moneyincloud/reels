@@ -1,5 +1,5 @@
 {
- "last_voice": "am_michael",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -332,6 +332,14 @@
    "posted": "manual",
    "status": "ready, manual post Mon 9 Nov 6:00 PM IST",
    "files": "out/seeds_*"
+  },
+  {
+   "date": "2026-11-06",
+   "slug": "kasitip",
+   "topic": "Cloud Family Ep1: never trust this uncle's sure-shot tip (SEBI FY25 F&O 91% lost)",
+   "scheduled": "2026-11-10 19:00 IST (manual)",
+   "voice": "multi (narrator af_heart)",
+   "theme": "red"
   }
  ],
  "next_ideas": [
