@@ -84,7 +84,7 @@ def scene(c, t, n, st, en, mood):
     breathe = 1 + 0.010 * math.sin(t * 2.6)
     hop = 0.0; rot = 0.4 * math.sin(t * 1.3)
     if mood == 'happy':
-        k = (t - at(0, 'fifteen', 0)) if t > at(0, 'fifteen', 0) else -1
+        k = (t - st - 0.7) if t > st + 0.7 else -1
         if 0 <= k < 0.6: hop = -40 * math.sin(k / 0.6 * math.pi)
         rot += 1.2 * math.sin(t * 5)
     if mood == 'sad':
@@ -145,24 +145,31 @@ def segs(i):
     return [(m.start(), m.end()) for m in re.finditer(r'[^.!?]+[.!?]*\s*', SCRIPT[i])]
 
 
-def caption(c, t, i, cy=1660, size=50):
+def caption(c, t, i, cy=1660, size=48):
     if t < VO[i] - 0.05: return
     sp = clamp((t - VO[i]) / DURS[i]) * len(SCRIPT[i])
     sg = [g for g in segs(i) if g[0] <= sp][-1] if sp > 0 else segs(i)[0]
     words = SCRIPT[i][sg[0]:sg[1]].split()
-    s = ' '.join(words); w = text_w(s, 'pop', size) + 80
-    im = Image.new('RGBA', (w + 10, int(size * 1.9) + 10), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
-    d.rounded_rectangle((10, 10, w + 9, int(size * 1.9) + 9), 30, fill=BROWN)
-    d.rounded_rectangle((0, 0, w - 1, int(size * 1.9) - 1), 30, fill=CREAM, outline=BROWN, width=5)
-    x = 40; pos = sg[0]
+    lines, cur = [], []
     for wd in words:
-        col = BROWN if pos <= sp else (190, 160, 130)
-        if pos <= sp and (wd.lower().startswith(('fifteen', 'zero', 'one')) or any(ch.isdigit() for ch in wd)): col = TERRA
-        ti = text_img(wd, 'pop', size, col); im.alpha_composite(ti, (int(x - size * 0.12), int(size * 0.95 - ti.size[1] / 2)))
-        x += text_w(wd + ' ', 'pop', size); pos += len(wd) + 1
-    sc = min(1.0, 980 / im.size[0])
-    place(c, im, 540, cy, sc)
-
+        if cur and text_w(' '.join(cur + [wd]), 'pop', size) > 860: lines.append(cur); cur = [wd]
+        else: cur.append(wd)
+    if cur: lines.append(cur)
+    lh = int(size * 1.3)
+    w = max(text_w(' '.join(l), 'pop', size) for l in lines) + 80; h = lh * len(lines) + 40
+    im = Image.new('RGBA', (w + 10, h + 10), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    d.rounded_rectangle((10, 10, w + 9, h + 9), 30, fill=BROWN)
+    d.rounded_rectangle((0, 0, w - 1, h - 1), 30, fill=CREAM, outline=BROWN, width=5)
+    pos = sg[0]; y = 20 + lh // 2
+    for ln in lines:
+        x = w / 2 - text_w(' '.join(ln), 'pop', size) / 2
+        for wd in ln:
+            col = BROWN if pos <= sp else (190, 160, 130)
+            if pos <= sp and (wd.lower().startswith(('fifteen', 'zero', 'one', 'six', 'five', 'two', 'thirty', 'eighteen', 'twelve', 'ten')) or any(ch.isdigit() for ch in wd)): col = TERRA
+            ti = text_img(wd, 'pop', size, col); im.alpha_composite(ti, (int(x - size * 0.12), int(y - ti.size[1] / 2)))
+            x += text_w(wd + ' ', 'pop', size); pos += len(wd) + 1
+        y += lh
+    place(c, im, 540, cy - (h - 90) / 2)
 
 
 # ---------------- reel ----------------
@@ -194,8 +201,7 @@ def meter(c, t, spent):
     d.rounded_rectangle((x0, y0, x0 + w, y0 + h), 28, fill=CREAM, outline=BROWN, width=5)
     f = spent / 15000
     if f > 0: d.rounded_rectangle((x0 + 6, y0 + 6, x0 + 6 + (w - 12) * f, y0 + h - 6), 22, fill=RED if f >= 1 else TERRA)
-    lab = text_img(f'RAISE USED: ₹{spent:,} / ₹15,000', 'anton', 40, BROWN)
-    c.alpha_composite(lab, (540 - lab.size[0] // 2, y0 - 58))
+    place(c, tag(f'RAISE USED: ₹{spent:,} / ₹15,000', BROWN, CREAM, 40), 540, y0 - 46)
 
 
 SPEND = {2: ('+₹6,000 RENT', 6000, 'Six'), 3: ('+₹5,000 EMI', 11000, 'Five'), 4: ('+₹2,500 FOOD', 13500, 'Two'),
@@ -227,7 +233,7 @@ def creep_chart(c, t, st):
             pts.append((x, y))
         if len(pts) > 1: stroke(c, pts, 12, col)
         if p > 0.95:
-            place(c, text_img(lab, 'anton', 44, col), x1 - 40, y0 - 60 - 420 + off - (70 if col == GRN else -10))
+            place(c, text_img(lab, 'anton', 44, col), x1 - 90, y0 - 60 - 420 + off - (110 if col == GRN else -40))
     place(c, text_img('SAVINGS STAY ₹0', 'anton', 56, RED), 540, y0 + 70, 1, 0, clamp((t - st - 2.6) * 3))
 
 
@@ -265,8 +271,8 @@ def _render(t):
         hx, hy = head_screen(n, z, dx)
     # ---- overlays per line ----
     if i == 0:
-        place_text(c, 'NEVER SPEND', 'anton', 130, CREAM, 540, 250, t, None, 0.05, 'pop')
-        place_text(c, 'YOUR NEXT RAISE', 'anton', 110, (255, 214, 120), 540, 390, t, None, at(0, 'next', -0.2), 'pop')
+        place(c, tag('NEVER SPEND', TERRA, size=100), 540, 240, 0.5 + 0.5 * eback(prog(t, 0.05, 0.35)), -3)
+        if t > at(0, 'next', -0.2): place(c, tag('YOUR NEXT RAISE', BROWN, (255, 214, 120), 90), 540, 400, 0.5 + 0.5 * eback(prog(t, at(0, 'next', -0.2), 0.35)), 2)
         if t > at(0, 'thirty', -0.15):
             pz = prog(t, at(0, 'thirty', -0.15), 0.22)
             place(c, stamp_c('₹34 LAKH MISSED', RED, 96, -8, 2), 540, 1330, 1 + 1.2 * (1 - eo(pz)), 0, clamp(pz * 4))
@@ -299,7 +305,7 @@ def _render(t):
     elif i == 7:
         c.alpha_composite(Image.new('RGBA', (W, H), (120, 20, 10, int(60 * clamp((t - st) * 3)))))
         pz = prog(t, at(7, 'Zero', -0.1), 0.22)
-        place(c, stamp_c('₹0 SAVED', RED, 130, -8, 3), 540, 330, 1 + 1.2 * (1 - eo(pz)), 0, clamp(pz * 4))
+        place(c, stamp_c('₹0 SAVED', RED, 130, -8, 3), 540, 1260, 1 + 1.2 * (1 - eo(pz)), 0, clamp(pz * 4))
         rain_cloud(c, hx, hy - 120, t, clamp((t - st - 0.2) * 3)); sweat(c, hx + 110, hy + 60, t)
     elif i == 8:
         p = prog(t, at(8, 'Raghavan', -0.2), 0.35)
@@ -307,7 +313,7 @@ def _render(t):
         for k, (ox, oy) in enumerate([(-260, 300), (-120, 200), (60, 330)]):
             if t > st + 0.5: sparkle(c, 330 + ox + 200, 700 + oy, t, k)
     elif i == 9:
-        bulb(c, 300, 560, t, clamp((t - at(9, 'Same', -0.2)) * 3))
+        bulb(c, 170, 470, t, clamp((t - at(9, 'Same', -0.2)) * 3))
         p = prog(t, at(9, 'Save the raise', -0.2), 0.4)
         if p > 0: place(c, tag('SAVE THE RAISE FIRST', GRN, size=72), 540, 330, 0.5 + 0.5 * eback(p), -2)
     elif i in (10, 11):
@@ -335,9 +341,9 @@ def _render(t):
             sparkle(c, hx + ox, hy + oy, t, k)
     elif i == 16:
         tf = at(16, 'Follow', -0.1)
-        if t > tf: place(c, follow_btn(), 540, 380, 0.6 + 0.4 * eback(prog(t, tf, 0.35)), 2)
+        if t > tf: place(c, follow_btn(), 540, 1250, 0.6 + 0.4 * eback(prog(t, tf, 0.35)), 2)
         if t > at(16, 'never', -0.2):
-            place(c, tag('NEVER SPEND YOUR NEXT RAISE', TERRA, size=60), 540, 560, 1, -2, clamp((t - at(16, 'never', -0.2)) * 3))
+            place(c, tag('NEVER SPEND YOUR NEXT RAISE', TERRA, size=60), 540, 300, 1, -2, clamp((t - at(16, 'never', -0.2)) * 3))
     if i in (12,):
         pass
     if i not in (13, 14):
