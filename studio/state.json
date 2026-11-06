@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -340,6 +340,15 @@
    "scheduled": "2026-11-10 19:00 IST (manual)",
    "voice": "multi (narrator af_heart)",
    "theme": "red"
+  },
+  {
+   "date": "2026-11-06",
+   "slug": "rbidomino",
+   "topic": "Domino: RBI repo 5.25->5.50 hits your EMI (+768/month on 50L)",
+   "scheduled": "2026-11-12 19:00 IST (manual)",
+   "voice": "am_michael",
+   "theme": "orange",
+   "style": "domino reveal"
   }
  ],
  "next_ideas": [
