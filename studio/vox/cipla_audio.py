@@ -109,7 +109,7 @@ def kaching():
     y[int(0.08*SR):]+=(ding(2637)[:n-int(0.08*SR)])*1.0
     return y*0.7
 at=F.at; S=F.STARTS
-put(drum(3),0.02,0.8); put(hit(),at(0,'eighty',-0.2),0.8); put(ding(1568),at(0,'Here is',-0.2),0.4)
+put(drum(3),0.02,0.8); put(hit(),at(0,'Eighty',-0.2),0.8); put(ding(1568),at(0,'here is',-0.2),0.4)
 put(whoosh(),S[1]-0.1,0.5); put(clunk(),at(1,'Mumbai',-0.3),0.5)
 for k in range(24): put(tick(),at(1,'forty seven',-0.25)+k*0.05,0.2)
 put(kaching(),at(1,'forty seven',1.0),0.4)

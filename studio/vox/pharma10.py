@@ -577,13 +577,13 @@ def s0(c, t):
     i = 0
     c.alpha_composite(blue_bg())
     place_text(c, '10 MID CAP', 'anton', 140, (255, 247, 230), 540, 250, t, None, 0.05, 'pop')
-    place_text(c, 'PHARMA STOCKS', 'anton', 120, YEL, 540, 400, t, None, at(0, 'pharma', -0.2), 'pop')
-    tm = at(0, 'medicines', -0.2)
+    place_text(c, 'PHARMA STOCKS', 'anton', 120, YEL, 540, 400, t, None, at(0, 'Here are', -0.2), 'pop')
+    tm = at(0, 'medicine in', -0.2)
     if t > tm: place(c, pill_text('& THE MEDICINES THEY MAKE', INK, YEL, 60), 540, 560, 0.6 + 0.4 * eback(prog(t, tm, 0.3)), -3)
     for k, ic in enumerate(('pill', 'inhaler', 'syringe', 'tube', 'vial', 'tablet')):
         a = k / 6 * 2 * math.pi + t * 0.6
         place(c, med_icon(ic, 170), 540 + 400 * math.cos(a), 1150 + 260 * math.sin(a), 1, 15 * math.sin(t + k))
-    host(c, t, [(0, 8), (tm, 34)], 540, 1180, 640)
+    host(c, t, [(0, 15), (tm, 34)], 540, 1180, 640)
 
 
 def s1(c, t):
@@ -635,7 +635,7 @@ SCENES = [s0, s1] + [mk(i) for i in range(2, 12)] + [s12, s13]
 
 
 def slam_times():
-    return [at(0, 'pharma', -0.2), at(12, 'FDA', -0.4)]
+    return [at(0, 'Here are', -0.2), at(12, 'FDA', -0.4)]
 
 
 def footer(c):

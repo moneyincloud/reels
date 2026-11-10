@@ -624,11 +624,11 @@ def s0(c, t):
     i = 0
     c.alpha_composite(green_bg())
     place_text(c, 'CIPLA SELLS IN', 'anton', 120, (255, 247, 230), 540, 250, t, None, 0.05, 'pop')
-    place_text(c, '86 COUNTRIES', 'anton', 150, YEL, 540, 410, t, None, at(0, 'eighty', -0.2), 'pop')
-    tm = at(0, 'Here is', -0.2)
-    if t > tm: place(c, pill_text('WHERE ITS MONEY COMES FROM', INK, YEL, 58), 540, 570, 0.6 + 0.4 * eback(prog(t, tm, 0.3)), -3)
+    place_text(c, '86 COUNTRIES', 'anton', 150, YEL, 540, 410, t, None, at(0, 'Eighty', -0.2), 'pop')
+    tm = at(0, 'here is', -0.2)
+    if t > tm: place(c, pill_text("HERE'S WHERE THE MONEY COMES FROM", INK, YEL, 54), 540, 570, 0.6 + 0.4 * eback(prog(t, tm, 0.3)), -3)
     place(c, med_icon('globe', 300), 800, 900 + 10 * math.sin(t * 2), 1, t * 20)
-    host(c, t, [(0, 34), (tm, 26)], 400, 1250, 720)
+    host(c, t, [(0, 15), (at(0, 'Eighty', -0.2), 34), (tm, 26)], 400, 1250, 720)
 
 
 def s1(c, t):
@@ -735,7 +735,7 @@ SCENES = [s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10]
 
 
 def slam_times():
-    return [at(0, 'eighty', -0.2), at(3, 'best quarter', -0.2), at(8, 'thirty five', -0.2)]
+    return [at(0, 'Eighty', -0.2), at(3, 'best quarter', -0.2), at(8, 'thirty five', -0.2)]
 def footer(c):
     d = ImageDraw.Draw(c)
     d.rectangle((0, 1888, W, H), fill=(20, 22, 30, 255))

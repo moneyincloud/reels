@@ -572,7 +572,7 @@ def s0(c, t):
     place_text(c, 'PLANS +123%', 'anton', 150, YEL, 540, 410, t, None, at(0, 'one hundred', -0.2), 'pop')
     ty = at(0, 'in one year', -0.2)
     if t > ty: place(c, pill_text('REVENUE GROWTH IN ONE YEAR', INK, YEL, 58), 540, 570, 0.6 + 0.4 * eback(prog(t, ty, 0.3)), -3)
-    host(c, t, [(0, 2), (ty, 72)], 540, 1180, 760)
+    host(c, t, [(0, 15), (ty, 72)], 540, 1180, 760)
 
 
 def s1(c, t):

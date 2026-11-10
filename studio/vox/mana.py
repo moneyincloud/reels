@@ -620,7 +620,7 @@ def s0(c, t):
     place_text(c, 'PER BRANCH, PER DAY', 'anton', 90, (255, 247, 230), 540, 390, t, None, at(0, 'a day', -0.3), 'pop')
     place(c, pill_text('MANAPPURAM FINANCE', INK, YEL, 60), 540, 540, 0.6 + 0.4 * eback(prog(t, 0.1, 0.3)), -3)
     place(c, chain(360), 800, 860 + 10 * math.sin(t * 2), 1, 8)
-    host(c, t, [(0, 2), (at(0, 'twelve', -0.2), 50)], 420, 1250, 720)
+    host(c, t, [(0, 36), (at(0, 'twelve', -0.2), 50)], 420, 1250, 720)
 
 
 def s1(c, t):

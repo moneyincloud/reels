@@ -435,11 +435,11 @@ def host(c, t, cues, cx, cy, h=640, rot=0):
 def s0(c, t):
     i = 0
     c.alpha_composite(teal_bg())
-    place_text(c, '200 APPLICATIONS', 'anton', 116, (255, 247, 230), 540, 250, t, None, 0.05, 'pop')
-    place_text(c, '0 CALLS', 'anton', 150, YEL, 540, 400, t, None, at(0, 'zero', -0.2), 'pop')
+    place_text(c, '200 JOBS', 'anton', 140, (255, 247, 230), 540, 250, t, None, at(0, 'two hundred', -0.2), 'pop')
+    place_text(c, 'ONE RESUME?', 'anton', 150, YEL, 540, 400, t, None, at(0, 'one resume', -0.2), 'pop')
     host(c, t, [(0, 22), (at(0, 'An AI', -0.2), 26)], 540, 1180, 820)
     ta = at(0, 'An AI', -0.2)
-    if t > ta: place(c, pill_text('AN AI JOB AGENT CAN FIX THIS', INK, YEL, 60), 540, 560, 0.6 + 0.4 * eback(prog(t, ta, 0.3)), -3)
+    if t > ta: place(c, pill_text('AN AI JOB AGENT FIXES IT', INK, YEL, 60), 540, 560, 0.6 + 0.4 * eback(prog(t, ta, 0.3)), -3)
 
 
 def s1(c, t):
@@ -595,7 +595,7 @@ SCENES = [s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12]
 
 
 def slam_times():
-    return [at(0, 'zero', -0.2), at(3, 'ninety four', -0.2), at(9, 'No.', -0.15), at(10, 'Three rules', 0)]
+    return [at(0, 'one resume', -0.2), at(3, 'ninety four', -0.2), at(9, 'No.', -0.15), at(10, 'Three rules', 0)]
 
 
 def footer(c):

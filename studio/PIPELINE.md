@@ -248,3 +248,6 @@ only, not investment advice."). Publish Friday 16:00 IST (YouTube peak).
 ### Added 6 Nov 2026: 9 Claude animation styles (user's reference image), now at the front of `style_queue`
 Isometric, Paper-Cut, 3D Data Chart, Synthwave, 3D Explainer, Maths Diagram, Cartoon Explainer (Cloud Family cast), Domino Reveal, Glow Atom.
 Topic fit is in `style_guide` in state.json. Still: share the plan + style with the user before building (discuss-first rule).
+
+## Hook rule (10 Nov 2026)
+- Never open a hook with "Stop". Rotate openers ("Never…", "Nobody tells you…", a number, a direct claim) and keep the hookscore >= 70.

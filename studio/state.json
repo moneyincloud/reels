@@ -79,7 +79,8 @@
       "slug": "cupid",
       "topic": "Cupid deep dive",
       "voice": "am_michael",
-      "posted": "manual"
+      "posted": "manual",
+      "hook": "Nobody tells you a condom company plans to grow revenue one hundred and twenty three percent in one year."
     },
     {
       "date": "2026-10-30",
@@ -413,7 +414,7 @@
       "style": "User cartoon stickers (host/poses) + drawn app screens",
       "voice": "af_heart",
       "colour": "teal",
-      "hook": "Stop. Two hundred job applications and zero calls? An AI job agent can fix this.",
+      "hook": "Never apply to two hundred jobs with one resume. An AI job agent fixes it.",
       "hook_score": 80.4,
       "post": "2026-11-18 19:00 IST"
     },
@@ -424,7 +425,7 @@
       "style": "Medicine shelf + user cartoon host",
       "voice": "am_michael",
       "colour": "blue",
-      "hook": "Stop. Ten mid cap pharma companies, and the medicines that pay their bills.",
+      "hook": "Nobody tells you which company makes the medicine in your home. Here are ten.",
       "hook_score": 80.4,
       "post": "2026-11-19 19:00 IST"
     },
@@ -435,7 +436,7 @@
       "style": "User cartoon host + drawn products and data cards",
       "voice": "af_heart",
       "colour": "pink",
-      "hook": "Stop. A condom company now plans to grow revenue 123% in one year.",
+      "hook": "Nobody tells you a condom company plans to grow revenue one hundred and twenty three percent in one year.",
       "hook_score": 80.4,
       "post": "2026-11-20 19:00 IST"
     },
@@ -446,7 +447,7 @@
       "style": "Gold-loan counter + user cartoon host",
       "voice": "am_michael",
       "colour": "gold",
-      "hook": "Stop. Every Manappuram branch earns about twelve thousand rupees profit a day.",
+      "hook": "Never underestimate a gold loan shop. Every Manappuram branch earns about twelve thousand rupees profit a day.",
       "hook_score": 81.8,
       "post": "2026-11-21 19:00 IST"
     },
@@ -457,7 +458,7 @@
       "style": "Revenue donut + user cartoon host",
       "voice": "af_heart",
       "colour": "green",
-      "hook": "Stop. Cipla sells medicines in eighty six countries. Here is where its money comes from.",
+      "hook": "Nobody tells you where Cipla makes its money. Eighty six countries, here is the split.",
       "hook_score": 77.5,
       "post": "2026-11-22 19:00 IST"
     }
@@ -501,5 +502,9 @@
     "cartoon explainer (cloud family)": "realistic Cloud Family cast with multi-voice dialogue (kasitip engine)",
     "domino reveal": "tiles/dominoes falling in a chain, each revealing a step: cause-and-effect (rate hike -> EMI -> spending -> stocks)",
     "glow atom": "dark navy space, glowing orbits and labels like an atom diagram: portfolio = nucleus + orbiting assets, diversification"
-  }
+  },
+  "hook_rules": [
+    "Never open a hook with 'Stop' (user instruction, 10 Nov 2026). Rotate openers: 'Never…', 'Nobody tells you…', a number, a direct claim.",
+    "Hook must still score >= 70 on hookscore.py"
+  ]
 }
