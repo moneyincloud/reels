@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -367,6 +367,15 @@
    "voice": "am_michael",
    "theme": "gold",
    "style": "storybook animation (money-story-reel)"
+  },
+  {
+   "date": "2026-11-10",
+   "slug": "bonusexp_en",
+   "topic": "Bonus Express: where is your Diwali bonus going (4 stops)",
+   "scheduled": "2026-11-11 19:00 IST (manual)",
+   "voice": "af_heart",
+   "theme": "sky",
+   "style": "retro ticket (own mascot Cloudy)"
   }
  ],
  "next_ideas": [
