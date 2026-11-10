@@ -1,66 +1,66 @@
 [
-{
-"who": "narrator",
-"text": "Never pay only the minimum due on your credit card. Here's why."
-},
-{
-"who": "arjun",
-"text": "Amma! I got my first credit card! Free money!"
-},
-{
-"who": "amma",
-"text": "It is not free money. It is the bank's money, for up to fifty days."
-},
-{
-"who": "narrator",
-"text": "You swipe today. The bill comes at the end of the cycle, and you get about twenty days to pay. Up to fifty days, interest free. Only if you pay the full bill."
-},
-{
-"who": "narrator",
-"text": "Arjun buys a fifty thousand rupee phone. The bill: total due, fifty thousand. Minimum due, two thousand five hundred."
-},
-{
-"who": "kasi",
-"text": "Just pay two thousand five hundred! Sure shot, no problem!"
-},
-{
-"who": "amma",
-"text": "Says who? Pay the full fifty thousand, and the interest is zero."
-},
-{
-"who": "narrator",
-"text": "Pay only the minimum, and up to three point seven five percent a month hits the rest, plus GST. About twenty one hundred rupees in one month. And new purchases lose the free period."
-},
-{
-"who": "arjun",
-"text": "And what if I miss the payment completely?"
-},
-{
-"who": "narrator",
-"text": "Late fee, plus interest, plus GST. Three days past the due date, it can reach the credit bureaus. Your CIBIL score drops, and future loans cost more."
-},
-{
-"who": "narrator",
-"text": "Can't pay in full? EMI beats the minimum due. Six months at about fifteen percent, plus fees, costs about thirty two hundred extra."
-},
-{
-"who": "paati",
-"text": "Kanna, choose the right card for your life."
-},
-{
-"who": "narrator",
-"text": "First card? Lifetime free. Shop online? Cashback. Big spends? Rewards. Travel? Lounges and air miles. Ride daily? Fuel. No credit history? A secured card against an FD."
-},
-{
-"who": "narrator",
-"text": "The good: interest free credit, rewards, a better score. The bad: over forty percent interest, overspending, fees, and costly cash withdrawals."
-},
-{
-"who": "thatha",
-"text": "Three rules, kanna. Pay the full bill with autopay. Use less than thirty percent of your limit. And never withdraw cash on a credit card."
-},
-{
-"who": "narrator",
-"text": "Follow for more Cloud Family lessons. And never pay only the minimum due."
-}
+ {
+  "who": "narrator",
+  "text": "Never pay only the minimum due on your credit card. Here's why."
+ },
+ {
+  "who": "arjun",
+  "text": "Amma! I got my first credit card! Free money!"
+ },
+ {
+  "who": "amma",
+  "text": "It is not free money. It is the bank's money, for up to fifty days."
+ },
+ {
+  "who": "narrator",
+  "text": "You swipe today. The bill comes at the end of the cycle, and you get about twenty days to pay. Up to fifty days, interest free. Only if you pay the full bill."
+ },
+ {
+  "who": "narrator",
+  "text": "Arjun buys a fifty thousand rupee phone. The bill: total due, fifty thousand. Minimum due, two thousand five hundred."
+ },
+ {
+  "who": "kasi",
+  "text": "Just pay two thousand five hundred! It is a sure shot! No problem!"
+ },
+ {
+  "who": "amma",
+  "text": "Says who? Pay the full fifty thousand, and the interest is zero."
+ },
+ {
+  "who": "narrator",
+  "text": "Pay only the minimum, and up to three point seven five percent a month hits the rest, plus GST. About twenty one hundred rupees in one month. And new purchases lose the free period."
+ },
+ {
+  "who": "arjun",
+  "text": "And what if I miss the payment completely?"
+ },
+ {
+  "who": "narrator",
+  "text": "Late fee, plus interest, plus GST. Three days past the due date, it can reach the credit bureaus. Your CIBIL score drops, and future loans cost more."
+ },
+ {
+  "who": "narrator",
+  "text": "Can't pay in full? EMI beats the minimum due. Six months at about fifteen percent, plus fees, costs about thirty two hundred extra."
+ },
+ {
+  "who": "paati",
+  "text": "Kanna, choose the right card for your life."
+ },
+ {
+  "who": "narrator",
+  "text": "First card? Lifetime free. Shop online? Cashback. Big spends? Rewards. Travel? Lounges and air miles. Ride daily? Fuel. No credit history? A secured card against an FD."
+ },
+ {
+  "who": "narrator",
+  "text": "The good: interest free credit, rewards, a better score. The bad: over forty percent interest, overspending, fees, and costly cash withdrawals."
+ },
+ {
+  "who": "thatha",
+  "text": "Three rules, kanna. Pay the full bill with autopay. Use less than thirty percent of your limit. And never withdraw cash on a credit card."
+ },
+ {
+  "who": "narrator",
+  "text": "Follow for more Cloud Family lessons. And never pay only the minimum due."
+ }
 ]
