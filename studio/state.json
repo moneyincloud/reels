@@ -1,439 +1,450 @@
 {
- "last_voice": "female",
- "history": [
-  {
-   "date": "2026-10-23",
-   "slug": "jio",
-   "topic": "Jio IPO lottery explained"
+  "last_voice": "male",
+  "history": [
+    {
+      "date": "2026-10-23",
+      "slug": "jio",
+      "topic": "Jio IPO lottery explained"
+    },
+    {
+      "date": "2026-10-23",
+      "slug": "tmpv",
+      "topic": "Tata Motors Passenger Vehicles business"
+    },
+    {
+      "date": "2026-10-24",
+      "slug": "king",
+      "topic": "King's Test kids investing story ep1"
+    },
+    {
+      "date": "2026-10-24",
+      "slug": "crash",
+      "topic": "Indian market crashes in 30 years"
+    },
+    {
+      "date": "2026-10-25",
+      "slug": "jio2",
+      "topic": "Jio IPO allotment check, 22x subscribed"
+    },
+    {
+      "date": "2026-10-26",
+      "slug": "lows",
+      "topic": "Big companies at 52-week lows (HUL, Maruti, DMart, Swiggy, NTPC)"
+    },
+    {
+      "date": "2026-10-28",
+      "slug": "quiz3",
+      "topic": "Money quiz: rule of 72, inflation halving, loss recovery (-50% needs +100%, Nifty -14% needs +16%)",
+      "angle": "quiz",
+      "scheduled": "2026-10-28 10:00 IST IG REEL + YT Short"
+    },
+    {
+      "date": "2026-10-29",
+      "slot": "10:00",
+      "slug": "recharge",
+      "voice": "af_heart",
+      "engine": "hyperframes-dataviz",
+      "metricool_id": 409245918
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "suzlon",
+      "topic": "Suzlon multibagger or trap, Q2 FY27",
+      "voice": "af_heart",
+      "posted": "manual"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "friends",
+      "topic": "3 friends FD vs gold vs Nifty 2006-2026",
+      "voice": "am_michael",
+      "posted": "manual"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "iepf",
+      "topic": "Forgotten shares IEPF ₹89,000 Cr",
+      "voice": "af_heart",
+      "posted": "manual"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "ipo",
+      "topic": "IPO regret club, 9 IPOs",
+      "voice": "am_michael",
+      "posted": "manual"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "cupid",
+      "topic": "Cupid deep dive",
+      "voice": "am_michael",
+      "posted": "manual"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "itstocks",
+      "topic": "40 IT stocks, 7 passed",
+      "voice": "am_michael",
+      "posted": "manual"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "sjvn",
+      "topic": "SJVN multibagger or trap, Q2 FY27",
+      "voice": "af_heart",
+      "posted": "manual"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "pcj2",
+      "topic": "PC Jeweller part 2",
+      "voice": "am_michael",
+      "posted": "manual"
+    },
+    {
+      "slug": "invest4",
+      "date": "2026-10-30",
+      "style": "listx",
+      "voice": "af_heart",
+      "status": "scheduled",
+      "metricool_id": 417830504,
+      "scheduled": "2026-11-10 10:00 IST IG REEL + YT Short"
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "weekly_2026-10-30",
+      "tag": "weekly-recap",
+      "topic": "Weekly recap 24-30 Oct: 52-week lows, recharge hike, crashes, Jio allotment, quiz, King's test",
+      "voice": "am_michael",
+      "parts": 6,
+      "length_s": 524,
+      "scheduled": "2026-10-31 16:00 IST YouTube video (run fired late, 21:42 IST Fri)",
+      "metricool_id": 411430268
+    },
+    {
+      "date": "2026-10-30",
+      "slug": "tortoise",
+      "tag": "animal-friday",
+      "topic": "Animal Friday: Tortoise vs Hare - time beats amount (₹5k from 25 vs ₹10k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
+      "angle": "story",
+      "voice": "af_heart",
+      "length_s": 75.6,
+      "scheduled": "2026-10-31 18:00 IST IG REEL + YT Short (run fired late, 22:17 IST Fri, after the Fri 18:00 slot)",
+      "metricool_id": 411468262,
+      "files": "2026-10-31/tortoise_*"
+    },
+    {
+      "slug": "usstock",
+      "date": "2026-10-30",
+      "style": "listx",
+      "voice": "am_michael",
+      "status": "scheduled",
+      "metricool_id": 417830175,
+      "scheduled": "2026-11-11 10:00 IST IG REEL + YT Short"
+    },
+    {
+      "slug": "race10",
+      "date": "2026-10-31",
+      "style": "race-bars",
+      "voice": "af_heart",
+      "status": "scheduled",
+      "metricool_id": 417830246,
+      "scheduled": "2026-11-12 10:00 IST IG REEL + YT Short"
+    },
+    {
+      "slug": "onepoint",
+      "date": "2026-10-31",
+      "style": "listx+avatar",
+      "voice": "am_michael",
+      "status": "posted via Metricool (see Metricool history)"
+    },
+    {
+      "slug": "midcap6",
+      "date": "2026-11-01",
+      "style": "html-css-canvas+avatar",
+      "voice": "af_heart",
+      "status": "scheduled",
+      "metricool_id": 417829349,
+      "scheduled": "2026-11-09 10:00 IST IG REEL + YT Short"
+    },
+    {
+      "date": "2026-11-02",
+      "slug": "twomoves",
+      "topic": "Q2 results: sales grew but Intellect Design -16% vs Laurus Labs +7% record (30 Oct 2026); stocks move on surprise",
+      "angle": "result-first contrast + myth vs fact",
+      "voice": "am_michael",
+      "length_s": 81.6,
+      "scheduled": "2026-11-02 10:00 IST IG REEL + YT Short",
+      "metricool_id": 413452586,
+      "files": "2026-11-02/twomoves_*"
+    },
+    {
+      "date": "2026-11-02",
+      "slug": "results5_carousel",
+      "topic": "Carousel: read quarterly results in 5 checks (Laurus, Trent, Intellect), 8 slides",
+      "angle": "carousel cheat sheet",
+      "scheduled": "2026-11-02 16:00 IST IG POST (carousel)",
+      "metricool_id": 413452635,
+      "files": "2026-11-02/results5_*.jpg"
+    },
+    {
+      "slug": "reliance",
+      "date": "2026-11-02",
+      "style": "listx+avatar",
+      "voice": "am_michael",
+      "status": "skipped: news went stale before posting"
+    },
+    {
+      "slug": "muhurat",
+      "date": "2026-11-02",
+      "style": "html-css-canvas diwali + avatar + festive sound",
+      "voice": "af_heart",
+      "status": "posted via Metricool (see Metricool history)"
+    },
+    {
+      "slug": "lossmath",
+      "date": "2026-11-03",
+      "style": "light-theme two-character office whiteboard lesson (CSS+canvas) + emotion avatar host + Priya",
+      "voice": "am_michael (host) + af_heart (Priya)",
+      "status": "scheduled",
+      "follow_overlay": true,
+      "metricool_id": 417828890,
+      "scheduled": "2026-11-07 10:00 IST IG REEL + YT Short"
+    },
+    {
+      "date": "2026-11-04",
+      "slug": "bestdays",
+      "topic": "Past maths: missing the 5 best Nifty days in the last year (4 Nov 2025-3 Nov 2026): Rs1L -> Rs93,020 stayed vs Rs82,781 missed 5 best; best days came near worst days",
+      "angle": "past maths + quiz countdown",
+      "voice": "af_heart",
+      "length_s": 76.6,
+      "scheduled": "2026-11-04 10:00 IST IG REEL + YT Short",
+      "metricool_id": 416000650,
+      "files": "2026-11-04/bestdays_*"
+    },
+    {
+      "slug": "under20",
+      "date": "2026-11-04",
+      "style": "light-theme office whiteboard, 22-stock list + top-6 business/fundamental cards + surveillance reveal",
+      "voice": "af_heart (Priya lead) + am_michael (host)",
+      "status": "scheduled",
+      "metricool_id": 417828985,
+      "scheduled": "2026-11-08 10:00 IST IG REEL + YT Short"
+    },
+    {
+      "slug": "tasmac",
+      "date": "2026-11-04",
+      "style": "English infographic news explainer, NO branding",
+      "voice": "am_michael",
+      "status": "delivered, for another account"
+    },
+    {
+      "slug": "paragmilk",
+      "date": "2026-11-04",
+      "style": "light infographic, results-day viral (profit down, stock up), moneyincloud branding",
+      "voice": "af_heart",
+      "status": "skipped: news went stale before posting",
+      "thumb_theme": "sky"
+    },
+    {
+      "slug": "aioffice",
+      "date": "2026-11-04",
+      "style": "AI office explainer (not channel)",
+      "voice": "am_michael",
+      "status": "delivered"
+    },
+    {
+      "slug": "oilcrash",
+      "date": "2026-11-05",
+      "style": "light infographic market-move news, moneyincloud branding",
+      "voice": "am_michael",
+      "status": "scheduled",
+      "thumb_theme": "oil",
+      "follow_overlay": true,
+      "metricool_id": 417827483,
+      "scheduled": "2026-11-05 20:50 IST IG REEL + YT Short"
+    },
+    {
+      "date": "2026-11-05",
+      "slug": "cummins",
+      "topic": "Cummins India -14% on Q2 FY27: sales +4%, profit -27%, EBITDA margin 21.9%->15.4%, ~Rs18,480 cr value lost",
+      "style": "comic art (pixel version rejected by user)",
+      "voice": "af_heart",
+      "length_s": 89.2,
+      "thumb_theme": "red",
+      "follow_overlay": true,
+      "status": "scheduled",
+      "files": "out/cummins_*",
+      "metricool_id": 417828026,
+      "scheduled": "2026-11-06 10:00 IST IG REEL + YT Short"
+    },
+    {
+      "date": "2026-11-05",
+      "slug": "turkey",
+      "tag": "animal-friday",
+      "topic": "Animal Friday: Turkey Problem with Yes Bank (₹404 Aug 2018 -> ₹5.55 Mar 2020 -> ₹16.24 today), 3 warning signs",
+      "style": "normal light template (chalkboard rejected)",
+      "voice": "am_michael",
+      "length_s": 98.3,
+      "thumb_theme": "blue",
+      "follow_overlay": true,
+      "status": "scheduled",
+      "files": "out/turkey_*",
+      "metricool_id": 417828220,
+      "scheduled": "2026-11-06 18:00 IST IG REEL + YT Short"
+    },
+    {
+      "date": "2026-11-05",
+      "slug": "kalyan",
+      "topic": "Kalyan Jewellers Part 1: 546 showrooms, sales 3.7x, profit to ₹1,350 Cr, ₹87 IPO to ₹560, ownership, catch (P/E 40, gold loans)",
+      "style": "PCJ paper collage",
+      "voice": "af_heart",
+      "length_s": 92.3,
+      "thumb_theme": "gold",
+      "follow_overlay": true,
+      "posted": "manual",
+      "status": "ready, manual post Fri 6 Nov 1:00 PM IST (Dhanteras)",
+      "files": "out/kalyan_*"
+    },
+    {
+      "date": "2026-11-06",
+      "slug": "weekly_2026-11-06",
+      "tag": "weekly-recap",
+      "topic": "Weekly recap 31 Oct-6 Nov: oil crash 11%, Cummins -14%, Laurus vs Intellect, One Point One, missing best Nifty days, Muhurat timings, tortoise vs hare",
+      "voice": "am_michael",
+      "parts": 7,
+      "length_s": 597.6,
+      "size_mb": 91.0,
+      "scheduled": "2026-11-06 16:00 IST YouTube video",
+      "metricool_id": 418568931,
+      "files": "2026-11-06/weekly_2026-11-06*"
+    },
+    {
+      "date": "2026-11-06",
+      "slug": "seeds",
+      "topic": "King's Treasury Ep 2 'The Golden Seeds': reinvest dividends = compounding; Nifty 50 20-yr price 11.09% vs TR 12.44% (NSE Indices)",
+      "style": "flat vector",
+      "voice": "am_michael",
+      "length_s": 79.6,
+      "thumb_theme": "green",
+      "follow_overlay": true,
+      "posted": "manual",
+      "status": "ready, manual post Mon 9 Nov 6:00 PM IST",
+      "files": "out/seeds_*"
+    },
+    {
+      "date": "2026-11-06",
+      "slug": "kasitip",
+      "topic": "Cloud Family Ep1: never trust this uncle's sure-shot tip (SEBI FY25 F&O 91% lost)",
+      "scheduled": "2026-11-10 19:00 IST (manual)",
+      "voice": "multi (narrator af_heart)",
+      "theme": "red"
+    },
+    {
+      "date": "2026-11-06",
+      "slug": "rbidomino",
+      "topic": "Domino: RBI repo 5.25->5.50 hits your EMI (+768/month on 50L)",
+      "scheduled": "2026-11-12 19:00 IST (manual)",
+      "voice": "am_michael",
+      "theme": "orange",
+      "style": "domino reveal"
+    },
+    {
+      "date": "2026-11-06",
+      "slug": "isobank",
+      "topic": "Isometric: bank pays 2.5% savings, lends at 7.5%+",
+      "scheduled": "2026-11-14 19:00 IST (manual)",
+      "voice": "af_heart",
+      "theme": "emerald",
+      "style": "isometric"
+    },
+    {
+      "date": "2026-11-07",
+      "slug": "storyreel",
+      "topic": "Money Story Ep1: The Raise That Disappeared (lifestyle creep)",
+      "scheduled": "2026-11-16 19:00 IST (manual)",
+      "voice": "am_michael",
+      "theme": "gold",
+      "style": "storybook animation (money-story-reel)"
+    },
+    {
+      "date": "2026-11-10",
+      "slug": "bonusexp_en",
+      "topic": "Bonus Express: where is your Diwali bonus going (4 stops)",
+      "scheduled": "2026-11-11 19:00 IST (manual)",
+      "voice": "af_heart",
+      "theme": "sky",
+      "style": "retro ticket (own mascot Cloudy)"
+    },
+    {
+      "date": "2026-11-10",
+      "slug": "watch27",
+      "topic": "2027 watchlist: 5 sectors HSBC named; Citi Nifty 28,000 end-2027",
+      "scheduled": "2026-11-13 19:00 IST (manual)",
+      "voice": "am_michael",
+      "theme": "oil",
+      "style": "glow atom"
+    },
+    {
+      "date": "2026-11-10",
+      "slug": "itc",
+      "topic": "ITC: you use it every day but 74% of profit is cigarettes (Q2 FY27)",
+      "scheduled": "2026-11-15 19:00 IST (manual)",
+      "voice": "af_heart",
+      "theme": "sky",
+      "style": "photo collage"
+    },
+    {
+      "slug": "ccard",
+      "date": "2026-11-10",
+      "topic": "Credit card basics: free period, minimum due trap, missed payment, EMI, card types, 3 rules",
+      "style": "Cloud Family realistic cast + data cards",
+      "voice": "am_michael + cast",
+      "colour": "purple",
+      "hook": "Never pay only the minimum due on your credit card. Here's why.",
+      "hook_score": 85.6,
+      "post": "2026-11-17 19:00 IST"
+    }
+  ],
+  "next_ideas": [
+    "Divi's Labs at a 52-week high: +7.52% to ₹11,097 in the last session (52-wk high ₹11,194; INDmoney). Results-day decode in the Reliance format (last week's top reel): what it makes, what drove the move, margin check, and the catch (valuation vs Cipla, as in the pharma-ranking reel). Education only, no buy/sell call",
+    "Upper circuit explained with Finolex Cables: +19.98% to ₹1,309, locked at its upper limit in the last session (INDmoney). 'Don't chase an upper-circuit stock before you check these 3 things': why it moved, volume/liquidity, and what the price band means. Checklist format like the ₹20-stocks reel. No return predictions",
+    "52-week lows, round 2: PI Industries ₹1,750.7 vs high ₹3,832.9 (~54% below) and Astral ₹1,260 vs ₹1,768.7 (INDmoney). Same 'cheap or warning?' format: why each fell, and 3 questions before calling a fallen stock cheap. No buy/sell call"
+  ],
+  "rules": {
+    "no_avatar": "31 Oct 2026: old caricature removed; use emotion pose avatar host/poses (40 poses) via listx.draw_pose"
   },
-  {
-   "date": "2026-10-23",
-   "slug": "tmpv",
-   "topic": "Tata Motors Passenger Vehicles business"
-  },
-  {
-   "date": "2026-10-24",
-   "slug": "king",
-   "topic": "King's Test kids investing story ep1"
-  },
-  {
-   "date": "2026-10-24",
-   "slug": "crash",
-   "topic": "Indian market crashes in 30 years"
-  },
-  {
-   "date": "2026-10-25",
-   "slug": "jio2",
-   "topic": "Jio IPO allotment check, 22x subscribed"
-  },
-  {
-   "date": "2026-10-26",
-   "slug": "lows",
-   "topic": "Big companies at 52-week lows (HUL, Maruti, DMart, Swiggy, NTPC)"
-  },
-  {
-   "date": "2026-10-28",
-   "slug": "quiz3",
-   "topic": "Money quiz: rule of 72, inflation halving, loss recovery (-50% needs +100%, Nifty -14% needs +16%)",
-   "angle": "quiz",
-   "scheduled": "2026-10-28 10:00 IST IG REEL + YT Short"
-  },
-  {
-   "date": "2026-10-29",
-   "slot": "10:00",
-   "slug": "recharge",
-   "voice": "af_heart",
-   "engine": "hyperframes-dataviz",
-   "metricool_id": 409245918
-  },
-  {
-   "date": "2026-10-30",
-   "slug": "suzlon",
-   "topic": "Suzlon multibagger or trap, Q2 FY27",
-   "voice": "af_heart",
-   "posted": "manual"
-  },
-  {
-   "date": "2026-10-30",
-   "slug": "friends",
-   "topic": "3 friends FD vs gold vs Nifty 2006-2026",
-   "voice": "am_michael",
-   "posted": "manual"
-  },
-  {
-   "date": "2026-10-30",
-   "slug": "iepf",
-   "topic": "Forgotten shares IEPF \u20b989,000 Cr",
-   "voice": "af_heart",
-   "posted": "manual"
-  },
-  {
-   "date": "2026-10-30",
-   "slug": "ipo",
-   "topic": "IPO regret club, 9 IPOs",
-   "voice": "am_michael",
-   "posted": "manual"
-  },
-  {
-   "date": "2026-10-30",
-   "slug": "cupid",
-   "topic": "Cupid deep dive",
-   "voice": "am_michael",
-   "posted": "manual"
-  },
-  {
-   "date": "2026-10-30",
-   "slug": "itstocks",
-   "topic": "40 IT stocks, 7 passed",
-   "voice": "am_michael",
-   "posted": "manual"
-  },
-  {
-   "date": "2026-10-30",
-   "slug": "sjvn",
-   "topic": "SJVN multibagger or trap, Q2 FY27",
-   "voice": "af_heart",
-   "posted": "manual"
-  },
-  {
-   "date": "2026-10-30",
-   "slug": "pcj2",
-   "topic": "PC Jeweller part 2",
-   "voice": "am_michael",
-   "posted": "manual"
-  },
-  {
-   "slug": "invest4",
-   "date": "2026-10-30",
-   "style": "listx",
-   "voice": "af_heart",
-   "status": "scheduled",
-   "metricool_id": 417830504,
-   "scheduled": "2026-11-10 10:00 IST IG REEL + YT Short"
-  },
-  {
-   "date": "2026-10-30",
-   "slug": "weekly_2026-10-30",
-   "tag": "weekly-recap",
-   "topic": "Weekly recap 24-30 Oct: 52-week lows, recharge hike, crashes, Jio allotment, quiz, King's test",
-   "voice": "am_michael",
-   "parts": 6,
-   "length_s": 524,
-   "scheduled": "2026-10-31 16:00 IST YouTube video (run fired late, 21:42 IST Fri)",
-   "metricool_id": 411430268
-  },
-  {
-   "date": "2026-10-30",
-   "slug": "tortoise",
-   "tag": "animal-friday",
-   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (\u20b95k from 25 vs \u20b910k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
-   "angle": "story",
-   "voice": "af_heart",
-   "length_s": 75.6,
-   "scheduled": "2026-10-31 18:00 IST IG REEL + YT Short (run fired late, 22:17 IST Fri, after the Fri 18:00 slot)",
-   "metricool_id": 411468262,
-   "files": "2026-10-31/tortoise_*"
-  },
-  {
-   "slug": "usstock",
-   "date": "2026-10-30",
-   "style": "listx",
-   "voice": "am_michael",
-   "status": "scheduled",
-   "metricool_id": 417830175,
-   "scheduled": "2026-11-11 10:00 IST IG REEL + YT Short"
-  },
-  {
-   "slug": "race10",
-   "date": "2026-10-31",
-   "style": "race-bars",
-   "voice": "af_heart",
-   "status": "scheduled",
-   "metricool_id": 417830246,
-   "scheduled": "2026-11-12 10:00 IST IG REEL + YT Short"
-  },
-  {
-   "slug": "onepoint",
-   "date": "2026-10-31",
-   "style": "listx+avatar",
-   "voice": "am_michael",
-   "status": "posted via Metricool (see Metricool history)"
-  },
-  {
-   "slug": "midcap6",
-   "date": "2026-11-01",
-   "style": "html-css-canvas+avatar",
-   "voice": "af_heart",
-   "status": "scheduled",
-   "metricool_id": 417829349,
-   "scheduled": "2026-11-09 10:00 IST IG REEL + YT Short"
-  },
-  {
-   "date": "2026-11-02",
-   "slug": "twomoves",
-   "topic": "Q2 results: sales grew but Intellect Design -16% vs Laurus Labs +7% record (30 Oct 2026); stocks move on surprise",
-   "angle": "result-first contrast + myth vs fact",
-   "voice": "am_michael",
-   "length_s": 81.6,
-   "scheduled": "2026-11-02 10:00 IST IG REEL + YT Short",
-   "metricool_id": 413452586,
-   "files": "2026-11-02/twomoves_*"
-  },
-  {
-   "date": "2026-11-02",
-   "slug": "results5_carousel",
-   "topic": "Carousel: read quarterly results in 5 checks (Laurus, Trent, Intellect), 8 slides",
-   "angle": "carousel cheat sheet",
-   "scheduled": "2026-11-02 16:00 IST IG POST (carousel)",
-   "metricool_id": 413452635,
-   "files": "2026-11-02/results5_*.jpg"
-  },
-  {
-   "slug": "reliance",
-   "date": "2026-11-02",
-   "style": "listx+avatar",
-   "voice": "am_michael",
-   "status": "skipped: news went stale before posting"
-  },
-  {
-   "slug": "muhurat",
-   "date": "2026-11-02",
-   "style": "html-css-canvas diwali + avatar + festive sound",
-   "voice": "af_heart",
-   "status": "posted via Metricool (see Metricool history)"
-  },
-  {
-   "slug": "lossmath",
-   "date": "2026-11-03",
-   "style": "light-theme two-character office whiteboard lesson (CSS+canvas) + emotion avatar host + Priya",
-   "voice": "am_michael (host) + af_heart (Priya)",
-   "status": "scheduled",
-   "follow_overlay": true,
-   "metricool_id": 417828890,
-   "scheduled": "2026-11-07 10:00 IST IG REEL + YT Short"
-  },
-  {
-   "date": "2026-11-04",
-   "slug": "bestdays",
-   "topic": "Past maths: missing the 5 best Nifty days in the last year (4 Nov 2025-3 Nov 2026): Rs1L -> Rs93,020 stayed vs Rs82,781 missed 5 best; best days came near worst days",
-   "angle": "past maths + quiz countdown",
-   "voice": "af_heart",
-   "length_s": 76.6,
-   "scheduled": "2026-11-04 10:00 IST IG REEL + YT Short",
-   "metricool_id": 416000650,
-   "files": "2026-11-04/bestdays_*"
-  },
-  {
-   "slug": "under20",
-   "date": "2026-11-04",
-   "style": "light-theme office whiteboard, 22-stock list + top-6 business/fundamental cards + surveillance reveal",
-   "voice": "af_heart (Priya lead) + am_michael (host)",
-   "status": "scheduled",
-   "metricool_id": 417828985,
-   "scheduled": "2026-11-08 10:00 IST IG REEL + YT Short"
-  },
-  {
-   "slug": "tasmac",
-   "date": "2026-11-04",
-   "style": "English infographic news explainer, NO branding",
-   "voice": "am_michael",
-   "status": "delivered, for another account"
-  },
-  {
-   "slug": "paragmilk",
-   "date": "2026-11-04",
-   "style": "light infographic, results-day viral (profit down, stock up), moneyincloud branding",
-   "voice": "af_heart",
-   "status": "skipped: news went stale before posting",
-   "thumb_theme": "sky"
-  },
-  {
-   "slug": "aioffice",
-   "date": "2026-11-04",
-   "style": "AI office explainer (not channel)",
-   "voice": "am_michael",
-   "status": "delivered"
-  },
-  {
-   "slug": "oilcrash",
-   "date": "2026-11-05",
-   "style": "light infographic market-move news, moneyincloud branding",
-   "voice": "am_michael",
-   "status": "scheduled",
-   "thumb_theme": "oil",
-   "follow_overlay": true,
-   "metricool_id": 417827483,
-   "scheduled": "2026-11-05 20:50 IST IG REEL + YT Short"
-  },
-  {
-   "date": "2026-11-05",
-   "slug": "cummins",
-   "topic": "Cummins India -14% on Q2 FY27: sales +4%, profit -27%, EBITDA margin 21.9%->15.4%, ~Rs18,480 cr value lost",
-   "style": "comic art (pixel version rejected by user)",
-   "voice": "af_heart",
-   "length_s": 89.2,
-   "thumb_theme": "red",
-   "follow_overlay": true,
-   "status": "scheduled",
-   "files": "out/cummins_*",
-   "metricool_id": 417828026,
-   "scheduled": "2026-11-06 10:00 IST IG REEL + YT Short"
-  },
-  {
-   "date": "2026-11-05",
-   "slug": "turkey",
-   "tag": "animal-friday",
-   "topic": "Animal Friday: Turkey Problem with Yes Bank (\u20b9404 Aug 2018 -> \u20b95.55 Mar 2020 -> \u20b916.24 today), 3 warning signs",
-   "style": "normal light template (chalkboard rejected)",
-   "voice": "am_michael",
-   "length_s": 98.3,
-   "thumb_theme": "blue",
-   "follow_overlay": true,
-   "status": "scheduled",
-   "files": "out/turkey_*",
-   "metricool_id": 417828220,
-   "scheduled": "2026-11-06 18:00 IST IG REEL + YT Short"
-  },
-  {
-   "date": "2026-11-05",
-   "slug": "kalyan",
-   "topic": "Kalyan Jewellers Part 1: 546 showrooms, sales 3.7x, profit to \u20b91,350 Cr, \u20b987 IPO to \u20b9560, ownership, catch (P/E 40, gold loans)",
-   "style": "PCJ paper collage",
-   "voice": "af_heart",
-   "length_s": 92.3,
-   "thumb_theme": "gold",
-   "follow_overlay": true,
-   "posted": "manual",
-   "status": "ready, manual post Fri 6 Nov 1:00 PM IST (Dhanteras)",
-   "files": "out/kalyan_*"
-  },
-  {
-   "date": "2026-11-06",
-   "slug": "weekly_2026-11-06",
-   "tag": "weekly-recap",
-   "topic": "Weekly recap 31 Oct-6 Nov: oil crash 11%, Cummins -14%, Laurus vs Intellect, One Point One, missing best Nifty days, Muhurat timings, tortoise vs hare",
-   "voice": "am_michael",
-   "parts": 7,
-   "length_s": 597.6,
-   "size_mb": 91.0,
-   "scheduled": "2026-11-06 16:00 IST YouTube video",
-   "metricool_id": 418568931,
-   "files": "2026-11-06/weekly_2026-11-06*"
-  },
-  {
-   "date": "2026-11-06",
-   "slug": "seeds",
-   "topic": "King's Treasury Ep 2 'The Golden Seeds': reinvest dividends = compounding; Nifty 50 20-yr price 11.09% vs TR 12.44% (NSE Indices)",
-   "style": "flat vector",
-   "voice": "am_michael",
-   "length_s": 79.6,
-   "thumb_theme": "green",
-   "follow_overlay": true,
-   "posted": "manual",
-   "status": "ready, manual post Mon 9 Nov 6:00 PM IST",
-   "files": "out/seeds_*"
-  },
-  {
-   "date": "2026-11-06",
-   "slug": "kasitip",
-   "topic": "Cloud Family Ep1: never trust this uncle's sure-shot tip (SEBI FY25 F&O 91% lost)",
-   "scheduled": "2026-11-10 19:00 IST (manual)",
-   "voice": "multi (narrator af_heart)",
-   "theme": "red"
-  },
-  {
-   "date": "2026-11-06",
-   "slug": "rbidomino",
-   "topic": "Domino: RBI repo 5.25->5.50 hits your EMI (+768/month on 50L)",
-   "scheduled": "2026-11-12 19:00 IST (manual)",
-   "voice": "am_michael",
-   "theme": "orange",
-   "style": "domino reveal"
-  },
-  {
-   "date": "2026-11-06",
-   "slug": "isobank",
-   "topic": "Isometric: bank pays 2.5% savings, lends at 7.5%+",
-   "scheduled": "2026-11-14 19:00 IST (manual)",
-   "voice": "af_heart",
-   "theme": "emerald",
-   "style": "isometric"
-  },
-  {
-   "date": "2026-11-07",
-   "slug": "storyreel",
-   "topic": "Money Story Ep1: The Raise That Disappeared (lifestyle creep)",
-   "scheduled": "2026-11-16 19:00 IST (manual)",
-   "voice": "am_michael",
-   "theme": "gold",
-   "style": "storybook animation (money-story-reel)"
-  },
-  {
-   "date": "2026-11-10",
-   "slug": "bonusexp_en",
-   "topic": "Bonus Express: where is your Diwali bonus going (4 stops)",
-   "scheduled": "2026-11-11 19:00 IST (manual)",
-   "voice": "af_heart",
-   "theme": "sky",
-   "style": "retro ticket (own mascot Cloudy)"
-  },
-  {
-   "date": "2026-11-10",
-   "slug": "watch27",
-   "topic": "2027 watchlist: 5 sectors HSBC named; Citi Nifty 28,000 end-2027",
-   "scheduled": "2026-11-13 19:00 IST (manual)",
-   "voice": "am_michael",
-   "theme": "oil",
-   "style": "glow atom"
-  },
-  {
-   "date": "2026-11-10",
-   "slug": "itc",
-   "topic": "ITC: you use it every day but 74% of profit is cigarettes (Q2 FY27)",
-   "scheduled": "2026-11-15 19:00 IST (manual)",
-   "voice": "af_heart",
-   "theme": "sky",
-   "style": "photo collage"
+  "style_queue": [
+    "isometric",
+    "paper-cut",
+    "3d data chart",
+    "synthwave",
+    "3d explainer",
+    "maths diagram",
+    "cartoon explainer (cloud family)",
+    "domino reveal",
+    "glow atom",
+    "glow sketch",
+    "ps2 low-poly",
+    "comic art",
+    "flat vector",
+    "minimal bw sketch",
+    "cgi motion",
+    "toy-brick",
+    "3d macro explainer"
+  ],
+  "style_next": 0,
+  "style_notes": "User rejected pixel art and chalkboard (5 Nov 2026). Default back to the normal light template; ask before trying another style.",
+  "style_guide": {
+    "isometric": "3D-ish isometric city/blocks: sectors as buildings, money flow between companies (e.g. how a bank makes money)",
+    "paper-cut": "layered paper cut-outs with depth shadows (our PCJ collage look, more layers): stories, company histories",
+    "3d data chart": "perspective 3D bars/lines rising with camera move: results, returns, compare stocks",
+    "synthwave": "neon grid, purple-pink sunset, glowing lines: crypto, hype, F&O, bubbles",
+    "3d explainer": "3D objects (coin stacks, vault, piggy bank) with lighting and camera orbit: how SIP/FD/NPS works",
+    "maths diagram": "clean graph paper, equations writing themselves, curves: compounding, CAGR, rule of 72, EMI maths",
+    "cartoon explainer (cloud family)": "realistic Cloud Family cast with multi-voice dialogue (kasitip engine)",
+    "domino reveal": "tiles/dominoes falling in a chain, each revealing a step: cause-and-effect (rate hike -> EMI -> spending -> stocks)",
+    "glow atom": "dark navy space, glowing orbits and labels like an atom diagram: portfolio = nucleus + orbiting assets, diversification"
   }
- ],
- "next_ideas": [
-  "Divi's Labs at a 52-week high: +7.52% to \u20b911,097 in the last session (52-wk high \u20b911,194; INDmoney). Results-day decode in the Reliance format (last week's top reel): what it makes, what drove the move, margin check, and the catch (valuation vs Cipla, as in the pharma-ranking reel). Education only, no buy/sell call",
-  "Upper circuit explained with Finolex Cables: +19.98% to \u20b91,309, locked at its upper limit in the last session (INDmoney). 'Don't chase an upper-circuit stock before you check these 3 things': why it moved, volume/liquidity, and what the price band means. Checklist format like the \u20b920-stocks reel. No return predictions",
-  "52-week lows, round 2: PI Industries \u20b91,750.7 vs high \u20b93,832.9 (~54% below) and Astral \u20b91,260 vs \u20b91,768.7 (INDmoney). Same 'cheap or warning?' format: why each fell, and 3 questions before calling a fallen stock cheap. No buy/sell call"
- ],
- "rules": {
-  "no_avatar": "31 Oct 2026: old caricature removed; use emotion pose avatar host/poses (40 poses) via listx.draw_pose"
- },
- "style_queue": [
-  "isometric",
-  "paper-cut",
-  "3d data chart",
-  "synthwave",
-  "3d explainer",
-  "maths diagram",
-  "cartoon explainer (cloud family)",
-  "domino reveal",
-  "glow atom",
-  "glow sketch",
-  "ps2 low-poly",
-  "comic art",
-  "flat vector",
-  "minimal bw sketch",
-  "cgi motion",
-  "toy-brick",
-  "3d macro explainer"
- ],
- "style_next": 0,
- "style_notes": "User rejected pixel art and chalkboard (5 Nov 2026). Default back to the normal light template; ask before trying another style.",
- "style_guide": {
-  "isometric": "3D-ish isometric city/blocks: sectors as buildings, money flow between companies (e.g. how a bank makes money)",
-  "paper-cut": "layered paper cut-outs with depth shadows (our PCJ collage look, more layers): stories, company histories",
-  "3d data chart": "perspective 3D bars/lines rising with camera move: results, returns, compare stocks",
-  "synthwave": "neon grid, purple-pink sunset, glowing lines: crypto, hype, F&O, bubbles",
-  "3d explainer": "3D objects (coin stacks, vault, piggy bank) with lighting and camera orbit: how SIP/FD/NPS works",
-  "maths diagram": "clean graph paper, equations writing themselves, curves: compounding, CAGR, rule of 72, EMI maths",
-  "cartoon explainer (cloud family)": "realistic Cloud Family cast with multi-voice dialogue (kasitip engine)",
-  "domino reveal": "tiles/dominoes falling in a chain, each revealing a step: cause-and-effect (rate hike -> EMI -> spending -> stocks)",
-  "glow atom": "dark navy space, glowing orbits and labels like an atom diagram: portfolio = nucleus + orbiting assets, diversification"
- }
 }
