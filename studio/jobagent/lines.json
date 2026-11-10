@@ -1,16 +1,15 @@
 [
  {"who":"narrator","text":"Stop. Two hundred job applications and zero calls? An AI job agent can fix this."},
- {"who":"arjun","text":"Two hundred applications, Amma. Not one call!"},
- {"who":"kasi","text":"Send the same resume to everyone! It is a sure shot! One will click!"},
+ {"who":"narrator","text":"You apply every day. Two hundred applications. Not one call."},
+ {"who":"narrator","text":"Someone tells you, send the same resume to everyone. One will click."},
  {"who":"narrator","text":"That is the problem. Applicants per job have more than doubled since 2022, and ninety four percent of Indian professionals plan to use AI in their job search."},
- {"who":"amma","text":"Kanna, work smarter. Use a job agent."},
+ {"who":"narrator","text":"So work smarter. Use a job agent."},
  {"who":"narrator","text":"A job agent is an AI assistant that runs your job hunt in five steps."},
  {"who":"narrator","text":"One. It reads your resume, skills, salary and city. Two. Every morning, it scans job sites for new openings."},
  {"who":"narrator","text":"Three. It scores each job against your profile, and skips the weak matches. Four. It tailors your resume and cover letter for each job, using only your real experience."},
  {"who":"narrator","text":"Five. It tracks every application, reminds you to follow up, and preps you for the interview."},
- {"who":"arjun","text":"So it applies for me automatically?"},
- {"who":"thatha","text":"No, kanna. You read and approve every application yourself."},
+ {"who":"narrator","text":"Does it apply for you automatically? No. You read and approve every application yourself."},
  {"who":"narrator","text":"Three rules. Never give it your passwords or OTPs. Never pay a placement fee to anyone who promises a job. And never let it invent experience you do not have."},
- {"who":"paati","text":"Your salary is your biggest investment, kanna. Grow it."},
- {"who":"narrator","text":"Follow for more Cloud Family lessons. Which step would help you the most?"}
+ {"who":"narrator","text":"Your salary is your biggest investment. Grow it."},
+ {"who":"narrator","text":"Follow for more. Which step would help you the most?"}
 ]

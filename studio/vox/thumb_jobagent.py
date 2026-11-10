@@ -5,7 +5,7 @@ import jobagent as M
 c=HK.rays_bg('teal', cy=1000)
 place(c,HK.fit_text('200 APPLICATIONS',140,HK.title_ink('teal')),540,240)
 place(c,HK.fit_text('0 CALLS?',170,YEL),540,410)
-a=M.person('arjun_worried',660); comp(c,a,-60,1560-a.size[1]+40)
+place(c,M.pose(22,700),300,1000,1,-3)
 ph=M.app_frame('AI JOB AGENT').copy(); d=ImageDraw.Draw(ph)
 for j,(x,y,s,col) in enumerate([('DevOps Engineer','match',' 92% ',M.GREEN),('Cloud Engineer','match',' 85% ',M.GREEN),('Data Analyst','skipped',' 31% ',M.RED)]):
     M.row(d,ph,190+j*165,x,y,s,col)

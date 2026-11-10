@@ -1,4 +1,4 @@
-"""Cloud Family Ep 3: how an AI job agent works - 5 steps, you approve, 3 safety rules. Narrator af_heart + cast.
+"""Cloud Family Ep 3: how an AI job agent works - 5 steps, you approve, 3 safety rules. Narrator af_heart, host = user cartoon stickers.
 Realistic cast cut-outs, multi-voice dialogue (vo_cast.py), light template, red topic colour."""
 import os as _os; ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))) + '/'
 import math, json, functools, textwrap, subprocess
@@ -388,7 +388,7 @@ def step_screen(c, t, k, t0):
                 if s < 50: d.line((80, 190 + j * 150 + 65, 520, 190 + j * 150 + 65), fill=RED, width=6)
     elif k == 4:
         d.rounded_rectangle((60, 190, 700, 920), 20, fill=(255, 255, 255), outline=(215, 220, 228), width=3)
-        im.alpha_composite(text_img('ARJUN · DevOps Engineer', 'anton', 44, INK), (90, 215))
+        im.alpha_composite(text_img('YOU · DevOps Engineer', 'anton', 44, INK), (90, 215))
         lines = [('Matched to this job:', INK), ('✔ CI/CD pipelines (Azure DevOps)', GREEN), ('✔ Terraform on AWS', GREEN), ('✔ Kubernetes deployments', GREEN), ('Only REAL experience', BLUE), ('No fake skills added', RED)]
         for j, (s, col) in enumerate(lines):
             if lt > 0.3 + j * 0.4:
@@ -413,34 +413,59 @@ def resume_card():
     return im
 
 
+@functools.lru_cache(64)
+def pose(pid, h):
+    im = Image.open(ROOT + f'host/poses_x4/p{pid:02d}.png').convert('RGBA')
+    w = int(im.size[0] * h / im.size[1]); im = im.resize((w, h), Image.LANCZOS)
+    out = Image.new('RGBA', (w + 30, h + 30), (0, 0, 0, 0))
+    sh = Image.new('RGBA', im.size, (0, 0, 0, 255)); sh.putalpha(im.getchannel('A').point(lambda v: v * 80 // 255))
+    out.alpha_composite(sh.filter(ImageFilter.GaussianBlur(8)), (14, 18)); out.alpha_composite(im, (0, 0))
+    return out
+
+
+def host(c, t, cues, cx, cy, h=640, rot=0):
+    pid, t0 = cues[0][1], -9
+    for tc, p in cues:
+        if t >= tc: pid, t0 = p, tc
+    s = 0.85 + 0.15 * eback(clamp((t - t0) / 0.25)) if t0 > -9 else 1.0
+    place(c, pose(pid, h), cx, cy + 6 * math.sin(t * 2.4), s, rot + 1.5 * math.sin(t * 1.3))
+
+
 # ---------------- scenes ----------------
 def s0(c, t):
     i = 0
     c.alpha_composite(teal_bg())
     place_text(c, '200 APPLICATIONS', 'anton', 116, (255, 247, 230), 540, 250, t, None, 0.05, 'pop')
     place_text(c, '0 CALLS', 'anton', 150, YEL, 540, 400, t, None, at(0, 'zero', -0.2), 'pop')
-    actor(c, t, i, 'arjun_worried', 540, 800, bob=False, enter=(0.2, 0))
+    host(c, t, [(0, 22), (at(0, 'An AI', -0.2), 26)], 540, 1180, 820)
     ta = at(0, 'An AI', -0.2)
     if t > ta: place(c, pill_text('AN AI JOB AGENT CAN FIX THIS', INK, YEL, 60), 540, 560, 0.6 + 0.4 * eback(prog(t, ta, 0.3)), -3)
 
 
 def s1(c, t):
     i = 1
-    c.alpha_composite(room_bg())
-    actor(c, t, i, 'arjun_worried', 540, 820, enter=(STARTS[i], -400))
-    bubble(c, t, i, 380, 540, size=58)
-    stamp_at(c, t, 'REJECTED', RED, 110, -12, STARTS[i] + 0.9, 760, 1200, 2)
+    c.alpha_composite(data_bg())
+    host(c, t, [(STARTS[i], 23), (at(i, 'Not one', -0.2), 12)], 540, 1050, 760)
+    tk = at(i, 'Two hundred', -0.2)
+    if t > tk:
+        n = round(200 * eo(prog(t, tk, 1.0)))
+        place(c, pill_text(f'APPLIED: {n}', BLUE, (255, 255, 255), 70), 300, 420, 1, -3)
+    tc = at(i, 'Not one', -0.2)
+    if t > tc: place(c, pill_text('CALLS: 0', RED, (255, 255, 255), 70), 780, 420, 0.6 + 0.4 * eback(prog(t, tc, 0.3)), 3)
+    stamp_at(c, t, 'REJECTED', RED, 110, -12, tc + 0.3, 760, 1350, 2)
+    caption(c, t, i, 1620, 46, by_sentence=True)
 
 
 def s2(c, t):
     i = 2
-    c.alpha_composite(room_bg())
-    actor(c, t, i, 'kasi_laugh', 540, 820)
-    bubble(c, t, i, 380, 560, size=56)
+    c.alpha_composite(data_bg())
+    host(c, t, [(STARTS[i], 29), (at(i, 'One will', -0.2), 59)], 540, 1050, 760)
     for k in range(6):
-        tk = STARTS[i] + 0.5 + k * 0.35
+        tk = at(i, 'same resume', 0) + k * 0.3
         if t > tk:
-            q = clamp((t - tk) / 1.2); place(c, resume_card(), 120 + k * 170 + q * 160, 1500 - q * 500, 0.45, -20 + k * 9 + q * 30, 1 - q * 0.8)
+            q = clamp((t - tk) / 1.3); place(c, resume_card(), 120 + k * 170 + q * 120, 1400 - q * 1100, 0.5, -20 + k * 9 + q * 30, 1 - q * 0.6)
+    place(c, pill_text('SAME RESUME x 200?', RED, (255, 255, 255), 66), 540, 330, 1, -2, clamp((t - STARTS[i] - 0.3) * 3))
+    caption(c, t, i, 1620, 46, by_sentence=True)
 
 
 def s3(c, t):
@@ -455,21 +480,19 @@ def s3(c, t):
             x = 330 + k * 420; hg = int(260 * v * q)
             d.rounded_rectangle((x - 110, base - hg, x + 110, base), 16, fill=(120, 130, 150) if k == 0 else RED, outline=INK, width=5)
             place(c, text_img(lab, 'anton', 50, INK), x, base + 45)
-            for m in range(int(v * 4 * q)):
-                place(c, person_icon((255, 255, 255)), x - 60 + (m % 2) * 120, base - 50 - (m // 2) * 110, 0.7)
         place(c, text_img('applicants per job: MORE THAN 2x', 'anton', 54, INK), 540, 400, 1, 0, clamp((t - ta - 0.5) * 3))
     tn = at(i, 'ninety four', -0.2)
     if t > tn:
         place(c, pill_text('94% WILL USE AI TO JOB HUNT', TEAL, (255, 255, 255), 64), 540, 1190, 0.6 + 0.4 * eback(prog(t, tn, 0.3)), -3)
-    caption(c, t, i, 1540, 44, by_sentence=True)
+    caption(c, t, i, 1590, 44, by_sentence=True)
     place(c, text_img('Source: LinkedIn research on Indian professionals (Jan 2026)', 'osw5', 24, GREY), 540, 1840)
 
 
 def s4(c, t):
     i = 4
-    c.alpha_composite(room_bg())
-    actor(c, t, i, 'amma_smug', 540, 820)
-    bubble(c, t, i, 380, 540)
+    c.alpha_composite(teal_bg())
+    host(c, t, [(STARTS[i], 26)], 540, 1100, 900)
+    place(c, pill_text('WORK SMARTER', INK, YEL, 90), 540, 380, 0.6 + 0.4 * eback(prog(t, STARTS[i] + 0.1, 0.3)), -3)
 
 
 def s5(c, t):
@@ -480,15 +503,20 @@ def s5(c, t):
     ta = at(i, 'AI assistant', -0.2)
     if t > ta:
         d = ImageDraw.Draw(c); p = eback(prog(t, ta, 0.4))
-        cx, cy, r = 540, 900, int(190 * p)
+        cx, cy, r = 700, 860, int(170 * p)
         d.rounded_rectangle((cx - r, cy - r * 0.8, cx + r, cy + r * 0.8), 50, fill=(255, 255, 255), outline=INK, width=8)
         if p > 0.8:
-            for ex in (-70, 70): d.ellipse((cx + ex - 26, cy - 40, cx + ex + 26, cy + 12), fill=TEAL)
-            d.arc((cx - 60, cy + 10, cx + 60, cy + 90), 20, 160, fill=INK, width=8)
+            for ex in (-62, 62): d.ellipse((cx + ex - 24, cy - 40, cx + ex + 24, cy + 10), fill=TEAL)
+            d.arc((cx - 55, cy + 10, cx + 55, cy + 85), 20, 160, fill=INK, width=8)
             d.line((cx, cy - r * 0.8, cx, cy - r * 0.8 - 60), fill=INK, width=8); d.ellipse((cx - 20, cy - r * 0.8 - 90, cx + 20, cy - r * 0.8 - 50), fill=YEL, outline=INK, width=5)
+    host(c, t, [(STARTS[i], 34)], 260, 1000, 480)
     tf = at(i, 'five steps', -0.2)
-    if t > tf: place(c, pill_text('RUNS YOUR JOB HUNT IN 5 STEPS', INK, YEL, 58), 540, 1260, 0.6 + 0.4 * eback(prog(t, tf, 0.3)), -2)
-    caption(c, t, i, 1560, 46, by_sentence=True)
+    if t > tf: place(c, pill_text('RUNS YOUR JOB HUNT IN 5 STEPS', INK, YEL, 58), 540, 1300, 0.6 + 0.4 * eback(prog(t, tf, 0.3)), -2)
+    caption(c, t, i, 1580, 46, by_sentence=True)
+
+
+def mini(c, t, cues):
+    host(c, t, cues, 900, 1390, 330)
 
 
 def s6(c, t):
@@ -497,7 +525,8 @@ def s6(c, t):
     t2 = at(i, 'Two', -0.2)
     step_screen(c, t, 1, at(i, 'One', -0.2) if t < t2 else 1e9)
     step_screen(c, t, 2, t2)
-    caption(c, t, i, 1560, 44, by_sentence=True)
+    mini(c, t, [(STARTS[i], 23), (t2, 53)])
+    caption(c, t, i, 1590, 44, by_sentence=True)
 
 
 def s7(c, t):
@@ -506,75 +535,73 @@ def s7(c, t):
     t4 = at(i, 'Four', -0.2)
     step_screen(c, t, 3, STARTS[i] if t < t4 else 1e9)
     step_screen(c, t, 4, t4)
-    caption(c, t, i, 1560, 44, by_sentence=True)
+    mini(c, t, [(STARTS[i], 57), (t4, 34)])
+    caption(c, t, i, 1590, 44, by_sentence=True)
 
 
 def s8(c, t):
     i = 8
     c.alpha_composite(data_bg())
     step_screen(c, t, 5, STARTS[i])
-    caption(c, t, i, 1560, 44, by_sentence=True)
+    mini(c, t, [(STARTS[i], 17)])
+    caption(c, t, i, 1590, 44, by_sentence=True)
 
 
 def s9(c, t):
     i = 9
-    c.alpha_composite(room_bg())
-    actor(c, t, i, 'arjun_think', 540, 820)
-    bubble(c, t, i, 380, 540, size=58)
+    c.alpha_composite(teal_bg())
+    tn = at(i, 'No.', -0.15)
+    host(c, t, [(STARTS[i], 14), (tn, 8), (at(i, 'You read', -0.2), 36)], 540, 1080, 820)
+    place(c, pill_text('APPLIES AUTOMATICALLY?', INK, YEL, 66), 540, 330, 1, -2, clamp((t - STARTS[i] - 0.2) * 3))
+    if t > tn: stamp_at(c, t, 'NO', RED, 150, -10, tn, 860, 600, 3)
+    ta = at(i, 'approve', -0.2)
+    if t > ta: place(c, pill_text('YOU APPROVE EVERY APPLICATION', GREEN, (255, 255, 255), 54), 540, 1530, 0.6 + 0.4 * eback(prog(t, ta, 0.3)), -3)
+    caption(c, t, i, 1720, 42, by_sentence=True)
 
 
 def s10(c, t):
     i = 10
-    c.alpha_composite(room_bg())
-    actor(c, t, i, 'thatha_smug', 540, 820)
-    bubble(c, t, i, 380, 540)
-    ta = at(i, 'approve', -0.2)
-    if t > ta: place(c, pill_text('YOU APPROVE EVERY APPLICATION', GREEN, (255, 255, 255), 54), 540, 1500, 0.6 + 0.4 * eback(prog(t, ta, 0.3)), -3)
+    c.alpha_composite(data_bg())
+    head(c, t, i, '3 SAFETY RULES', RED)
+    rules = [('passwords', 'NO PASSWORDS OR OTPs'), ('placement fee', 'NO "PLACEMENT FEE"'), ('invent', 'NO FAKE EXPERIENCE')]
+    for k, (ph, s_) in enumerate(rules):
+        tk = at(i, ph, -0.4)
+        if t < tk: continue
+        p = prog(t, tk, 0.4); y = 450 + k * 250
+        place(c, pill_text(f'{k + 1}. {s_}', RED, (255, 255, 255), 62), 540 + (1 - eo(p)) * 900, y, 1, [-3, 2, -2][k])
+    mini(c, t, [(STARTS[i], 8), (at(i, 'placement fee', -0.4), 59)])
+    caption(c, t, i, 1590, 44, by_sentence=True)
 
 
 def s11(c, t):
     i = 11
-    c.alpha_composite(data_bg())
-    head(c, t, i, '3 SAFETY RULES', RED)
-    rules = [('passwords', 'NO PASSWORDS OR OTPs'), ('placement fee', 'NO "PLACEMENT FEE"'), ('invent', 'NO FAKE EXPERIENCE')]
-    for k, (ph, s) in enumerate(rules):
-        tk = at(i, ph, -0.4)
-        if t < tk: continue
-        p = prog(t, tk, 0.4); y = 470 + k * 280
-        place(c, pill_text(f'{k + 1}. {s}', RED, (255, 255, 255), 62), 540 + (1 - eo(p)) * 900, y, 1, [-3, 2, -2][k])
-    caption(c, t, i, 1560, 44, by_sentence=True)
+    c.alpha_composite(teal_bg())
+    host(c, t, [(STARTS[i], 71)], 540, 1120, 860)
+    place(c, pill_text('SALARY = YOUR BIGGEST INVESTMENT', INK, YEL, 54), 540, 380, 0.6 + 0.4 * eback(prog(t, STARTS[i] + 0.1, 0.3)), -3)
 
 
 def s12(c, t):
     i = 12
-    c.alpha_composite(room_bg())
-    actor(c, t, i, 'paati_happy', 540, 820)
-    bubble(c, t, i, 380, 540)
-
-
-def s13(c, t):
-    i = 13
-    c.alpha_composite(room_bg())
-    place(c, family_print(), 540, 860, 1, -3)
+    c.alpha_composite(teal_bg())
+    host(c, t, [(STARTS[i], 31)], 540, 820, 700)
     tf = at(i, 'Follow', -0.1)
-    if t > tf: place(c, follow_btn(), 540, 1300, 0.6 + 0.4 * eback(prog(t, tf, 0.35)), 2)
+    if t > tf: place(c, follow_btn(), 540, 1340, 0.6 + 0.4 * eback(prog(t, tf, 0.35)), 2)
     tw = at(i, 'Which step', -0.2)
-    if t > tw: place(c, pill_text('WHICH STEP HELPS YOU MOST? 1-5', TEAL, (255, 255, 255), 52), 540, 1480, 1, -2, clamp((t - tw) * 3))
-    caption(c, t, i, 330)
-    src(c, 'Characters are fictional · Education only · Not career or financial advice', 1880)
+    if t > tw: place(c, pill_text('WHICH STEP HELPS YOU MOST? 1-5', INK, YEL, 52), 540, 1520, 1, -2, clamp((t - tw) * 3))
+    src(c, 'Education only · Not career or financial advice', 1880)
 
 
-SCENES = [s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13]
+SCENES = [s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12]
 
 
 def slam_times():
-    return [at(0, 'zero', -0.2), at(3, 'ninety four', -0.2), at(11, 'Three rules', 0)]
+    return [at(0, 'zero', -0.2), at(3, 'ninety four', -0.2), at(9, 'No.', -0.15), at(10, 'Three rules', 0)]
 
 
 def footer(c):
     d = ImageDraw.Draw(c)
     d.rectangle((0, 1888, W, H), fill=(20, 22, 30, 255))
-    place(c, text_img('Education only · Characters are fictional · @moneyincloud', 'osw5', 24, (230, 230, 236)), 540, 1904)
+    place(c, text_img('Education only · Not career advice · @moneyincloud', 'osw5', 24, (230, 230, 236)), 540, 1904)
 def render(t):
     LOOP = 0.5
     if t > DUR - LOOP:
