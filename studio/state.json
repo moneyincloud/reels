@@ -1,5 +1,5 @@
 {
-  "last_voice": "male",
+  "last_voice": "female",
   "history": [
     {
       "date": "2026-10-23",
@@ -449,6 +449,17 @@
       "hook": "Stop. Every Manappuram branch earns about twelve thousand rupees profit a day.",
       "hook_score": 81.8,
       "post": "2026-11-21 19:00 IST"
+    },
+    {
+      "slug": "cipla",
+      "date": "2026-11-10",
+      "topic": "Cipla: geography revenue split, therapy areas, HIV story, Q2 FY27 profit drop",
+      "style": "Revenue donut + user cartoon host",
+      "voice": "af_heart",
+      "colour": "green",
+      "hook": "Stop. Cipla sells medicines in eighty six countries. Here is where its money comes from.",
+      "hook_score": 77.5,
+      "post": "2026-11-22 19:00 IST"
     }
   ],
   "next_ideas": [
