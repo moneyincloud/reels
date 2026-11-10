@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -385,6 +385,15 @@
    "voice": "am_michael",
    "theme": "oil",
    "style": "glow atom"
+  },
+  {
+   "date": "2026-11-10",
+   "slug": "itc",
+   "topic": "ITC: you use it every day but 74% of profit is cigarettes (Q2 FY27)",
+   "scheduled": "2026-11-15 19:00 IST (manual)",
+   "voice": "af_heart",
+   "theme": "sky",
+   "style": "photo collage"
   }
  ],
  "next_ideas": [
