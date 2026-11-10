@@ -1,5 +1,5 @@
 {
-  "last_voice": "male",
+  "last_voice": "female",
   "history": [
     {
       "date": "2026-10-23",
@@ -427,6 +427,17 @@
       "hook": "Stop. Ten mid cap pharma companies, and the medicines that pay their bills.",
       "hook_score": 80.4,
       "post": "2026-11-19 19:00 IST"
+    },
+    {
+      "slug": "cupid",
+      "date": "2026-11-10",
+      "topic": "Cupid Ltd: products, tenders, growth guidance, operations, valuation check",
+      "style": "User cartoon host + drawn products and data cards",
+      "voice": "af_heart",
+      "colour": "pink",
+      "hook": "Stop. A condom company now plans to grow revenue 123% in one year.",
+      "hook_score": 80.4,
+      "post": "2026-11-20 19:00 IST"
     }
   ],
   "next_ideas": [
