@@ -1,5 +1,5 @@
 {
-  "last_voice": "female",
+  "last_voice": "male",
   "history": [
     {
       "date": "2026-10-23",
@@ -438,6 +438,17 @@
       "hook": "Stop. A condom company now plans to grow revenue 123% in one year.",
       "hook_score": 80.4,
       "post": "2026-11-20 19:00 IST"
+    },
+    {
+      "slug": "mana",
+      "date": "2026-11-10",
+      "topic": "Manappuram Finance: branches, profit per branch per day, gold loan model, growth, risks",
+      "style": "Gold-loan counter + user cartoon host",
+      "voice": "am_michael",
+      "colour": "gold",
+      "hook": "Stop. Every Manappuram branch earns about twelve thousand rupees profit a day.",
+      "hook_score": 81.8,
+      "post": "2026-11-21 19:00 IST"
     }
   ],
   "next_ideas": [
