@@ -1,5 +1,5 @@
 {
-  "last_voice": "female",
+  "last_voice": "male",
   "history": [
     {
       "date": "2026-10-23",
@@ -461,6 +461,17 @@
       "hook": "Nobody tells you where Cipla makes its money. Eighty six countries, here is the split.",
       "hook_score": 77.5,
       "post": "2026-11-22 19:00 IST"
+    },
+    {
+      "slug": "stylestory",
+      "date": "2026-11-11",
+      "topic": "Two friends, same 1 lakh bonus, 10 years: hype vs index fund (fictional), one chapter per animation style",
+      "style": "9 styles in one reel: comic, synthwave, domino, isometric, glow atom, maths diagram, 3D chart, paper-cut, flat vector",
+      "voice": "am_michael",
+      "colour": "orange",
+      "hook": "Never waste a one lakh rupee bonus. Two friends, same money, ten years later.",
+      "hook_score": 86.8,
+      "post": "2026-11-23 19:00 IST"
     }
   ],
   "next_ideas": [
