@@ -1,5 +1,5 @@
 {
-  "last_voice": "male",
+  "last_voice": "female",
   "history": [
     {
       "date": "2026-10-23",
@@ -472,6 +472,17 @@
       "hook": "Never waste a one lakh rupee bonus. Two friends, same money, ten years later.",
       "hook_score": 86.8,
       "post": "2026-11-23 19:00 IST"
+    },
+    {
+      "slug": "eqmf",
+      "date": "2026-11-11",
+      "topic": "Stocks vs mutual funds: ownership vs basket, who picks/how many, ₹10,000 example, costs, tax, who should pick what",
+      "style": "Vox paper collage + paper-cut",
+      "voice": "af_heart",
+      "colour": "teal",
+      "hook": "Never confuse stocks and mutual funds again. Same ten thousand rupees, two very different rides.",
+      "hook_score": 80.4,
+      "post": "2026-11-24 19:00 IST"
     }
   ],
   "next_ideas": [
@@ -512,7 +523,8 @@
     "maths diagram": "clean graph paper, equations writing themselves, curves: compounding, CAGR, rule of 72, EMI maths",
     "cartoon explainer (cloud family)": "realistic Cloud Family cast with multi-voice dialogue (kasitip engine)",
     "domino reveal": "tiles/dominoes falling in a chain, each revealing a step: cause-and-effect (rate hike -> EMI -> spending -> stocks)",
-    "glow atom": "dark navy space, glowing orbits and labels like an atom diagram: portfolio = nucleus + orbiting assets, diversification"
+    "glow atom": "dark navy space, glowing orbits and labels like an atom diagram: portfolio = nucleus + orbiting assets, diversification",
+    "vox paper collage": "Vox-style explainer: grainy paper, Playfair serif titles, torn taped notes, yellow highlighter swipes, red marker circles, layered paper-cut hills, user cartoon as cut-out sticker (eqmf.py)"
   },
   "hook_rules": [
     "Never open a hook with 'Stop' (user instruction, 10 Nov 2026). Rotate openers: 'Never…', 'Nobody tells you…', a number, a direct claim.",
