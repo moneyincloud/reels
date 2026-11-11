@@ -20,6 +20,10 @@ SHADOW = (20, 20, 20)
 
 
 def rays_bg(theme, n=26, cx=540, cy=1000):
+    im = _rays_bg(theme, n, cx, cy); im.info['rays'] = (theme, n, cx, cy); return im
+
+
+def _rays_bg(theme, n=26, cx=540, cy=1000):
     base, ray, glow = THEMES[theme]
     S = 2; im = Image.new('RGB', (W * S, H * S), base); d = ImageDraw.Draw(im)
     R = 3000 * S
@@ -92,7 +96,32 @@ def art_glow(c, art, cx, cy, scale=1.0, rot=0):
     place(c, art, cx, cy, scale, rot)
 
 
+# Instagram profile grid shows the centre 3:4 crop (1080x1440, y 240..1680) and puts icons
+# top-right and the view count bottom-left. Every thumbnail is fitted into this safe box.
+SAFE = (70, 310, 1010, 1610)
+
+
+def safe_fit(c):
+    p = c.info.get('rays')
+    if not p: return c
+    bg = _rays_bg(*p)
+    a = np.asarray(c.convert('RGB')).astype(np.int16); b = np.asarray(bg.convert('RGB')).astype(np.int16)
+    m = (np.abs(a - b).sum(2) > 30).astype(np.uint8) * 255
+    mask = Image.fromarray(m).filter(ImageFilter.MaxFilter(9)).filter(ImageFilter.GaussianBlur(3))
+    bb = mask.getbbox()
+    if not bb: return c
+    x0, y0, x1, y1 = SAFE
+    if bb[0] >= x0 and bb[1] >= y0 and bb[2] <= x1 and bb[3] <= y1: return c
+    fg = c.convert('RGBA').copy(); fg.putalpha(mask); fg = fg.crop(bb)
+    s = min(1.0, (x1 - x0) / fg.size[0], (y1 - y0) / fg.size[1])
+    fg = fg.resize((max(1, int(fg.size[0] * s)), max(1, int(fg.size[1] * s))), Image.LANCZOS)
+    out = bg.copy()
+    out.alpha_composite(fg, (int((x0 + x1) / 2 - fg.size[0] / 2), int((y0 + y1) / 2 - fg.size[1] / 2)))
+    return out
+
+
 def finish(c, path):
+    c = safe_fit(c)
     arr = np.asarray(c.convert('RGB')).astype(np.float32) + grain_frames()[0][..., None] * 0.7
     Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8)).save(path, quality=93)
 

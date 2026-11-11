@@ -251,3 +251,6 @@ Topic fit is in `style_guide` in state.json. Still: share the plan + style with 
 
 ## Hook rule (10 Nov 2026)
 - Never open a hook with "Stop". Rotate openers ("Never…", "Nobody tells you…", a number, a direct claim) and keep the hookscore >= 70.
+
+## Thumbnail rule (11 Nov 2026)
+- Instagram profile grid shows only the centre 3:4 crop (y 240-1680). hook.finish() now auto-fits all content into SAFE=(70,310,1010,1610); keep titles below y=310 and nothing important near the edges.
