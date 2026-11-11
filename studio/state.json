@@ -1,5 +1,5 @@
 {
-  "last_voice": "female",
+  "last_voice": "male",
   "history": [
     {
       "date": "2026-10-23",
@@ -483,6 +483,17 @@
       "hook": "Never confuse stocks and mutual funds again. Same ten thousand rupees, two very different rides.",
       "hook_score": 80.4,
       "post": "2026-11-24 19:00 IST"
+    },
+    {
+      "slug": "roadair",
+      "date": "2026-11-11",
+      "topic": "Highway & airport concession stocks: IRB projects + end years, GMR airport terms, risks",
+      "style": "Pro-edit dark (reel-director rules)",
+      "voice": "am_michael",
+      "colour": "orange",
+      "hook": "Never buy a toll road stock without checking this date. Mumbai Pune Expressway, 2030.",
+      "hook_score": 81.1,
+      "post": "2026-11-25 19:00 IST"
     }
   ],
   "next_ideas": [
@@ -524,7 +535,8 @@
     "cartoon explainer (cloud family)": "realistic Cloud Family cast with multi-voice dialogue (kasitip engine)",
     "domino reveal": "tiles/dominoes falling in a chain, each revealing a step: cause-and-effect (rate hike -> EMI -> spending -> stocks)",
     "glow atom": "dark navy space, glowing orbits and labels like an atom diagram: portfolio = nucleus + orbiting assets, diversification",
-    "vox paper collage": "Vox-style explainer: grainy paper, Playfair serif titles, torn taped notes, yellow highlighter swipes, red marker circles, layered paper-cut hills, user cartoon as cut-out sticker (eqmf.py)"
+    "vox paper collage": "Vox-style explainer: grainy paper, Playfair serif titles, torn taped notes, yellow highlighter swipes, red marker circles, layered paper-cut hills, user cartoon as cut-out sticker (eqmf.py)",
+    "pro edit dark": "reel-director rules in PIL: mask-reveal words, one ease-out curve, overlapping wipe transitions, grain + vignette, @handle top-left, kick/hat groove + swish per reveal (roadair.py)"
   },
   "hook_rules": [
     "Never open a hook with 'Stop' (user instruction, 10 Nov 2026). Rotate openers: 'Never…', 'Nobody tells you…', a number, a direct claim.",
