@@ -815,24 +815,66 @@ def cap(c, t, i, cy=1700):
     caption(c, t, i, cy, 42, by_sentence=True)
 
 
+# ---------------- light theme ----------------
+TX = (24, 20, 28); BASE = (255, 244, 248)
+
+
+@functools.lru_cache(None)
+def light_base():
+    im = Image.new('RGBA', (W, H), BASE + (255,)); d = ImageDraw.Draw(im)
+    for x in range(-H, W, 70): d.line((x, 0, x + H, H), fill=(252, 232, 240), width=18)
+    return im
+
+
+@functools.lru_cache(None)
+def blob(r, col):
+    a = Image.new('L', (r * 3, r * 3), 0); ImageDraw.Draw(a).ellipse((r, r, 2 * r, 2 * r), fill=150)
+    im = Image.new('RGBA', a.size, col + (0,)); im.putalpha(a.filter(ImageFilter.GaussianBlur(r // 3)))
+    return im
+
+
+def bgl(c, t):
+    c.alpha_composite(light_base())
+    for k, (r, col, x0, y0, sx, sy) in enumerate(((260, (255, 170, 200), 160, 420, 60, 40), (200, (255, 205, 150), 900, 900, -50, 60),
+                                                    (300, (255, 150, 190), 820, 1650, 40, -50), (180, (200, 190, 255), 220, 1380, -40, 40))):
+        x = x0 + sx * math.sin(t * 0.6 + k); y = y0 + sy * math.cos(t * 0.5 + k * 1.7)
+        b_ = blob(r, col); c.alpha_composite(b_, (int(x - b_.size[0] / 2), int(y - b_.size[1] / 2)))
+
+
+@functools.lru_cache(None)
+def card_pro(title, sub, accent=(255, 70, 140), w=900, h=180):
+    im = Image.new('RGBA', (w + 16, h + 16), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    d.rounded_rectangle((8, 12, w + 7, h + 11), 26, fill=(0, 0, 0, 40))
+    im = im.filter(ImageFilter.GaussianBlur(6)); d = ImageDraw.Draw(im)
+    d.rounded_rectangle((0, 0, w - 1, h - 1), 26, fill=(255, 255, 255), outline=(240, 220, 230), width=2)
+    d.rounded_rectangle((0, 0, 14, h - 1), 7, fill=accent)
+    im.alpha_composite(text_img(title, 'anton', 64, TX), (44, 24))
+    im.alpha_composite(text_img(sub, 'osw5', 36, (110, 100, 110)), (46, h - 64))
+    return im
+
+
+def handle(c):
+    place(c, text_img('@moneyincloud', 'osw5', 30, (120, 100, 115)), 160, 70)
+
+
 # ---------------- Cupid scenes ----------------
 PK = (255, 70, 140); OR = PK
-GR = (60, 200, 120); RED2 = (230, 70, 70); MUT = (160, 160, 168)
+GR = (20, 150, 80); RED2 = (230, 70, 70); MUT = (110, 100, 110)
 
 
 @functools.lru_cache(None)
 def ticker_strip():
-    items = [text_img(x, 'anton', 44, PK) for x in ('CUPID +7.6%', 'Q2 REVENUE +122%', 'PROFIT +133%', 'FRESH HIGH')]
+    items = [text_img(x, 'anton', 44, (255, 255, 255)) for x in ('CUPID +7.6%', 'Q2 REVENUE +122%', 'PROFIT +133%', 'FRESH HIGH')]
     gap = 80; w = sum(im.size[0] + gap for im in items); h = max(im.size[1] for im in items)
     st = Image.new('RGBA', (w, h + 10), (0, 0, 0, 0)); d = ImageDraw.Draw(st); x = 0
     for im in items:
         st.alpha_composite(im, (x, (h + 10 - im.size[1]) // 2)); x += im.size[0]
-        d.ellipse((x + gap // 2 - 6, (h + 10) // 2 - 6, x + gap // 2 + 6, (h + 10) // 2 + 6), fill=CRM); x += gap
+        d.ellipse((x + gap // 2 - 6, (h + 10) // 2 - 6, x + gap // 2 + 6, (h + 10) // 2 + 6), fill=(255, 255, 255)); x += gap
     return st
 
 
 def ticker(c, t, y=1450):
-    d = ImageDraw.Draw(c); d.rectangle((0, y - 40, W, y + 40), fill=(22, 22, 26))
+    d = ImageDraw.Draw(c); d.rectangle((0, y - 40, W, y + 40), fill=PK)
     st = ticker_strip(); w = st.size[0]
     off = int(t * 260) % w
     x = -off
@@ -842,8 +884,8 @@ def ticker(c, t, y=1450):
 
 def s0(c, t):
     i = 0
-    c.alpha_composite(dark_bg()); ticker(c, t, 1200)
-    mask_reveal(c, t, 0.0, 'Cupid jumped today', 'anton', 92, CRM, 540, 300, serif_word='today')
+    bgl(c, t); ticker(c, t, 1200)
+    mask_reveal(c, t, 0.0, 'Cupid jumped today', 'anton', 92, TX, 540, 300, serif_word='today')
     tj = at(i, 'seven', -0.2)
     if t > tj:
         q = ease_out((t - tj) / 0.45)
@@ -855,83 +897,83 @@ def s0(c, t):
 
 def s1(c, t):
     i = 1
-    c.alpha_composite(dark_bg())
-    mask_reveal(c, t, STARTS[i] + 0.05, 'This morning', 'anton', 100, CRM, 540, 260, serif_word='morning')
+    bgl(c, t)
+    mask_reveal(c, t, STARTS[i] + 0.05, 'This morning', 'anton', 100, TX, 540, 260, serif_word='morning')
     card_in(c, t, STARTS[i] + 0.3, 'YESTERDAY  ₹354.00', 'close, 11 Nov', 520, (120, 120, 128))
     card_in(c, t, at(i, 'three hundred', -0.3), 'TODAY  ₹380.95', '12 Nov, 9:17 AM · +₹26.95', 760, PK)
     tf = at(i, 'fresh high', -0.3)
     if t > tf:
         q = eback(prog(t, tf, 0.35))
-        place(c, pill_text('FRESH HIGH', GR, (10, 10, 11), 90), 540, 1060, 0.6 + 0.4 * q, -4)
+        place(c, pill_text('FRESH HIGH', GR, (255, 255, 255), 90), 540, 1060, 0.6 + 0.4 * q, -4)
     cap(c, t, i, 1620)
-    place(c, text_img('Price: Business Upturn screen quote, 12 Nov 2026, ~9:17 AM IST. It will move during the day.', 'osw5', 24, (140, 140, 148)), 540, 1845)
+    place(c, text_img('Price: Business Upturn screen quote, 12 Nov 2026, ~9:17 AM IST. It will move during the day.', 'osw5', 24, (120, 110, 118)), 540, 1845)
 
 
 def bars(c, t, t0, x, lab, a, b, fmt, col, top=520, hmax=520, vmax=200):
     d = ImageDraw.Draw(c); base = top + hmax
     q = ease_out((t - t0) / 0.9)
-    for k, (v, yl, cc) in enumerate(((a, 'Q2 FY26', (90, 90, 98)), (b, 'Q2 FY27', col))):
+    for k, (v, yl, cc) in enumerate(((a, 'Q2 FY26', (200, 190, 196)), (b, 'Q2 FY27', col))):
         h = hmax * v / vmax * (q if k == 1 else min(1, q * 2))
         xx = x - 110 + k * 130
         d.rounded_rectangle((xx, base - h, xx + 100, base), 12, fill=cc)
-        if q > 0.6: place(c, text_img(fmt(v), 'anton', 40, CRM), xx + 50, base - h - 34)
+        if q > 0.6: place(c, text_img(fmt(v), 'anton', 40, TX), xx + 50, base - h - 34)
         place(c, text_img(yl, 'osw5', 26, MUT), xx + 50, base + 28)
-    place(c, text_img(lab, 'anton', 54, CRM), x - 45, top - 70)
+    place(c, text_img(lab, 'anton', 54, TX), x - 45, top - 70)
 
 
 def s2(c, t):
     i = 2
-    c.alpha_composite(dark_bg())
-    mask_reveal(c, t, STARTS[i] + 0.05, 'The trigger: results', 'anton', 86, CRM, 540, 240, serif_word='results')
+    bgl(c, t)
+    mask_reveal(c, t, STARTS[i] + 0.05, 'The trigger: results', 'anton', 86, TX, 540, 240, serif_word='results')
     tr = at(i, 'Revenue', -0.3)
     if t > tr:
         bars(c, t, tr, 300, 'REVENUE', 84.45, 187.86, lambda v: f'₹{v:.0f} cr', PK, 470, 520, 200)
-        place(c, pill_text('+122%', GR, (10, 10, 11), 64), 300, 1170, 1, 0, clamp((t - tr - 0.6) * 3))
+        place(c, pill_text('+122%', GR, (255, 255, 255), 64), 300, 1170, 1, 0, clamp((t - tr - 0.6) * 3))
     tp = at(i, 'Profit', -0.3)
     if t > tp:
         bars(c, t, tp, 790, 'PROFIT', 24.13, 56.22, lambda v: f'₹{v:.0f} cr', PK, 470, 520, 70)
-        place(c, pill_text('+133%', GR, (10, 10, 11), 64), 790, 1170, 1, 0, clamp((t - tp - 0.6) * 3))
+        place(c, pill_text('+133%', GR, (255, 255, 255), 64), 790, 1170, 1, 0, clamp((t - tp - 0.6) * 3))
     cap(c, t, i, 1620)
-    place(c, text_img('Q2 FY27 = Jul–Sep 2026 vs a year ago · Business Upturn, 12 Nov 2026'.replace('–', '-'), 'osw5', 24, (140, 140, 148)), 540, 1845)
+    place(c, text_img('Q2 FY27 = Jul–Sep 2026 vs a year ago · Business Upturn, 12 Nov 2026'.replace('–', '-'), 'osw5', 24, (120, 110, 118)), 540, 1845)
 
 
 def s3(c, t):
     i = 3
-    c.alpha_composite(dark_bg())
-    mask_reveal(c, t, STARTS[i] + 0.05, 'The small print', 'anton', 96, CRM, 540, 240, serif_word='small')
+    bgl(c, t)
+    mask_reveal(c, t, STARTS[i] + 0.05, 'The small print', 'anton', 96, TX, 540, 240, serif_word='small')
     tm = at(i, 'operating margin', -0.3)
     if t > tm:
         q = ease_out((t - tm) / 1.0); v = 33.7 - (33.7 - 29.2) * q
         place(c, text_img('OPERATING MARGIN', 'osw5', 40, MUT), 540, 420)
-        place(c, text_img(f'{v:.1f}%', 'anton', 170, RED2 if q > 0.5 else CRM), 540, 540)
-        place(c, text_img('was 33.7% a year ago', 'pfi', 44, CRM), 540, 660, 1, 0, clamp(q * 2))
+        place(c, text_img(f'{v:.1f}%', 'anton', 170, RED2 if q > 0.5 else TX), 540, 540)
+        place(c, text_img('was 33.7% a year ago', 'pfi', 44, TX), 540, 660, 1, 0, clamp(q * 2))
     to = at(i, 'twenty one', -0.3)
     if t > to:
         q = ease_out((t - to) / 0.9); d = ImageDraw.Draw(c); cx, cy, r = 330, 1010, 190
-        d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=(60, 60, 66))
+        d.ellipse((cx - r, cy - r, cx + r, cy + r), fill=(240, 222, 230))
         d.pieslice((cx - r, cy - r, cx + r, cy + r), -90, -90 + 360 * 0.29 * q, fill=PK)
-        place(c, text_img('29%', 'anton', 70, CRM), cx, cy)
+        place(c, text_img('29%', 'anton', 70, TX), cx, cy)
         place(c, text_img('₹21 cr OTHER INCOME', 'anton', 50, PK), 760, 950, 1, 0, clamp(q * 2))
-        place(c, text_img('of ₹73 cr profit before tax', 'osw5', 36, CRM), 760, 1020, 1, 0, clamp(q * 2))
+        place(c, text_img('of ₹73 cr profit before tax', 'osw5', 36, TX), 760, 1020, 1, 0, clamp(q * 2))
         place(c, text_img('(includes gains on investments)', 'osw5', 30, MUT), 760, 1070, 1, 0, clamp(q * 2))
     cap(c, t, i, 1620)
-    place(c, text_img('EBITDA margin 29.16% vs 33.65% · other income ₹21.11 cr of PBT ₹72.89 cr · Business Upturn', 'osw5', 22, (140, 140, 148)), 540, 1845)
+    place(c, text_img('EBITDA margin 29.16% vs 33.65% · other income ₹21.11 cr of PBT ₹72.89 cr · Business Upturn', 'osw5', 22, (120, 110, 118)), 540, 1845)
 
 
 def s4(c, t):
     i = 4
-    c.alpha_composite(dark_bg())
-    mask_reveal(c, t, STARTS[i] + 0.05, 'The promise', 'anton', 100, CRM, 540, 240, serif_word='promise')
+    bgl(c, t)
+    mask_reveal(c, t, STARTS[i] + 0.05, 'The promise', 'anton', 100, TX, 540, 240, serif_word='promise')
     d = ImageDraw.Draw(c); x0, x1, y = 90, 990, 700
     tg = at(i, 'eight hundred', -0.3)
     if t > tg:
-        place(c, text_img('FY27 TARGET: ₹800 CR+', 'anton', 64, CRM), 540, 480, 1, 0, clamp((t - tg) * 3))
-        d.rounded_rectangle((x0, y - 50, x1, y + 50), 24, fill=(40, 40, 46))
+        place(c, text_img('FY27 TARGET: ₹800 CR+', 'anton', 64, TX), 540, 480, 1, 0, clamp((t - tg) * 3))
+        d.rounded_rectangle((x0, y - 50, x1, y + 50), 24, fill=(240, 222, 230))
     th = at(i, 'three hundred', -0.4)
     if t > th:
         q = ease_out((t - th) / 1.0); xe = x0 + (x1 - x0) * 342.6 / 800 * q
         d.rounded_rectangle((x0, y - 50, xe, y + 50), 24, fill=PK)
-        place(c, text_img(f'₹{round(342.58 * q)} cr done', 'anton', 48, CRM), (x0 + xe) / 2, y, 1, 0, clamp(q * 2))
+        place(c, text_img(f'₹{round(342.58 * q)} cr done', 'anton', 48, TX), (x0 + xe) / 2, y, 1, 0, clamp(q * 2))
         place(c, text_img('Apr–Sep: ₹155 + ₹188 cr'.replace('–', '-'), 'osw5', 34, MUT), x0 + 250, y + 100, 1, 0, clamp(q * 2))
     tn = at(i, 'four fifty', -0.4)
     if t > tn:
@@ -939,34 +981,34 @@ def s4(c, t):
         place(c, text_img('₹457 cr to go', 'anton', 48, PK), 800, y, 1, 0, clamp(q * 2))
         card_in(c, t, tn + 0.3, 'NEED ~₹229 CR A QUARTER', 'last quarter: ₹188 cr', 1050, PK)
     cap(c, t, i, 1620)
-    place(c, text_img('Guidance raised 30 Sep 2026 (Sahi) · Q1 ₹154.72 cr + Q2 ₹187.86 cr · my calculation', 'osw5', 22, (140, 140, 148)), 540, 1845)
+    place(c, text_img('Guidance raised 30 Sep 2026 (Sahi) · Q1 ₹154.72 cr + Q2 ₹187.86 cr · my calculation', 'osw5', 22, (120, 110, 118)), 540, 1845)
 
 
 def s5(c, t):
     i = 5
-    c.alpha_composite(dark_bg())
-    mask_reveal(c, t, STARTS[i] + 0.05, 'My take', 'anton', 110, CRM, 540, 240, serif_word='take')
+    bgl(c, t)
+    mask_reveal(c, t, STARTS[i] + 0.05, 'My take', 'anton', 110, TX, 540, 240, serif_word='take')
     host(c, t, [(STARTS[i], 14), (at(i, 'But at', -0.2), 2)], 300, 800, 560)
     card_in(c, t, at(i, 'growth is real', -0.4), 'GROWTH: REAL', 'revenue 2x in a year', 1170, GR)
     tp = at(i, 'three hundred', -0.4)
     if t > tp:
         q = ease_out((t - tp) / 0.5)
         place(c, text_img('300x+', 'anton', 170, RED2), 780, 700, 0.7 + 0.3 * q, -3, clamp(q * 2))
-        place(c, text_img('price ÷ profit (P/E)', 'osw5', 36, CRM), 780, 830, 1, 0, clamp(q * 2))
+        place(c, text_img('price ÷ profit (P/E)', 'osw5', 36, TX), 780, 830, 1, 0, clamp(q * 2))
         card_in(c, t, tp + 0.4, 'PRICE: EXPECTS PERFECTION', 'any slowdown can hurt', 1400, RED2)
     cap(c, t, i, 1640)
-    place(c, text_img('P/E 346 at ₹354 (Screener, 11 Nov 2026) · my personal view, not a buy/sell call', 'osw5', 22, (140, 140, 148)), 540, 1845)
+    place(c, text_img('P/E 346 at ₹354 (Screener, 11 Nov 2026) · my personal view, not a buy/sell call', 'osw5', 22, (120, 110, 118)), 540, 1845)
 
 
 def s6(c, t):
     i = 6
-    c.alpha_composite(dark_bg())
+    bgl(c, t)
     host(c, t, [(STARTS[i], 31)], 540, 700, 600)
     tc = at(i, 'Comment', -0.2)
     if t > tc:
         q = eback(prog(t, tc, 0.35))
         place(c, pill_text('COMMENT "CUPID"', PK, (255, 255, 255), 80), 540, 1120, 0.6 + 0.4 * q, -2)
-    mask_reveal(c, t, STARTS[i] + 0.1, 'Buy at this price?', 'anton', 82, CRM, 540, 1300, serif_word='price?')
+    mask_reveal(c, t, STARTS[i] + 0.1, 'Buy at this price?', 'anton', 82, TX, 540, 1300, serif_word='price?')
     tf = at(i, 'follow', -0.1)
     if t > tf: place(c, follow_btn(), 540, 1500, 0.6 + 0.4 * eback(prog(t, tf, 0.35)), 2)
     src(c, 'Not a buy/sell call · Education only · I may hold some of the stocks named', 1880)
@@ -979,8 +1021,8 @@ def slam_times():
     return [at(0, 'seven', -0.2), at(5, 'three hundred', -0.4)]
 def footer(c):
     d = ImageDraw.Draw(c)
-    d.rectangle((0, 1888, W, H), fill=(14, 14, 16, 255))
-    place(c, text_img('Not a buy/sell call · Education only · @moneyincloud', 'osw5', 22, (200, 200, 206)), 540, 1904)
+    d.rectangle((0, 1888, W, H), fill=(255, 228, 238, 255))
+    place(c, text_img('Not a buy/sell call · Education only · @moneyincloud', 'osw5', 22, (110, 90, 105)), 540, 1904)
 
 
 def render(t):

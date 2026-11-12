@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -504,6 +504,16 @@
    "style": "pro edit dark, no cover frame, 43s",
    "post": "2026-11-12 19:00 IST",
    "test": "new format: trending stock + debate + take + comment keyword"
+  },
+  {
+   "slug": "cupidq2",
+   "date": "2026-11-12",
+   "voice": "am_michael",
+   "hook": "Never buy Cupid's seven percent jump without reading this.",
+   "score": 94.8,
+   "style": "light motion, no cover frame, 47s",
+   "post": "2026-11-12 12:30 IST",
+   "test": "new format, light theme vs Jio dark"
   }
  ],
  "next_ideas": [
@@ -546,7 +556,8 @@
   "domino reveal": "tiles/dominoes falling in a chain, each revealing a step: cause-and-effect (rate hike -> EMI -> spending -> stocks)",
   "glow atom": "dark navy space, glowing orbits and labels like an atom diagram: portfolio = nucleus + orbiting assets, diversification",
   "vox paper collage": "Vox-style explainer: grainy paper, Playfair serif titles, torn taped notes, yellow highlighter swipes, red marker circles, layered paper-cut hills, user cartoon as cut-out sticker (eqmf.py)",
-  "pro edit dark": "reel-director rules in PIL: mask-reveal words, one ease-out curve, overlapping wipe transitions, grain + vignette, @handle top-left, kick/hat groove + swish per reveal (roadair.py)"
+  "pro edit dark": "reel-director rules in PIL: mask-reveal words, one ease-out curve, overlapping wipe transitions, grain + vignette, @handle top-left, kick/hat groove + swish per reveal (roadair.py)",
+  "light motion": "light pink base, drifting blurred colour blobs, moving diagonal stripes, scrolling ticker band, white cards, dark text; no cover frame"
  },
  "hook_rules": [
   "Never open a hook with 'Stop' (user instruction, 10 Nov 2026). Rotate openers: 'Never\u2026', 'Nobody tells you\u2026', a number, a direct claim.",
