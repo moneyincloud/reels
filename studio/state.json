@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -514,6 +514,15 @@
    "style": "light motion, no cover frame, 47s",
    "post": "2026-11-12 12:30 IST",
    "test": "new format, light theme vs Jio dark"
+  },
+  {
+   "slug": "ram14",
+   "date": "2026-11-12",
+   "voice": "af_heart",
+   "hook": "Nobody tells you what Rama's fourteen years teach investors. One lakh became twenty six lakh.",
+   "score": 73.0,
+   "style": "light gold motion, no cover frame, 45s",
+   "post": "2026-11-13 19:00 IST"
   }
  ],
  "next_ideas": [
