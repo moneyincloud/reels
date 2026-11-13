@@ -48,13 +48,15 @@ def when(entry):
 
 
 # ---------------- Instagram ----------------
-def ig_post(entry, dry):
+def ig_post(entry, dry, trial=False):
     GRAPH = graph()
     uid, tok, base = os.environ["IG_USER_ID"], os.environ["IG_ACCESS_TOKEN"], os.environ["RAW_BASE"].rstrip("/")
     if entry.get("images"):
         return ig_carousel(entry, dry, GRAPH, base)
     params = {"media_type": "REELS", "video_url": f"{base}/media/{entry['video']}", "caption": entry["ig_caption"].strip(),
               "share_to_feed": "true", "access_token": tok}
+    if trial:  # Instagram trial reel: shown to non-followers only; graduate it yourself in the app (MANUAL)
+        params.pop("share_to_feed"); params["trial_params"] = json.dumps({"graduation_strategy": "MANUAL"})
     if entry.get("cover"):
         params["cover_url"] = f"{base}/media/{entry['cover']}"
     if dry:
@@ -185,12 +187,13 @@ def main():
             if a.only and plat != a.only or plat in done:
                 continue
             t = when(e)
-            if plat == "instagram":
+            if plat in ("instagram", "instagram_trial"):
                 if now < t: continue
                 if now - t > LATE_LIMIT:
                     log(f"{key}: instagram slot missed by more than 6 h, skipped (re-date it in queue.yaml)"); continue
             try:
-                res = ig_post(e, a.dry_run) if plat == "instagram" else yt_post(e, a.dry_run)
+                res = (ig_post(e, a.dry_run) if plat == "instagram" else ig_post(e, a.dry_run, trial=True)
+                       if plat == "instagram_trial" else yt_post(e, a.dry_run))
                 if not a.dry_run: done[plat] = res; save_state(st)
             except Exception as ex:
                 failed = True; log(f"{key}: {plat} FAILED:", str(ex)[:400])
@@ -211,11 +214,10 @@ def fix_thumbs(queue, st):
         try:
             yt.thumbnails().set(videoId=rec["youtube"]["video_id"],
                                 media_body=MediaFileUpload(os.path.join(HERE, "media", e["cover"]), mimetype="image/jpeg")).execute()
-            res = {"ok": True}
-        except Exception as ex:
-            res = {"ok": False, "error": str(ex)[:300]}
-        res["at"] = dt.datetime.now(IST).isoformat(); rec["youtube_thumb"] = res
-        log(e["id"], "youtube thumbnail:", res); save_state(st)
+            rec["youtube_thumb"] = {"ok": True, "at": dt.datetime.now(IST).isoformat()}; save_state(st)
+            log(e["id"], "youtube thumbnail set")
+        except Exception as ex:  # e.g. 429 rate limit: not recorded, so the next run retries
+            log(e["id"], "youtube thumbnail not set yet:", str(ex)[:200])
 
 
 if __name__ == "__main__":

@@ -90,11 +90,6 @@
    "url": "https://youtube.com/shorts/bG2K5LspxlE",
    "publish_at": "2026-11-14T01:30:00Z",
    "at": "2026-11-13T21:13:06.149093+05:30"
-  },
-  "youtube_thumb": {
-   "ok": false,
-   "error": "<HttpError 429 when requesting https://youtube.googleapis.com/upload/youtube/v3/thumbnails/set?videoId=bG2K5LspxlE&alt=json&uploadType=media returned \"The user has uploaded too many thumbnails recently. Please try the request again later.\". Details: \"[{'message': 'The user has uploaded too many thum",
-   "at": "2026-11-13T21:18:27.542995+05:30"
   }
  }
 }

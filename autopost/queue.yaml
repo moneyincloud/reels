@@ -1,4 +1,3 @@
-# thumbs 2026-11-13 21:17
 # moneyincloud auto-post queue. The agent posts ONLY entries with approved: true.
 # publish_at is India time (IST), format YYYY-MM-DD HH:MM. Put the video + cover in autopost/media/.
 # YouTube is uploaded as soon as an entry is approved and released by YouTube at publish_at;
@@ -10,6 +9,7 @@
   platforms:
     - youtube
     - instagram
+    - instagram_trial   # duplicate as a trial reel (owner asked 13 Nov 21:16)
   video: highest-dividend-stocks-india-2026-tamil.mp4
   cover: highest-dividend-stocks-india-2026-tamil-cover.jpg
   ig_caption: |
@@ -177,6 +177,7 @@
   platforms:
     - youtube
     - instagram
+    - instagram_trial   # duplicate as a trial reel (owner asked 13 Nov 21:16)
   video: earn-tax-spend-tax-gst-india.mp4
   cover: earn-tax-spend-tax-gst-india-cover.jpg
   ig_caption: |
