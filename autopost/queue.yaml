@@ -6,9 +6,12 @@
 - id: divi-tamil-2026-11-14
   approved: true   # approved by owner in chat, 13 Nov 2026 19:05 IST (YouTube); Instagram approved 13 Nov 2026 20:50 IST
   publish_at: 2026-11-14 19:00
+  story: highest-dividend-stocks-india-2026-tamil-story.jpg
+  story_delay_min: 60
   platforms:
     - youtube
     - instagram
+    - instagram_story   # owner approved stories 13 Nov 21:23
     - instagram_trial   # duplicate as a trial reel (owner asked 13 Nov 21:16)
   video: highest-dividend-stocks-india-2026-tamil.mp4
   cover: highest-dividend-stocks-india-2026-tamil-cover.jpg
@@ -174,9 +177,12 @@
 - id: earn-tax-spend-tax-2026-11-14
   approved: true   # owner asked in chat to make this reel and "schedule tomorrow morning 7 am", 13 Nov 2026 20:58 IST
   publish_at: 2026-11-14 07:00
+  story: earn-tax-spend-tax-gst-india-story.jpg
+  story_delay_min: 60
   platforms:
     - youtube
     - instagram
+    - instagram_story   # owner approved stories 13 Nov 21:23
     - instagram_trial   # duplicate as a trial reel (owner asked 13 Nov 21:16)
   video: earn-tax-spend-tax-gst-india.mp4
   cover: earn-tax-spend-tax-gst-india-cover.jpg
