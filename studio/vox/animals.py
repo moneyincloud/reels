@@ -140,3 +140,129 @@ def finish_flag():
             d.rectangle((34 + c_ * 30, 14 + r_ * 28, 64 + c_ * 30, 42 + r_ * 28), fill=col)
     d.rectangle((34, 14, 184, 126), outline=INK, width=5)
     return im
+
+
+# ---------------- Animal Friday #3: Monkey (overtrader) vs Elephant (patient) ----------------
+MFUR = (150, 96, 58); MFUR_D = (112, 70, 40); MSKIN = (238, 200, 160)
+EGREY = (160, 168, 180); EGREY_D = (120, 128, 142); EPINK = (236, 170, 178)
+VEST = (40, 100, 200)
+
+
+@functools.lru_cache(maxsize=96)
+def monkey(mood='calm', pose='down', step=0, scale=1.0, phone=False):
+    """front view monkey in a blue trader vest. poses: down up both_up head hang (arms up holding a branch) point"""
+    W_, H_ = 520, 760; im = Image.new('RGBA', (W_, H_), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    cx = W_ // 2; ph = step % 4
+    # curly tail behind
+    tail = [(cx + 60 + 150 * math.sin(k / 30 * 3.2) * (1 - k / 60), 560 - k * 6.5 + 40 * math.sin(k / 9 + ph)) for k in range(46)]
+    d.line(tail, fill=INK, width=30); d.line(tail, fill=MFUR, width=18)
+    # legs
+    for s in (-1, 1):
+        lift = 20 if ((s == -1 and ph == 1) or (s == 1 and ph == 3)) else 0
+        d.line([(cx + s * 50, 560), (cx + s * 90, 640 - lift), (cx + s * 70, 700 - lift)], fill=INK, width=46)
+        d.line([(cx + s * 50, 560), (cx + s * 90, 640 - lift), (cx + s * 70, 700 - lift)], fill=MFUR, width=32)
+        d.ellipse((cx + s * 70 - 36, 682 - lift, cx + s * 70 + 36, 724 - lift), fill=MSKIN, outline=INK, width=6)
+    # torso + vest
+    d.rounded_rectangle((cx - 92, 330, cx + 92, 590), 70, fill=MFUR, outline=INK, width=OUT)
+    d.ellipse((cx - 56, 380, cx + 56, 570), fill=MSKIN)
+    d.polygon([(cx - 90, 360), (cx - 30, 360), (cx - 10, 560), (cx - 86, 540)], fill=VEST, outline=INK)
+    d.polygon([(cx + 90, 360), (cx + 30, 360), (cx + 10, 560), (cx + 86, 540)], fill=VEST, outline=INK)
+    t = None
+    # arms
+    for s in (-1, 1):
+        if pose == 'both_up' or pose == 'hang' or (pose == 'up' and s == 1):
+            pts = [(cx + s * 80, 380), (cx + s * 150, 260), (cx + s * 130, 130)]; hand = pts[-1]
+        elif pose == 'head':
+            pts = [(cx + s * 80, 380), (cx + s * 150, 300)]; hand = (cx + s * 112, 200)
+        elif pose == 'point' and s == 1:
+            pts = [(cx + s * 80, 380), (cx + s * 200, 380)]; hand = (cx + s * 220, 372)
+        else:
+            sw = (14 if ph == 1 else -14 if ph == 3 else 0) * s
+            pts = [(cx + s * 84, 380), (cx + s * 130 + sw, 500)]; hand = (cx + s * 126 + sw, 560)
+        d.line(pts + [hand], fill=INK, width=42); d.line(pts + [hand], fill=MFUR, width=28)
+        d.ellipse((hand[0] - 26, hand[1] - 26, hand[0] + 26, hand[1] + 26), fill=MSKIN, outline=INK, width=6)
+    if phone and pose in ('down', 'point'):
+        hx = cx - 126; d.rounded_rectangle((hx - 34, 470, hx + 34, 580), 10, fill=INK)
+        d.rectangle((hx - 26, 480, hx + 26, 568), fill=(230, 245, 235))
+        d.line([(hx - 20, 550), (hx - 8, 520), (hx + 2, 540), (hx + 20, 496)], fill=(230, 60, 60), width=5)
+    # head: ears, fur, face mask
+    hy = 230; r = 118
+    for s in (-1, 1):
+        d.ellipse((cx + s * 120 - 46, hy - 40, cx + s * 120 + 46, hy + 46), fill=MFUR, outline=INK, width=OUT)
+        d.ellipse((cx + s * 120 - 24, hy - 18, cx + s * 120 + 24, hy + 26), fill=MSKIN)
+    d.ellipse((cx - r, hy - r, cx + r, hy + r), fill=MFUR, outline=INK, width=OUT)
+    for k in (-1, 0, 1): d.line((cx + k * 22, hy - r + 4, cx + k * 30, hy - r - 26), fill=INK, width=6)
+    d.ellipse((cx - 92, hy - 64, cx - 2, hy + 30), fill=MSKIN); d.ellipse((cx + 2, hy - 64, cx + 92, hy + 30), fill=MSKIN)
+    d.ellipse((cx - 80, hy - 6, cx + 80, hy + 104), fill=MSKIN)
+    _face(d, cx, hy + 6, r, mood)
+    for s in (-1, 1): d.ellipse((cx + s * 14 - 6, hy + 30, cx + s * 14 + 6, hy + 40), fill=MFUR_D)
+    if mood == 'cry':
+        for s in (-1, 1): d.ellipse((cx + s * 41 - 9, hy + 24, cx + s * 41 + 9, hy + 52), fill=(120, 190, 240), outline=INK, width=3)
+    if scale != 1.0: im = im.resize((int(W_ * scale), int(H_ * scale)), Image.LANCZOS)
+    return shadowed(im)
+
+
+@functools.lru_cache(maxsize=32)
+def elephant(mood='calm', trunk=0, scale=1.0, sitting=True):
+    """front view sitting elephant. trunk: 0 down/curl, 1 raised"""
+    W_, H_ = 760, 760; im = Image.new('RGBA', (W_, H_), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    cx = W_ // 2
+    # body
+    d.ellipse((cx - 230, 330, cx + 230, 720), fill=EGREY, outline=INK, width=OUT)
+    # legs / feet
+    for s in (-1, 1):
+        d.rounded_rectangle((cx + s * 150 - 80, 560, cx + s * 150 + 80, 730), 50, fill=EGREY, outline=INK, width=OUT)
+        for k in (-1, 0, 1): d.ellipse((cx + s * 150 + k * 36 - 15, 700, cx + s * 150 + k * 36 + 15, 724), fill=CREAM, outline=INK, width=3)
+    d.ellipse((cx - 110, 420, cx + 110, 660), fill=(176, 184, 196))
+    # ears
+    for s in (-1, 1):
+        ear = [(cx + s * 90, 120), (cx + s * 330, 90), (cx + s * 370, 260), (cx + s * 300, 420), (cx + s * 120, 380)]
+        d.polygon(ear, fill=EGREY); d.line(ear + [ear[0]], fill=INK, width=OUT, joint='curve')
+        inner = [(cx + s * 120, 160), (cx + s * 300, 140), (cx + s * 330, 260), (cx + s * 280, 370), (cx + s * 140, 340)]
+        d.polygon(inner, fill=EPINK)
+    # head
+    d.ellipse((cx - 160, 90, cx + 160, 400), fill=EGREY, outline=INK, width=OUT)
+    _face(d, cx, 210, 150, mood)
+    # trunk
+    if trunk:
+        pts = [(cx, 300), (cx + 10, 380), (cx + 70, 430), (cx + 150, 400), (cx + 190, 320)]
+    else:
+        pts = [(cx, 300), (cx - 6, 420), (cx + 10, 520), (cx + 70, 560), (cx + 100, 520)]
+    d.line(pts, fill=INK, width=74, joint='curve'); d.line(pts, fill=EGREY, width=58, joint='curve')
+    for k in range(1, 4): x, y = pts[k]; d.arc((x - 26, y - 10, x + 26, y + 14), 20, 160, fill=EGREY_D, width=4)
+    # tusks
+    for s in (-1, 1): d.polygon([(cx + s * 40, 330), (cx + s * 64, 330), (cx + s * 80, 400)], fill=CREAM, outline=INK)
+    # mouth hidden by trunk: redraw face mouth to side
+    if scale != 1.0: im = im.resize((int(W_ * scale), int(H_ * scale)), Image.LANCZOS)
+    return shadowed(im)
+
+
+@functools.lru_cache(maxsize=8)
+def branch(w=900, flip=False):
+    im = Image.new('RGBA', (w, 220), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    pts = [(0, 120), (w * 0.4, 100), (w * 0.75, 112), (w, 90)]
+    d.line(pts, fill=INK, width=46, joint='curve'); d.line(pts, fill=(130, 90, 55), width=32, joint='curve')
+    for k, x in enumerate(range(80, w, 150)):
+        y = 70 if k % 2 else 150
+        d.ellipse((x - 50, y - 40, x + 50, y + 40), fill=(90, 160, 80) if k % 2 else (70, 140, 70), outline=INK, width=5)
+    if flip: im = im.transpose(Image.FLIP_LEFT_RIGHT)
+    return im
+
+
+@functools.lru_cache(maxsize=4)
+def tree():
+    w, h = 700, 1000; im = Image.new('RGBA', (w, h), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    d.polygon([(300, h), (400, h), (380, 420), (320, 420)], fill=(130, 90, 55), outline=INK)
+    d.line([(300, h), (320, 420)], fill=INK, width=7); d.line([(400, h), (380, 420)], fill=INK, width=7)
+    for (x, y, r, col) in ((350, 300, 260, (70, 140, 70)), (170, 380, 170, (90, 160, 80)), (530, 380, 170, (90, 160, 80)), (350, 160, 180, (100, 175, 90))):
+        d.ellipse((x - r, y - r * 0.8, x + r, y + r * 0.8), fill=col, outline=INK, width=7)
+    return shadowed(im)
+
+
+@functools.lru_cache(maxsize=16)
+def fee_coin(txt='FEE'):
+    from lib import text_img
+    im = Image.new('RGBA', (150, 150), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    d.ellipse((6, 6, 144, 144), fill=(214, 160, 40), outline=INK, width=6); d.ellipse((24, 24, 126, 126), outline=(170, 120, 20), width=4)
+    t = text_img(txt, 'anton', 40, INK); im.alpha_composite(t, (75 - t.size[0] // 2, 75 - t.size[1] // 2))
+    return im
