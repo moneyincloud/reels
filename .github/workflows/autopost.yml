@@ -23,6 +23,8 @@ jobs:
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: main            # always the latest queue + posted.json, never an older commit
       - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
@@ -43,5 +45,19 @@ jobs:
         run: |
           git config user.name "autopost-bot"
           git config user.email "autopost-bot@users.noreply.github.com"
-          git add autopost/posted.json
-          git diff --cached --quiet || (git commit -m "autopost: record posts" && git pull --rebase && git push)
+          cp autopost/posted.json /tmp/mine.json
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            python3 - <<'PY'
+          import json
+          mine = json.load(open('/tmp/mine.json')); cur = json.load(open('autopost/posted.json'))
+          for k, v in mine.items():
+              cur.setdefault(k, {}).update({p: r for p, r in v.items() if p not in cur.get(k, {})})
+          json.dump(cur, open('autopost/posted.json', 'w'), indent=1, ensure_ascii=False)
+          PY
+            git add autopost/posted.json
+            git diff --cached --quiet && exit 0
+            git commit -qm "autopost: record posts" && git push -q && exit 0
+            sleep 5
+          done
+          exit 1
