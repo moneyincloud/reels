@@ -56,11 +56,10 @@
   - stock market tamil
   - moneyincloud
 - id: penny15-2026-11-15
-  approved: false
+  approved: true   # approved by owner in chat, 13 Nov 2026 19:46 IST (YouTube only)
   publish_at: 2026-11-15 19:00
   platforms:
-  - instagram
-  - youtube
+  - youtube   # Instagram added once its token is set up
   video: penny-stocks-under-40-india-2026.mp4
   cover: penny-stocks-under-40-india-2026-cover.jpg
   ig_caption: |
