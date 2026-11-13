@@ -1,5 +1,8 @@
 name: autopost
 on:
+  push:                     # runs right away whenever Claude updates the queue (approvals)
+    branches: [main]
+    paths: ["autopost/queue.yaml"]
   schedule:
     - cron: "*/15 * * * *"   # every 15 min (GitHub may start runs late)
     - cron: "0 13 * * *"     # 18:30 IST: wakes early and waits for the 19:00 Instagram slot
