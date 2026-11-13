@@ -586,6 +586,13 @@
    "male": "https://assets.vidiq.com/voiceovers/4aaf05f1-aa3d-48b5-b072-07e6ce9eb800/282f16dd-12d9-42e0-a789-51fd4f97d9be.mp3",
    "female": "https://assets.vidiq.com/voiceovers/4aaf05f1-aa3d-48b5-b072-07e6ce9eb800/347bf536-7e17-4b7c-a93f-8a09c7f3f845.mp3"
   },
-  "notes": "Offline Tamil TTS blocked (no PyTorch; edge-tts/HF blocked). assets.vidiq.com not reachable from the workspace, so for a reel the user downloads the MP3 and attaches it. Write numbers as Tamil words."
+  "notes": "Offline Tamil TTS blocked (no PyTorch; edge-tts/HF blocked). assets.vidiq.com not reachable from the workspace, so for a reel the user downloads the MP3 and attaches it. Write numbers as Tamil words.",
+  "owner": {
+   "ref": "myvoice/ta_ref/owner_ta_ref.wav",
+   "clean": "myvoice/ta_ref/owner_ta_clean.wav",
+   "len_s": 35.4,
+   "chain": "highpass 80 + afftdn nf=-30 + compressor 3:1 + loudnorm -16 LUFS",
+   "note": "Owner's own Tamil voice (WhatsApp voice note, 13 Nov 2026). Preferred for Tamil reels: owner records each script line as a voice note; clean with the chain above. Whisper-small Tamil ASR is unreliable for timing, so use the script text plus silence detection."
+  }
  }
 }
