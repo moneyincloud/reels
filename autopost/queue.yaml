@@ -6,8 +6,7 @@
   approved: false
   publish_at: 2026-11-14 19:00
   platforms:
-  - instagram
-  - youtube
+  - youtube   # Instagram added once its token is set up
   video: highest-dividend-stocks-india-2026-tamil.mp4
   cover: highest-dividend-stocks-india-2026-tamil-cover.jpg
   ig_caption: |
