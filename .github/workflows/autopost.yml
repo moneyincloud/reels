@@ -1,7 +1,8 @@
 name: autopost
 on:
   schedule:
-    - cron: "*/15 * * * *"   # every 15 min (GitHub may start runs a few minutes late)
+    - cron: "*/15 * * * *"   # every 15 min (GitHub may start runs late)
+    - cron: "0 13 * * *"     # 18:30 IST: wakes early and waits for the 19:00 Instagram slot
   workflow_dispatch:
     inputs:
       dry_run:
@@ -16,7 +17,7 @@ concurrency:
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
@@ -33,7 +34,7 @@ jobs:
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
           RAW_BASE: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}/autopost
-        run: python autopost/post.py ${{ inputs.dry_run && '--dry-run' || '' }}
+        run: python autopost/post.py ${{ inputs.dry_run && '--dry-run' || '' }} ${{ github.event.schedule == '0 13 * * *' && '--wait-minutes 90' || '' }}
       - name: Save what was posted
         if: always()
         run: |

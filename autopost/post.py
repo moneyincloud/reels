@@ -113,9 +113,16 @@ def yt_post(entry, dry):
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--only", choices=["instagram", "youtube"])
+    ap.add_argument("--wait-minutes", type=int, default=0, help="sleep until an Instagram slot due within N minutes, then post on time")
     a = ap.parse_args()
     queue = yaml.safe_load(open(os.path.join(HERE, "queue.yaml"))) or []
     st = load_state(); now = dt.datetime.now(IST); failed = False
+    if a.wait_minutes:
+        due = [when(e) for e in queue if e.get("approved") and "instagram" in e.get("platforms", [])
+               and "instagram" not in st.get(e["id"], {}) and now < when(e) <= now + dt.timedelta(minutes=a.wait_minutes)]
+        if due:
+            t = min(due); log("waiting until", t.strftime("%H:%M IST"), "for the Instagram slot")
+            time.sleep(max(0, (t - dt.datetime.now(IST)).total_seconds()) + 5); now = dt.datetime.now(IST)
     for e in queue:
         if not e.get("approved"):
             continue
