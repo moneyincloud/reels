@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=1080, height=1920" />
-<title>Earn tax, spend tax again (doodle)</title>
+<title>Top 10 weekly losers by market cap</title>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <style>
 @font-face { font-family:"Caveat"; src:url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight:700; }
 @font-face { font-family:"Anton"; src:url("assets/fonts/anton-latin-400-normal.woff") format("woff"); }
 @font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
 @font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
-:root { --paper:#FBF8F0; --ink:#1B1B1F; --blue:#2F5BEA; --red:#D93A2B; --green:#1E8E4E; --hl:#FFE45C; --mut:#5B5B66; }
+:root { --paper:#FBF8F0; --ink:#1B1B1F; --col:#D93A2B; --hl:#FFE45C; --mut:#5B5B66; }
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
 #root { position:relative; width:100%; height:100%; overflow:hidden; color:var(--ink); font-family:"Caveat","Poppins",cursive; }
@@ -23,19 +23,30 @@ html, body { width:1080px; height:1920px; overflow:hidden; background:var(--pape
 .hand { font-family:"Caveat",cursive; font-weight:700; }
 .ttl { position:absolute; left:0; right:0; text-align:center; font-size:96px; line-height:1; }
 #kw { position:absolute; left:0; right:0; top:205px; text-align:center; }
-#kw span { display:inline-block; background:var(--ink); color:#fff; font-family:"Oswald",sans-serif; font-size:40px; letter-spacing:2px; padding:10px 32px; border-radius:999px; }
-.stk { position:absolute; height:auto; filter:drop-shadow(4px 6px 0 rgba(27,27,31,.18)); }
+#kw span { display:inline-block; background:var(--ink); color:#fff; font-family:"Oswald",sans-serif; font-size:40px; letter-spacing:2px; padding:10px 30px; border-radius:999px; }
 svg.ov { position:absolute; overflow:visible; }
 path { fill:none; stroke:var(--ink); stroke-width:7; stroke-linecap:round; stroke-linejoin:round; }
-.big { position:absolute; left:0; right:0; text-align:center; font-family:"Anton",sans-serif; line-height:1; }
-.row { position:absolute; left:80px; font-size:108px; line-height:1; }
-.row b { font-weight:700; }
-.note { position:absolute; left:70px; right:70px; text-align:center; font-family:"Oswald",sans-serif; font-size:32px; color:var(--mut); }
-.hl { position:absolute; background:var(--hl); opacity:.8; border-radius:10px; transform-origin:left center; }
-.formula { position:absolute; left:0; right:0; text-align:center; font-size:66px; }
-.ck { position:relative; height:128px; font-size:84px; padding-left:130px; line-height:110px; }
-.ck svg { position:absolute; left:0; top:8px; width:96px; height:96px; overflow:visible; }
-.ck .tick { stroke:var(--green); stroke-width:11; }
+#topbox { position:absolute; left:90px; right:90px; top:430px; height:470px; }
+#topbox svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+#topname { position:absolute; left:0; right:0; top:80px; text-align:center; font-family:"Anton",sans-serif; font-size:96px; line-height:1.05; }
+#toppct { position:absolute; left:0; right:0; top:215px; text-align:center; font-family:"Anton",sans-serif; font-size:170px; color:var(--col); line-height:1; }
+#topsub { position:absolute; left:0; right:0; top:400px; text-align:center; font-family:"Oswald",sans-serif; font-size:34px; color:var(--mut); }
+#hook2 { position:absolute; left:60px; right:60px; top:960px; text-align:center; font-size:76px; line-height:1.1; }
+.hdr { position:absolute; left:90px; right:90px; top:225px; display:flex; align-items:baseline; gap:24px; }
+.cap-t { font-size:104px; line-height:1; color:var(--col); }
+.hdr .sub { font-family:"Oswald",sans-serif; font-size:34px; color:var(--mut); }
+.row { position:absolute; left:70px; right:70px; height:70px; display:flex; align-items:center; }
+.rk { width:62px; height:62px; flex:none; border:4px solid var(--ink); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:"Anton",sans-serif; font-size:34px; background:#fff; }
+.nm { width:400px; flex:none; padding-left:18px; font-family:"Poppins",sans-serif; font-weight:700; font-size:33px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.bar { height:40px; background:var(--col); border:3px solid var(--ink); border-radius:8px; transform-origin:left center; flex:none; }
+.pc { padding-left:14px; font-family:"Anton",sans-serif; font-size:44px; color:var(--col); white-space:nowrap; }
+.row.hot .nm { background:linear-gradient(transparent 55%, rgba(255,228,92,.85) 55%); }
+#ctx { position:absolute; left:80px; right:80px; top:300px; }
+.ix { position:relative; height:150px; display:flex; align-items:center; justify-content:space-between; border-bottom:4px dashed rgba(27,27,31,.25); }
+.ix .l { font-size:78px; }
+.ix .v { font-family:"Anton",sans-serif; font-size:84px; }
+#ctxline { position:absolute; left:70px; right:70px; top:860px; text-align:center; font-size:72px; line-height:1.1; }
+.host { position:absolute; height:auto; }
 .pill { position:absolute; display:inline-block; border-radius:22px; padding:12px 34px; font-family:"Anton",sans-serif; font-size:62px; color:#fff; border:5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
 .cap { position:absolute; left:0; right:0; top:1215px; text-align:center; opacity:0; }
 .cap span { display:inline-block; max-width:920px; background:#fff; border:5px solid var(--ink); border-radius:18px; box-shadow:6px 8px 0 var(--ink); padding:10px 34px; font-family:"Poppins",sans-serif; font-weight:700; font-size:44px; line-height:1.25; }
@@ -44,171 +55,184 @@ path { fill:none; stroke:var(--ink); stroke-width:7; stroke-linecap:round; strok
 </style>
 </head>
 <body>
-<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="52.27983333333333" data-fps="30">
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="38.36" data-fps="30">
   <div id="paper"></div>
   <div class="handle">@moneyincloud</div>
-  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="52.27983333333333" data-track-index="9" data-volume="1"></audio>
+  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="38.36" data-track-index="9" data-volume="1"></audio>
 
-  <section class="scene clip" id="sc0" data-start="0" data-duration="4.72" data-track-index="1"><div class="inner" id="in0">
-    <div id="kw"><span>INCOME TAX + GST · INDIA 2026</span></div>
-    <div class="row hand" id="r1" style="top:330px">EARN <span style="color:var(--mut)">→</span> <b style="color:var(--red)">TAX</b></div>
-    <div class="row hand" id="r2" style="top:480px">SPEND <span style="color:var(--mut)">→</span> <b style="color:var(--red)">TAX</b></div>
-    <div class="hand" id="again" style="position:absolute;left:330px;top:610px;font-size:130px;color:var(--red);transform:rotate(-6deg)">AGAIN!</div>
-    <svg class="ov" style="left:330px;top:740px;width:330px;height:40px" viewBox="0 0 330 40"><path id="ul0" d="M5 25 C 90 10, 200 38, 325 14" style="stroke:var(--red)" /></svg>
-    <img class="stk" id="st-think" src="assets/img/s0_001.png" style="left:760px;top:290px;width:290px;" />
-    <img class="stk" id="st-why" src="assets/img/s4_002.png" style="left:120px;top:830px;width:330px;" />
-    
+  <section class="scene clip" id="sc0" data-start="0" data-duration="6.19" data-track-index="1"><div class="inner" id="in0">
+    <div id="kw"><span>TOP LOSERS THIS WEEK · 9–13 NOV</span></div>
+    <div class="ttl hand" style="top:300px">biggest fall this week</div>
+    <div id="topbox"><svg viewBox="0 0 900 470"><path id="tb" d="" style="stroke:var(--col)" /></svg>
+      <div id="topname">Page Industries</div><div id="toppct">−12.4%</div><div id="topsub">Nifty Midcap 150 · ₹35,760.00 → ₹31,325.00</div></div>
+    <div id="hook2" class="hand">+ top 10 losers in<br><b>large · mid · small</b> caps 👇</div>
   </div></section>
 
-  <section class="scene clip" id="sc1" data-start="4.420208333333333" data-duration="17.77" data-track-index="2"><div class="inner" id="in1">
-    <img class="stk" id="st-lpa" src="assets/img/s2_004.png" style="left:70px;top:250px;width:230px;" />
-    <img class="stk" id="st-salary" src="assets/img/s0_003.png" style="left:60px;top:420px;width:420px;" />
-    <svg class="ov" style="left:470px;top:470px;width:160px;height:140px" viewBox="0 0 160 140"><path id="a1" d="M10 30 C 70 10, 120 40, 145 110" /><path id="a1h" d="M118 98 L146 114 L150 80" /></svg>
-    <img class="stk" id="st-tax" src="assets/img/s0_000.png" style="left:640px;top:300px;width:340px;" />
-    <div class="note" id="n-regime" style="top:760px;left:560px;right:40px;text-align:center;font-size:30px">new regime · after ₹75,000<br>standard deduction · incl. 4% cess</div>
-    <svg class="ov" style="left:560px;top:850px;width:160px;height:140px" viewBox="0 0 160 140"><path id="a2" d="M140 10 C 100 40, 60 60, 30 120" /><path id="a2h" d="M22 88 L28 124 L62 112" /></svg>
-    <img class="stk" id="st-take" src="assets/img/s0_004.png" style="left:140px;top:760px;width:420px;" />
-    <div class="hl" id="hl-take" style="left:165px;top:1150px;width:370px;height:16px"></div>
-    <div class="note" id="n-take" style="top:1110px;left:560px;right:40px;font-size:28px">₹15,00,000 − ₹97,500 = ₹14,02,500 ÷ 12<br>(before EPF &amp; professional tax)</div>
+  <section class="scene clip" id="sc1" data-start="5.89" data-duration="7.59" data-track-index="2"><div class="inner" id="in1">
+    <div class="hdr"><span class="cap-t hand">LARGE CAP</span><span class="sub">Nifty 100</span></div>
+    <svg class="ov" style="left:90px;top:330px;width:900px;height:30px" viewBox="0 0 900 30"><path id="ul1" d="M5 18 C 250 6, 600 28, 895 10" style="stroke:#D93A2B" /></svg>
+    <div class="row" id="r0_0" style="top:395px"><div class="rk">1</div><div class="nm" style="font-size:33px">Grasim Industries</div>
+<div class="bar" id="b0_0" style="width:310px"></div><div class="pc">−5.4%</div></div>
+<div class="row" id="r0_1" style="top:475px"><div class="rk">2</div><div class="nm" style="font-size:33px">Bharat Petroleum</div>
+<div class="bar" id="b0_1" style="width:286px"></div><div class="pc">−4.9%</div></div>
+<div class="row" id="r0_2" style="top:555px"><div class="rk">3</div><div class="nm" style="font-size:33px">HCL Technologies</div>
+<div class="bar" id="b0_2" style="width:262px"></div><div class="pc">−4.4%</div></div>
+<div class="row" id="r0_3" style="top:635px"><div class="rk">4</div><div class="nm" style="font-size:33px">ONGC</div>
+<div class="bar" id="b0_3" style="width:248px"></div><div class="pc">−4.2%</div></div>
+<div class="row" id="r0_4" style="top:715px"><div class="rk">5</div><div class="nm" style="font-size:33px">TCS</div>
+<div class="bar" id="b0_4" style="width:222px"></div><div class="pc">−3.6%</div></div>
+<div class="row" id="r0_5" style="top:795px"><div class="rk">6</div><div class="nm" style="font-size:33px">Tech Mahindra</div>
+<div class="bar" id="b0_5" style="width:220px"></div><div class="pc">−3.6%</div></div>
+<div class="row" id="r0_6" style="top:875px"><div class="rk">7</div><div class="nm" style="font-size:33px">Ambuja Cements</div>
+<div class="bar" id="b0_6" style="width:219px"></div><div class="pc">−3.6%</div></div>
+<div class="row" id="r0_7" style="top:955px"><div class="rk">8</div><div class="nm" style="font-size:28px">Hindustan Aeronautics</div>
+<div class="bar" id="b0_7" style="width:215px"></div><div class="pc">−3.5%</div></div>
+<div class="row" id="r0_8" style="top:1035px"><div class="rk">9</div><div class="nm" style="font-size:31px">Pidilite Industries</div>
+<div class="bar" id="b0_8" style="width:206px"></div><div class="pc">−3.3%</div></div>
+<div class="row" id="r0_9" style="top:1115px"><div class="rk">10</div><div class="nm" style="font-size:33px">UltraTech Cement</div>
+<div class="bar" id="b0_9" style="width:199px"></div><div class="pc">−3.2%</div></div>
+  </div></section>
+  <section class="scene clip" id="sc2" data-start="13.18" data-duration="7.48" data-track-index="3"><div class="inner" id="in2">
+    <div class="hdr"><span class="cap-t hand">MIDCAP</span><span class="sub">Nifty Midcap 150</span></div>
+    <svg class="ov" style="left:90px;top:330px;width:900px;height:30px" viewBox="0 0 900 30"><path id="ul2" d="M5 18 C 250 6, 600 28, 895 10" style="stroke:#D93A2B" /></svg>
+    <div class="row" id="r1_0" style="top:395px"><div class="rk">1</div><div class="nm" style="font-size:33px">Page Industries</div>
+<div class="bar" id="b1_0" style="width:310px"></div><div class="pc">−12.4%</div></div>
+<div class="row" id="r1_1" style="top:475px"><div class="rk">2</div><div class="nm" style="font-size:33px">NHPC</div>
+<div class="bar" id="b1_1" style="width:180px"></div><div class="pc">−6.4%</div></div>
+<div class="row" id="r1_2" style="top:555px"><div class="rk">3</div><div class="nm" style="font-size:33px">Ashok Leyland</div>
+<div class="bar" id="b1_2" style="width:148px"></div><div class="pc">−4.9%</div></div>
+<div class="row" id="r1_3" style="top:635px"><div class="rk">4</div><div class="nm" style="font-size:28px">Balkrishna Industries</div>
+<div class="bar" id="b1_3" style="width:145px"></div><div class="pc">−4.8%</div></div>
+<div class="row" id="r1_4" style="top:715px"><div class="rk">5</div><div class="nm" style="font-size:33px">Cochin Shipyard</div>
+<div class="bar" id="b1_4" style="width:143px"></div><div class="pc">−4.7%</div></div>
+<div class="row" id="r1_5" style="top:795px"><div class="rk">6</div><div class="nm" style="font-size:33px">Torrent Power</div>
+<div class="bar" id="b1_5" style="width:131px"></div><div class="pc">−4.2%</div></div>
+<div class="row" id="r1_6" style="top:875px"><div class="rk">7</div><div class="nm" style="font-size:28px">Hexaware Technologies</div>
+<div class="bar" id="b1_6" style="width:124px"></div><div class="pc">−3.9%</div></div>
+<div class="row" id="r1_7" style="top:955px"><div class="rk">8</div><div class="nm" style="font-size:33px">Bharat Dynamics</div>
+<div class="bar" id="b1_7" style="width:119px"></div><div class="pc">−3.6%</div></div>
+<div class="row" id="r1_8" style="top:1035px"><div class="rk">9</div><div class="nm" style="font-size:33px">Escorts Kubota</div>
+<div class="bar" id="b1_8" style="width:118px"></div><div class="pc">−3.6%</div></div>
+<div class="row" id="r1_9" style="top:1115px"><div class="rk">10</div><div class="nm" style="font-size:33px">Alkem Laboratories</div>
+<div class="bar" id="b1_9" style="width:118px"></div><div class="pc">−3.6%</div></div>
+  </div></section>
+  <section class="scene clip" id="sc3" data-start="20.37" data-duration="8.06" data-track-index="4"><div class="inner" id="in3">
+    <div class="hdr"><span class="cap-t hand">SMALLCAP</span><span class="sub">Nifty Smallcap 250</span></div>
+    <svg class="ov" style="left:90px;top:330px;width:900px;height:30px" viewBox="0 0 900 30"><path id="ul3" d="M5 18 C 250 6, 600 28, 895 10" style="stroke:#D93A2B" /></svg>
+    <div class="row" id="r2_0" style="top:395px"><div class="rk">1</div><div class="nm" style="font-size:33px">Tata Teleservices</div>
+<div class="bar" id="b2_0" style="width:310px"></div><div class="pc">−8.7%</div></div>
+<div class="row" id="r2_1" style="top:475px"><div class="rk">2</div><div class="nm" style="font-size:33px">R R Kabel</div>
+<div class="bar" id="b2_1" style="width:234px"></div><div class="pc">−6.2%</div></div>
+<div class="row" id="r2_2" style="top:555px"><div class="rk">3</div><div class="nm" style="font-size:33px">Prime Focus</div>
+<div class="bar" id="b2_2" style="width:214px"></div><div class="pc">−5.6%</div></div>
+<div class="row" id="r2_3" style="top:635px"><div class="rk">4</div><div class="nm" style="font-size:27px">HEG Advanced Materials</div>
+<div class="bar" id="b2_3" style="width:204px"></div><div class="pc">−5.3%</div></div>
+<div class="row" id="r2_4" style="top:715px"><div class="rk">5</div><div class="nm" style="font-size:33px">HFCL</div>
+<div class="bar" id="b2_4" style="width:198px"></div><div class="pc">−5.1%</div></div>
+<div class="row" id="r2_5" style="top:795px"><div class="rk">6</div><div class="nm" style="font-size:25px">Schneider Electric Infra</div>
+<div class="bar" id="b2_5" style="width:189px"></div><div class="pc">−4.8%</div></div>
+<div class="row" id="r2_6" style="top:875px"><div class="rk">7</div><div class="nm" style="font-size:33px">Manappuram Finance</div>
+<div class="bar" id="b2_6" style="width:184px"></div><div class="pc">−4.6%</div></div>
+<div class="row" id="r2_7" style="top:955px"><div class="rk">8</div><div class="nm" style="font-size:33px">Birlasoft</div>
+<div class="bar" id="b2_7" style="width:173px"></div><div class="pc">−4.3%</div></div>
+<div class="row" id="r2_8" style="top:1035px"><div class="rk">9</div><div class="nm" style="font-size:33px">Swan Corp</div>
+<div class="bar" id="b2_8" style="width:164px"></div><div class="pc">−4.0%</div></div>
+<div class="row" id="r2_9" style="top:1115px"><div class="rk">10</div><div class="nm" style="font-size:31px">Zensar Technologies</div>
+<div class="bar" id="b2_9" style="width:163px"></div><div class="pc">−4.0%</div></div>
   </div></section>
 
-  <section class="scene clip" id="sc2" data-start="21.893541666666664" data-duration="11.89" data-track-index="3"><div class="inner" id="in2">
-    <div class="ttl hand" style="top:240px" id="t2">now you <span style="color:var(--blue)">spend</span> it…</div>
-    <img class="stk" id="st-cart" src="assets/img/s4_015.png" style="left:60px;top:380px;width:220px;" />
-    <img class="stk" id="st-tv" src="assets/img/s4_016.png" style="left:300px;top:360px;width:460px;" />
-    <img class="stk" id="st-price" src="assets/img/s4_020.png" style="left:720px;top:380px;width:300px;" />
-    <img class="stk" id="st-gst18" src="assets/img/s3_011.png" style="left:70px;top:720px;width:300px;" />
-    <img class="stk" id="st-4576" src="assets/img/s4_029.png" style="left:400px;top:740px;width:360px;" />
-    <img class="stk" id="st-shock" src="assets/img/s3_018.png" style="left:770px;top:700px;width:270px;" />
-    <div class="formula hand" id="f1" style="top:1040px">₹30,000 × 18 ÷ 118 = <span style="color:var(--red)">₹4,576</span></div>
-  </div></section>
-
-  <section class="scene clip" id="sc3" data-start="33.48516666666666" data-duration="6.12" data-track-index="4"><div class="inner" id="in3">
-    <div class="ttl hand" style="top:250px">spend <span style="color:var(--blue)">₹1 lakh</span> a year</div>
-    <div class="ttl hand" style="top:360px;font-size:70px;color:var(--mut)">on 18% GST items</div>
-    <img class="stk" id="st-wallet" src="assets/img/s3_027.png" style="left:110px;top:520px;width:280px;" />
-    <img class="stk" id="st-fly" src="assets/img/s4_024.png" style="left:420px;top:540px;width:360px;" />
-    <div class="big" id="b15" style="top:840px;font-size:190px;color:var(--red)">≈ ₹15,254</div>
-    <div class="ttl hand" id="b15l" style="top:1060px;font-size:76px">goes to GST</div>
-  </div></section>
-
-  <section class="scene clip" id="sc4" data-start="39.302499999999995" data-duration="7.06" data-track-index="5"><div class="inner" id="in4">
-    <div class="ttl hand" style="top:250px">some <span style="color:var(--green)">relief</span> ✨</div>
-    <div class="note" style="top:365px;font-size:34px">GST 2.0 · since 22 Sep 2025</div>
-    <div style="position:absolute;left:110px;right:60px;top:470px">
-      <div class="ck hand" id="ck0"><svg viewBox="0 0 100 100"><path id="bx0" d="M8 10 L92 6 L95 92 L6 95 Z" /><path class="tick" id="tk0" d="M18 52 L42 78 L90 8" /></svg>milk</div>
-      <div class="ck hand" id="ck1"><svg viewBox="0 0 100 100"><path id="bx1" d="M6 8 L93 9 L92 94 L9 92 Z" /><path class="tick" id="tk1" d="M18 52 L42 78 L90 8" /></svg>paneer</div>
-      <div class="ck hand" id="ck2"><svg viewBox="0 0 100 100"><path id="bx2" d="M9 7 L94 10 L91 93 L7 94 Z" /><path class="tick" id="tk2" d="M18 52 L42 78 L90 8" /></svg>health insurance</div>
+  <section class="scene clip" id="sc4" data-start="28.13" data-duration="4.73" data-track-index="5"><div class="inner" id="in4">
+    <div class="ttl hand" style="top:200px">meanwhile, the index…</div>
+    <div id="ctx">
+      <div class="ix" id="ix0"><span class="l hand">Nifty 50</span><span class="v" style="color:#1E8E4E">+0.6%</span></div><div class="ix" id="ix1"><span class="l hand">Nifty 100</span><span class="v" style="color:#1E8E4E">+0.7%</span></div><div class="ix" id="ix2"><span class="l hand">Nifty Midcap 150</span><span class="v" style="color:#1E8E4E">+1.6%</span></div>
     </div>
-    <div class="pill" id="zero" style="left:600px;top:500px;background:var(--green);font-size:110px;transform:rotate(-8deg)">0% GST</div>
-    <div class="note" style="top:1110px">Soap, shampoo, toothpaste: now 5%</div>
+    <div id="ctxline" class="hand">Index up, these stocks <b style='color:#D93A2B'>down</b>.<br>That's stock risk.</div>
   </div></section>
 
-  <section class="scene clip" id="sc5" data-start="46.058499999999995" data-duration="6.22" data-track-index="6"><div class="inner" id="in5">
-    <img class="stk" id="st-cloud" src="assets/img/s0_007.png" style="left:200px;top:230px;width:680px;" />
-    <img class="stk" id="st-idea" src="assets/img/s0_008.png" style="left:40px;top:760px;width:330px;" />
-    <div class="ttl hand" id="fair" style="top:770px;left:360px;right:260px;font-size:90px">is it <span style="color:var(--red)">fair?</span></div>
-    <div class="pill" id="cta" style="left:380px;top:930px;background:var(--blue)">COMMENT "TAX"</div>
+  <section class="scene clip" id="sc5" data-start="32.56" data-duration="5.80" data-track-index="6"><div class="inner" id="in5">
+    <div class="ttl hand" style="top:280px">Did you hold any of these?</div>
+    <img class="host" id="host" src="assets/img/s0_008.png" style="left:50px;top:560px;width:380px" />
+    <div class="pill" id="cta1" style="left:440px;top:640px;background:var(--col)">COMMENT "LOSS"</div>
+    <div class="pill" id="cta2" style="left:440px;top:790px;background:var(--hl);color:var(--ink);font-size:48px">FOLLOW FOR NEXT WEEK</div>
   </div></section>
 
-  <section class="clip" id="caps" data-start="0" data-duration="52.27983333333333" data-track-index="7" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
-    <div class="cap" id="cap0"><span>You pay income tax</span></div>
-<div class="cap" id="cap1"><span>when you earn.</span></div>
-<div class="cap" id="cap2"><span>And you pay GST</span></div>
-<div class="cap" id="cap3"><span>again when you spend.</span></div>
-<div class="cap" id="cap4"><span>Say your salary is</span></div>
-<div class="cap" id="cap5"><span>₹15 lakh a year.</span></div>
-<div class="cap" id="cap6"><span>Under the new tax</span></div>
-<div class="cap" id="cap7"><span>regime,</span></div>
-<div class="cap" id="cap8"><span>after the ₹75,000 standard</span></div>
-<div class="cap" id="cap9"><span>deduction,</span></div>
-<div class="cap" id="cap10"><span>your income tax with</span></div>
-<div class="cap" id="cap11"><span>cess is ₹97,500.</span></div>
-<div class="cap" id="cap12"><span>That leaves about ₹1,16,875</span></div>
-<div class="cap" id="cap13"><span>a month.</span></div>
-<div class="cap" id="cap14"><span>Now you buy a</span></div>
-<div class="cap" id="cap15"><span>43-inch TV for ₹30,000.</span></div>
-<div class="cap" id="cap16"><span>18% GST is already</span></div>
-<div class="cap" id="cap17"><span>inside that price.</span></div>
-<div class="cap" id="cap18"><span>That's ₹4,576.</span></div>
-<div class="cap" id="cap19"><span>Spend ₹1 lakh a</span></div>
-<div class="cap" id="cap20"><span>year on 18% items,</span></div>
-<div class="cap" id="cap21"><span>and about ₹15,000 of</span></div>
-<div class="cap" id="cap22"><span>it is GST.</span></div>
-<div class="cap" id="cap23"><span>Some relief:</span></div>
-<div class="cap" id="cap24"><span>since September 2025,</span></div>
-<div class="cap" id="cap25"><span>milk,</span></div>
-<div class="cap" id="cap26"><span>paneer and health insurance</span></div>
-<div class="cap" id="cap27"><span>carry zero GST.</span></div>
-<div class="cap" id="cap28"><span>Earn,</span></div>
-<div class="cap" id="cap29"><span>tax.</span></div>
-<div class="cap" id="cap30"><span>Spend,</span></div>
-<div class="cap" id="cap31"><span>tax again.</span></div>
-<div class="cap" id="cap32"><span>Is it fair?</span></div>
-<div class="cap" id="cap33"><span>Comment TAX and tell</span></div>
-<div class="cap" id="cap34"><span>me.</span></div>
+  <section class="clip" id="caps" data-start="0" data-duration="38.36" data-track-index="7" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
+    <div class="cap" id="cap0"><span>Top losers this week:</span></div>
+<div class="cap" id="cap1"><span>Page Industries fell 12.4%</span></div>
+<div class="cap" id="cap2"><span>in just four trading</span></div>
+<div class="cap" id="cap3"><span>days.</span></div>
+<div class="cap" id="cap4"><span>Large caps,</span></div>
+<div class="cap" id="cap5"><span>Nifty 100:</span></div>
+<div class="cap" id="cap6"><span>Grasim Industries,</span></div>
+<div class="cap" id="cap7"><span>Bharat Petroleum and HCL</span></div>
+<div class="cap" id="cap8"><span>Technologies fell the most.</span></div>
+<div class="cap" id="cap9"><span>Midcaps,</span></div>
+<div class="cap" id="cap10"><span>Nifty Midcap 150:</span></div>
+<div class="cap" id="cap11"><span>Page Industries,</span></div>
+<div class="cap" id="cap12"><span>NHPC and Ashok Leyland</span></div>
+<div class="cap" id="cap13"><span>fell the most.</span></div>
+<div class="cap" id="cap14"><span>Smallcaps,</span></div>
+<div class="cap" id="cap15"><span>Nifty Smallcap 250:</span></div>
+<div class="cap" id="cap16"><span>Tata Teleservices,</span></div>
+<div class="cap" id="cap17"><span>R R Kabel and</span></div>
+<div class="cap" id="cap18"><span>Prime Focus fell the</span></div>
+<div class="cap" id="cap19"><span>most.</span></div>
+<div class="cap" id="cap20"><span>And this was a</span></div>
+<div class="cap" id="cap21"><span>week when the Nifty</span></div>
+<div class="cap" id="cap22"><span>50 rose 0.6%.</span></div>
+<div class="cap" id="cap23"><span>Did you hold any</span></div>
+<div class="cap" id="cap24"><span>of these?</span></div>
+<div class="cap" id="cap25"><span>Comment LOSS,</span></div>
+<div class="cap" id="cap26"><span>and follow for next</span></div>
+<div class="cap" id="cap27"><span>week's list.</span></div>
   </section>
-  <div id="disc">New regime FY 2026-27 · GST incl. in price · Education only, not tax advice</div>
+  <div id="disc">Week change: 8 Nov (Muhurat) close → 13 Nov close · Data: INDmoney · Not a buy/sell call · Education only</div>
   <div id="vignette"></div>
 </div>
 <script>
-const T = {"VO": [0.15, 4.620208333333333, 7.472208333333333, 16.681541666666664, 22.093541666666663, 26.26783333333333, 33.68516666666666, 39.5025, 46.2585], "DURS": [4.050208333333333, 2.432, 8.789333333333333, 4.992, 3.7542916666666666, 6.997333333333334, 5.397333333333333, 6.336, 4.501333333333333], "STARTS": [0.0, 4.420208333333333, 7.2722083333333325, 16.481541666666665, 21.893541666666664, 26.06783333333333, 33.48516666666666, 39.302499999999995, 46.058499999999995], "DUR": 52.27983333333333, "lakh15": 5.62, "tax": 14.14, "take": 17.66, "tv": 22.96, "price": 24.43, "gst": 29.99, "inside": 27.81, "lakh1": 34.05, "gst15": 37.26, "zero": 42.67, "zero2": 45.26, "earn": 46.26, "spend": 47.02, "fair": 48.27, "comment": 49.1, "it0": 0.61, "gst0": 2.77};
-const CAPS = [[0.15, 1.22, "You pay income tax"], [1.22, 2.06, "when you earn."], [2.06, 2.95, "And you pay GST"], [2.95, 4.6, "again when you spend."], [4.62, 5.91, "Say your salary is"], [5.91, 7.45, "\u20b915 lakh a year."], [7.47, 9.03, "Under the new tax"], [9.03, 9.67, "regime,"], [9.67, 12.05, "after the \u20b975,000 standard"], [12.05, 12.97, "deduction,"], [12.97, 14.8, "your income tax with"], [14.8, 16.66, "cess is \u20b997,500."], [16.68, 20.53, "That leaves about \u20b91,16,875"], [20.53, 22.07, "a month."], [22.09, 23.45, "Now you buy a"], [23.45, 26.25, "43-inch TV for \u20b930,000."], [26.27, 28.79, "18% GST is already"], [28.79, 31.31, "inside that price."], [31.31, 33.67, "That's \u20b94,576."], [33.69, 34.97, "Spend \u20b91 lakh a"], [34.97, 36.51, "year on 18% items,"], [36.51, 38.23, "and about \u20b915,000 of"], [38.23, 39.48, "it is GST."], [39.5, 40.45, "Some relief:"], [40.45, 42.12, "since September 2025,"], [42.12, 42.51, "milk,"], [42.51, 44.65, "paneer and health insurance"], [44.65, 46.24, "carry zero GST."], [46.26, 46.64, "Earn,"], [46.64, 46.95, "tax."], [46.95, 47.4, "Spend,"], [47.4, 48.17, "tax again."], [48.17, 49.01, "Is it fair?"], [49.01, 50.53, "Comment TAX and tell"], [50.53, 51.36, "me."]];
-const SC = [[0, 4.420208333333333], [4.420208333333333, 21.893541666666664], [21.893541666666664, 33.48516666666666], [33.48516666666666, 39.302499999999995], [39.302499999999995, 46.058499999999995], [46.058499999999995, 52.27983333333333]];
+const T = {"VO": [0.15, 6.140000000000001, 13.431333333333335, 20.615208333333335, 28.375875000000004, 32.80854166666667], "DURS": [5.44, 6.741333333333333, 6.633875, 7.210666666666667, 3.8826666666666667, 3.9466666666666668], "STARTS": [0.0, 5.890000000000001, 13.181333333333335, 20.365208333333335, 28.125875000000004, 32.55854166666667], "DUR": 38.35520833333333, "toppct": 2.726, "hook2": 2.87, "hot": [[7.755111111111112, 9.089333333333334, 10.564], [15.563650297619049, 16.90622023809524, 17.853916666666667], [23.07158928571429, 24.577113095238097, 25.765684523809526]], "ctxline": 30.307720410628026, "comment": 34.26826769406393, "follow": 35.24141837899544};
+const CAPS = [[0.15, 1.74, "Top losers this week:"], [1.74, 3.7, "Page Industries fell 12.4%"], [3.7, 5.21, "in just four trading"], [5.21, 6.12, "days."], [6.14, 6.96, "Large caps,"], [6.96, 7.71, "Nifty 100:"], [7.71, 9.06, "Grasim Industries,"], [9.06, 10.86, "Bharat Petroleum and HCL"], [10.86, 13.41, "Technologies fell the most."], [13.43, 14.12, "Midcaps,"], [14.12, 15.59, "Nifty Midcap 150:"], [15.59, 16.96, "Page Industries,"], [16.96, 18.86, "NHPC and Ashok Leyland"], [18.86, 20.6, "fell the most."], [20.62, 21.46, "Smallcaps,"], [21.46, 23.08, "Nifty Smallcap 250:"], [23.08, 24.6, "Tata Teleservices,"], [24.6, 25.71, "R R Kabel and"], [25.71, 27.4, "Prime Focus fell the"], [27.4, 28.36, "most."], [28.38, 29.56, "And this was a"], [29.56, 31.16, "week when the Nifty"], [31.16, 32.79, "50 rose 0.6%."], [32.81, 33.72, "Did you hold any"], [33.72, 34.24, "of these?"], [34.24, 34.98, "Comment LOSS,"], [34.98, 36.07, "and follow for next"], [36.07, 37.36, "week's list."]];
+const SC = [[0.0, 5.890000000000001], [5.890000000000001, 13.181333333333335], [13.181333333333335, 20.365208333333335], [20.365208333333335, 28.125875000000004], [28.125875000000004, 32.55854166666667], [32.55854166666667, 38.35520833333333]];
 const EIN = "expo.out", EOUT = "expo.in";
 const tl = gsap.timeline({ paused: true });
 window.hwOnUpdate = function (tl, fn) { if (!tl.__hwRenders) { tl.__hwRenders = []; tl.eventCallback("onUpdate", function () { for (var i = 0; i < tl.__hwRenders.length; i++) tl.__hwRenders[i](); }); } tl.__hwRenders.push(fn); fn(); };
 window.hwHash = function (n, seed) { var x = Math.sin(n * 127.1 + (seed || 1) * 311.7) * 43758.5453; return (x - Math.floor(x)) * 2 - 1; };
 window.hwBoil = function (tl, target, opts) { opts = opts || {}; var amp = opts.amp ?? 1.6, rot = opts.rot ?? 0.5, fps = 30, drop = opts.frameDrop || 3, seed = opts.seed || 1; var els = gsap.utils.toArray(target);
   window.hwOnUpdate(tl, function () { var step = Math.floor((tl.time() * fps) / drop); for (var i = 0; i < els.length; i++) gsap.set(els[i], { x: hwHash(step*3+i*97, seed)*amp, y: hwHash(step*3+1+i*97, seed)*amp, rotation: hwHash(step*3+2+i*97, seed)*rot }); }); };
+window.hwRect = function (w, h, seed) { const j = k => hwHash(k, seed) * 6; return `M${8+j(1)} ${8+j(2)} L${w-8+j(3)} ${6+j(4)} L${w-6+j(5)} ${h-8+j(6)} L${6+j(7)} ${h-6+j(8)} Z`; };
 const draw = (sel, at, dur) => { const p = document.querySelector(sel); const L = p.getTotalLength(); tl.set(p, {opacity:0}, 0); tl.set(p, {opacity:1}, at); tl.fromTo(p, {strokeDasharray:L, strokeDashoffset:L}, {strokeDashoffset:0, duration:dur||0.6, ease:"power2.inOut"}, at); };
 const pop = (sel, at, r) => tl.fromTo(sel, {scale:0.4, opacity:0, rotation:r||0}, {scale:1, opacity:1, rotation:0, duration:0.45, ease:"back.out(2)"}, at);
 const up = (sel, at) => tl.fromTo(sel, {opacity:0, y:24}, {opacity:1, y:0, duration:0.4, ease:EIN}, at);
+document.getElementById("tb").setAttribute("d", hwRect(900, 470, 5));
 
 SC.forEach(([a,b],i) => { const id = "#in"+i;
   if (i > 0) tl.fromTo(id, {yPercent:6, opacity:0}, {yPercent:0, opacity:1, duration:0.4, ease:EIN}, a);
   if (i < SC.length-1) tl.to(id, {yPercent:-5, opacity:0, duration:0.3, ease:EOUT}, b - 0.05); });
 
-// HOOK: EARN -> TAX visible from frame 0; SPEND -> TAX + AGAIN land on "GST again"
-tl.fromTo("#st-think", {opacity:0, x:60}, {opacity:1, x:0, duration:0.5, ease:EIN}, 0.1);
-up("#r2", T.gst0 - 0.6);
-pop("#again", T.gst0 - 0.05, -14); draw("#ul0", T.gst0 + 0.3, 0.4);
-pop("#st-why", T.gst0 + 0.6, 8);
-if (document.querySelector("#st-q")) pop("#st-q", 1.2, -10);
+// HOOK: keyword + top stock visible at frame 0
+draw("#tb", 0.05, 0.8);
+tl.fromTo("#toppct", {scale:0.6}, {scale:1, duration:0.5, ease:"back.out(2.5)"}, T.toppct - 0.1);
+up("#hook2", T.hook2);
 
-// SALARY -> TAX -> TAKE-HOME
-pop("#st-lpa", SC[1][0] + 0.2, -6); pop("#st-salary", T.lakh15 - 0.2, -5);
-draw("#a1", T.tax - 2.2, 0.5); draw("#a1h", T.tax - 1.7, 0.2);
-pop("#st-tax", T.tax - 0.25, 6); up("#n-regime", T.tax - 3.0);
-draw("#a2", T.take - 0.9, 0.5); draw("#a2h", T.take - 0.4, 0.2);
-pop("#st-take", T.take - 0.15, -4);
-tl.fromTo("#hl-take", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power2.out"}, T.take + 1.2);
-up("#n-take", T.take + 0.5);
+// BOARDS: rows cascade in, bars grow, spoken top 3 get highlighted
+[1,2,3].forEach(i => { const gi = i-1, a = SC[i][0];
+  draw("#ul"+i, a + 0.2, 0.5);
+  for (let k = 0; k < 10; k++) {
+    tl.fromTo("#r"+gi+"_"+k, {opacity:0, x:-40}, {opacity:1, x:0, duration:0.3, ease:EIN}, a + 0.35 + k*0.12);
+    tl.fromTo("#b"+gi+"_"+k, {scaleX:0}, {scaleX:1, duration:0.5, ease:"power3.out"}, a + 0.45 + k*0.12);
+  }
+  T.hot[gi].forEach((ts, k) => { tl.set("#r"+gi+"_"+k, {className:"row hot"}, ts - 0.05);
+    tl.fromTo("#r"+gi+"_"+k+" .rk", {scale:1.5}, {scale:1, duration:0.35, ease:"back.out(2)"}, ts - 0.05); });
+});
 
-// TV + GST
-pop("#st-cart", T.tv - 0.6, -8); pop("#st-tv", T.tv - 0.15, 4); pop("#st-price", T.price - 0.1, -10);
-pop("#st-gst18", T.inside - 1.2, 12); pop("#st-4576", T.gst - 0.1, -8);
-pop("#st-shock", T.gst + 0.3, 6); up("#f1", T.gst + 0.9);
-
-// ₹1 LAKH
-up("#st-wallet", SC[3][0] + 0.3);
-tl.fromTo("#st-fly", {opacity:0, x:-80, y:30}, {opacity:1, x:0, y:0, duration:0.8, ease:EIN}, T.lakh1);
-tl.to("#st-fly", {x:40, y:-20, duration:2.5, ease:"sine.inOut"}, T.lakh1 + 0.8);
-pop("#b15", T.gst15 - 0.15, -4); up("#b15l", T.gst15 + 0.5);
-
-// RELIEF
-["bx0","bx1","bx2"].forEach((b,k) => draw("#"+b, SC[4][0] + 0.3 + k*0.15, 0.4));
-draw("#tk0", T.zero - 0.1, 0.35); draw("#tk1", T.zero + 0.4, 0.35); draw("#tk2", T.zero + 1.0, 0.35);
-pop("#zero", T.zero2 - 0.15, -20);
+// CONTEXT
+document.querySelectorAll(".ix").forEach((el,k) => up(el, SC[4][0] + 0.3 + k*0.35));
+up("#ctxline", T.ctxline);
 
 // CTA
-pop("#st-cloud", T.earn - 0.25, -4);
-tl.fromTo("#st-idea", {y:100, opacity:0}, {y:0, opacity:1, duration:0.5, ease:EIN}, T.spend);
-pop("#fair", T.fair - 0.15, 0);
-pop("#cta", T.comment - 0.2, -4);
-tl.to("#cta", {scale:1.06, duration:0.4, yoyo:true, repeat:5, ease:"sine.inOut"}, T.comment + 0.4);
-
-hwBoil(tl, ".stk", {amp:1.3, rot:0.5});
+tl.fromTo("#host", {y:100, opacity:0}, {y:0, opacity:1, duration:0.5, ease:EIN}, SC[5][0] + 0.2);
+pop("#cta1", T.comment - 0.2, -4); pop("#cta2", T.follow - 0.1, 3);
+hwBoil(tl, "#host,#topbox", {amp:1.2, rot:0.4});
 
 CAPS.forEach(([st, en, txt], k) => { const g = "#cap"+k;
   tl.fromTo(g, {opacity:0, y:14}, {opacity:1, y:0, duration:0.14, ease:"power2.out"}, Math.max(0.15, st - 0.05));

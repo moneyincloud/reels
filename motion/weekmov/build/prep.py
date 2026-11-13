@@ -5,15 +5,26 @@ W = '/home/claude/reels/studio/weekmov/'
 IDX = json.load(open(W + 'indices.json'))
 SAY = json.load(open(H + '/say.json')) if os.path.exists(H + '/say.json') else {}   # pronunciation fixes: display -> spoken
 
+NAMES = {'Kalyan Jewellers India': 'Kalyan Jewellers', 'Canara HSBC Life Insurance': 'Canara HSBC Life',
+         'Tata Teleservices (Maharashtra)': 'Tata Teleservices', 'Schneider Electric Infrastructure': 'Schneider Electric Infra',
+         'Deepak Fertilisers & Petrochem': 'Deepak Fertilisers', 'Navin Fluorine International': 'Navin Fluorine',
+         'Hitachi Energy India': 'Hitachi Energy', 'Aditya Birla Real Estate': 'Aditya Birla Real Estate',
+         'CG Power & Industrial Solutions': 'CG Power', 'Oil & Natural Gas Corpn': 'ONGC', 'Tata Consultancy Services': 'TCS',
+         'Fertilizers & Chemicals Travancore': 'FACT', 'Deepak Fertilisers and Petrochemicals Corporation': 'Deepak Fertilisers',
+         'Deepak Fertilisers and Petrochemicals Corpn': 'Deepak Fertilisers', 'One 97 Communications': 'Paytm (One 97)',
+         'Siemens Energy India': 'Siemens Energy', 'Cummins India': 'Cummins', 'Deepak Fertilisers and Petrochemicals Corp': 'Deepak Fertilisers'}
+def clean(n):
+    n = re.sub(r'\s+(Ltd\.?|Limited)$', '', n.strip(), flags=re.I).strip(' .,')
+    n = re.sub(r'\s+(Corporation|Company|Co\.?)$', '', n, flags=re.I)
+    n = n.replace(' (India)', '')
+    return NAMES.get(n, n)
 def short(n):
-    n = re.sub(r'\b(Ltd\.?|Limited|Corporation|Company|Co\.?|Industries Ltd)\s*$', '', n.strip(), flags=re.I).strip(' .,')
-    n = re.sub(r'\s+(Ltd\.?|Limited)$', '', n, flags=re.I)
-    n = n.replace(' (India)', '').replace(' India Ltd', '').replace(' & ', ' & ')
-    return n if len(n) <= 22 else n[:21].rstrip() + '…'
+    n = clean(n)
+    return n if len(n) <= 24 else n[:23].rstrip() + '…'
 
 def load(f):
     rows = [r for r in csv.DictReader(open(W + f)) if r.get('week_pct') not in (None, '', 'nan')]
-    for r in rows: r['pct'] = float(r['week_pct']); r['short'] = short(r['name'])
+    for r in rows: r['pct'] = float(r['week_pct']); r['short'] = short(r['name']); r['spk'] = clean(r['name'])
     return rows
 
 ONES = 'zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen'.split()
@@ -37,14 +48,14 @@ for mode in ('gain', 'loss'):
     groups = []; tts = []; spoken = []
     for lab, sub, f, word in G:
         rows = sorted(data[f], key=lambda r: -r['pct'] if gain else r['pct'])[:10]
-        groups.append(dict(label=lab, sub=sub, rows=[dict(name=r['short'], pct=r['pct'], full=r['name'], prev=float(r['prev_week_close']), close=float(r['close'])) for r in rows]))
+        groups.append(dict(label=lab, sub=sub, rows=[dict(name=r['short'], spk=r['spk'], pct=r['pct'], full=r['name'], prev=float(r['prev_week_close']), close=float(r['close'])) for r in rows]))
     allr = [(r, g) for g in groups for r in g['rows']]
     top, tg = max(allr, key=lambda x: x[0]['pct'] if gain else -x[0]['pct'])
     verb = 'jumped' if gain else 'fell'
-    spoken.append(f"Top {'gainers' if gain else 'losers'} this week: {top['name']} {verb} {abs(top['pct']):.1f}% in just five days.")
-    tts.append(f"Top {'gainers' if gain else 'losers'} this week: {say(top['name'])} {verb} {pct_words(top['pct'])} in just five days.")
+    spoken.append(f"Top {'gainers' if gain else 'losers'} this week: {top['spk']} {verb} {abs(top['pct']):.1f}% in just four trading days.")
+    tts.append(f"Top {'gainers' if gain else 'losers'} this week: {say(top['spk'])} {verb} {pct_words(top['pct'])} in just four trading days.")
     for (lab, sub, f, word), g in zip(G, groups):
-        n3 = [r['name'] for r in g['rows'][:3]]
+        n3 = [r['spk'] for r in g['rows'][:3]]
         lead = 'led the gains' if gain else 'fell the most'
         spoken.append(f"{word}, {sub}: {n3[0]}, {n3[1]} and {n3[2]} {lead}.")
         tts.append(f"{word}, {sub.replace('Nifty', 'Nifty')}: {say(n3[0])}, {say(n3[1])} and {say(n3[2])} {lead}.")
@@ -69,7 +80,7 @@ for mode in ('gain', 'loss'):
              groups=groups, spoken=spoken,
              context=dict(rows=[('Nifty 50', n50), ('Nifty 100', IDX['nifty100']['pct']), ('Nifty Midcap 150', m150)], line=ctxl),
              cta_ttl=q.replace('?', '') + '?', cta_kw=kw,
-             disc='Week change: 6 Nov close → 13 Nov close · Data: INDmoney · Not a buy/sell call · Education only')
+             disc='Week change: 8 Nov (Muhurat) close → 13 Nov close · Data: INDmoney · Not a buy/sell call · Education only')
     json.dump(D, open(f'{H}/{mode}.json', 'w'), indent=1, ensure_ascii=False)
     d = f'/home/claude/reels/studio/weekmov_{mode}'; os.makedirs(d, exist_ok=True)
     json.dump([dict(who='narrator', text=t) for t in tts], open(d + '/lines.json', 'w'), indent=1, ensure_ascii=False)

@@ -1,0 +1,300 @@
+{
+ "mode": "gain",
+ "title": "Top 10 weekly gainers by market cap",
+ "kw": "TOP GAINERS THIS WEEK · 9–13 NOV",
+ "hook_ttl": "biggest jump this week",
+ "hook2": "+ top 10 gainers in<br><b>large · mid · small</b> caps 👇",
+ "top": {
+  "name": "Kalyan Jewellers",
+  "pct": 17.74,
+  "sub": "Nifty Midcap 150 · ₹592.00 → ₹697.00"
+ },
+ "groups": [
+  {
+   "label": "LARGE CAP",
+   "sub": "Nifty 100",
+   "rows": [
+    {
+     "name": "Punjab National Bank",
+     "spk": "Punjab National Bank",
+     "pct": 13.75,
+     "full": "Punjab National Bank",
+     "prev": 125.55,
+     "close": 142.81
+    },
+    {
+     "name": "Hitachi Energy",
+     "spk": "Hitachi Energy",
+     "pct": 13.49,
+     "full": "Hitachi Energy India",
+     "prev": 27840.0,
+     "close": 31595.0
+    },
+    {
+     "name": "Bank of Baroda",
+     "spk": "Bank of Baroda",
+     "pct": 10.02,
+     "full": "Bank of Baroda",
+     "prev": 248.9,
+     "close": 273.84
+    },
+    {
+     "name": "Siemens Energy",
+     "spk": "Siemens Energy",
+     "pct": 9.51,
+     "full": "Siemens Energy India",
+     "prev": 2854.5,
+     "close": 3125.9
+    },
+    {
+     "name": "Union Bank of India",
+     "spk": "Union Bank of India",
+     "pct": 8.82,
+     "full": "Union Bank of India",
+     "prev": 186.55,
+     "close": 203.0
+    },
+    {
+     "name": "State Bank of India",
+     "spk": "State Bank of India",
+     "pct": 6.3,
+     "full": "State Bank of India",
+     "prev": 1016.0,
+     "close": 1080.0
+    },
+    {
+     "name": "Canara Bank",
+     "spk": "Canara Bank",
+     "pct": 6.3,
+     "full": "Canara Bank",
+     "prev": 123.15,
+     "close": 130.91
+    },
+    {
+     "name": "Cummins",
+     "spk": "Cummins",
+     "pct": 6.17,
+     "full": "Cummins India",
+     "prev": 4115.0,
+     "close": 4369.0
+    },
+    {
+     "name": "CG Power",
+     "spk": "CG Power",
+     "pct": 5.79,
+     "full": "CG Power & Industrial Solutions",
+     "prev": 782.7,
+     "close": 828.0
+    },
+    {
+     "name": "HDFC Life Insurance",
+     "spk": "HDFC Life Insurance",
+     "pct": 5.38,
+     "full": "HDFC Life Insurance",
+     "prev": 562.0,
+     "close": 592.25
+    }
+   ]
+  },
+  {
+   "label": "MIDCAP",
+   "sub": "Nifty Midcap 150",
+   "rows": [
+    {
+     "name": "Kalyan Jewellers",
+     "spk": "Kalyan Jewellers",
+     "pct": 17.74,
+     "full": "Kalyan Jewellers India Ltd",
+     "prev": 592.0,
+     "close": 697.0
+    },
+    {
+     "name": "Godrej Industries",
+     "spk": "Godrej Industries",
+     "pct": 15.15,
+     "full": "Godrej Industries Ltd",
+     "prev": 970.15,
+     "close": 1117.15
+    },
+    {
+     "name": "PB Fintech",
+     "spk": "PB Fintech",
+     "pct": 14.27,
+     "full": "PB Fintech Ltd",
+     "prev": 967.0,
+     "close": 1105.0
+    },
+    {
+     "name": "Bank of India",
+     "spk": "Bank of India",
+     "pct": 11.1,
+     "full": "Bank of India",
+     "prev": 138.71,
+     "close": 154.1
+    },
+    {
+     "name": "Meesho",
+     "spk": "Meesho",
+     "pct": 10.0,
+     "full": "Meesho Ltd",
+     "prev": 233.7,
+     "close": 257.07
+    },
+    {
+     "name": "Max Financial Services",
+     "spk": "Max Financial Services",
+     "pct": 9.29,
+     "full": "Max Financial Services Ltd",
+     "prev": 1282.0,
+     "close": 1401.1
+    },
+    {
+     "name": "GE Vernova T&D India",
+     "spk": "GE Vernova T&D India",
+     "pct": 9.0,
+     "full": "GE Vernova T&D India Ltd",
+     "prev": 4055.0,
+     "close": 4420.0
+    },
+    {
+     "name": "LIC Housing Finance",
+     "spk": "LIC Housing Finance",
+     "pct": 8.75,
+     "full": "LIC Housing Finance Ltd",
+     "prev": 538.0,
+     "close": 585.1
+    },
+    {
+     "name": "Paytm (One 97)",
+     "spk": "Paytm (One 97)",
+     "pct": 7.71,
+     "full": "One 97 Communications Ltd",
+     "prev": 1801.0,
+     "close": 1939.9
+    },
+    {
+     "name": "FACT",
+     "spk": "FACT",
+     "pct": 7.34,
+     "full": "Fertilizers & Chemicals Travancore Ltd",
+     "prev": 752.95,
+     "close": 808.2
+    }
+   ]
+  },
+  {
+   "label": "SMALLCAP",
+   "sub": "Nifty Smallcap 250",
+   "rows": [
+    {
+     "name": "Data Patterns",
+     "spk": "Data Patterns",
+     "pct": 15.23,
+     "full": "Data Patterns (India) Ltd",
+     "prev": 3704.0,
+     "close": 4268.0
+    },
+    {
+     "name": "Canara HSBC Life",
+     "spk": "Canara HSBC Life",
+     "pct": 11.87,
+     "full": "Canara HSBC Life Insurance Company Ltd",
+     "prev": 120.5,
+     "close": 134.8
+    },
+    {
+     "name": "Gabriel India",
+     "spk": "Gabriel India",
+     "pct": 11.26,
+     "full": "Gabriel India Ltd",
+     "prev": 1395.5,
+     "close": 1552.7
+    },
+    {
+     "name": "Aditya Birla Real Estate",
+     "spk": "Aditya Birla Real Estate",
+     "pct": 10.8,
+     "full": "Aditya Birla Real Estate Ltd",
+     "prev": 1085.7,
+     "close": 1203.0
+    },
+    {
+     "name": "Sai Life Sciences",
+     "spk": "Sai Life Sciences",
+     "pct": 10.6,
+     "full": "Sai Life Sciences Limited",
+     "prev": 1744.0,
+     "close": 1928.8
+    },
+    {
+     "name": "Navin Fluorine",
+     "spk": "Navin Fluorine",
+     "pct": 10.34,
+     "full": "Navin Fluorine International Ltd",
+     "prev": 9065.0,
+     "close": 10002.0
+    },
+    {
+     "name": "Cupid",
+     "spk": "Cupid",
+     "pct": 10.24,
+     "full": "Cupid Ltd",
+     "prev": 342.7,
+     "close": 377.8
+    },
+    {
+     "name": "Anupam Rasayan India",
+     "spk": "Anupam Rasayan India",
+     "pct": 9.68,
+     "full": "Anupam Rasayan India Ltd",
+     "prev": 1185.8,
+     "close": 1300.6
+    },
+    {
+     "name": "Deepak Fertilisers",
+     "spk": "Deepak Fertilisers",
+     "pct": 9.25,
+     "full": "Deepak Fertilisers and Petrochemicals Corp Ltd",
+     "prev": 1155.0,
+     "close": 1261.8
+    },
+    {
+     "name": "Graphite India",
+     "spk": "Graphite India",
+     "pct": 9.24,
+     "full": "Graphite India Ltd",
+     "prev": 732.3,
+     "close": 799.95
+    }
+   ]
+  }
+ ],
+ "spoken": [
+  "Top gainers this week: Kalyan Jewellers jumped 17.7% in just four trading days.",
+  "Large caps, Nifty 100: Punjab National Bank, Hitachi Energy and Bank of Baroda led the gains.",
+  "Midcaps, Nifty Midcap 150: Kalyan Jewellers, Godrej Industries and PB Fintech led the gains.",
+  "Smallcaps, Nifty Smallcap 250: Data Patterns, Canara HSBC Life and Gabriel India led the gains.",
+  "Meanwhile, the Nifty 50 moved just 0.6% this week.",
+  "Which one do you hold? Comment GAIN, and follow for next week's list."
+ ],
+ "context": {
+  "rows": [
+   [
+    "Nifty 50",
+    0.63
+   ],
+   [
+    "Nifty 100",
+    0.74
+   ],
+   [
+    "Nifty Midcap 150",
+    1.58
+   ]
+  ],
+  "line": "Nifty 50: just <b style='color:#1E8E4E'>+0.6%</b>.<br>These stocks did far more."
+ },
+ "cta_ttl": "Which one do you hold?",
+ "cta_kw": "GAIN",
+ "disc": "Week change: 8 Nov (Muhurat) close → 13 Nov close · Data: INDmoney · Not a buy/sell call · Education only"
+}

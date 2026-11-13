@@ -1,0 +1,78 @@
+# DRAFT: not in autopost/queue.yaml yet. Copy in only after the owner approves in chat.
+- id: top-gainers-week-2026-11-15
+  approved: false
+  publish_at: 2026-11-15 09:00
+  story: top-gainers-this-week-nifty-large-mid-smallcap-13-nov-2026-story.jpg
+  story_delay_min: 60
+  platforms: [youtube, instagram, instagram_story, instagram_trial]
+  video: top-gainers-this-week-nifty-large-mid-smallcap-13-nov-2026.mp4
+  cover: top-gainers-this-week-nifty-large-mid-smallcap-13-nov-2026-cover.jpg
+  ig_caption: |
+    Top gainers this week in the Indian stock market (9–13 Nov 2026) 📈
+    Kalyan Jewellers jumped 17.7% in just four trading days.
+
+    Top 3 in each index:
+    🏦 Large cap (Nifty 100): Punjab National Bank +13.8%, Hitachi Energy +13.5%, Bank of Baroda +10.0%
+    🚀 Mid cap (Nifty Midcap 150): Kalyan Jewellers +17.7%, Godrej Industries +15.2%, PB Fintech +14.3%
+    🔥 Small cap (Nifty Smallcap 250): Data Patterns +15.2%, Canara HSBC Life +11.9%, Gabriel India +11.3%
+
+    Meanwhile the Nifty 50 moved just +0.6%. Full top 10 lists in the reel.
+
+    Which one do you hold? Comment GAIN 👇
+    💾 Save this and follow for next week's list.
+
+    Week change = 8 Nov (Muhurat) close → 13 Nov close. Data: INDmoney.
+    A big weekly jump is not a reason to buy. Not a buy/sell call. Education only. I may hold some of the stocks named.
+
+    #StockMarketIndia #TopGainers #Nifty #SmallCap #moneyincloud
+  first_comment: Large, mid or small cap: which list surprised you most? 👇
+  yt_title: "Top Gainers This Week: Kalyan Jewellers +17.7% | Nifty 100, Midcap, Smallcap Top 10 #shorts"
+  yt_description: |
+    Top 10 weekly gainers in the Nifty 100, Nifty Midcap 150 and Nifty Smallcap 250 (9–13 Nov 2026).
+    Biggest jump: Kalyan Jewellers +17.7% (₹592 → ₹697).
+    Large cap: PNB +13.8%, Hitachi Energy +13.5%, Bank of Baroda +10.0%.
+    Mid cap: Kalyan Jewellers +17.7%, Godrej Industries +15.2%, PB Fintech +14.3%.
+    Small cap: Data Patterns +15.2%, Canara HSBC Life +11.9%, Gabriel India +11.3%.
+    Nifty 50 this week: +0.6%.
+    Week change = 8 Nov (Muhurat) close → 13 Nov close. Data: INDmoney.
+    Not a buy/sell call. Education only. I may hold some of the stocks named.
+  yt_tags: [top gainers this week, stock market india, nifty 100, nifty midcap 150, nifty smallcap 250, kalyan jewellers, pnb share, data patterns, weekly gainers, share market tamil, moneyincloud]
+
+- id: top-losers-week-2026-11-16
+  approved: false
+  publish_at: 2026-11-16 07:00
+  story: top-losers-this-week-nifty-large-mid-smallcap-13-nov-2026-story.jpg
+  story_delay_min: 60
+  platforms: [youtube, instagram, instagram_story, instagram_trial]
+  video: top-losers-this-week-nifty-large-mid-smallcap-13-nov-2026.mp4
+  cover: top-losers-this-week-nifty-large-mid-smallcap-13-nov-2026-cover.jpg
+  ig_caption: |
+    Top losers this week in the Indian stock market (9–13 Nov 2026) 📉
+    Page Industries fell 12.4% in just four trading days.
+
+    Bottom 3 in each index:
+    🏦 Large cap (Nifty 100): Grasim −5.4%, Bharat Petroleum −4.9%, HCL Technologies −4.4%
+    ⚠️ Mid cap (Nifty Midcap 150): Page Industries −12.4%, NHPC −6.4%, Ashok Leyland −4.9%
+    🔻 Small cap (Nifty Smallcap 250): Tata Teleservices −8.7%, R R Kabel −6.2%, Prime Focus −5.6%
+
+    The Nifty 50 rose +0.6% the same week. Index up, these stocks down: that's single-stock risk.
+
+    Did you hold any of these? Comment LOSS 👇
+    💾 Save this and follow for next week's list.
+
+    Week change = 8 Nov (Muhurat) close → 13 Nov close. Data: INDmoney.
+    A big weekly fall is not a reason to buy or sell. Not a buy/sell call. Education only. I may hold some of the stocks named.
+
+    #StockMarketIndia #TopLosers #Nifty #MidCap #moneyincloud
+  first_comment: Do you average down after a week like this, or wait? 👇
+  yt_title: "Top Losers This Week: Page Industries −12.4% | Nifty 100, Midcap, Smallcap Top 10 #shorts"
+  yt_description: |
+    Top 10 weekly losers in the Nifty 100, Nifty Midcap 150 and Nifty Smallcap 250 (9–13 Nov 2026).
+    Biggest fall: Page Industries −12.4% (₹35,760 → ₹31,325).
+    Large cap: Grasim −5.4%, BPCL −4.9%, HCL Tech −4.4%.
+    Mid cap: Page Industries −12.4%, NHPC −6.4%, Ashok Leyland −4.9%.
+    Small cap: Tata Teleservices −8.7%, R R Kabel −6.2%, Prime Focus −5.6%.
+    Nifty 50 this week: +0.6%.
+    Week change = 8 Nov (Muhurat) close → 13 Nov close. Data: INDmoney.
+    Not a buy/sell call. Education only. I may hold some of the stocks named.
+  yt_tags: [top losers this week, stock market india, nifty 100, nifty midcap 150, nifty smallcap 250, page industries share, nhpc share, tata teleservices, weekly losers, share market tamil, moneyincloud]

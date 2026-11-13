@@ -23,3 +23,9 @@ Note: the HEG Graphite demerged entity (DUMMYHEG) may still sit in the index as 
 pending listing; it has no tradable price on INDmoney and is not counted among the 250.
 
 Constituent count used: 250
+
+Prices: INDmoney get_indian_stocks_ohlc, 1week candles (2026-11-02 = prev week, 2026-11-09 = this week),
+fetched 13-14 Nov 2026 after market close. Computed 250/250, none skipped.
+Each ind_key came from lookup_ind_keys with a matching name. Symbols for 35 stocks (top/bottom 10 plus
+ambiguous lookups IIFL, MINDACORP, WELCORP, URBANCO, SHRIPISTON) were also confirmed with
+get_indian_stocks_details. mcap_cr is filled only for those 35 (INDmoney hourly rate limit); the rest are blank.

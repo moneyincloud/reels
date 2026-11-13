@@ -36,9 +36,9 @@ def board(gi, g):
     mx = max(abs(r['pct']) for r in g['rows'])
     rows = []
     for k, r in enumerate(g['rows']):
-        w = 40 + 330 * abs(r['pct']) / mx
+        w = 40 + 270 * abs(r['pct']) / mx
         top = 395 + k * 80
-        rows.append(f'''<div class="row" id="r{gi}_{k}" style="top:{top}px"><div class="rk">{k + 1}</div><div class="nm">{esc(r['name'])}</div>
+        rows.append(f'''<div class="row" id="r{gi}_{k}" style="top:{top}px"><div class="rk">{k + 1}</div><div class="nm"{' style="font-size:%dpx"' % (33 if len(r['name']) <= 18 else max(25, int(33 * 18 / len(r['name'])) )) }>{esc(r['name'])}</div>
 <div class="bar" id="b{gi}_{k}" style="width:{w:.0f}px"></div><div class="pc">{fmt(r['pct'])}</div></div>''')
     return '\n'.join(rows)
 

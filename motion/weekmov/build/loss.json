@@ -1,0 +1,300 @@
+{
+ "mode": "loss",
+ "title": "Top 10 weekly losers by market cap",
+ "kw": "TOP LOSERS THIS WEEK · 9–13 NOV",
+ "hook_ttl": "biggest fall this week",
+ "hook2": "+ top 10 losers in<br><b>large · mid · small</b> caps 👇",
+ "top": {
+  "name": "Page Industries",
+  "pct": -12.4,
+  "sub": "Nifty Midcap 150 · ₹35,760.00 → ₹31,325.00"
+ },
+ "groups": [
+  {
+   "label": "LARGE CAP",
+   "sub": "Nifty 100",
+   "rows": [
+    {
+     "name": "Grasim Industries",
+     "spk": "Grasim Industries",
+     "pct": -5.4,
+     "full": "Grasim Industries",
+     "prev": 3207.2,
+     "close": 3034.0
+    },
+    {
+     "name": "Bharat Petroleum",
+     "spk": "Bharat Petroleum",
+     "pct": -4.91,
+     "full": "Bharat Petroleum",
+     "prev": 317.6,
+     "close": 302.0
+    },
+    {
+     "name": "HCL Technologies",
+     "spk": "HCL Technologies",
+     "pct": -4.44,
+     "full": "HCL Technologies",
+     "prev": 1442.0,
+     "close": 1378.0
+    },
+    {
+     "name": "ONGC",
+     "spk": "ONGC",
+     "pct": -4.17,
+     "full": "Oil & Natural Gas Corpn",
+     "prev": 234.8,
+     "close": 225.0
+    },
+    {
+     "name": "TCS",
+     "spk": "TCS",
+     "pct": -3.65,
+     "full": "Tata Consultancy Services",
+     "prev": 2498.8,
+     "close": 2407.5
+    },
+    {
+     "name": "Tech Mahindra",
+     "spk": "Tech Mahindra",
+     "pct": -3.6,
+     "full": "Tech Mahindra",
+     "prev": 1829.9,
+     "close": 1764.0
+    },
+    {
+     "name": "Ambuja Cements",
+     "spk": "Ambuja Cements",
+     "pct": -3.59,
+     "full": "Ambuja Cements",
+     "prev": 395.65,
+     "close": 381.45
+    },
+    {
+     "name": "Hindustan Aeronautics",
+     "spk": "Hindustan Aeronautics",
+     "pct": -3.51,
+     "full": "Hindustan Aeronautics",
+     "prev": 4985.0,
+     "close": 4809.8
+    },
+    {
+     "name": "Pidilite Industries",
+     "spk": "Pidilite Industries",
+     "pct": -3.33,
+     "full": "Pidilite Industries",
+     "prev": 1578.2,
+     "close": 1525.7
+    },
+    {
+     "name": "UltraTech Cement",
+     "spk": "UltraTech Cement",
+     "pct": -3.19,
+     "full": "UltraTech Cement",
+     "prev": 12499.0,
+     "close": 12100.0
+    }
+   ]
+  },
+  {
+   "label": "MIDCAP",
+   "sub": "Nifty Midcap 150",
+   "rows": [
+    {
+     "name": "Page Industries",
+     "spk": "Page Industries",
+     "pct": -12.4,
+     "full": "Page Industries Ltd",
+     "prev": 35760.0,
+     "close": 31325.0
+    },
+    {
+     "name": "NHPC",
+     "spk": "NHPC",
+     "pct": -6.43,
+     "full": "NHPC Ltd",
+     "prev": 81.04,
+     "close": 75.83
+    },
+    {
+     "name": "Ashok Leyland",
+     "spk": "Ashok Leyland",
+     "pct": -4.94,
+     "full": "Ashok Leyland Ltd",
+     "prev": 178.0,
+     "close": 169.2
+    },
+    {
+     "name": "Balkrishna Industries",
+     "spk": "Balkrishna Industries",
+     "pct": -4.83,
+     "full": "Balkrishna Industries Ltd",
+     "prev": 2386.6,
+     "close": 2271.4
+    },
+    {
+     "name": "Cochin Shipyard",
+     "spk": "Cochin Shipyard",
+     "pct": -4.73,
+     "full": "Cochin Shipyard Ltd",
+     "prev": 1236.5,
+     "close": 1178.0
+    },
+    {
+     "name": "Torrent Power",
+     "spk": "Torrent Power",
+     "pct": -4.18,
+     "full": "Torrent Power Ltd",
+     "prev": 1274.2,
+     "close": 1221.0
+    },
+    {
+     "name": "Hexaware Technologies",
+     "spk": "Hexaware Technologies",
+     "pct": -3.86,
+     "full": "Hexaware Technologies Ltd",
+     "prev": 513.4,
+     "close": 493.6
+    },
+    {
+     "name": "Bharat Dynamics",
+     "spk": "Bharat Dynamics",
+     "pct": -3.65,
+     "full": "Bharat Dynamics Ltd",
+     "prev": 1069.0,
+     "close": 1030.0
+    },
+    {
+     "name": "Escorts Kubota",
+     "spk": "Escorts Kubota",
+     "pct": -3.6,
+     "full": "Escorts Kubota Ltd",
+     "prev": 2491.6,
+     "close": 2401.8
+    },
+    {
+     "name": "Alkem Laboratories",
+     "spk": "Alkem Laboratories",
+     "pct": -3.58,
+     "full": "Alkem Laboratories Ltd",
+     "prev": 5304.0,
+     "close": 5114.0
+    }
+   ]
+  },
+  {
+   "label": "SMALLCAP",
+   "sub": "Nifty Smallcap 250",
+   "rows": [
+    {
+     "name": "Tata Teleservices",
+     "spk": "Tata Teleservices",
+     "pct": -8.7,
+     "full": "Tata Teleservices (Maharashtra) Ltd",
+     "prev": 41.51,
+     "close": 37.9
+    },
+    {
+     "name": "R R Kabel",
+     "spk": "R R Kabel",
+     "pct": -6.24,
+     "full": "R R Kabel Ltd",
+     "prev": 2115.4,
+     "close": 1983.5
+    },
+    {
+     "name": "Prime Focus",
+     "spk": "Prime Focus",
+     "pct": -5.6,
+     "full": "Prime Focus Limited",
+     "prev": 285.95,
+     "close": 269.95
+    },
+    {
+     "name": "HEG Advanced Materials",
+     "spk": "HEG Advanced Materials",
+     "pct": -5.29,
+     "full": "HEG Advanced Materials Ltd",
+     "prev": 293.36,
+     "close": 277.85
+    },
+    {
+     "name": "HFCL",
+     "spk": "HFCL",
+     "pct": -5.09,
+     "full": "HFCL Ltd",
+     "prev": 216.49,
+     "close": 205.47
+    },
+    {
+     "name": "Schneider Electric Infra",
+     "spk": "Schneider Electric Infra",
+     "pct": -4.79,
+     "full": "Schneider Electric Infrastructure Ltd",
+     "prev": 1114.4,
+     "close": 1061.0
+    },
+    {
+     "name": "Manappuram Finance",
+     "spk": "Manappuram Finance",
+     "pct": -4.64,
+     "full": "Manappuram Finance Ltd",
+     "prev": 323.0,
+     "close": 308.0
+    },
+    {
+     "name": "Birlasoft",
+     "spk": "Birlasoft",
+     "pct": -4.3,
+     "full": "Birlasoft Limited",
+     "prev": 339.25,
+     "close": 324.65
+    },
+    {
+     "name": "Swan Corp",
+     "spk": "Swan Corp",
+     "pct": -3.99,
+     "full": "Swan Corp Ltd",
+     "prev": 242.14,
+     "close": 232.49
+    },
+    {
+     "name": "Zensar Technologies",
+     "spk": "Zensar Technologies",
+     "pct": -3.96,
+     "full": "Zensar Technologies Ltd",
+     "prev": 572.2,
+     "close": 549.55
+    }
+   ]
+  }
+ ],
+ "spoken": [
+  "Top losers this week: Page Industries fell 12.4% in just four trading days.",
+  "Large caps, Nifty 100: Grasim Industries, Bharat Petroleum and HCL Technologies fell the most.",
+  "Midcaps, Nifty Midcap 150: Page Industries, NHPC and Ashok Leyland fell the most.",
+  "Smallcaps, Nifty Smallcap 250: Tata Teleservices, R R Kabel and Prime Focus fell the most.",
+  "And this was a week when the Nifty 50 rose 0.6%.",
+  "Did you hold any of these? Comment LOSS, and follow for next week's list."
+ ],
+ "context": {
+  "rows": [
+   [
+    "Nifty 50",
+    0.63
+   ],
+   [
+    "Nifty 100",
+    0.74
+   ],
+   [
+    "Nifty Midcap 150",
+    1.58
+   ]
+  ],
+  "line": "Index up, these stocks <b style='color:#D93A2B'>down</b>.<br>That's stock risk."
+ },
+ "cta_ttl": "Did you hold any of these?",
+ "cta_kw": "LOSS",
+ "disc": "Week change: 8 Nov (Muhurat) close → 13 Nov close · Data: INDmoney · Not a buy/sell call · Education only"
+}
