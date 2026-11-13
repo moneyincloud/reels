@@ -22,5 +22,15 @@
    "publish_at": null,
    "at": "2026-11-13T20:05:23.567710+05:30"
   }
+ },
+ "_ig_check": {
+  "2026-11-13T20:47:03.736028+05:30": {
+   "ok": true,
+   "username": "moneyincloud",
+   "media_count": 94,
+   "error": null,
+   "api": "https://graph.facebook.com/v23.0",
+   "at": "2026-11-13T20:47:03.736028+05:30"
+  }
  }
 }
