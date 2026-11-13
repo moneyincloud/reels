@@ -9,6 +9,9 @@ SCRIPT = ['Nobody tells you these six stocks pay you every year.', 'Coal India, 
           "But there's a catch. Dividends are taxed at your slab rate. A high yield can mean the price fell.",
           "Dividends aren't guaranteed. A company can cut them any year.", 'Which stock do you hold? Comment DIVIDEND and follow!']
 ROWS = [('Coal India', 6.6), ('Wipro', 5.9), ('ONGC', 5.7), ('Indian Oil', 5.5), ('BPCL', 5.4), ('ITC', 5.1)]
+OFF = 2.4  # English keyword opener before the Tamil voice
+T = {k: ([round(x + OFF, 2) for x in v] if isinstance(v, list) and k != 'DURS' else (round(v + OFF, 2) if not isinstance(v, list) else v)) for k, v in T.items()}
+T['STARTS'][0] = 0.0
 DUR = T['DUR']; S = T['STARTS']
 SC = [(0, S[1]), (S[1], S[4]), (S[4], S[5]), (S[5], S[6]), (S[6], DUR)]  # scene windows
 
@@ -24,6 +27,7 @@ for i, line in enumerate(SCRIPT):
     for g in gs:
         txt = ' '.join(g); st = t0 + d * acc / tot; acc += len(txt); en = t0 + d * acc / tot
         groups.append((round(st, 2), round(en, 2), txt))
+groups.insert(0, (0.12, 2.3, 'Highest dividend paying stocks in India!'))
 # extend each group to the next one's start (no flicker), cap at line end + 0.3
 caps = []
 for k, (st, en, txt) in enumerate(groups):
@@ -128,7 +132,7 @@ html, body {{ width:1080px; height:1920px; overflow:hidden; background:var(--bg)
   <div class="blob" id="blob2" style="left:560px;top:1460px;width:600px;height:600px;background:#8CDCC8"></div>
   <div class="blob" id="blob3" style="left:40px;top:1200px;width:360px;height:360px;background:#C8EBA0"></div>
   <div class="handle">@moneyincloud</div>
-  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="{DUR}" data-track-index="9" data-volume="1"></audio>
+  <audio id="vo" src="assets/vo_mix_kw.wav" data-start="0" data-duration="{DUR}" data-track-index="9" data-volume="1"></audio>
 
   <section class="scene clip" id="sc0" data-start="0" data-duration="{SC[0][1] + 0.3:.2f}" data-track-index="1"><div class="inner" id="in0">
     {coins}
