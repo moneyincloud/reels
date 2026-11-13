@@ -571,5 +571,21 @@
  "hook_rules": [
   "Never open a hook with 'Stop' (user instruction, 10 Nov 2026). Rotate openers: 'Never\u2026', 'Nobody tells you\u2026', a number, a direct claim.",
   "Hook must still score >= 70 on hookscore.py"
- ]
+ ],
+ "tamil_voices": {
+  "engine": "vidIQ voiceover (ElevenLabs multilingual), 28 credits per 1000 chars",
+  "male": {
+   "name": "Liam - Energetic, Social Media Creator",
+   "voiceId": "TX3LPaxmHKxFdv7VOQHJ"
+  },
+  "female": {
+   "name": "Sarah - Mature, Reassuring, Confident",
+   "voiceId": "EXAVITQu4vr4xnSDxMaL"
+  },
+  "samples": {
+   "male": "https://assets.vidiq.com/voiceovers/4aaf05f1-aa3d-48b5-b072-07e6ce9eb800/282f16dd-12d9-42e0-a789-51fd4f97d9be.mp3",
+   "female": "https://assets.vidiq.com/voiceovers/4aaf05f1-aa3d-48b5-b072-07e6ce9eb800/347bf536-7e17-4b7c-a93f-8a09c7f3f845.mp3"
+  },
+  "notes": "Offline Tamil TTS blocked (no PyTorch; edge-tts/HF blocked). assets.vidiq.com not reachable from the workspace, so for a reel the user downloads the MP3 and attaches it. Write numbers as Tamil words."
+ }
 }
