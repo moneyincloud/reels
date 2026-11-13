@@ -118,7 +118,20 @@ def yt_post(entry, dry):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--only", choices=["instagram", "youtube"])
     ap.add_argument("--wait-minutes", type=int, default=0, help="sleep until an Instagram slot due within N minutes, then post on time")
+    ap.add_argument("--check-ig", action="store_true", help="read-only: confirm the Instagram token + user ID work (posts nothing)")
     a = ap.parse_args()
+    if a.check_ig:
+        st = load_state()
+        if not os.environ.get("IG_ACCESS_TOKEN") or not os.environ.get("IG_USER_ID"):
+            res = {"ok": False, "error": "IG_ACCESS_TOKEN or IG_USER_ID secret missing"}
+        else:
+            r = requests.get(f"{graph()}/{os.environ['IG_USER_ID']}", params={"fields": "username,media_count",
+                             "access_token": os.environ["IG_ACCESS_TOKEN"]}, timeout=30)
+            j = r.json()
+            res = {"ok": r.ok, "username": j.get("username"), "media_count": j.get("media_count"),
+                   "error": (j.get("error") or {}).get("message"), "api": graph()}
+        res["at"] = dt.datetime.now(IST).isoformat(); log("instagram check:", res)
+        st.setdefault("_ig_check", {})[res["at"]] = res; save_state(st); return
     queue = yaml.safe_load(open(os.path.join(HERE, "queue.yaml"))) or []
     st = load_state(); now = dt.datetime.now(IST); failed = False
     if a.wait_minutes:
