@@ -91,6 +91,21 @@ def ig_wait(GRAPH, cid, tok):
     raise RuntimeError("instagram processing timed out")
 
 
+def ig_story(entry, dry):
+    """Instagram Story: the reel's story image (cover + NEW REEL banner). The API cannot add stickers or links."""
+    GRAPH = graph(); uid, tok, base = os.environ["IG_USER_ID"], os.environ["IG_ACCESS_TOKEN"], os.environ["RAW_BASE"].rstrip("/")
+    url = f"{base}/media/{entry['story']}"
+    if dry:
+        log("DRY instagram story", url); return {"dry": True}
+    r = requests.post(f"{GRAPH}/{uid}/media", data={"media_type": "STORIES", "image_url": url, "access_token": tok}, timeout=60)
+    if not r.ok: raise RuntimeError(f"story container failed: {r.text[:300]}")
+    cid = r.json()["id"]; ig_wait(GRAPH, cid, tok)
+    r = requests.post(f"{GRAPH}/{uid}/media_publish", data={"creation_id": cid, "access_token": tok}, timeout=60)
+    if not r.ok: raise RuntimeError(f"story publish failed: {r.text[:300]}")
+    log("instagram story published", r.json()["id"])
+    return {"media_id": r.json()["id"], "at": dt.datetime.now(IST).isoformat()}
+
+
 def ig_carousel(entry, dry, GRAPH, base):
     uid, tok = os.environ["IG_USER_ID"], os.environ["IG_ACCESS_TOKEN"]
     urls = [f"{base}/media/{x}" for x in entry["images"]]
@@ -187,13 +202,15 @@ def main():
             if a.only and plat != a.only or plat in done:
                 continue
             t = when(e)
-            if plat in ("instagram", "instagram_trial"):
+            if plat == "instagram_story":  # goes out story_delay_min (default 60) after the reel
+                t = t + dt.timedelta(minutes=e.get("story_delay_min", 60))
+            if plat in ("instagram", "instagram_trial", "instagram_story"):
                 if now < t: continue
                 if now - t > LATE_LIMIT:
                     log(f"{key}: instagram slot missed by more than 6 h, skipped (re-date it in queue.yaml)"); continue
             try:
                 res = (ig_post(e, a.dry_run) if plat == "instagram" else ig_post(e, a.dry_run, trial=True)
-                       if plat == "instagram_trial" else yt_post(e, a.dry_run))
+                       if plat == "instagram_trial" else ig_story(e, a.dry_run) if plat == "instagram_story" else yt_post(e, a.dry_run))
                 if not a.dry_run: done[plat] = res; save_state(st)
             except Exception as ex:
                 failed = True; log(f"{key}: {plat} FAILED:", str(ex)[:400])
