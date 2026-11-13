@@ -1,0 +1,18 @@
+Nifty 100 constituents (current, post 30-Sep-2026 semi-annual rebalance)
+Count: 100
+
+Primary list (100 names):
+https://www.5paisa.com/hindi/nifty-100-stock-list
+
+Cross-checks:
+https://www.stockezee.com/stocks/nifty-100  (99 names; stale pre-rebalance list, missing M&M)
+https://www.kotakneo.com/news/regulations/nse-index-changes-bse-polycab-india-nifty-100-entrants/  (rejig effective 30-Sep-2026)
+https://www.outlookbusiness.com/markets/nse-index-changes-may-drive-159-mn-into-vedanta-demerged-stocks  (same rejig confirmation)
+  Entrants: BSE, Hitachi Energy India, Polycab India, Vedanta Aluminium Metal, Vodafone Idea
+  Exits: Indian Hotels, Lodha Developers, REC, Shree Cement, United Spirits
+  5paisa list = stockezee list + M&M with the five swaps applied -> consistent.
+
+Prices: INDmoney MCP get_indian_stocks_ohlc, interval 1week, lookback 14d.
+  week_pct = close(2026-11-09 candle) / close(2026-11-02 candle) - 1, x100, 2dp.
+  Retrieved 2026-11-13 ~22:35-23:40 IST (after market close).
+mcap_cr: INDmoney get_indian_stocks_details market_cap_in_currency (Rs crore), retrieved 2026-11-13.

@@ -1,0 +1,8 @@
+Nifty Midcap 150 constituents (fetched 2026-11-13)
+Primary source (150 names, page dated 13 Nov 2026): https://www.indiainfoline.com/markets/indices/nifty-midcap-150
+Cross-check (145 names, all 145 are in the primary list; missing LG Electronics India, ICICI Prudential AMC, HDB Financial Services, Embassy Office Parks REIT, ITC Hotels): https://www.smart-investing.in/indices-bse-nse.php?index=NIFTYMIDCAP150
+Spot-check: TradingView top-10 components (LICI, BHEL, ICICIAMC, GROWW, LAURUSLABS, INDHOTEL, INDIANB, LENSKART, LGEINDIA, LODHA) all present: https://www.tradingview.com/symbols/NSE-NIFTYMIDCAP150/components
+Rejected as stale: tickertape constituents page (old composition).
+Constituent count: 150
+Prices: INDmoney MCP get_indian_stocks_ohlc, 1week candles; week_pct = close(2026-11-09 candle)/close(2026-11-02 candle) - 1.
+STATUS: PARTIAL - INDmoney shared rate limit (500 calls/hour) hit at 22:44 IST; remaining stocks listed in mid_pending.tsv.

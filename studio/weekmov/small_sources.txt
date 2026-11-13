@@ -1,0 +1,25 @@
+Nifty Smallcap 250 constituents - sources (compiled 2026-11-13)
+
+Primary list (current, with NSE tickers; page FAQ dated 8 Nov 2026):
+  https://www.tickertape.in/indices/nifty-smallcap-250-index-.NISM250
+  -> 251 rows shown. One row, TRIVENIPT (Triveni Power Transmission), was dropped: per NSE Indices
+     press releases it was only ever added to Nifty Smallcap 500 / Microcap 250 / Total Market
+     (dummy from the Triveni Engineering demerger) and was excluded from those effective 30 Oct 2026.
+     It was never a Nifty Smallcap 250 constituent. Final count: 250.
+
+Cross-check (older list, 250 names, pre-July 2026):
+  https://torusdigital.com/indices/nifty-smallcap-250
+  Reconciled against official NSE Indices changes since then:
+  - https://niftyindices.com/Press_Release/ind_prs13072026_1.pdf  (w.e.f. 17 Jul 2026: out JBCHEPHARM, in PFOCUS)
+  - https://niftyindices.com/Press_Release/ind_prs10082026.pdf    (w.e.f. 30 Sep 2026 semi-annual review: 33 out, 33 in)
+  - https://nsearchives.nseindia.com//web/pressrelease/2026-09/ind_prs03092026_20260903183535.pdf
+      (w.e.f. 7 Sep 2026: HEG demerger - dummy "HEG Graphite Ltd" (DUMMYHEG) added at zero price;
+       parent HEG renamed HEG Advanced Materials, symbol HEGAM)
+  - Checked, no Smallcap 250 change: ind_prs24062026_1, ind_prs17072026, ind_prs28072026_1, ind_prs26082026_1,
+    ind_prs01102026, ind_prs12102026, ind_prs23102026_1, ind_prs28102026, ind_prs04112026.
+  Torus list - 34 exclusions + 34 inclusions (HEG -> HEGAM) matched the tickertape list exactly (250 = 250).
+
+Note: the HEG Graphite demerged entity (DUMMYHEG) may still sit in the index as a zero-price dummy
+pending listing; it has no tradable price on INDmoney and is not counted among the 250.
+
+Constituent count used: 250
