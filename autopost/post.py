@@ -51,6 +51,8 @@ def when(entry):
 def ig_post(entry, dry):
     GRAPH = graph()
     uid, tok, base = os.environ["IG_USER_ID"], os.environ["IG_ACCESS_TOKEN"], os.environ["RAW_BASE"].rstrip("/")
+    if entry.get("images"):
+        return ig_carousel(entry, dry, GRAPH, base)
     params = {"media_type": "REELS", "video_url": f"{base}/media/{entry['video']}", "caption": entry["ig_caption"].strip(),
               "share_to_feed": "true", "access_token": tok}
     if entry.get("cover"):
@@ -74,6 +76,41 @@ def ig_post(entry, dry):
         c = requests.post(f"{GRAPH}/{mid}/comments", data={"message": entry["first_comment"], "access_token": tok}, timeout=30)
         if not c.ok: log("first comment failed (needs instagram_business_manage_comments):", c.text[:200])
     log("instagram published", info.get("permalink", mid))
+    return {"media_id": mid, "permalink": info.get("permalink"), "at": dt.datetime.now(IST).isoformat()}
+
+
+def ig_wait(GRAPH, cid, tok):
+    for _ in range(40):
+        time.sleep(10)
+        s = requests.get(f"{GRAPH}/{cid}", params={"fields": "status_code,status", "access_token": tok}, timeout=30).json()
+        code = s.get("status_code")
+        if code == "FINISHED": return
+        if code in ("ERROR", "EXPIRED"): raise RuntimeError(f"instagram processing {code}: {s.get('status')}")
+    raise RuntimeError("instagram processing timed out")
+
+
+def ig_carousel(entry, dry, GRAPH, base):
+    uid, tok = os.environ["IG_USER_ID"], os.environ["IG_ACCESS_TOKEN"]
+    urls = [f"{base}/media/{x}" for x in entry["images"]]
+    if dry:
+        log("DRY instagram carousel", len(urls), "images", urls[0]); return {"dry": True}
+    kids = []
+    for u in urls:
+        r = requests.post(f"{GRAPH}/{uid}/media", data={"image_url": u, "is_carousel_item": "true", "access_token": tok}, timeout=60)
+        if not r.ok: raise RuntimeError(f"carousel item failed: {r.text[:300]}")
+        kids.append(r.json()["id"]); ig_wait(GRAPH, kids[-1], tok)
+    r = requests.post(f"{GRAPH}/{uid}/media", data={"media_type": "CAROUSEL", "children": ",".join(kids),
+                      "caption": entry["ig_caption"].strip(), "access_token": tok}, timeout=60)
+    if not r.ok: raise RuntimeError(f"carousel container failed: {r.text[:300]}")
+    cid = r.json()["id"]; ig_wait(GRAPH, cid, tok)
+    r = requests.post(f"{GRAPH}/{uid}/media_publish", data={"creation_id": cid, "access_token": tok}, timeout=60)
+    if not r.ok: raise RuntimeError(f"publish failed: {r.text[:300]}")
+    mid = r.json()["id"]
+    info = requests.get(f"{GRAPH}/{mid}", params={"fields": "permalink", "access_token": tok}, timeout=30).json()
+    if entry.get("first_comment"):
+        c = requests.post(f"{GRAPH}/{mid}/comments", data={"message": entry["first_comment"], "access_token": tok}, timeout=30)
+        if not c.ok: log("first comment failed:", c.text[:200])
+    log("instagram carousel published", info.get("permalink", mid))
     return {"media_id": mid, "permalink": info.get("permalink"), "at": dt.datetime.now(IST).isoformat()}
 
 
