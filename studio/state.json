@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -523,6 +523,15 @@
    "score": 73.0,
    "style": "light gold motion, no cover frame, 45s",
    "post": "2026-11-13 19:00 IST"
+  },
+  {
+   "slug": "divi6",
+   "date": "2026-11-13",
+   "voice": "am_michael",
+   "hook": "Nobody tells you these six stocks pay you every year.",
+   "score": 81.4,
+   "style": "light mint cheat-sheet, no cover frame, 37s",
+   "post": "2026-11-14 19:00 IST"
   }
  ],
  "next_ideas": [
