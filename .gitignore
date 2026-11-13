@@ -40,3 +40,5 @@ __pycache__/
 *.pyc
 studio/taxgst/*.png
 !studio/taxgst/host.png
+studio/earntax/stk/
+studio/earntax/pieces.jpg
