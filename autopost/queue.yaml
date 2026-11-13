@@ -1,14 +1,14 @@
-# ig-check 2026-11-13 20:47
 # moneyincloud auto-post queue. The agent posts ONLY entries with approved: true.
 # publish_at is India time (IST), format YYYY-MM-DD HH:MM. Put the video + cover in autopost/media/.
 # YouTube is uploaded as soon as an entry is approved and released by YouTube at publish_at;
 # Instagram goes out on the first run at or after publish_at (runs every 15 min).
 # Any change to this file starts a run straight away.
 - id: divi-tamil-2026-11-14
-  approved: true   # approved by owner in chat, 13 Nov 2026 19:05 IST (YouTube only)
+  approved: true   # approved by owner in chat, 13 Nov 2026 19:05 IST (YouTube); Instagram approved 13 Nov 2026 20:50 IST
   publish_at: 2026-11-14 19:00
   platforms:
-  - youtube   # Instagram added once its token is set up
+    - youtube
+    - instagram
   video: highest-dividend-stocks-india-2026-tamil.mp4
   cover: highest-dividend-stocks-india-2026-tamil-cover.jpg
   ig_caption: |
