@@ -34,3 +34,5 @@ remotion/out/
 motion/*/renders/
 motion/*/node_modules/
 motion/*/.hyperframes/
+studio/penny15/vo/
+studio/penny15/mix.wav

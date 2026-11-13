@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>15 penny stocks under ₹40 (doodle)</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<style>
+@font-face { font-family:"Caveat"; src:url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight:700; }
+@font-face { font-family:"Anton"; src:url("assets/fonts/anton-latin-400-normal.woff") format("woff"); }
+@font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
+:root { --paper:#FBF8F0; --ink:#1B1B1F; --blue:#2F5BEA; --red:#D93A2B; --hl:#FFE45C; --mut:#5B5B66; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
+#root { position:relative; width:100%; height:100%; overflow:hidden; color:var(--ink); font-family:"Caveat","Poppins",cursive; }
+#paper { position:absolute; inset:0; background-color:var(--paper);
+  background-image: linear-gradient(rgba(70,120,220,.13) 2px, transparent 2px), linear-gradient(90deg, rgba(70,120,220,.13) 2px, transparent 2px);
+  background-size: 54px 54px; }
+.scene { position:absolute; inset:0; }
+.inner { position:absolute; inset:0; }
+.handle { position:absolute; left:40px; top:120px; font-family:"Oswald",sans-serif; font-size:30px; color:#55556A; z-index:50; }
+.hand { font-family:"Caveat",cursive; font-weight:700; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:96px; line-height:1; }
+.wm { display:inline-block; overflow:hidden; vertical-align:top; padding:0 6px 14px; margin-bottom:-14px; }
+.w { display:inline-block; }
+#kw { position:absolute; left:0; right:0; top:205px; text-align:center; }
+#kw span { display:inline-block; background:var(--ink); color:#fff; font-family:"Oswald",sans-serif; font-size:42px; letter-spacing:2px; padding:10px 32px; border-radius:999px; }
+#price12 { position:absolute; left:120px; top:420px; width:400px; height:300px; }
+#price12 svg, #worth svg, .cbox, #big15 svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+path { fill:none; stroke:var(--ink); stroke-width:6; stroke-linecap:round; stroke-linejoin:round; }
+#price12 .num { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:"Anton",sans-serif; font-size:150px; }
+#vi-lab { position:absolute; left:130px; top:730px; width:380px; text-align:center; font-size:60px; }
+#arrow1 { position:absolute; left:470px; top:480px; width:220px; height:200px; }
+#arrow1 svg { width:100%; height:100%; overflow:visible; }
+#worth { position:absolute; left:560px; top:600px; width:480px; height:250px; }
+#worth .num { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+#worth .num b { font-family:"Anton",sans-serif; font-weight:400; font-size:74px; white-space:nowrap; color:var(--blue); line-height:1; }
+#worth .num i { font-style:normal; font-size:56px; }
+#hl-worth { position:absolute; left:575px; top:672px; width:450px; height:96px; background:var(--hl); transform-origin:left center; border-radius:12px; opacity:.75; }
+#big15 { position:absolute; left:340px; top:560px; width:400px; height:400px; }
+#big15 .num { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:"Anton",sans-serif; font-size:260px; color:var(--blue); }
+#under40 { position:absolute; left:0; right:0; top:1000px; text-align:center; font-size:84px; }
+.cw { position:absolute; width:312px; height:146px; }
+.card { position:absolute; inset:0; }
+.card path { stroke-width:5; fill:#fff; }
+.cn { position:absolute; left:18px; top:10px; right:12px; font-size:46px; line-height:1; white-space:nowrap; }
+.cb { position:absolute; left:20px; top:62px; max-width:150px; font-family:"Oswald",sans-serif; font-size:26px; color:var(--mut); }
+.cp { position:absolute; right:18px; bottom:10px; font-family:"Anton",sans-serif; font-size:44px; color:var(--blue); }
+.dd { position:absolute; left:14px; bottom:12px; background:var(--red); color:#fff; font-family:"Anton",sans-serif; font-size:40px; padding:2px 14px; border-radius:10px; opacity:0; }
+#twist { position:absolute; left:40px; right:40px; top:1200px; text-align:center; font-size:50px; background:#fff; border:5px solid var(--ink); border-radius:18px; padding:6px 10px; white-space:nowrap; line-height:1.05; opacity:0; }
+#twist b { color:var(--red); font-weight:700; }
+#chk { position:absolute; left:110px; right:80px; top:560px; }
+.ck { position:relative; height:150px; font-size:76px; padding-left:130px; line-height:120px; }
+.ck svg { position:absolute; left:0; top:10px; width:100px; height:100px; overflow:visible; }
+.ck .tick { stroke:var(--red); stroke-width:10; }
+#cmp { position:absolute; left:80px; right:80px; top:1050px; font-family:"Oswald",sans-serif; font-size:36px; color:var(--mut); text-align:center; }
+#cmp b { color:var(--ink); }
+.host { position:absolute; }
+.pill { position:absolute; display:inline-block; border-radius:22px; padding:12px 34px; font-family:"Anton",sans-serif; font-size:60px; color:#fff; border:5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+#cta-comment { left:430px; top:820px; background:var(--blue); }
+#cta-follow { left:430px; top:950px; background:var(--hl); color:var(--ink); }
+.cap { position:absolute; left:0; right:0; top:1215px; text-align:center; opacity:0; }
+.cap span { display:inline-block; max-width:920px; background:#fff; border:5px solid var(--ink); border-radius:18px; box-shadow:6px 8px 0 var(--ink); padding:10px 34px; font-family:"Poppins",sans-serif; font-weight:700; font-size:44px; line-height:1.25; }
+#disc { position:absolute; left:0; right:0; top:1305px; text-align:center; font-family:"Oswald",sans-serif; font-size:28px; color:rgb(84,84,96); z-index:30; }
+#vignette { position:absolute; inset:0; pointer-events:none; z-index:99; background:radial-gradient(ellipse at center, transparent 60%, rgba(27,27,31,.10) 100%); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="44.25" data-fps="30">
+  <div id="paper"></div>
+  <div class="handle">@moneyincloud</div>
+  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="44.25" data-track-index="9" data-volume="1"></audio>
+
+  <section class="scene clip" id="sc0" data-start="0" data-duration="5.09" data-track-index="1"><div class="inner" id="in0">
+    <div id="kw"><span>PENNY STOCKS UNDER ₹40 · INDIA 2026</span></div>
+    <div id="price12"><div class="boil" id="b-p12" style="position:absolute;inset:0"><svg viewBox="0 0 400 300"><path id="circ12" d="" /></svg><div class="num">₹12</div></div></div>
+    <div id="vi-lab" class="hand">Vodafone Idea</div>
+    <div id="arrow1"><svg viewBox="0 0 220 200"><path id="arr1" d="M10 30 C 90 10, 150 60, 190 150" /><path id="arr1h" d="M160 140 L192 156 L196 118" /></svg></div>
+    <div id="hl-worth"></div>
+    <div id="worth"><div class="boil" id="b-worth" style="position:absolute;inset:0"><svg viewBox="0 0 480 250"><path id="box-worth" d="" /></svg>
+      <div class="num"><b>₹1.4 LAKH CR</b><i class="hand">company value</i></div></div></div>
+  </div></section>
+
+  <section class="scene clip" id="sc1" data-start="4.79" data-duration="4.40" data-track-index="2"><div class="inner" id="in1">
+    <div class="ttl hand" style="top:300px">popular <span style="color:var(--red)">penny</span> stocks</div>
+    <div id="big15"><div class="boil" id="b-15" style="position:absolute;inset:0"><svg viewBox="0 0 400 400"><path id="circ15" d="" /></svg><div class="num">15</div></div></div>
+    <div id="under40" class="hand">all under <span style="color:var(--blue)">₹40</span></div>
+  </div></section>
+
+  <section class="scene clip" id="sc2" data-start="8.89" data-duration="24.62" data-track-index="3"><div class="inner" id="in2">
+    <div class="ttl hand" style="top:225px;font-size:84px" id="t2">15 under <span style="color:var(--blue)">₹40</span> · live price</div>
+    <div class="cw" id="cw0" style="left:54px;top:400px"><div class="card boil" id="cd0">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb0" d="" /></svg>
+<div class="cn">Vodafone Idea</div><div class="cb">Telecom</div><div class="cp">₹12.56</div>
+<div class="dd" id="dd0">-20%</div></div></div>
+<div class="cw" id="cw1" style="left:384px;top:400px"><div class="card boil" id="cd1">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb1" d="" /></svg>
+<div class="cn">Yes Bank</div><div class="cb">Private bank</div><div class="cp">₹17.57</div>
+<div class="dd" id="dd1">-32%</div></div></div>
+<div class="cw" id="cw2" style="left:714px;top:400px"><div class="card boil" id="cd2">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb2" d="" /></svg>
+<div class="cn">Suzlon</div><div class="cb">Wind energy</div><div class="cp">₹38.16</div>
+<div class="dd" id="dd2">-37%</div></div></div>
+<div class="cw" id="cw3" style="left:54px;top:560px"><div class="card boil" id="cd3">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb3" d="" /></svg>
+<div class="cn">UCO Bank</div><div class="cb">PSU bank</div><div class="cp">₹24.85</div>
+<div class="dd" id="dd3">-23%</div></div></div>
+<div class="cw" id="cw4" style="left:384px;top:560px"><div class="card boil" id="cd4">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb4" d="" /></svg>
+<div class="cn">Punjab &amp; Sind</div><div class="cb">PSU bank</div><div class="cp">₹21.75</div>
+<div class="dd" id="dd4">-31%</div></div></div>
+<div class="cw" id="cw5" style="left:714px;top:560px"><div class="card boil" id="cd5">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb5" d="" /></svg>
+<div class="cn">Central Bank</div><div class="cb">PSU bank</div><div class="cp">₹32.18</div>
+<div class="dd" id="dd5">-21%</div></div></div>
+<div class="cw" id="cw6" style="left:54px;top:720px"><div class="card boil" id="cd6">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb6" d="" /></svg>
+<div class="cn">Indian Overseas</div><div class="cb">PSU bank</div><div class="cp">₹31.63</div>
+<div class="dd" id="dd6">-22%</div></div></div>
+<div class="cw" id="cw7" style="left:384px;top:720px"><div class="card boil" id="cd7">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb7" d="" /></svg>
+<div class="cn">IRB Infra</div><div class="cb">Toll roads</div><div class="cp">₹18.79</div>
+<div class="dd" id="dd7">-22%</div></div></div>
+<div class="cw" id="cw8" style="left:714px;top:720px"><div class="card boil" id="cd8">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb8" d="" /></svg>
+<div class="cn">Reliance Power</div><div class="cb">Power plants</div><div class="cp">₹18.54</div>
+<div class="dd" id="dd8">-57%</div></div></div>
+<div class="cw" id="cw9" style="left:54px;top:880px"><div class="card boil" id="cd9">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb9" d="" /></svg>
+<div class="cn">JP Power</div><div class="cb">Power</div><div class="cp">₹14.08</div>
+<div class="dd" id="dd9">-42%</div></div></div>
+<div class="cw" id="cw10" style="left:384px;top:880px"><div class="card boil" id="cd10">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb10" d="" /></svg>
+<div class="cn">Alok Ind.</div><div class="cb">Textiles</div><div class="cp">₹8.13</div>
+<div class="dd" id="dd10">-54%</div></div></div>
+<div class="cw" id="cw11" style="left:714px;top:880px"><div class="card boil" id="cd11">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb11" d="" /></svg>
+<div class="cn">Trident</div><div class="cb">Home textiles</div><div class="cp">₹23.51</div>
+<div class="dd" id="dd11">-24%</div></div></div>
+<div class="cw" id="cw12" style="left:54px;top:1040px"><div class="card boil" id="cd12">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb12" d="" /></svg>
+<div class="cn">HCC</div><div class="cb">Construction</div><div class="cp">₹18.44</div>
+<div class="dd" id="dd12">-35%</div></div></div>
+<div class="cw" id="cw13" style="left:384px;top:1040px"><div class="card boil" id="cd13">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb13" d="" /></svg>
+<div class="cn">RattanIndia Pwr</div><div class="cb">Thermal power</div><div class="cp">₹7.00</div>
+<div class="dd" id="dd13">-35%</div></div></div>
+<div class="cw" id="cw14" style="left:714px;top:1040px"><div class="card boil" id="cd14">
+<svg class="cbox" viewBox="0 0 312 146"><path id="cb14" d="" /></svg>
+<div class="cn">GTL Infra</div><div class="cb">Telecom towers</div><div class="cp">₹1.08</div>
+<div class="dd" id="dd14">-35%</div></div></div>
+    <div id="twist" class="hand">ALL 15: <b>down 20% to 57%</b> from 1-year high</div>
+  </div></section>
+
+  <section class="scene clip" id="sc4" data-start="33.21" data-duration="6.66" data-track-index="4"><div class="inner" id="in4">
+    <div class="ttl hand" style="top:300px">low price <span style="color:var(--red)">≠</span> cheap</div>
+    <div id="chk">
+      <div class="ck hand" id="ck0"><svg viewBox="0 0 100 100"><path id="bx0" d="M8 10 L92 6 L95 92 L6 95 Z" /><path class="tick" id="tk0" d="M18 52 L42 78 L90 8" /></svg>market value</div>
+      <div class="ck hand" id="ck1"><svg viewBox="0 0 100 100"><path id="bx1" d="M6 8 L93 9 L92 94 L9 92 Z" /><path class="tick" id="tk1" d="M18 52 L42 78 L90 8" /></svg>debt</div>
+      <div class="ck hand" id="ck2"><svg viewBox="0 0 100 100"><path id="bx2" d="M9 7 L94 10 L91 93 L7 94 Z" /><path class="tick" id="tk2" d="M18 52 L42 78 L90 8" /></svg>surveillance list</div>
+    </div>
+    <div id="cmp">₹12.56 Vodafone Idea = <b>₹1.4 lakh cr</b> · ₹8.13 Alok = <b>₹4,072 cr</b></div>
+  </div></section>
+
+  <section class="scene clip" id="sc5" data-start="39.57" data-duration="4.68" data-track-index="5"><div class="inner" id="in5">
+    <div class="ttl hand" style="top:300px">which one do <span style="color:var(--blue)">you</span> own?</div>
+    <img class="host" id="host-wave" src="assets/img/p31.png" style="left:50px;top:620px;width:360px" />
+    <div class="pill" id="cta-comment">COMMENT "PENNY"</div>
+    <div class="pill" id="cta-follow">FOLLOW @moneyincloud</div>
+  </div></section>
+
+  <section class="clip" id="caps" data-start="0" data-duration="44.25" data-track-index="6" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
+    <div class="cap" id="cap0"><span>Nobody tells you this</span></div>
+<div class="cap" id="cap1"><span>₹12 stock is worth</span></div>
+<div class="cap" id="cap2"><span>₹1.4 lakh crore.</span></div>
+<div class="cap" id="cap3"><span>Here are 15 popular</span></div>
+<div class="cap" id="cap4"><span>penny stocks,</span></div>
+<div class="cap" id="cap5"><span>all under ₹40.</span></div>
+<div class="cap" id="cap6"><span>Vodafone Idea,</span></div>
+<div class="cap" id="cap7"><span>Yes Bank,</span></div>
+<div class="cap" id="cap8"><span>Suzlon,</span></div>
+<div class="cap" id="cap9"><span>and 4 PSU banks:</span></div>
+<div class="cap" id="cap10"><span>UCO,</span></div>
+<div class="cap" id="cap11"><span>Punjab &amp; Sind,</span></div>
+<div class="cap" id="cap12"><span>Central Bank,</span></div>
+<div class="cap" id="cap13"><span>and Indian Overseas Bank.</span></div>
+<div class="cap" id="cap14"><span>Then IRB,</span></div>
+<div class="cap" id="cap15"><span>Reliance Power,</span></div>
+<div class="cap" id="cap16"><span>JP Power,</span></div>
+<div class="cap" id="cap17"><span>Alok,</span></div>
+<div class="cap" id="cap18"><span>Trident,</span></div>
+<div class="cap" id="cap19"><span>HCC,</span></div>
+<div class="cap" id="cap20"><span>RattanIndia Power,</span></div>
+<div class="cap" id="cap21"><span>and GTL Infra,</span></div>
+<div class="cap" id="cap22"><span>at just ₹1.</span></div>
+<div class="cap" id="cap23"><span>A low price is</span></div>
+<div class="cap" id="cap24"><span>not cheap.</span></div>
+<div class="cap" id="cap25"><span>Check the market value,</span></div>
+<div class="cap" id="cap26"><span>the debt,</span></div>
+<div class="cap" id="cap27"><span>and the exchange's surveillance</span></div>
+<div class="cap" id="cap28"><span>list first.</span></div>
+<div class="cap" id="cap29"><span>Which one do you</span></div>
+<div class="cap" id="cap30"><span>own?</span></div>
+<div class="cap" id="cap31"><span>Comment PENNY,</span></div>
+<div class="cap" id="cap32"><span>and follow for more.</span></div>
+  </section>
+  <div id="disc">Prices: INDmoney, 13 Nov 2026, 3:13 PM · Not a buy/sell call · Education only</div>
+  <div id="vignette"></div>
+</div>
+<script>
+const T = {"VO": [0.15, 4.99, 9.09, 18.22, 27.94, 33.41, 39.77], "DURS": [4.42, 3.68, 8.72, 9.29, 5.06, 5.93, 2.96], "STARTS": [0.0, 4.79, 8.89, 18.02, 27.74, 33.21, 39.57], "DUR": 44.25, "stocks": [9.09, 10.18, 10.92, 13.33, 13.7, 14.95, 16.27, 18.59, 19.33, 20.51, 21.47, 21.91, 22.57, 23.31, 25.01], "lakh": 3.06, "fifteen": 5.52, "twist": 29.98, "mv": 35.49, "debt": 36.52, "surv": 37.96, "comment": 40.91, "follow": 41.9};
+const CAPS = [[0.15, 1.84, "Nobody tells you this"], [1.84, 3.28, "\u20b912 stock is worth"], [3.28, 4.97, "\u20b91.4 lakh crore."], [4.99, 6.51, "Here are 15 popular"], [6.51, 7.55, "penny stocks,"], [7.55, 9.07, "all under \u20b940."], [9.09, 10.29, "Vodafone Idea,"], [10.29, 11.06, "Yes Bank,"], [11.06, 11.65, "Suzlon,"], [11.65, 13.02, "and 4 PSU banks:"], [13.02, 13.36, "UCO,"], [13.36, 14.56, "Punjab & Sind,"], [14.56, 15.67, "Central Bank,"], [15.67, 18.2, "and Indian Overseas Bank."], [18.22, 19.12, "Then IRB,"], [19.12, 20.62, "Reliance Power,"], [20.62, 21.52, "JP Power,"], [21.52, 22.02, "Alok,"], [22.02, 22.82, "Trident,"], [22.82, 23.21, "HCC,"], [23.21, 25.01, "RattanIndia Power,"], [25.01, 26.41, "and GTL Infra,"], [26.41, 28.11, "at just \u20b91."], [33.41, 34.26, "A low price is"], [34.26, 34.86, "not cheap."], [34.86, 36.25, "Check the market value,"], [36.25, 36.8, "the debt,"], [36.8, 38.67, "and the exchange's surveillance"], [38.67, 39.75, "list first."], [39.77, 40.65, "Which one do you"], [40.65, 40.87, "own?"], [40.87, 41.63, "Comment PENNY,"], [41.63, 43.33, "and follow for more."]];
+const SC = [[0, 4.79], [4.79, 8.89], [8.89, 27.74], [27.74, 33.21], [33.21, 39.57], [39.57, 44.25]];
+const EIN = "expo.out", EOUT = "expo.in";
+const tl = gsap.timeline({ paused: true });
+// ---- hand-drawn kit helpers (from registry hw-boil) ----
+window.hwOnUpdate = function (tl, fn) { if (!tl.__hwRenders) { tl.__hwRenders = []; tl.eventCallback("onUpdate", function () { for (var i = 0; i < tl.__hwRenders.length; i++) tl.__hwRenders[i](); }); } tl.__hwRenders.push(fn); fn(); };
+window.hwHash = function (n, seed) { var x = Math.sin(n * 127.1 + (seed || 1) * 311.7) * 43758.5453; return (x - Math.floor(x)) * 2 - 1; };
+window.hwBoil = function (tl, target, opts) { opts = opts || {}; var amp = opts.amp ?? 1.6, rot = opts.rot ?? 0.5, fps = 30, drop = opts.frameDrop || 3, seed = opts.seed || 1; var els = gsap.utils.toArray(target);
+  window.hwOnUpdate(tl, function () { var step = Math.floor((tl.time() * fps) / drop); for (var i = 0; i < els.length; i++) gsap.set(els[i], { x: hwHash(step*3+i*97, seed)*amp, y: hwHash(step*3+1+i*97, seed)*amp, rotation: hwHash(step*3+2+i*97, seed)*rot }); }); };
+window.hwWobble = function (cx, cy, rx, ry, seed, pct) { var N = 14, pts = []; for (var i = 0; i < N; i++) { var a = i / N * Math.PI * 2, wr = 1 + hwHash(i*13+5, seed) * pct / 100; pts.push([cx + Math.cos(a)*rx*wr, cy + Math.sin(a)*ry*wr]); }
+  var d = "M" + ((pts[0][0]+pts[N-1][0])/2).toFixed(1) + " " + ((pts[0][1]+pts[N-1][1])/2).toFixed(1);
+  for (var j = 0; j < N; j++) { var p = pts[j], q = pts[(j+1)%N]; d += " Q" + p[0].toFixed(1) + " " + p[1].toFixed(1) + " " + ((p[0]+q[0])/2).toFixed(1) + " " + ((p[1]+q[1])/2).toFixed(1); } return d; };
+window.hwRect = function (w, h, seed) { const j = k => hwHash(k, seed) * 5; return `M${6+j(1)} ${6+j(2)} L${w-6+j(3)} ${5+j(4)} L${w-5+j(5)} ${h-6+j(6)} L${5+j(7)} ${h-5+j(8)} Z`; };
+const draw = (sel, at, dur) => { const p = document.querySelector(sel); const L = p.getTotalLength(); tl.set(p, {opacity:0}, 0); tl.set(p, {opacity:1}, at); tl.fromTo(p, {strokeDasharray:L, strokeDashoffset:L}, {strokeDashoffset:0, duration:dur||0.6, ease:"power2.inOut"}, at); };
+document.getElementById("circ12").setAttribute("d", hwWobble(200, 150, 185, 130, 3, 5));
+document.getElementById("circ15").setAttribute("d", hwWobble(200, 200, 185, 185, 7, 5));
+document.getElementById("box-worth").setAttribute("d", hwRect(480, 250, 11));
+for (let k = 0; k < 15; k++) document.getElementById("cb"+k).setAttribute("d", hwRect(312, 146, 20+k));
+hwBoil(tl, ".boil", {amp:1.4, rot:0.45});
+
+// scene enter/exit
+SC.forEach(([a,b],i) => { const id = ["#in0","#in1","#in2","#in2","#in4","#in5"][i]; if (i===3) return;
+  if (i > 0) tl.fromTo(id, {yPercent:6, opacity:0}, {yPercent:0, opacity:1, duration:0.4, ease:EIN}, a);
+  const end = i === 2 ? SC[3][1] : b; if (i < SC.length-1) tl.to(id, {yPercent:-5, opacity:0, duration:0.3, ease:EOUT}, end - 0.05); });
+
+// HOOK (frame 0 already shows ₹12 + keyword pill)
+tl.fromTo("#circ12", {strokeDasharray:1200, strokeDashoffset:1200}, {strokeDashoffset:0, duration:0.7, ease:"power2.inOut"}, 0.0);
+tl.fromTo("#vi-lab", {opacity:0, y:20}, {opacity:1, y:0, duration:0.4, ease:EIN}, 0.6);
+draw("#arr1", 1.6, 0.5); draw("#arr1h", 2.05, 0.2);
+tl.fromTo("#worth", {scale:0.6, opacity:0}, {scale:1, opacity:1, duration:0.5, ease:"back.out(2)"}, T.lakh - 0.3);
+draw("#box-worth", T.lakh - 0.3, 0.6);
+tl.fromTo("#hl-worth", {scaleX:0}, {scaleX:1, duration:0.45, ease:"power2.out"}, T.lakh + 0.4);
+
+// 15 / under ₹40
+draw("#circ15", T.fifteen - 0.2, 0.7);
+tl.fromTo("#big15 .num", {scale:0.4, opacity:0}, {scale:1, opacity:1, duration:0.5, ease:"back.out(2)"}, T.fifteen - 0.2);
+tl.fromTo("#under40", {opacity:0, y:30}, {opacity:1, y:0, duration:0.4, ease:EIN}, T.fifteen + 0.8);
+
+// CARDS pop as each name is spoken; box draws on
+T.stocks.forEach((ts, k) => {
+  tl.fromTo("#cw"+k, {scale:0.5, opacity:0, rotation:(k%2?4:-4)}, {scale:1, opacity:1, rotation:0, duration:0.4, ease:"back.out(1.8)"}, ts - 0.1);
+  draw("#cb"+k, ts - 0.1, 0.45);
+});
+// TWIST: red % stamps ripple across all 15
+tl.to(".cb", {opacity:0, duration:0.2}, T.twist);
+for (let k = 0; k < 15; k++) tl.fromTo("#dd"+k, {opacity:0, scale:2.2, rotation:-12}, {opacity:1, scale:1, rotation:-6, duration:0.3, ease:"back.out(1.6)"}, T.twist + 0.15 + k*0.07);
+tl.fromTo("#twist", {opacity:0, y:20}, {opacity:1, y:0, duration:0.4, ease:EIN}, T.twist - 0.1);
+
+// CHECKLIST
+["bx0","bx1","bx2"].forEach((b,k) => draw("#"+b, SC[4][0] + 0.2 + k*0.15, 0.4));
+draw("#tk0", T.mv - 0.2, 0.35); draw("#tk1", T.debt - 0.2, 0.35); draw("#tk2", T.surv - 0.2, 0.35);
+tl.fromTo("#cmp", {opacity:0}, {opacity:1, duration:0.4}, T.mv - 0.3);
+
+// CTA
+tl.fromTo("#host-wave", {y:100, opacity:0}, {y:0, opacity:1, duration:0.5, ease:EIN}, SC[5][0] + 0.2);
+tl.fromTo("#cta-comment", {scale:0.4, opacity:0}, {scale:1, opacity:1, duration:0.45, ease:"back.out(2)"}, T.comment - 0.2);
+tl.fromTo("#cta-follow", {scale:0.4, opacity:0}, {scale:1, opacity:1, duration:0.45, ease:"back.out(2)"}, T.follow - 0.1);
+
+// CAPTIONS (hidden while the twist line shares the slot)
+CAPS.forEach(([st, en, txt], k) => { const g = "#cap"+k;
+  tl.fromTo(g, {opacity:0, y:14}, {opacity:1, y:0, duration:0.14, ease:"power2.out"}, Math.max(0.15, st - 0.05));
+  tl.to(g, {opacity:0, duration:0.1}, en - 0.1); tl.set(g, {opacity:0, visibility:"hidden"}, en); });
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

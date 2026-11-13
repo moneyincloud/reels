@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -63,7 +63,7 @@
   {
    "date": "2026-10-30",
    "slug": "iepf",
-   "topic": "Forgotten shares IEPF ₹89,000 Cr",
+   "topic": "Forgotten shares IEPF \u20b989,000 Cr",
    "voice": "af_heart",
    "posted": "manual"
   },
@@ -127,7 +127,7 @@
    "date": "2026-10-30",
    "slug": "tortoise",
    "tag": "animal-friday",
-   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (₹5k from 25 vs ₹10k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
+   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (\u20b95k from 25 vs \u20b910k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
    "angle": "story",
    "voice": "af_heart",
    "length_s": 75.6,
@@ -284,7 +284,7 @@
    "date": "2026-11-05",
    "slug": "turkey",
    "tag": "animal-friday",
-   "topic": "Animal Friday: Turkey Problem with Yes Bank (₹404 Aug 2018 -> ₹5.55 Mar 2020 -> ₹16.24 today), 3 warning signs",
+   "topic": "Animal Friday: Turkey Problem with Yes Bank (\u20b9404 Aug 2018 -> \u20b95.55 Mar 2020 -> \u20b916.24 today), 3 warning signs",
    "style": "normal light template (chalkboard rejected)",
    "voice": "am_michael",
    "length_s": 98.3,
@@ -298,7 +298,7 @@
   {
    "date": "2026-11-05",
    "slug": "kalyan",
-   "topic": "Kalyan Jewellers Part 1: 546 showrooms, sales 3.7x, profit to ₹1,350 Cr, ₹87 IPO to ₹560, ownership, catch (P/E 40, gold loans)",
+   "topic": "Kalyan Jewellers Part 1: 546 showrooms, sales 3.7x, profit to \u20b91,350 Cr, \u20b987 IPO to \u20b9560, ownership, catch (P/E 40, gold loans)",
    "style": "PCJ paper collage",
    "voice": "af_heart",
    "length_s": 92.3,
@@ -476,7 +476,7 @@
   {
    "slug": "eqmf",
    "date": "2026-11-11",
-   "topic": "Stocks vs mutual funds: ownership vs basket, who picks/how many, ₹10,000 example, costs, tax, who should pick what",
+   "topic": "Stocks vs mutual funds: ownership vs basket, who picks/how many, \u20b910,000 example, costs, tax, who should pick what",
    "style": "Vox paper collage + paper-cut",
    "voice": "af_heart",
    "colour": "teal",
@@ -537,7 +537,7 @@
    "date": "2026-11-13",
    "slug": "weekly_2026-11-13",
    "tag": "weekly-recap",
-   "topic": "YouTube weekly recap 7–13 Nov 2026: race10, turkey, lossmath, under20, midcap6, usstock, invest4 (10:07, 7 parts)",
+   "topic": "YouTube weekly recap 7\u201313 Nov 2026: race10, turkey, lossmath, under20, midcap6, usstock, invest4 (10:07, 7 parts)",
    "voice": "am_michael",
    "metricool_id": 426578967,
    "publish": "2026-11-13 16:00 IST",
@@ -554,7 +554,7 @@
    "date": "2026-11-13",
    "slug": "monkey",
    "tag": "animal-friday",
-   "topic": "Animal Friday: Monkey vs Elephant - overtrading; SEBI FY26 F&O study (87.7% lost, ₹91,685 Cr loss, avg loser -₹1.47 L, ~₹24,800 Cr costs, options 92% of losses)",
+   "topic": "Animal Friday: Monkey vs Elephant - overtrading; SEBI FY26 F&O study (87.7% lost, \u20b991,685 Cr loss, avg loser -\u20b91.47 L, ~\u20b924,800 Cr costs, options 92% of losses)",
    "angle": "story",
    "style": "paper Vox v2 light, original monkey + elephant characters",
    "voice": "af_heart",
@@ -568,12 +568,21 @@
    "metricool_id": 426675044,
    "scheduled": "2026-11-13 18:00 IST IG REEL + YT Short",
    "metricool_month_count": "19/20"
+  },
+  {
+   "slug": "penny15",
+   "date": "2026-11-13",
+   "voice": "am_michael",
+   "hook": "Nobody tells you this twelve rupee stock is worth one point four lakh crore.",
+   "score": 78.7,
+   "style": "doodle paper (HyperFrames), 44s",
+   "post": "2026-11-15 19:00 IST"
   }
  ],
  "next_ideas": [
-  "Divi's Labs at a 52-week high: +7.52% to ₹11,097 in the last session (52-wk high ₹11,194; INDmoney). Results-day decode in the Reliance format (last week's top reel): what it makes, what drove the move, margin check, and the catch (valuation vs Cipla, as in the pharma-ranking reel). Education only, no buy/sell call",
-  "Upper circuit explained with Finolex Cables: +19.98% to ₹1,309, locked at its upper limit in the last session (INDmoney). 'Don't chase an upper-circuit stock before you check these 3 things': why it moved, volume/liquidity, and what the price band means. Checklist format like the ₹20-stocks reel. No return predictions",
-  "52-week lows, round 2: PI Industries ₹1,750.7 vs high ₹3,832.9 (~54% below) and Astral ₹1,260 vs ₹1,768.7 (INDmoney). Same 'cheap or warning?' format: why each fell, and 3 questions before calling a fallen stock cheap. No buy/sell call"
+  "Divi's Labs at a 52-week high: +7.52% to \u20b911,097 in the last session (52-wk high \u20b911,194; INDmoney). Results-day decode in the Reliance format (last week's top reel): what it makes, what drove the move, margin check, and the catch (valuation vs Cipla, as in the pharma-ranking reel). Education only, no buy/sell call",
+  "Upper circuit explained with Finolex Cables: +19.98% to \u20b91,309, locked at its upper limit in the last session (INDmoney). 'Don't chase an upper-circuit stock before you check these 3 things': why it moved, volume/liquidity, and what the price band means. Checklist format like the \u20b920-stocks reel. No return predictions",
+  "52-week lows, round 2: PI Industries \u20b91,750.7 vs high \u20b93,832.9 (~54% below) and Astral \u20b91,260 vs \u20b91,768.7 (INDmoney). Same 'cheap or warning?' format: why each fell, and 3 questions before calling a fallen stock cheap. No buy/sell call"
  ],
  "rules": {
   "no_avatar": "31 Oct 2026: old caricature removed; use emotion pose avatar host/poses (40 poses) via listx.draw_pose"
@@ -611,10 +620,11 @@
   "glow atom": "dark navy space, glowing orbits and labels like an atom diagram: portfolio = nucleus + orbiting assets, diversification",
   "vox paper collage": "Vox-style explainer: grainy paper, Playfair serif titles, torn taped notes, yellow highlighter swipes, red marker circles, layered paper-cut hills, user cartoon as cut-out sticker (eqmf.py)",
   "pro edit dark": "reel-director rules in PIL: mask-reveal words, one ease-out curve, overlapping wipe transitions, grain + vignette, @handle top-left, kick/hat groove + swish per reveal (roadair.py)",
-  "light motion": "light pink base, drifting blurred colour blobs, moving diagonal stripes, scrolling ticker band, white cards, dark text; no cover frame"
+  "light motion": "light pink base, drifting blurred colour blobs, moving diagonal stripes, scrolling ticker band, white cards, dark text; no cover frame",
+  "doodle paper": "HyperFrames + hand-drawn kit: grid notebook paper, Caveat handwriting, hw-boil wobble, draw-on circles/arrows/cards, highlighter, red stamps, checkboxes (motion/penny15/build/gen.py)"
  },
  "hook_rules": [
-  "Never open a hook with 'Stop' (user instruction, 10 Nov 2026). Rotate openers: 'Never…', 'Nobody tells you…', a number, a direct claim.",
+  "Never open a hook with 'Stop' (user instruction, 10 Nov 2026). Rotate openers: 'Never\u2026', 'Nobody tells you\u2026', a number, a direct claim.",
   "Hook must still score >= 70 on hookscore.py"
  ],
  "tamil_voices": {
