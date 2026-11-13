@@ -36,3 +36,5 @@ motion/*/node_modules/
 motion/*/.hyperframes/
 studio/penny15/vo/
 studio/penny15/mix.wav
+__pycache__/
+*.pyc
