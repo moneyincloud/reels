@@ -15,6 +15,7 @@ jobs:
           OLD: ${{ secrets.IG_ACCESS_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
+          case "$OLD" in EAA*) echo "System-user token (Unified login) never expires; nothing to refresh"; exit 0;; esac
           NEW=$(curl -sf "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$OLD" | python3 -c "import json,sys;print(json.load(sys.stdin)['access_token'])")
           echo "::add-mask::$NEW"
           gh secret set IG_ACCESS_TOKEN --repo "${{ github.repository }}" --body "$NEW"

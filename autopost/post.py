@@ -23,7 +23,10 @@ import yaml
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 IST = ZoneInfo("Asia/Kolkata")
-GRAPH = "https://graph.instagram.com/v23.0"
+def graph():
+    # IG... token = Instagram Login (graph.instagram.com); EAA... token = Unified/Facebook login system-user token (graph.facebook.com)
+    tok = os.environ.get("IG_ACCESS_TOKEN", "")
+    return "https://graph.facebook.com/v23.0" if tok.startswith("EAA") else "https://graph.instagram.com/v23.0"
 LATE_LIMIT = dt.timedelta(hours=6)  # never post an Instagram reel more than 6 h after its slot
 
 
@@ -46,6 +49,7 @@ def when(entry):
 
 # ---------------- Instagram ----------------
 def ig_post(entry, dry):
+    GRAPH = graph()
     uid, tok, base = os.environ["IG_USER_ID"], os.environ["IG_ACCESS_TOKEN"], os.environ["RAW_BASE"].rstrip("/")
     params = {"media_type": "REELS", "video_url": f"{base}/media/{entry['video']}", "caption": entry["ig_caption"].strip(),
               "share_to_feed": "true", "access_token": tok}
