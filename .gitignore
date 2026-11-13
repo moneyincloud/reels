@@ -29,3 +29,8 @@ studio/divi6/mix.wav
 studio/divi6ta/vo/
 studio/divi6ta/mix.wav
 studio/divi6ta/full.wav
+remotion/node_modules/
+remotion/out/
+motion/*/renders/
+motion/*/node_modules/
+motion/*/.hyperframes/

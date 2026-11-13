@@ -254,3 +254,11 @@ Topic fit is in `style_guide` in state.json. Still: share the plan + style with 
 
 ## Thumbnail rule (11 Nov 2026)
 - Instagram profile grid shows only the centre 3:4 crop (y 240-1680). hook.finish() now auto-fits all content into SAFE=(70,310,1010,1610); keep titles below y=310 and nothing important near the edges.
+
+## 0. Editing / animation engines (installed 13 Nov 2026)
+Use these for new reels; the Python/PIL engine in `vox/` stays as the backup and for the thumbnail generator.
+- **HyperFrames** (HTML + GSAP rendered to video): projects in `motion/<slug>/`. `npx hyperframes init <slug> --example blank --resolution portrait --non-interactive --skill hyperframes`, then `npx hyperframes check`, `npx hyperframes render -q delivery -o renders/<slug>.mp4`.
+  Needs `export HYPERFRAMES_BROWSER_PATH=/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell` (in ~/.bashrc). Skills: hyperframes, hyperframes-cli, hyperframes-registry (about 450 blocks: transitions, kinetic type, charts, captions), media-use, style-sampling ("Finance Explainer" style), reverse-any-video.
+- **Remotion** (React): project in `remotion/`. Composition `Reel` is 1080x1920 at 30 fps. `npx remotion render Reel out/<slug>.mp4`; the browser path is set in remotion.config.ts. Official rule set: remotion-dev/skills (reel-director skill for the pro-edit rules). Free licence (individual / up to 3 people).
+- **Sound**: sound-design skill (synth SFX cues), hyperframes-audio for ducking and mixing.
+- Not available here: whisper.cpp, MusicGen, Docker render (optional).
