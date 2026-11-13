@@ -1,3 +1,4 @@
+# thumbs 2026-11-13 21:17
 # moneyincloud auto-post queue. The agent posts ONLY entries with approved: true.
 # publish_at is India time (IST), format YYYY-MM-DD HH:MM. Put the video + cover in autopost/media/.
 # YouTube is uploaded as soon as an entry is approved and released by YouTube at publish_at;

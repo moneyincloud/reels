@@ -194,7 +194,28 @@ def main():
                 if not a.dry_run: done[plat] = res; save_state(st)
             except Exception as ex:
                 failed = True; log(f"{key}: {plat} FAILED:", str(ex)[:400])
+    if not a.dry_run and not a.only == "instagram" and os.environ.get("YT_REFRESH_TOKEN"):
+        fix_thumbs(queue, st)
     sys.exit(1 if failed else 0)
+
+
+def fix_thumbs(queue, st):
+    """Set the custom cover on every uploaded YouTube video once, and record the result (youtube_thumb)."""
+    from googleapiclient.http import MediaFileUpload
+    yt = None
+    for e in queue:
+        rec = st.get(e["id"], {})
+        if "youtube" not in rec or "youtube_thumb" in rec or not e.get("cover"):
+            continue
+        yt = yt or yt_service()
+        try:
+            yt.thumbnails().set(videoId=rec["youtube"]["video_id"],
+                                media_body=MediaFileUpload(os.path.join(HERE, "media", e["cover"]), mimetype="image/jpeg")).execute()
+            res = {"ok": True}
+        except Exception as ex:
+            res = {"ok": False, "error": str(ex)[:300]}
+        res["at"] = dt.datetime.now(IST).isoformat(); rec["youtube_thumb"] = res
+        log(e["id"], "youtube thumbnail:", res); save_state(st)
 
 
 if __name__ == "__main__":
