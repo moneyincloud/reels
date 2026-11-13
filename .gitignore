@@ -38,3 +38,5 @@ studio/penny15/vo/
 studio/penny15/mix.wav
 __pycache__/
 *.pyc
+studio/taxgst/*.png
+!studio/taxgst/host.png

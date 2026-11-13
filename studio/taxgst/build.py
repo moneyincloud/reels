@@ -1,0 +1,109 @@
+import os
+F='file:///home/claude/reels/studio/fonts/'
+N=9
+def foot(i): return f'<div class="foot"><span>@moneyincloud</span><span>{i}/{N}</span></div>'
+slides=[]
+slides.append(f'''<section class="s cover">
+<div class="pill">INCOME TAX &amp; GST · 2026</div>
+<h1>Earn ₹12.75 lakh?<br><em>Pay ₹0 tax.</em></h1>
+<p class="sub">The 2026 tax + GST cheat sheet<br>in 9 slides 👉</p>
+<img class="host" src="host.png">
+{foot(1)}</section>''')
+slides.append(f'''<section class="s">
+<div class="tag">WHAT CHANGED</div>
+<h2>New law. <em>Same slabs.</em></h2>
+<div class="big">From 1 April 2026, the <b>Income Tax Act, 2025</b> replaced the 1961 Act.</div>
+<div class="card">Budget 2026 did <b>not</b> change the slabs. "Previous year" + "assessment year" are now one <b>"tax year"</b>.</div>
+{foot(2)}</section>''')
+rows=[("Up to ₹4 lakh","Nil"),("₹4 – 8 lakh","5%"),("₹8 – 12 lakh","10%"),("₹12 – 16 lakh","15%"),("₹16 – 20 lakh","20%"),("₹20 – 24 lakh","25%"),("Above ₹24 lakh","30%")]
+tr=''.join(f'<tr><td>{a}</td><td class="r">{b}</td></tr>' for a,b in rows)
+slides.append(f'''<section class="s">
+<div class="tag">NEW REGIME · TAX YEAR 2026-27</div>
+<h2>The 7 slabs</h2>
+<table>{tr}</table>
+<div class="note" style="margin-top:22px">The new regime is the default. You can still choose the old one.</div>
+{foot(3)}</section>''')
+slides.append(f'''<section class="s">
+<div class="tag">WHY ₹12.75 LAKH = ZERO</div>
+<h2>Rebate + <em>deduction</em></h2>
+<div class="eq"><div class="box">₹12,00,000<small>87A rebate makes tax ₹0</small></div><div class="op">+</div><div class="box">₹75,000<small>standard deduction (salaried)</small></div></div>
+<div class="eqr">= <b>₹12.75 lakh</b> salary, ₹0 tax</div>
+<div class="note">Cross ₹12 lakh taxable even by ₹1 and slab tax applies (marginal relief softens it).</div>
+{foot(4)}</section>''')
+slides.append(f'''<section class="s">
+<div class="tag">⚠️ THE CATCH FOR INVESTORS</div>
+<h2>Stock gains are <em>separate</em></h2>
+<div class="two"><div class="card c2"><div class="k">STCG</div><div class="v">20%</div><small>equity sold within 12 months</small></div>
+<div class="card c2"><div class="k">LTCG</div><div class="v">12.5%</div><small>above ₹1.25 lakh gain a year</small></div></div>
+<div class="note">The 87A rebate doesn't cover these special-rate gains, so you can owe tax on them even under ₹12 lakh.</div>
+{foot(5)}</section>''')
+slides.append(f'''<section class="s">
+<div class="tag">GST 2.0 · SINCE 22 SEP 2025</div>
+<h2>Main slabs: <em>4 → 2</em></h2>
+<div class="slabs"><div class="sl g"><b>5%</b><span>essentials</span></div><div class="sl b"><b>18%</b><span>standard</span></div><div class="sl rr"><b>40%</b><span>luxury &amp; sin</span></div></div>
+<div class="card">The old <b>12%</b> and <b>28%</b> slabs were folded into 5% and 18%. Many daily items are now <b>0%</b>.</div>
+{foot(6)}</section>''')
+def grp(rate,cls,items): return f'<div class="gr {cls}"><b>{rate}</b><span>{items}</span></div>'
+slides.append(f'''<section class="s">
+<div class="tag">WHAT YOU PAY NOW</div>
+<h2>GST on <em>everyday stuff</em></h2>
+{grp("0%","z","Milk, paneer, fresh fruit &amp; veg, individual health &amp; life insurance")}
+{grp("5%","g","Soap, shampoo, toothpaste, ghee, butter, namkeen")}
+{grp("18%","b","AC, TV above 32\", small cars, bikes up to 350cc, cement")}
+{grp("40%","rr","Cola &amp; aerated drinks, bigger cars, bikes above 350cc")}
+{foot(7)}</section>''')
+slides.append(f'''<section class="s recap">
+<div class="tag">📸 SCREENSHOT THIS</div>
+<h2>Tax + GST 2026 <em>in 6 lines</em></h2>
+<ol><li>New Income Tax Act from 1 Apr 2026, slabs unchanged</li>
+<li>New regime: nil up to ₹4L, top 30% above ₹24L</li>
+<li>Salaried: ₹0 tax up to ₹12.75L (rebate + ₹75k)</li>
+<li>Stocks: STCG 20%, LTCG 12.5% above ₹1.25L</li>
+<li>GST: 5% · 18% · 40% (since 22 Sep 2025)</li>
+<li>Health &amp; life insurance: 0% GST</li></ol>
+{foot(8)}</section>''')
+slides.append(f'''<section class="s cta">
+<h2>Which slab <em>are you in?</em></h2>
+<div class="kw">Comment <b>TAX</b> 👇</div>
+<div class="sub">💾 Save it for ITR time · Follow <b>@moneyincloud</b></div>
+<img class="host h2" src="host.png">
+<div class="disc">Sources: Budget 2026-27 coverage (Business Today), ClearTax GST rates. Education only, not tax advice. Rules have conditions; check with a CA.</div>
+{foot(9)}</section>''')
+css=f'''
+@font-face{{font-family:Anton;src:url({F}anton-latin-400-normal.woff)}}
+@font-face{{font-family:Pop;src:url({F}Poppins-Bold.ttf)}}
+@font-face{{font-family:PF;font-style:italic;src:url({F}playfair-display-latin-800-italic.woff)}}
+*{{box-sizing:border-box;margin:0}}
+body{{background:#ddd}}
+.s{{width:1080px;height:1350px;position:relative;overflow:hidden;background:#FFF8EC;padding:150px 120px 140px;font-family:Pop;color:#14213D;
+ background-image:radial-gradient(circle at 90% 8%,#FFE1B3 0,transparent 340px),radial-gradient(circle at 5% 95%,#D6F5E3 0,transparent 380px)}}
+h1{{font-family:Anton;font-size:128px;line-height:1.02;letter-spacing:1px;margin-top:40px}}
+h2{{font-family:Anton;font-size:96px;line-height:1.05;margin:24px 0 40px}}
+em{{font-family:PF;font-style:italic;color:#E8590C}}
+.pill,.tag{{display:inline-block;background:#14213D;color:#FFF8EC;font-size:30px;padding:12px 26px;border-radius:40px;letter-spacing:2px}}
+.tag{{background:#E8590C}}
+.sub{{font-size:40px;margin-top:36px;line-height:1.35}}
+.host{{position:absolute;right:40px;bottom:120px;height:560px}}
+.cover .sub{{max-width:520px}}
+.big{{font-size:46px;line-height:1.35;margin-bottom:40px}}
+.card{{background:#fff;border:4px solid #14213D;border-radius:28px;padding:34px 40px;font-size:38px;line-height:1.4;box-shadow:10px 10px 0 #14213D}}
+table{{width:100%;border-collapse:collapse;font-size:42px}}
+td{{padding:9px 10px;border-bottom:3px dashed #14213D55}} .r{{text-align:right;color:#E8590C;font-family:Anton;font-size:56px}}
+.note{{font-size:34px;line-height:1.4;margin-top:40px;color:#3d4a66}}
+.eq{{display:flex;align-items:center;gap:24px;margin-top:20px}} .box{{flex:1;background:#fff;border:4px solid #14213D;border-radius:24px;padding:30px;font-family:Anton;font-size:68px;text-align:center;box-shadow:8px 8px 0 #14213D}}
+.box small{{display:block;font-family:Pop;font-size:28px;margin-top:10px;line-height:1.3}} .op{{font-family:Anton;font-size:90px}}
+.eqr{{font-size:54px;margin-top:50px}} .eqr b{{color:#1B8A4B}}
+.two{{display:flex;gap:30px}} .c2{{flex:1;text-align:center}} .k{{font-size:40px}} .v{{font-family:Anton;font-size:130px;color:#E8590C}} .c2 small{{font-size:30px}}
+.slabs{{display:flex;gap:26px;margin-bottom:50px}} .sl{{flex:1;border-radius:28px;padding:40px 10px;text-align:center;color:#fff}} .sl b{{display:block;font-family:Anton;font-size:110px;font-weight:400}} .sl span{{font-size:32px}}
+.g{{background:#1B8A4B}} .b{{background:#1F5FBF}} .sl.rr{{background:#C92A2A}} .z{{background:#6B7280}}
+.gr{{display:flex;align-items:center;gap:30px;margin-bottom:28px;border-radius:26px;padding:24px 30px;color:#fff}} .gr b{{font-family:Anton;font-size:72px;font-weight:400;min-width:150px}} .gr span{{font-size:34px;line-height:1.35}}
+.gr.rr{{background:#C92A2A}}
+ol{{font-size:40px;line-height:1.4;padding-left:56px}} ol li{{margin-bottom:22px}} ol li::marker{{font-family:Anton;color:#E8590C}}
+.recap{{background:#FFFDF6}}
+.kw{{font-family:Anton;font-size:110px;margin-top:20px}} .kw b{{color:#E8590C;font-weight:400}}
+.h2{{height:460px;bottom:290px}}
+.cta .sub{{max-width:560px}}
+.disc{{position:absolute;left:120px;right:120px;bottom:130px;font-size:24px;color:#555;line-height:1.35}}
+.foot{{position:absolute;left:120px;right:120px;bottom:60px;display:flex;justify-content:space-between;font-size:28px;color:#14213D99}}
+'''
+open('index.html','w').write(f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head><body>{"".join(slides)}</body></html>')
