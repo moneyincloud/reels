@@ -5,4 +5,4 @@ Spot-check: TradingView top-10 components (LICI, BHEL, ICICIAMC, GROWW, LAURUSLA
 Rejected as stale: tickertape constituents page (old composition).
 Constituent count: 150
 Prices: INDmoney MCP get_indian_stocks_ohlc, 1week candles; week_pct = close(2026-11-09 candle)/close(2026-11-02 candle) - 1.
-STATUS: PARTIAL - INDmoney shared rate limit (500 calls/hour) hit at 22:44 IST; remaining stocks listed in mid_pending.tsv.
+STATUS: COMPLETE - 150 of 150 computed (fetches 22:36-23:41 IST, 13 Nov 2026). symbol and mcap_cr filled for 30 stocks only; blank for the rest (details calls skipped to save quota).
