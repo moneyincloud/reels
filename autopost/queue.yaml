@@ -1,0 +1,109 @@
+# moneyincloud auto-post queue. The agent posts ONLY entries with approved: true.
+# publish_at is India time (IST), format YYYY-MM-DD HH:MM. Put the video + cover in autopost/media/.
+# YouTube is uploaded as soon as an entry is approved and released by YouTube at publish_at;
+# Instagram goes out on the first run at or after publish_at (runs every 15 min).
+- id: divi-tamil-2026-11-14
+  approved: false
+  publish_at: 2026-11-14 19:00
+  platforms:
+  - instagram
+  - youtube
+  video: highest-dividend-stocks-india-2026-tamil.mp4
+  cover: highest-dividend-stocks-india-2026-tamil-cover.jpg
+  ig_caption: |
+    Highest dividend paying stocks in India 2026: ₹1 lakh can pay you up to ₹6,600 a year 💰 (Tamil audio)
+
+    High dividend yield stocks, ₹1 lakh → yearly dividend (trailing yield, before tax):
+    1️⃣ Coal India: 6.6% → ~₹6,600
+    2️⃣ Wipro: 5.9% → ~₹5,900
+    3️⃣ ONGC: 5.7% → ~₹5,700
+    4️⃣ Indian Oil: 5.5% → ~₹5,500
+    5️⃣ BPCL: 5.4% → ~₹5,400
+    6️⃣ ITC: 5.1% → ~₹5,100
+
+    Thinking of dividend stocks for passive income? Know the catch first:
+    🧾 Dividends are taxed at your slab rate (+10% TDS if one company pays you over ₹10,000 a year)
+    📉 Yield = dividend ÷ price. A high yield can simply mean the price fell.
+    ❌ Dividends are never guaranteed. Companies can cut them any year.
+
+    👇 Which one do you hold? Comment DIVIDEND
+    💾 Save this dividend cheat sheet. Follow @moneyincloud for stock market tips in Tamil and English.
+
+    Yields: Equitymaster screener, 6 Nov 2026 (trailing, before tax). Illustration only; past dividends don't promise future ones.
+    Not a buy/sell call. Education only, not investment or tax advice. I may hold some of the stocks named.
+
+    #DividendStocks #PassiveIncome #StockMarketTamil #moneyincloud
+  first_comment: Dividend stocks or FD for monthly income? Reply DIV or FD 👇
+  yt_title: 'Highest Dividend Paying Stocks in India 2026 (Tamil) | ₹1 Lakh = ₹6,600 a Year? #shorts'
+  yt_description: |
+    Highest dividend paying stocks in India 2026, explained in Tamil. Trailing dividend yields (Equitymaster, 6 Nov 2026), ₹1 lakh → per year before tax:
+    Coal India 6.6% (₹6,600) · Wipro 5.9% · ONGC 5.7% · Indian Oil 5.5% · BPCL 5.4% · ITC 5.1%
+    The catch: dividends are taxed at your slab rate (+10% TDS above ₹10,000/yr per company); a high yield can mean the price fell; dividends aren't guaranteed.
+
+    Education only, not investment or tax advice. Not a buy/sell call. I may hold some of the stocks named.
+    #DividendStocks #Tamil #Shorts
+  yt_tags:
+  - highest dividend paying stocks in india
+  - high dividend yield stocks 2026
+  - dividend stocks tamil
+  - dividend stocks for passive income
+  - best dividend stocks india
+  - coal india dividend
+  - itc dividend
+  - ongc dividend
+  - bpcl dividend
+  - ioc dividend
+  - wipro dividend
+  - stock market tamil
+  - moneyincloud
+- id: penny15-2026-11-15
+  approved: false
+  publish_at: 2026-11-15 19:00
+  platforms:
+  - instagram
+  - youtube
+  video: penny-stocks-under-40-india-2026.mp4
+  cover: penny-stocks-under-40-india-2026-cover.jpg
+  ig_caption: |
+    Penny stocks under ₹40 in India: this ₹12 stock is worth ₹1.4 lakh crore 🤯
+
+    15 popular low price stocks (live price, 13 Nov 2026):
+    📱 Vodafone Idea ₹12.56 · 🏦 Yes Bank ₹17.57 · 🌬️ Suzlon ₹38.16
+    🏛️ PSU banks: UCO ₹24.85 · Punjab & Sind ₹21.75 · Central Bank ₹32.18 · Indian Overseas ₹31.63
+    🛣️ IRB ₹18.79 · ⚡ Reliance Power ₹18.54 · JP Power ₹14.08 · RattanIndia Power ₹7.00
+    🧵 Alok ₹8.13 · Trident ₹23.51 · 🏗️ HCC ₹18.44 · 📡 GTL Infra ₹1.08
+
+    😳 The twist: ALL 15 are down 20% to 57% from their 1-year high.
+
+    A low share price is NOT cheap. Before buying any penny stock, check:
+    ✅ Market value (Vodafone Idea at ₹12 = ₹1.4 lakh cr; Alok at ₹8 = ₹4,072 cr)
+    ✅ Debt
+    ✅ The exchange's surveillance (ASM/GSM) list
+
+    👇 Which one do you own? Comment PENNY
+    💾 Save this list. Follow @moneyincloud for stock market tips in English & Tamil.
+
+    Prices & 52-week highs: INDmoney, 13 Nov 2026, 3:13 PM. % falls are my calculation.
+    Not a buy/sell call. Education only, not investment advice. I may hold some of the stocks named.
+
+    #PennyStocks #StockMarketIndia #SmallCapStocks #moneyincloud
+  first_comment: Which penny stock have you held the longest? 👇
+  yt_title: '15 Penny Stocks Under ₹40 (India 2026): All Down 20–57%! ₹12 Stock Worth ₹1.4 Lakh Cr #shorts'
+  yt_description: |
+    15 popular penny stocks under ₹40 with live prices (INDmoney, 13 Nov 2026): Vodafone Idea, Yes Bank, Suzlon, UCO Bank, Punjab & Sind Bank, Central Bank, Indian Overseas Bank, IRB, Reliance Power, JP Power, Alok, Trident, HCC, RattanIndia Power, GTL Infra.
+    All 15 are down 20% to 57% from their 1-year high. A low price is not cheap: check market value, debt and the surveillance list.
+    Not a buy/sell call. Education only. I may hold some of the stocks named.
+    #PennyStocks #Shorts
+  yt_tags:
+  - penny stocks
+  - penny stocks india
+  - penny stocks under 40
+  - low price stocks
+  - vodafone idea share
+  - yes bank share
+  - suzlon share
+  - psu bank stocks
+  - reliance power share
+  - jp power share
+  - stock market india
+  - moneyincloud
