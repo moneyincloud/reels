@@ -24,6 +24,9 @@ Nothing is posted unless `approved: true`. Cost: ₹0 (GitHub Actions minutes fo
 1. Go to console.cloud.google.com → new project → **Enable "YouTube Data API v3"**.
 2. Set up the **OAuth consent screen**: External, add your Gmail as a test user. Then go to **Credentials → Create OAuth client ID → Desktop app** and download `client_secret.json`.
 3. On your laptop, run `pip install google-auth-oauthlib`, then `python autopost/get_youtube_token.py client_secret.json`. Sign in with the channel's Google account. It prints three values.
+   **No laptop? (mobile path):** create the OAuth client as a **Web application** with redirect URI
+   `https://developers.google.com/oauthplayground`. Then open the OAuth Playground and set ⚙ → "Use your own OAuth credentials".
+   Authorize the scope `https://www.googleapis.com/auth/youtube.upload`, then "Exchange authorization code for tokens" and copy the refresh token.
 4. ⚠️ **Google's rule:** uploads from an API project that hasn't been audited stay **private** until the project passes the free YouTube API compliance audit (form: "YouTube API Services – Audit and Quota Extension"). Until then, YouTube uploads arrive as private and you switch them to public in YouTube Studio. You could also keep YouTube on Metricool's 20 free posts and use this agent for Instagram.
 5. Custom thumbnails need a phone-verified channel (youtube.com/verify).
 6. While the consent screen is in "Testing" status, the refresh token expires after 7 days. To stop that, set the consent screen's publishing status to **In production** (no review is needed for your own use).
