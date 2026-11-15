@@ -105,6 +105,14 @@
    "error": null,
    "api": "https://graph.facebook.com/v23.0",
    "at": "2026-11-13T21:25:30.607224+05:30"
+  },
+  "2026-11-16T00:25:41.193237+05:30": {
+   "ok": true,
+   "username": "moneyincloud",
+   "media_count": 97,
+   "error": null,
+   "api": "https://graph.facebook.com/v23.0",
+   "at": "2026-11-16T00:25:41.193237+05:30"
   }
  },
  "tax-gst-carousel-2026-11-13": {
@@ -138,6 +146,50 @@
   "youtube_thumb": {
    "ok": true,
    "at": "2026-11-14T16:27:33.625565+05:30"
+  }
+ },
+ "top-gainers-week-2026-11-15": {
+  "youtube": {
+   "video_id": "aqgtqtDXfns",
+   "url": "https://youtube.com/shorts/aqgtqtDXfns",
+   "publish_at": null,
+   "at": "2026-11-16T00:25:48.803217+05:30"
+  },
+  "instagram": {
+   "media_id": "18063595001579194",
+   "permalink": "https://www.instagram.com/reel/DfxeWSYDnqd/",
+   "at": "2026-11-16T00:26:50.148085+05:30"
+  },
+  "instagram_trial": {
+   "media_id": "18440869366177812",
+   "permalink": "https://www.instagram.com/reel/DfxedzVD1i3/",
+   "at": "2026-11-16T00:27:50.401624+05:30"
+  },
+  "youtube_thumb": {
+   "ok": true,
+   "at": "2026-11-16T00:29:44.000071+05:30"
+  }
+ },
+ "top-losers-week-2026-11-16": {
+  "youtube": {
+   "video_id": "vxofXrAXgKQ",
+   "url": "https://youtube.com/shorts/vxofXrAXgKQ",
+   "publish_at": null,
+   "at": "2026-11-16T00:27:58.916221+05:30"
+  },
+  "instagram": {
+   "media_id": "18134756260739982",
+   "permalink": "https://www.instagram.com/reel/DfxemT7kyRO/",
+   "at": "2026-11-16T00:28:41.852368+05:30"
+  },
+  "instagram_trial": {
+   "media_id": "18120783238808657",
+   "permalink": "https://www.instagram.com/reel/DfxerUxj0rS/",
+   "at": "2026-11-16T00:29:41.880307+05:30"
+  },
+  "youtube_thumb": {
+   "ok": true,
+   "at": "2026-11-16T00:29:49.317517+05:30"
   }
  }
 }
