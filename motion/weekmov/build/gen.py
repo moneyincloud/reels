@@ -139,7 +139,7 @@ path {{ fill:none; stroke:var(--ink); stroke-width:7; stroke-linecap:round; stro
     <div class="ttl hand" style="top:280px">{D['cta_ttl']}</div>
     <img class="host" id="host" src="assets/img/s0_008.png" style="left:50px;top:560px;width:380px" />
     <div class="pill" id="cta1" style="left:440px;top:640px;background:var(--col)">COMMENT "{D['cta_kw']}"</div>
-    <div class="pill" id="cta2" style="left:440px;top:790px;background:var(--hl);color:var(--ink);font-size:48px">FOLLOW FOR NEXT WEEK</div>
+    <div class="pill" id="cta2" style="left:440px;top:790px;background:var(--hl);color:var(--ink);font-size:48px">{D.get('follow_pill', 'FOLLOW FOR NEXT WEEK')}</div>
   </div></section>
 
   <section class="clip" id="caps" data-start="0" data-duration="{DUR:.2f}" data-track-index="7" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">

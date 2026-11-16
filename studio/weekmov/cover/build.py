@@ -1,4 +1,7 @@
-import json
+import json, os
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+P=json.load(open('/home/claude/reels/studio/weekmov/period.json'))
+WK=P['kind']=='week'
 F='/home/claude/reels/motion/weekmov/assets/fonts/'
 for m in ('gain','loss'):
     D=json.load(open(f'/home/claude/reels/motion/weekmov/build/{m}.json'))
@@ -25,7 +28,7 @@ body{{margin:0;width:1080px;height:1920px;background:#FBF8F0;background-image:li
 .h{{position:absolute;left:40px;top:150px;font-size:34px;color:#555}}
 .tag{{position:absolute;bottom:170px;left:0;right:0;text-align:center;font-family:A;font-size:70px;color:{col}}}
 </style></head><body><div class="h">@moneyincloud</div><div class="safe">
-<div class="pill">9–13 NOV 2026</div><div class="t1">TOP 10</div><div class="t2">{word} THIS WEEK</div>
+<div class="pill">{P["range_label"]}</div><div class="t1">TOP 10</div><div class="t2">{word} {"THIS WEEK" if WK else "IN " + P["month_name"].split()[0].upper()}</div>
 <div class="t3">large · mid · small caps</div><div class="box">{rows}</div>
 <div class="foot">Data: INDmoney · Not a buy/sell call · Education only</div></div>{extra}</body></html>'''
         open(f'{m}_{kind}.html','w').write(html)

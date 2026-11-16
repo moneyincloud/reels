@@ -1,7 +1,7 @@
 {
  "mode": "gain",
  "title": "Top 10 weekly gainers by market cap",
- "kw": "TOP GAINERS THIS WEEK · 9–13 NOV",
+ "kw": "TOP GAINERS THIS WEEK · 9–13 NOV 2026",
  "hook_ttl": "biggest jump this week",
  "hook2": "+ top 10 gainers in<br><b>large · mid · small</b> caps 👇",
  "top": {
@@ -296,5 +296,17 @@
  },
  "cta_ttl": "Which one do you hold?",
  "cta_kw": "GAIN",
- "disc": "Week change: 8 Nov (Muhurat) close → 13 Nov close · Data: INDmoney · Not a buy/sell call · Education only"
+ "disc": "Week change: 8 Nov (Muhurat) close → 13 Nov close · Data: INDmoney · Not a buy/sell call · Education only",
+ "follow_pill": "FOLLOW FOR NEXT WEEK",
+ "period": {
+  "kind": "week",
+  "end": "2026-11-13",
+  "start": "2026-11-09",
+  "prev_close": "2026-11-08",
+  "sessions": 4,
+  "prev_label": "8 Nov (Muhurat)",
+  "end_label": "13 Nov",
+  "month_name": "November 2026",
+  "range_label": "9–13 NOV 2026"
+ }
 }
