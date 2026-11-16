@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Intraday vs Swing vs F&amp;O</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<style>
+@font-face { font-family:"Caveat"; src:url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight:700; }
+@font-face { font-family:"Anton"; src:url("assets/fonts/anton-latin-400-normal.woff") format("woff"); }
+@font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
+:root { --paper:#FBF8F0; --ink:#1B1B1F; --mut:#5B5B66; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
+#root { position:relative; width:100%; height:100%; overflow:hidden; color:var(--ink); font-family:"Caveat","Poppins",cursive; }
+#paper { position:absolute; inset:-60px; background-color:var(--paper);
+  background-image: linear-gradient(rgba(70,120,220,.13) 2px, transparent 2px), linear-gradient(90deg, rgba(70,120,220,.13) 2px, transparent 2px);
+  background-size: 54px 54px; }
+#world { position:absolute; inset:0; }
+.scene { position:absolute; inset:0; overflow:hidden; }
+.cam { position:absolute; inset:0; transform-origin:0 0; }
+.handle { position:absolute; left:40px; top:120px; font-family:"Oswald",sans-serif; font-size:30px; color:#55556A; z-index:50; }
+.hand { font-family:"Caveat",cursive; font-weight:700; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:100px; line-height:1; }
+.tag { position:absolute; padding:18px 40px 12px; border:6px solid var(--ink); border-radius:20px; box-shadow:10px 10px 0 var(--ink); color:#fff;
+  font-family:"Anton",sans-serif; font-size:96px; line-height:1; text-align:center; }
+.tag small { display:block; font-family:"Poppins",sans-serif; font-size:30px; margin-top:6px; }
+.hdr { position:absolute; left:80px; right:80px; top:200px; display:flex; align-items:baseline; gap:22px; z-index:20; }
+.cap-t { font-size:110px; line-height:1; }
+.hdr .sub { font-family:"Oswald",sans-serif; font-size:32px; color:var(--mut); }
+.chart { position:absolute; }
+.dash { stroke:#999; stroke-width:3; stroke-dasharray:10 10; }
+.lbl { font-family:"Oswald",sans-serif; font-size:40px; font-weight:500; fill:var(--ink); }
+.svl { font-family:"Anton",sans-serif; font-size:44px; fill:var(--ink); }
+.sdl { font-family:"Oswald",sans-serif; font-size:32px; fill:var(--mut); }
+.moon { font-size:44px; }
+.clock { position:absolute; right:70px; top:330px; background:#fff; border:5px solid var(--ink); border-radius:18px; box-shadow:6px 6px 0 var(--ink);
+  padding:6px 22px; font-family:"Anton",sans-serif; font-size:56px; z-index:20; display:flex; gap:12px; align-items:center; }
+.bell { position:absolute; right:300px; top:320px; font-size:84px; z-index:20; opacity:0; }
+.stamp { position:absolute; padding:10px 26px; border:6px solid var(--ink); border-radius:12px; background:#FFE45C;
+  font-family:"Anton",sans-serif; font-size:54px; box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.big { position:absolute; font-family:"Anton",sans-serif; font-size:150px; line-height:1; }
+#night { position:absolute; inset:0; background:rgba(22,30,70,.30); opacity:0; pointer-events:none; }
+path { fill:none; stroke:var(--ink); stroke-linecap:round; stroke-linejoin:round; }
+#ticket { position:absolute; left:90px; right:90px; top:380px; background:#fff; border:6px solid var(--ink); border-radius:24px; box-shadow:12px 12px 0 var(--ink); padding:30px 40px; }
+.tk-h { font-family:"Anton",sans-serif; font-size:60px; color:#D93A2B; border-bottom:5px dashed #ccc; padding-bottom:16px; margin-bottom:10px; }
+.tk-r { display:flex; justify-content:space-between; align-items:baseline; padding:18px 0; font-family:"Poppins",sans-serif; font-size:36px; }
+.tk-r b { font-family:"Anton",sans-serif; font-weight:400; font-size:60px; }
+.tk-r.tot { border-top:5px solid var(--ink); }
+.tk-r.tot b { color:#D93A2B; font-size:76px; }
+#saw { position:absolute; left:90px; right:90px; top:2330px; height:420px; }
+#plank { position:absolute; left:0; right:0; top:120px; height:44px; background:#C9A36B; border:5px solid var(--ink); border-radius:10px; transform-origin:50% 50%; }
+.side { position:absolute; top:-210px; width:330px; text-align:center; font-family:"Anton",sans-serif; font-size:50px; background:#fff;
+  border:5px solid var(--ink); border-radius:18px; box-shadow:6px 6px 0 var(--ink); padding:10px 0; }
+.side b { display:block; font-weight:400; font-size:62px; }
+.side.l { left:10px; color:#1E8E4E; } .side.r { right:10px; color:#D93A2B; }
+#pivot { position:absolute; left:50%; top:166px; width:0; height:0; margin-left:-70px; border-left:70px solid transparent; border-right:70px solid transparent; border-bottom:120px solid var(--ink); }
+.pp { position:absolute; width:120px; height:220px; overflow:visible; }
+.pp circle, .pp path { fill:#B9B9C3; stroke:var(--ink); stroke-width:6; }
+#src { position:absolute; left:60px; right:60px; top:1080px; text-align:center; font-family:"Oswald",sans-serif; font-size:30px; color:var(--mut); }
+.pill { position:absolute; border-radius:22px; padding:12px 34px; font-family:"Anton",sans-serif; font-size:66px; color:#fff; border:5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.cap { position:absolute; left:0; right:0; top:1225px; text-align:center; opacity:0; }
+.cap span { display:inline-block; max-width:930px; background:#fff; border:5px solid var(--ink); border-radius:18px; box-shadow:6px 8px 0 var(--ink); padding:10px 30px; font-family:"Poppins",sans-serif; font-weight:700; font-size:42px; line-height:1.25; }
+#disc { position:absolute; left:30px; right:30px; top:1320px; text-align:center; font-family:"Oswald",sans-serif; font-size:26px; color:rgb(84,84,96); z-index:30; }
+#vignette { position:absolute; inset:0; pointer-events:none; z-index:99; background:radial-gradient(ellipse at center, transparent 60%, rgba(27,27,31,.12) 100%); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="85.91" data-fps="30">
+  <div id="paper"></div>
+  <div class="handle">@moneyincloud</div>
+  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="85.91" data-track-index="9" data-volume="1"></audio>
+  <div id="world">
+<section class="scene clip" id="sc0" data-start="0.00" data-duration="6.91" data-track-index="1"><div class="cam" id="cam0"><div class="ttl hand" style="top:240px">3 ways to trade</div>
+<div class="tag" id="tg0" style="left:70px;top:420px;background:#2F6FE4;transform:rotate(-4deg)">INTRADAY<small>same day</small></div>
+<div class="tag" id="tg1" style="left:330px;top:640px;background:#C25E00;transform:rotate(3deg)">SWING<small>days to weeks</small></div>
+<div class="tag" id="tg2" style="left:600px;top:860px;background:#D93A2B;transform:rotate(-3deg)">F&amp;O<small>contracts, lots</small></div>
+<div class="hand" id="real" style="position:absolute;left:0;right:0;top:1080px;text-align:center;font-size:62px">real trades · real prices 👇</div></div></section>
+<section class="scene clip" id="sc1" data-start="6.56" data-duration="20.16" data-track-index="2"><div class="cam" id="cam1"><div class="chart" id="ichart" style="left:0;top:330px;width:1540px;height:640px">
+<svg viewBox="0 0 1540 640" style="width:1540px;height:640px;overflow:visible">
+<line x1="50" y1="440.0" x2="1540" y2="440.0" class="dash"/>
+<g class="cd" id="cd0"><line x1="68" y1="159.3" x2="68" y2="506.7" stroke="#1B1B1F" stroke-width="4"/><rect x="54" y="216.7" width="28" height="223.3" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd1"><line x1="126" y1="150.3" x2="126" y2="214.3" stroke="#1B1B1F" stroke-width="4"/><rect x="112" y="187.7" width="28" height="25.7" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd2"><line x1="184" y1="46.7" x2="184" y2="186.7" stroke="#1B1B1F" stroke-width="4"/><rect x="170" y="90.0" width="28" height="95.7" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd3"><line x1="242" y1="66.7" x2="242" y2="111.3" stroke="#1B1B1F" stroke-width="4"/><rect x="228" y="90.0" width="28" height="15.3" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd4"><line x1="300" y1="105.7" x2="300" y2="160.0" stroke="#1B1B1F" stroke-width="4"/><rect x="286" y="105.7" width="28" height="17.0" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd5"><line x1="358" y1="107.3" x2="358" y2="153.0" stroke="#1B1B1F" stroke-width="4"/><rect x="344" y="124.7" width="28" height="24.7" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd6"><line x1="416" y1="148.3" x2="416" y2="198.7" stroke="#1B1B1F" stroke-width="4"/><rect x="402" y="148.3" width="28" height="31.7" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd7"><line x1="474" y1="160.0" x2="474" y2="192.0" stroke="#1B1B1F" stroke-width="4"/><rect x="460" y="178.3" width="28" height="4.0" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd8"><line x1="532" y1="167.0" x2="532" y2="191.0" stroke="#1B1B1F" stroke-width="4"/><rect x="518" y="180.0" width="28" height="8.7" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd9"><line x1="590" y1="161.7" x2="590" y2="189.3" stroke="#1B1B1F" stroke-width="4"/><rect x="576" y="165.7" width="28" height="21.3" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd10"><line x1="648" y1="144.0" x2="648" y2="170.3" stroke="#1B1B1F" stroke-width="4"/><rect x="634" y="164.7" width="28" height="4.0" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd11"><line x1="706" y1="150.3" x2="706" y2="170.0" stroke="#1B1B1F" stroke-width="4"/><rect x="692" y="160.0" width="28" height="4.0" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd12"><line x1="764" y1="148.0" x2="764" y2="167.7" stroke="#1B1B1F" stroke-width="4"/><rect x="750" y="151.0" width="28" height="8.7" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd13"><line x1="822" y1="120.0" x2="822" y2="153.0" stroke="#1B1B1F" stroke-width="4"/><rect x="808" y="146.7" width="28" height="4.3" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd14"><line x1="880" y1="133.3" x2="880" y2="163.3" stroke="#1B1B1F" stroke-width="4"/><rect x="866" y="149.7" width="28" height="6.0" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd15"><line x1="938" y1="140.7" x2="938" y2="156.7" stroke="#1B1B1F" stroke-width="4"/><rect x="924" y="151.0" width="28" height="4.7" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd16"><line x1="996" y1="148.7" x2="996" y2="180.0" stroke="#1B1B1F" stroke-width="4"/><rect x="982" y="151.0" width="28" height="9.0" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd17"><line x1="1054" y1="155.0" x2="1054" y2="175.0" stroke="#1B1B1F" stroke-width="4"/><rect x="1040" y="155.0" width="28" height="4.7" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd18"><line x1="1112" y1="155.0" x2="1112" y2="182.0" stroke="#1B1B1F" stroke-width="4"/><rect x="1098" y="155.0" width="28" height="26.0" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd19"><line x1="1170" y1="160.0" x2="1170" y2="182.3" stroke="#1B1B1F" stroke-width="4"/><rect x="1156" y="170.3" width="28" height="12.0" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd20"><line x1="1228" y1="169.7" x2="1228" y2="179.7" stroke="#1B1B1F" stroke-width="4"/><rect x="1214" y="170.3" width="28" height="4.0" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd21"><line x1="1286" y1="166.0" x2="1286" y2="176.7" stroke="#1B1B1F" stroke-width="4"/><rect x="1272" y="168.7" width="28" height="4.0" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd22"><line x1="1344" y1="168.3" x2="1344" y2="208.0" stroke="#1B1B1F" stroke-width="4"/><rect x="1330" y="168.3" width="28" height="36.0" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd23"><line x1="1402" y1="202.7" x2="1402" y2="247.7" stroke="#1B1B1F" stroke-width="4"/><rect x="1388" y="206.0" width="28" height="20.7" fill="#D93A2B" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g class="cd" id="cd24"><line x1="1460" y1="215.0" x2="1460" y2="239.3" stroke="#1B1B1F" stroke-width="4"/><rect x="1446" y="215.0" width="28" height="23.7" fill="#1E8E4E" stroke="#1B1B1F" stroke-width="3" rx="3"/></g>
+<g id="hpin"><circle cx="184" cy="46.7" r="22" fill="none" stroke="#1E8E4E" stroke-width="7"/>
+<text x="216" y="36.7" class="lbl" fill="#1E8E4E">HIGH ₹689 · 10:00</text></g>
+<text id="olbl" x="90" y="492.0" class="lbl">OPEN ₹630 · 9:15</text>
+<g id="clbl"><text x="1182" y="285.0" class="lbl">CLOSE ₹664 · 3:30</text></g>
+</svg></div>
+<div class="stamp" id="istamp" style="left:610px;top:1000px;transform:rotate(-6deg)">SAME DAY: IN → OUT</div></div><div class="hdr"><span class="cap-t hand" style="color:#2F6FE4">Intraday</span><span class="sub">Kalyan Jewellers · 11 Nov · 15-min</span></div>
+<div class="clock" id="clock"><span>🕘</span><b id="clk">9:15</b></div><div class="bell" id="bell">🔔</div></section>
+<section class="scene clip" id="sc2" data-start="26.37" data-duration="22.39" data-track-index="3"><div class="cam" id="cam2"><div class="chart" id="schart" style="left:0;top:360px;width:1080px;height:710px">
+<svg viewBox="0 0 1080 710" style="width:1080px;height:710px;overflow:visible">
+<path id="swl" d="M120 537.3 L360 465.9 L600 267.7 L840 90.6" style="stroke:#C25E00;stroke-width:10"/>
+<g class="sd" id="sd0"><circle cx="120" cy="537.3" r="16" fill="#fff" stroke="#1B1B1F" stroke-width="6"/><text x="120" y="503.3" text-anchor="middle" class="svl">₹592</text><text x="120" y="680" text-anchor="middle" class="sdl">8 Nov</text></g>
+<g class="sd" id="sd1"><circle cx="360" cy="465.9" r="16" fill="#fff" stroke="#1B1B1F" stroke-width="6"/><text x="360" y="431.9" text-anchor="middle" class="svl">₹611</text><text x="360" y="680" text-anchor="middle" class="sdl">9 Nov</text></g>
+<g class="sd" id="sd2"><circle cx="600" cy="267.7" r="16" fill="#fff" stroke="#1B1B1F" stroke-width="6"/><text x="600" y="233.7" text-anchor="middle" class="svl">₹664</text><text x="600" y="680" text-anchor="middle" class="sdl">11 Nov</text></g>
+<g class="sd" id="sd3"><circle cx="840" cy="90.6" r="16" fill="#fff" stroke="#1B1B1F" stroke-width="6"/><text x="840" y="56.6" text-anchor="middle" class="svl">₹711</text><text x="840" y="680" text-anchor="middle" class="sdl">12 Nov</text></g><text class="moon" id="mn0" x="240" y="682" text-anchor="middle">🌙</text>
+<text class="moon" id="mn1" x="480" y="682" text-anchor="middle">🌙</text>
+<text class="moon" id="mn2" x="720" y="682" text-anchor="middle">🌙</text><g id="gapc"><line x1="1010" y1="63.7" x2="1010" y2="187.5" stroke="#1B1B1F" stroke-width="5"/><rect id="gapr" x="988" y="63.9" width="44" height="123.6" fill="#D93A2B" stroke="#1B1B1F" stroke-width="4" rx="4"/><text x="1010" y="37.9" text-anchor="middle" class="svl">₹718</text><text x="1010" y="239.5" text-anchor="middle" class="svl" fill="#D93A2B">₹685</text><text x="1010" y="680" text-anchor="middle" class="sdl">13 Nov</text></g></svg></div>
+<div class="big" id="sw20" style="left:150px;top:350px;color:#1E8E4E">+20%</div>
+<div class="stamp" id="gstamp" style="left:330px;top:340px;transform:rotate(5deg);background:#D93A2B;color:#fff">OVERNIGHT GAP</div>
+<div id="night"></div></div><div class="hdr"><span class="cap-t hand" style="color:#C25E00">Swing</span><span class="sub">Kalyan Jewellers · daily closes</span></div></section>
+<section class="scene clip" id="sc3" data-start="48.41" data-duration="24.93" data-track-index="4"><div class="cam" id="cam3"><div id="ticket"><div class="tk-h">NIFTY · NOV FUTURES</div>
+<div class="tk-r"><span>1 lot</span><b id="u65">65 units</b></div>
+<div class="tk-r"><span>× price (16 Nov, 9:52 AM)</span><b>₹25,350</b></div>
+<div class="tk-r tot"><span>= contract value</span><b id="lakh">₹16.5 lakh</b></div></div>
+<div class="big" id="p179" style="left:0;right:0;top:1960px;text-align:center;color:#1E8E4E;font-size:120px">+179 pts</div>
+<div id="saw"><div id="plank"><div class="side l">BUYER<b>+₹11,642</b></div><div class="side r">SELLER<b>−₹11,642</b></div></div><div id="pivot"></div></div>
+<div class="hand" id="math" style="position:absolute;left:0;right:0;top:2655px;text-align:center;font-size:52px">179 points × 65 units = ₹11,642 per lot</div></div><div class="hdr"><span class="cap-t hand" style="color:#D93A2B">F&amp;O</span><span class="sub">futures &amp; options · fixed lots</span></div></section>
+<section class="scene clip" id="sc4" data-start="72.99" data-duration="6.13" data-track-index="5"><div class="cam" id="cam4"><div class="ttl hand" style="top:230px">F&amp;O traders</div><svg class="pp" id="pp0" style="left:110px;top:390px" viewBox="0 0 120 220"><circle cx="60" cy="42" r="34"/><path d="M14 210 C 14 120, 106 120, 106 210 Z"/></svg>
+<svg class="pp" id="pp1" style="left:286px;top:390px" viewBox="0 0 120 220"><circle cx="60" cy="42" r="34"/><path d="M14 210 C 14 120, 106 120, 106 210 Z"/></svg>
+<svg class="pp" id="pp2" style="left:462px;top:390px" viewBox="0 0 120 220"><circle cx="60" cy="42" r="34"/><path d="M14 210 C 14 120, 106 120, 106 210 Z"/></svg>
+<svg class="pp" id="pp3" style="left:638px;top:390px" viewBox="0 0 120 220"><circle cx="60" cy="42" r="34"/><path d="M14 210 C 14 120, 106 120, 106 210 Z"/></svg>
+<svg class="pp" id="pp4" style="left:814px;top:390px" viewBox="0 0 120 220"><circle cx="60" cy="42" r="34"/><path d="M14 210 C 14 120, 106 120, 106 210 Z"/></svg>
+<svg class="pp" id="pp5" style="left:110px;top:660px" viewBox="0 0 120 220"><circle cx="60" cy="42" r="34"/><path d="M14 210 C 14 120, 106 120, 106 210 Z"/></svg>
+<svg class="pp" id="pp6" style="left:286px;top:660px" viewBox="0 0 120 220"><circle cx="60" cy="42" r="34"/><path d="M14 210 C 14 120, 106 120, 106 210 Z"/></svg>
+<svg class="pp" id="pp7" style="left:462px;top:660px" viewBox="0 0 120 220"><circle cx="60" cy="42" r="34"/><path d="M14 210 C 14 120, 106 120, 106 210 Z"/></svg>
+<svg class="pp" id="pp8" style="left:638px;top:660px" viewBox="0 0 120 220"><circle cx="60" cy="42" r="34"/><path d="M14 210 C 14 120, 106 120, 106 210 Z"/></svg>
+<svg class="pp" id="pp9" style="left:814px;top:660px" viewBox="0 0 120 220"><circle cx="60" cy="42" r="34"/><path d="M14 210 C 14 120, 106 120, 106 210 Z"/></svg>
+<div class="big" id="n9" style="left:0;right:0;top:930px;text-align:center;color:#D93A2B;font-size:110px">~9 in 10 lost money</div>
+<div id="src">Source: SEBI study, individual traders in equity derivatives, FY26 (Aug 2026)</div></div></section>
+<section class="scene clip" id="sc5" data-start="78.77" data-duration="7.49" data-track-index="6"><div class="cam" id="cam5"><div class="ttl hand" style="top:240px">Which one do you do?</div>
+<img id="host" src="assets/img/s0_008.png" style="position:absolute;left:40px;top:600px;width:360px"/>
+<div class="pill" id="o0" style="left:430px;top:470px;background:#2F6FE4">INTRADAY</div>
+<div class="pill" id="o1" style="left:430px;top:620px;background:#C25E00">SWING</div>
+<div class="pill" id="o2" style="left:430px;top:770px;background:#D93A2B">F&amp;O</div>
+<div class="pill" id="sv" style="left:430px;top:960px;background:#FFE45C;color:#1B1B1F;font-size:50px">💾 SAVE THIS</div></div></section>
+  </div>
+  <section class="clip" id="caps" data-start="0" data-duration="85.91" data-track-index="8" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
+<div class="cap" id="cap0"><span>Intraday,</span></div>
+<div class="cap" id="cap1"><span>swing or F&amp;O?</span></div>
+<div class="cap" id="cap2"><span>What each really means,</span></div>
+<div class="cap" id="cap3"><span>with real trades from last</span></div>
+<div class="cap" id="cap4"><span>week.</span></div>
+<div class="cap" id="cap5"><span>Intraday =</span></div>
+<div class="cap" id="cap6"><span>buy and sell the same</span></div>
+<div class="cap" id="cap7"><span>day.</span></div>
+<div class="cap" id="cap8"><span>11 Nov:</span></div>
+<div class="cap" id="cap9"><span>Kalyan Jewellers opened at ₹630</span></div>
+<div class="cap" id="cap10"><span>and hit ₹689 within an</span></div>
+<div class="cap" id="cap11"><span>hour.</span></div>
+<div class="cap" id="cap12"><span>But an intraday trade must</span></div>
+<div class="cap" id="cap13"><span>close the same day.</span></div>
+<div class="cap" id="cap14"><span>By the closing bell it</span></div>
+<div class="cap" id="cap15"><span>slipped back to ₹664.</span></div>
+<div class="cap" id="cap16"><span>Swing trading =</span></div>
+<div class="cap" id="cap17"><span>hold for days or weeks.</span></div>
+<div class="cap" id="cap18"><span>From the Diwali close of</span></div>
+<div class="cap" id="cap19"><span>₹592,</span></div>
+<div class="cap" id="cap20"><span>Kalyan reached ₹711 in 3</span></div>
+<div class="cap" id="cap21"><span>sessions.</span></div>
+<div class="cap" id="cap22"><span>That's +20%.</span></div>
+<div class="cap" id="cap23"><span>The risk?</span></div>
+<div class="cap" id="cap24"><span>You hold overnight.</span></div>
+<div class="cap" id="cap25"><span>Next morning it opened at</span></div>
+<div class="cap" id="cap26"><span>₹718 and dropped to ₹685</span></div>
+<div class="cap" id="cap27"><span>in 15 minutes.</span></div>
+<div class="cap" id="cap28"><span>F&amp;O =</span></div>
+<div class="cap" id="cap29"><span>futures and options:</span></div>
+<div class="cap" id="cap30"><span>contracts on a stock or</span></div>
+<div class="cap" id="cap31"><span>index,</span></div>
+<div class="cap" id="cap32"><span>traded in fixed lots.</span></div>
+<div class="cap" id="cap33"><span>1 Nifty lot =</span></div>
+<div class="cap" id="cap34"><span>65 units ≈ ₹16.5 lakh</span></div>
+<div class="cap" id="cap35"><span>of Nifty.</span></div>
+<div class="cap" id="cap36"><span>This morning Nifty futures rose</span></div>
+<div class="cap" id="cap37"><span>179 points.</span></div>
+<div class="cap" id="cap38"><span>That's ≈ ₹11,600 on one</span></div>
+<div class="cap" id="cap39"><span>lot,</span></div>
+<div class="cap" id="cap40"><span>and the same loss if</span></div>
+<div class="cap" id="cap41"><span>you bet the other way.</span></div>
+<div class="cap" id="cap42"><span>That leverage is why SEBI</span></div>
+<div class="cap" id="cap43"><span>found nearly 9 in 10</span></div>
+<div class="cap" id="cap44"><span>F&amp;O traders lost money.</span></div>
+<div class="cap" id="cap45"><span>So which one do you</span></div>
+<div class="cap" id="cap46"><span>do?</span></div>
+<div class="cap" id="cap47"><span>Comment INTRADAY,</span></div>
+<div class="cap" id="cap48"><span>SWING or F&amp;O,</span></div>
+<div class="cap" id="cap49"><span>and save this for later.</span></div>
+  </section>
+  <div id="disc">Prices: INDmoney (NSE) · Kalyan Jewellers 8–13 Nov · Nifty Nov futures 16 Nov 9:52 AM · Not a buy/sell call · Education only</div>
+  <div id="vignette"></div>
+</div>
+<script>
+const T = {"VO": [0.15, 6.864208333333334, 18.80516666666667, 26.674208333333336, 38.816291666666665, 48.71029166666666, 61.758374999999994, 73.28933333333332, 79.06999999999998], "DURS": [6.164208333333334, 11.390958333333334, 7.319041666666666, 11.592083333333333, 9.344, 12.498083333333334, 10.980958333333334, 5.230666666666667, 5.290208333333333], "STARTS": [0.0, 6.564208333333334, 18.505166666666668, 26.374208333333335, 38.51629166666667, 48.410291666666666, 61.458375, 72.98933333333332, 78.76999999999998], "DUR": 85.91020833333332, "SCRIPT": ["Intraday, swing, or F and O? Here is what each one really means, with real trades from last week.", "Intraday means you buy and sell on the same day. On the eleventh of November, Kalyan Jewellers opened at six hundred and thirty rupees, and hit six hundred and eighty nine within an hour.", "But an intraday trade must close the same day. By the closing bell, it had slipped back to six hundred and sixty four.", "Swing trading means holding for a few days or weeks. From the Diwali close of five hundred and ninety two, Kalyan reached seven hundred and eleven in three sessions. That is twenty percent.", "The risk? You hold overnight. The very next morning it opened at seven hundred and eighteen, and dropped to six hundred and eighty five in fifteen minutes.", "F and O means futures and options: contracts on a stock or an index, traded in fixed lots. One Nifty lot is sixty five units, about sixteen and a half lakh rupees of Nifty.", "This morning, Nifty futures rose one hundred and seventy nine points. That is about eleven thousand six hundred rupees on one lot, and the same loss if you bet the other way.", "That leverage is why SEBI found nearly nine in ten F and O traders lost money.", "So which one do you do? Comment intraday, swing, or F and O, and save this for later."], "open630": 12.651058823529413, "high": 15.635855392156863, "close": 21.720378177966104, "c664": 24.44951235875706, "sw592": 29.924898368606705, "sw711": 34.156928791887125, "sw20": 37.346285052910055, "night": 39.419130376344086, "o718": 42.13190456989247, "d685": 44.663827150537635, "fno": 51.25350629844961, "lots": 54.45069040697674, "lot65": 56.557925387596896, "lakh": 58.30184399224806, "p179": 63.84097054597701, "r11": 67.05952729885057, "loss": 70.27808405172414, "sebi": 74.69758974358973, "nine": 75.90466666666666, "comment": 80.56370588235292, "save": 83.11545343137253}, CAPS = [[0.15, 0.88, "Intraday,"], [0.88, 1.93, "swing or F&O?"], [1.93, 3.8, "What each really means,"], [3.8, 5.91, "with real trades from last"], [5.91, 6.84, "week."], [6.86, 8.0, "Intraday ="], [8.0, 10.4, "buy and sell the same"], [10.4, 10.85, "day."], [10.85, 11.65, "11 Nov:"], [11.65, 15.18, "Kalyan Jewellers opened at \u20b9630"], [15.18, 17.69, "and hit \u20b9689 within an"], [17.69, 18.79, "hour."], [18.81, 20.97, "But an intraday trade must"], [20.97, 22.55, "close the same day."], [22.55, 24.38, "By the closing bell it"], [24.38, 26.65, "slipped back to \u20b9664."], [26.67, 28.23, "Swing trading ="], [28.23, 30.61, "hold for days or weeks."], [30.61, 33.09, "From the Diwali close of"], [33.09, 33.61, "\u20b9592,"], [33.61, 36.09, "Kalyan reached \u20b9711 in 3"], [36.09, 37.02, "sessions."], [37.02, 38.8, "That's +20%."], [38.82, 39.74, "The risk?"], [39.74, 41.69, "You hold overnight."], [41.69, 44.26, "Next morning it opened at"], [44.26, 46.72, "\u20b9718 and dropped to \u20b9685"], [46.72, 48.69, "in 15 minutes."], [48.71, 49.24, "F&O ="], [49.24, 51.36, "futures and options:"], [51.36, 53.79, "contracts on a stock or"], [53.79, 54.43, "index,"], [54.43, 56.65, "traded in fixed lots."], [56.65, 58.03, "1 Nifty lot ="], [58.03, 60.26, "65 units \u2248 \u20b916.5 lakh"], [60.26, 61.74, "of Nifty."], [61.76, 64.83, "This morning Nifty futures rose"], [64.83, 65.91, "179 points."], [65.91, 68.19, "That's \u2248 \u20b911,600 on one"], [68.19, 68.58, "lot,"], [68.58, 70.56, "and the same loss if"], [70.56, 73.27, "you bet the other way."], [73.29, 75.21, "That leverage is why SEBI"], [75.21, 76.75, "found nearly 9 in 10"], [76.75, 79.05, "F&O traders lost money."], [79.07, 80.39, "So which one do you"], [80.39, 80.6, "do?"], [80.6, 81.78, "Comment INTRADAY,"], [81.78, 82.69, "SWING or F&O,"], [82.69, 84.36, "and save this for later."]], SC = [[0, 6.564208333333334], [6.564208333333334, 26.374208333333335], [26.374208333333335, 48.410291666666666], [48.410291666666666, 72.98933333333332], [72.98933333333332, 78.76999999999998], [78.76999999999998, 85.91020833333332]], CANDT = [12.651058823529413, 14.143457107843137, 15.635855392156863, 15.898788246057283, 16.161721099957703, 16.424653953858122, 16.687586807758542, 16.950519661658962, 17.213452515559382, 17.476385369459802, 17.739318223360222, 18.002251077260645, 18.26518393116106, 18.528116785061485, 18.7910496389619, 19.053982492862325, 19.31691534676274, 19.579848200663164, 19.842781054563584, 20.105713908464004, 20.368646762364424, 20.631579616264844, 20.894512470165264, 21.157445324065684, 21.420378177966104], TIMES = ["9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:15", "12:30", "12:45", "1:00", "1:15", "1:30", "1:45", "2:00", "2:15", "2:30", "2:45", "3:00", "3:15"], CHW = 1540;
+const tl = gsap.timeline({ paused: true });
+const EIN = "expo.out";
+const pop = (sel, at, r) => tl.fromTo(sel, {scale:0.3, opacity:0, rotation:(r||0)-8}, {scale:1, opacity:1, rotation:r||0, duration:0.5, ease:"back.out(2.2)"}, at);
+const up = (sel, at) => tl.fromTo(sel, {opacity:0, y:30}, {opacity:1, y:0, duration:0.45, ease:EIN}, at);
+const shake = (sel, at, a) => { const kf = []; for (let k = 0; k < 8; k++) kf.push({y:(k%2?-1:1)*(a||14)*(1-k/8), duration:0.04, ease:"none"}); kf.push({y:0, duration:0.04});
+  tl.to(sel, {keyframes:kf}, at); };
+
+// handheld camera float on the whole world (deterministic sine)
+tl.to("#world", {rotation:0.35, x:5, y:-4, duration:3, ease:"sine.inOut", repeat:Math.floor(T.DUR/3)-1, yoyo:true}, 0);
+tl.to("#paper", {x:-30, y:-20, duration:T.DUR, ease:"none"}, 0);
+
+// whip-pan transitions between scenes (camera swings right, motion blur)
+SC.forEach(([a, b], i) => {
+  const s = "#sc" + i;
+  if (i > 0) tl.fromTo(s, {x:1150, filter:"blur(14px)"}, {x:0, filter:"blur(0px)", duration:0.5, ease:"power3.out"}, a - 0.05);
+  if (i < SC.length - 1) tl.to(s, {x:-1150, filter:"blur(14px)", duration:0.42, ease:"power3.in"}, b - 0.37);
+});
+
+// 0 HOOK: camera starts close on the cards and pulls back
+tl.fromTo("#cam0", {scale:1.3, x:-60, y:-200}, {scale:1, x:0, y:0, duration:2.6, ease:"power2.inOut"}, 0);
+tl.set(["#tg0", "#tg1", "#tg2"], {opacity:0}, 0);
+pop("#tg0", 0.12, -4); pop("#tg1", 0.67, 3); pop("#tg2", 1.22, -3);
+up("#real", 2.8);
+
+// 1 INTRADAY: candles print bar by bar, camera tracks the newest candle, then pulls back for the full day
+const sI = 1.2, headX = k => 50 + k*58 + 18;
+tl.set("#cam1", {scale:sI, x:60, y:0}, SC[1][0]);
+document.querySelectorAll(".cd").forEach((el, k) => {
+  tl.fromTo(el, {opacity:0, y:-30}, {opacity:1, y:0, duration:0.25, ease:"back.out(2)"}, CANDT[k]);
+  tl.set("#clk", {innerText:TIMES[k]}, CANDT[k]);
+  const want = Math.min(60, 760 - sI*headX(k));
+  tl.to("#cam1", {x:want, duration:Math.max(0.2, (CANDT[k+1]||CANDT[k]+0.4) - CANDT[k]), ease:"none"}, CANDT[k]);
+});
+up("#olbl", T.open630);
+pop("#hpin", T.high - 0.05); shake("#sc1", T.high, 8);
+const sF = 0.7;
+tl.to("#cam1", {scale:sF, x:(1080 - CHW*sF)/2, y:650*(1-sF) - 40, duration:1.2, ease:"power3.inOut"}, T.close - 0.2);
+tl.set("#clk", {innerText:"3:30"}, T.close);
+tl.fromTo("#bell", {opacity:0, rotation:-25}, {opacity:1, rotation:25, duration:0.15, repeat:7, yoyo:true, ease:"sine.inOut"}, T.close);
+up("#clbl", T.c664 - 0.2); pop("#istamp", T.c664 + 0.6, -6);
+up("#sc1 .hdr", SC[1][0] + 0.3); tl.fromTo("#clock", {scale:0}, {scale:1, duration:0.4, ease:"back.out(2)"}, SC[1][0] + 0.5);
+
+// 2 SWING: camera rides up the line day by day, pulls back for +20%, night falls, gap-down candle
+const sw = document.getElementById("swl"), L = sw.getTotalLength();
+tl.set("#cam2", {scale:1.25, x:0, y:-300}, SC[2][0]);
+tl.set(sw, {strokeDasharray:L, strokeDashoffset:L}, SC[2][0]);
+tl.set([".sd", ".moon", "#gapc", "#sw20", "#gstamp"], {opacity:0}, SC[2][0]);
+const st = T.sw592, en = T.sw711;
+up("#sd0", st);
+tl.to(sw, {strokeDashoffset:0, duration:en - st, ease:"none"}, st);
+[1, 2, 3].forEach(k => pop("#sd" + k, st + (en - st) * k / 3 - 0.1));
+tl.to("#cam2", {x:-300, y:-180, duration:en - st, ease:"power1.inOut"}, st);
+tl.to("#cam2", {scale:1, x:-20, y:0, duration:1.1, ease:"power3.inOut"}, T.sw20 - 0.6);
+pop("#sw20", T.sw20, -5);
+tl.to("#night", {opacity:1, duration:0.6}, T.night);
+[0, 1, 2].forEach(k => pop("#mn" + k, T.night + 0.2 + k*0.25));
+tl.to("#sw20", {opacity:0, duration:0.3}, T.o718 - 0.4);
+tl.to("#cam2", {x:-60, scale:1.04, duration:0.8, ease:"power2.inOut"}, T.o718 - 0.4);
+tl.to("#night", {opacity:0, duration:0.5}, T.o718);
+tl.set("#gapc", {opacity:1}, T.o718);
+tl.fromTo("#gapr", {scaleY:0.03, transformOrigin:"50% 0%"}, {scaleY:1, duration:0.5, ease:"power4.in"}, T.d685 - 0.45);
+shake("#sc2", T.d685, 16); pop("#gstamp", T.d685 + 0.3, 5);
+up("#sc2 .hdr", SC[2][0] + 0.3);
+
+// 3 F&O: contract ticket fills in, then the camera drops down to the see-saw
+tl.set("#cam3", {scale:1, x:0, y:0}, SC[3][0]);
+tl.set(["#ticket .tk-r", "#ticket"], {opacity:0}, SC[3][0]);
+pop("#ticket", T.fno - 0.3, -2);
+up("#ticket .tk-r:nth-of-type(2)", T.lot65 - 0.3);
+up("#ticket .tk-r:nth-of-type(3)", T.lakh - 0.6);
+up("#ticket .tk-r:nth-of-type(4)", T.lakh); tl.fromTo("#lakh", {scale:1.6}, {scale:1, duration:0.4, ease:"back.out(2)"}, T.lakh + 0.1);
+tl.to("#cam3", {y:-1600, rotation:-1.5, duration:1.0, ease:"power3.inOut"}, SC[3][0] + (T.p179 - SC[3][0]) - 1.6);
+tl.to("#cam3", {rotation:0, duration:0.6, ease:"power2.out"}, T.p179 - 0.6);
+tl.set(["#p179", ".side", "#math"], {opacity:0}, SC[3][0]);
+pop("#p179", T.p179 - 0.1);
+tl.to("#plank", {rotation:-9, duration:0.6, ease:"back.out(2)"}, T.r11 - 0.4);
+pop(".side.l", T.r11);
+tl.to("#plank", {rotation:9, duration:0.7, ease:"back.out(2)"}, T.loss - 0.3);
+pop(".side.r", T.loss + 0.1); shake("#sc3", T.loss + 0.2, 10);
+up("#math", T.loss + 0.4);
+up("#sc3 .hdr", SC[3][0] + 0.3);
+
+// 4 SEBI: slow push-in, 9 of 10 people turn red
+tl.fromTo("#cam4", {scale:1, x:0, y:0}, {scale:1.08, x:-43, y:-50, duration:SC[4][1] - SC[4][0], ease:"none"}, SC[4][0]);
+document.querySelectorAll(".pp").forEach((el, k) => {
+  up(el, SC[4][0] + 0.25 + k*0.06);
+  tl.to(el.querySelectorAll("circle,path"), {fill:k < 9 ? "#D93A2B" : "#1E8E4E", duration:0.15}, T.nine + 0.1 + k*0.11);
+});
+tl.set("#n9", {opacity:0}, SC[4][0]); pop("#n9", T.nine + 1.1, -2); up("#src", T.sebi);
+
+// 5 CTA
+tl.fromTo("#cam5", {scale:1.1, x:-54, y:-60}, {scale:1, x:0, y:0, duration:1.4, ease:"power2.out"}, SC[5][0]);
+tl.fromTo("#host", {y:120, opacity:0}, {y:0, opacity:1, duration:0.5, ease:EIN}, SC[5][0] + 0.2);
+["#o0", "#o1", "#o2"].forEach((s, k) => pop(s, T.comment + k*0.35, k % 2 ? 3 : -3));
+pop("#sv", T.save, 2);
+
+CAPS.forEach(([s, e], k) => { const g = "#cap" + k;
+  tl.fromTo(g, {opacity:0, y:14}, {opacity:1, y:0, duration:0.14, ease:"power2.out"}, Math.max(0.15, s - 0.05));
+  tl.to(g, {opacity:0, duration:0.1}, e - 0.1); tl.set(g, {opacity:0, visibility:"hidden"}, e); });
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

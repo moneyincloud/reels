@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Intraday vs Swing vs F&amp;O</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<style>
+@font-face { font-family:"Caveat"; src:url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight:700; }
+@font-face { font-family:"Anton"; src:url("assets/fonts/anton-latin-400-normal.woff") format("woff"); }
+@font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
+:root { --paper:#FBF8F0; --ink:#1B1B1F; --mut:#5B5B66; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
+#root { position:relative; width:100%; height:100%; overflow:hidden; color:var(--ink); font-family:"Caveat","Poppins",cursive; }
+#paper { position:absolute; inset:-60px; background-color:var(--paper);
+  background-image: linear-gradient(rgba(70,120,220,.13) 2px, transparent 2px), linear-gradient(90deg, rgba(70,120,220,.13) 2px, transparent 2px);
+  background-size: 54px 54px; }
+#world { position:absolute; inset:0; }
+.scene { position:absolute; inset:0; overflow:hidden; }
+.cam { position:absolute; inset:0; transform-origin:0 0; }
+.handle { position:absolute; left:40px; top:120px; font-family:"Oswald",sans-serif; font-size:30px; color:#55556A; z-index:50; }
+.hand { font-family:"Caveat",cursive; font-weight:700; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:100px; line-height:1; }
+.tag { position:absolute; padding:18px 40px 12px; border:6px solid var(--ink); border-radius:20px; box-shadow:10px 10px 0 var(--ink); color:#fff;
+  font-family:"Anton",sans-serif; font-size:96px; line-height:1; text-align:center; }
+.tag small { display:block; font-family:"Poppins",sans-serif; font-size:30px; margin-top:6px; }
+.hdr { position:absolute; left:80px; right:80px; top:200px; display:flex; align-items:baseline; gap:22px; z-index:20; }
+.cap-t { font-size:110px; line-height:1; }
+.hdr .sub { font-family:"Oswald",sans-serif; font-size:32px; color:var(--mut); }
+.chart { position:absolute; }
+.dash { stroke:#999; stroke-width:3; stroke-dasharray:10 10; }
+.lbl { font-family:"Oswald",sans-serif; font-size:40px; font-weight:500; fill:var(--ink); }
+.svl { font-family:"Anton",sans-serif; font-size:44px; fill:var(--ink); }
+.sdl { font-family:"Oswald",sans-serif; font-size:32px; fill:var(--mut); }
+.moon { font-size:44px; }
+.clock { position:absolute; right:70px; top:330px; background:#fff; border:5px solid var(--ink); border-radius:18px; box-shadow:6px 6px 0 var(--ink);
+  padding:6px 22px; font-family:"Anton",sans-serif; font-size:56px; z-index:20; display:flex; gap:12px; align-items:center; }
+.bell { position:absolute; right:300px; top:320px; font-size:84px; z-index:20; opacity:0; }
+.stamp { position:absolute; padding:10px 26px; border:6px solid var(--ink); border-radius:12px; background:#FFE45C;
+  font-family:"Anton",sans-serif; font-size:54px; box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.big { position:absolute; font-family:"Anton",sans-serif; font-size:150px; line-height:1; }
+#night { position:absolute; inset:0; background:rgba(22,30,70,.30); opacity:0; pointer-events:none; }
+path { fill:none; stroke:var(--ink); stroke-linecap:round; stroke-linejoin:round; }
+#ticket { position:absolute; left:90px; right:90px; top:380px; background:#fff; border:6px solid var(--ink); border-radius:24px; box-shadow:12px 12px 0 var(--ink); padding:30px 40px; }
+.tk-h { font-family:"Anton",sans-serif; font-size:60px; color:#D93A2B; border-bottom:5px dashed #ccc; padding-bottom:16px; margin-bottom:10px; }
+.tk-r { display:flex; justify-content:space-between; align-items:baseline; padding:18px 0; font-family:"Poppins",sans-serif; font-size:36px; }
+.tk-r b { font-family:"Anton",sans-serif; font-weight:400; font-size:60px; }
+.tk-r.tot { border-top:5px solid var(--ink); }
+.tk-r.tot b { color:#D93A2B; font-size:76px; }
+#saw { position:absolute; left:90px; right:90px; top:2330px; height:420px; }
+#plank { position:absolute; left:0; right:0; top:120px; height:44px; background:#C9A36B; border:5px solid var(--ink); border-radius:10px; transform-origin:50% 50%; }
+.side { position:absolute; top:-210px; width:330px; text-align:center; font-family:"Anton",sans-serif; font-size:50px; background:#fff;
+  border:5px solid var(--ink); border-radius:18px; box-shadow:6px 6px 0 var(--ink); padding:10px 0; }
+.side b { display:block; font-weight:400; font-size:62px; }
+.side.l { left:10px; color:#1E8E4E; } .side.r { right:10px; color:#D93A2B; }
+#pivot { position:absolute; left:50%; top:166px; width:0; height:0; margin-left:-70px; border-left:70px solid transparent; border-right:70px solid transparent; border-bottom:120px solid var(--ink); }
+.pp { position:absolute; width:120px; height:220px; overflow:visible; }
+.pp circle, .pp path { fill:#B9B9C3; stroke:var(--ink); stroke-width:6; }
+#src { position:absolute; left:60px; right:60px; top:1080px; text-align:center; font-family:"Oswald",sans-serif; font-size:30px; color:var(--mut); }
+.pill { position:absolute; border-radius:22px; padding:12px 34px; font-family:"Anton",sans-serif; font-size:66px; color:#fff; border:5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.cap { position:absolute; left:0; right:0; top:1225px; text-align:center; opacity:0; }
+.cap span { display:inline-block; max-width:930px; background:#fff; border:5px solid var(--ink); border-radius:18px; box-shadow:6px 8px 0 var(--ink); padding:10px 30px; font-family:"Poppins",sans-serif; font-weight:700; font-size:42px; line-height:1.25; }
+#disc { position:absolute; left:30px; right:30px; top:1320px; text-align:center; font-family:"Oswald",sans-serif; font-size:26px; color:rgb(84,84,96); z-index:30; }
+#vignette { position:absolute; inset:0; pointer-events:none; z-index:99; background:radial-gradient(ellipse at center, transparent 60%, rgba(27,27,31,.12) 100%); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="__DUR__" data-fps="30">
+  <div id="paper"></div>
+  <div class="handle">@moneyincloud</div>
+  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="__DUR__" data-track-index="9" data-volume="1"></audio>
+  <div id="world">
+__BODY__
+  </div>
+  <section class="clip" id="caps" data-start="0" data-duration="__DUR__" data-track-index="8" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
+__CAPS_HTML__
+  </section>
+  <div id="disc">Prices: INDmoney (NSE) · Kalyan Jewellers 8–13 Nov · Nifty Nov futures 16 Nov 9:52 AM · Not a buy/sell call · Education only</div>
+  <div id="vignette"></div>
+</div>
+<script>
+const T = __TJSON__, CAPS = __CAPS__, SC = __SC__, CANDT = __CANDT__, TIMES = __TIMES__, CHW = __CHW__;
+const tl = gsap.timeline({ paused: true });
+const EIN = "expo.out";
+const pop = (sel, at, r) => tl.fromTo(sel, {scale:0.3, opacity:0, rotation:(r||0)-8}, {scale:1, opacity:1, rotation:r||0, duration:0.5, ease:"back.out(2.2)"}, at);
+const up = (sel, at) => tl.fromTo(sel, {opacity:0, y:30}, {opacity:1, y:0, duration:0.45, ease:EIN}, at);
+const shake = (sel, at, a) => { const kf = []; for (let k = 0; k < 8; k++) kf.push({y:(k%2?-1:1)*(a||14)*(1-k/8), duration:0.04, ease:"none"}); kf.push({y:0, duration:0.04});
+  tl.to(sel, {keyframes:kf}, at); };
+
+// handheld camera float on the whole world (deterministic sine)
+tl.to("#world", {rotation:0.35, x:5, y:-4, duration:3, ease:"sine.inOut", repeat:Math.floor(T.DUR/3)-1, yoyo:true}, 0);
+tl.to("#paper", {x:-30, y:-20, duration:T.DUR, ease:"none"}, 0);
+
+// whip-pan transitions between scenes (camera swings right, motion blur)
+SC.forEach(([a, b], i) => {
+  const s = "#sc" + i;
+  if (i > 0) tl.fromTo(s, {x:1150, filter:"blur(14px)"}, {x:0, filter:"blur(0px)", duration:0.5, ease:"power3.out"}, a - 0.05);
+  if (i < SC.length - 1) tl.to(s, {x:-1150, filter:"blur(14px)", duration:0.42, ease:"power3.in"}, b - 0.37);
+});
+
+// 0 HOOK: camera starts close on the cards and pulls back
+tl.fromTo("#cam0", {scale:1.3, x:-60, y:-200}, {scale:1, x:0, y:0, duration:2.6, ease:"power2.inOut"}, 0);
+tl.set(["#tg0", "#tg1", "#tg2"], {opacity:0}, 0);
+pop("#tg0", 0.12, -4); pop("#tg1", 0.67, 3); pop("#tg2", 1.22, -3);
+up("#real", 2.8);
+
+// 1 INTRADAY: candles print bar by bar, camera tracks the newest candle, then pulls back for the full day
+const sI = 1.2, headX = k => 50 + k*58 + 18;
+tl.set("#cam1", {scale:sI, x:60, y:0}, SC[1][0]);
+document.querySelectorAll(".cd").forEach((el, k) => {
+  tl.fromTo(el, {opacity:0, y:-30}, {opacity:1, y:0, duration:0.25, ease:"back.out(2)"}, CANDT[k]);
+  tl.set("#clk", {innerText:TIMES[k]}, CANDT[k]);
+  const want = Math.min(60, 760 - sI*headX(k));
+  tl.to("#cam1", {x:want, duration:Math.max(0.2, (CANDT[k+1]||CANDT[k]+0.4) - CANDT[k]), ease:"none"}, CANDT[k]);
+});
+up("#olbl", T.open630);
+pop("#hpin", T.high - 0.05); shake("#sc1", T.high, 8);
+const sF = 0.7;
+tl.to("#cam1", {scale:sF, x:(1080 - CHW*sF)/2, y:650*(1-sF) - 40, duration:1.2, ease:"power3.inOut"}, T.close - 0.2);
+tl.set("#clk", {innerText:"3:30"}, T.close);
+tl.fromTo("#bell", {opacity:0, rotation:-25}, {opacity:1, rotation:25, duration:0.15, repeat:7, yoyo:true, ease:"sine.inOut"}, T.close);
+up("#clbl", T.c664 - 0.2); pop("#istamp", T.c664 + 0.6, -6);
+up("#sc1 .hdr", SC[1][0] + 0.3); tl.fromTo("#clock", {scale:0}, {scale:1, duration:0.4, ease:"back.out(2)"}, SC[1][0] + 0.5);
+
+// 2 SWING: camera rides up the line day by day, pulls back for +20%, night falls, gap-down candle
+const sw = document.getElementById("swl"), L = sw.getTotalLength();
+tl.set("#cam2", {scale:1.25, x:0, y:-300}, SC[2][0]);
+tl.set(sw, {strokeDasharray:L, strokeDashoffset:L}, SC[2][0]);
+tl.set([".sd", ".moon", "#gapc", "#sw20", "#gstamp"], {opacity:0}, SC[2][0]);
+const st = T.sw592, en = T.sw711;
+up("#sd0", st);
+tl.to(sw, {strokeDashoffset:0, duration:en - st, ease:"none"}, st);
+[1, 2, 3].forEach(k => pop("#sd" + k, st + (en - st) * k / 3 - 0.1));
+tl.to("#cam2", {x:-300, y:-180, duration:en - st, ease:"power1.inOut"}, st);
+tl.to("#cam2", {scale:1, x:-20, y:0, duration:1.1, ease:"power3.inOut"}, T.sw20 - 0.6);
+pop("#sw20", T.sw20, -5);
+tl.to("#night", {opacity:1, duration:0.6}, T.night);
+[0, 1, 2].forEach(k => pop("#mn" + k, T.night + 0.2 + k*0.25));
+tl.to("#sw20", {opacity:0, duration:0.3}, T.o718 - 0.4);
+tl.to("#cam2", {x:-60, scale:1.04, duration:0.8, ease:"power2.inOut"}, T.o718 - 0.4);
+tl.to("#night", {opacity:0, duration:0.5}, T.o718);
+tl.set("#gapc", {opacity:1}, T.o718);
+tl.fromTo("#gapr", {scaleY:0.03, transformOrigin:"50% 0%"}, {scaleY:1, duration:0.5, ease:"power4.in"}, T.d685 - 0.45);
+shake("#sc2", T.d685, 16); pop("#gstamp", T.d685 + 0.3, 5);
+up("#sc2 .hdr", SC[2][0] + 0.3);
+
+// 3 F&O: contract ticket fills in, then the camera drops down to the see-saw
+tl.set("#cam3", {scale:1, x:0, y:0}, SC[3][0]);
+tl.set(["#ticket .tk-r", "#ticket"], {opacity:0}, SC[3][0]);
+pop("#ticket", T.fno - 0.3, -2);
+up("#ticket .tk-r:nth-of-type(2)", T.lot65 - 0.3);
+up("#ticket .tk-r:nth-of-type(3)", T.lakh - 0.6);
+up("#ticket .tk-r:nth-of-type(4)", T.lakh); tl.fromTo("#lakh", {scale:1.6}, {scale:1, duration:0.4, ease:"back.out(2)"}, T.lakh + 0.1);
+tl.to("#cam3", {y:-1600, rotation:-1.5, duration:1.0, ease:"power3.inOut"}, SC[3][0] + (T.p179 - SC[3][0]) - 1.6);
+tl.to("#cam3", {rotation:0, duration:0.6, ease:"power2.out"}, T.p179 - 0.6);
+tl.set(["#p179", ".side", "#math"], {opacity:0}, SC[3][0]);
+pop("#p179", T.p179 - 0.1);
+tl.to("#plank", {rotation:-9, duration:0.6, ease:"back.out(2)"}, T.r11 - 0.4);
+pop(".side.l", T.r11);
+tl.to("#plank", {rotation:9, duration:0.7, ease:"back.out(2)"}, T.loss - 0.3);
+pop(".side.r", T.loss + 0.1); shake("#sc3", T.loss + 0.2, 10);
+up("#math", T.loss + 0.4);
+up("#sc3 .hdr", SC[3][0] + 0.3);
+
+// 4 SEBI: slow push-in, 9 of 10 people turn red
+tl.fromTo("#cam4", {scale:1, x:0, y:0}, {scale:1.08, x:-43, y:-50, duration:SC[4][1] - SC[4][0], ease:"none"}, SC[4][0]);
+document.querySelectorAll(".pp").forEach((el, k) => {
+  up(el, SC[4][0] + 0.25 + k*0.06);
+  tl.to(el.querySelectorAll("circle,path"), {fill:k < 9 ? "#D93A2B" : "#1E8E4E", duration:0.15}, T.nine + 0.1 + k*0.11);
+});
+tl.set("#n9", {opacity:0}, SC[4][0]); pop("#n9", T.nine + 1.1, -2); up("#src", T.sebi);
+
+// 5 CTA
+tl.fromTo("#cam5", {scale:1.1, x:-54, y:-60}, {scale:1, x:0, y:0, duration:1.4, ease:"power2.out"}, SC[5][0]);
+tl.fromTo("#host", {y:120, opacity:0}, {y:0, opacity:1, duration:0.5, ease:EIN}, SC[5][0] + 0.2);
+["#o0", "#o1", "#o2"].forEach((s, k) => pop(s, T.comment + k*0.35, k % 2 ? 3 : -3));
+pop("#sv", T.save, 2);
+
+CAPS.forEach(([s, e], k) => { const g = "#cap" + k;
+  tl.fromTo(g, {opacity:0, y:14}, {opacity:1, y:0, duration:0.14, ease:"power2.out"}, Math.max(0.15, s - 0.05));
+  tl.to(g, {opacity:0, duration:0.1}, e - 0.1); tl.set(g, {opacity:0, visibility:"hidden"}, e); });
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
