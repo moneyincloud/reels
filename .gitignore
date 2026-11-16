@@ -43,3 +43,4 @@ studio/taxgst/*.png
 studio/earntax/stk/
 studio/earntax/pieces.jpg
 studio/weekmov/raw/
+motion/*/node_modules
