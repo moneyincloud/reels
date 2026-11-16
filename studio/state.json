@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -597,6 +597,15 @@
    "voice": "am_michael",
    "style": "paper Vox HyperFrames, camera moves (whip pans, tracking, push-ins)",
    "length_s": 85.9,
+   "status": "draft, awaiting owner review"
+  },
+  {
+   "date": "2026-11-16",
+   "slug": "nhit-1-lakh",
+   "topic": "\u20b91 lakh in NHIT InvIT: payouts (Jun \u20b93.187, Sep \u20b92.529/unit) + catch: 25,000-unit lot \u2248 \u20b942 lakh; public InvITs (RIIT) 1 unit",
+   "voice": "af_heart",
+   "style": "colourful paper Vox, camera moves",
+   "length_s": 74.2,
    "status": "draft, awaiting owner review"
   }
  ],

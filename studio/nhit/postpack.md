@@ -1,0 +1,30 @@
+# ₹1 lakh in NHIT (National Highways Infra Trust): draft, not scheduled
+
+Video: studio/out/nhit-national-highways-infra-trust-1-lakh-invit-income.mp4 (74 s, female voice af_heart)
+
+## Instagram caption
+₹1 lakh in NHAI's highway trust (NHIT)? Here's what it would pay, and the catch 👇
+
+🛣️ National Highways Infra Trust owns toll roads monetised by NHAI. Toll cash flows to unitholders every quarter.
+💰 At ₹169 a unit (NSE close, 16 Nov), ₹1 lakh = about 591 units.
+📅 June 2026 quarter: ₹3.187/unit → about ₹1,883 on ₹1 lakh.
+📅 Sept 2026 quarter: ₹2.529/unit declared → about ₹1,495. Payouts change every quarter.
+🧾 Mostly interest, so it's taxed at your income-tax slab.
+
+⚠️ The catch: NHIT is a privately placed InvIT. On NSE its trading lot is 25,000 units, about ₹42 lakh at today's price. So ₹1 lakh can't buy it on the exchange. Public InvITs (like NHAI's Raajmarg trust, RIIT) trade 1 unit at a time.
+
+Would you buy highway income? Comment ROAD 👇
+💾 Save this.
+
+Sources: INDmoney (NSE price), NHIT exchange filings (distributions), NSE circular (trading lot).
+Not a buy/sell call. Education only. I may hold some of the stocks named.
+
+#InvIT #NHIT #PassiveIncome #StockMarketIndia #moneyincloud
+
+## First comment
+Did you know privately placed InvITs trade in ₹25 lakh+ lots? 👇
+
+## YouTube Short
+Title: ₹1 Lakh in NHAI's Highway Trust (NHIT)? What It Pays + The Catch #shorts
+Description: What would ₹1 lakh in National Highways Infra Trust (NHIT) pay? At ₹169 (NSE close 16 Nov 2026) ₹1 lakh ≈ 591 units. June 2026 quarter distribution ₹3.187/unit ≈ ₹1,883; Sept 2026 quarter ₹2.529/unit ≈ ₹1,495. Mostly interest, taxed at slab. The catch: NHIT is privately placed, NSE trading lot = 25,000 units ≈ ₹42 lakh, so ₹1 lakh can't buy it on the exchange; public InvITs such as Raajmarg (RIIT) trade 1 unit at a time. Sources: INDmoney, NHIT filings, NSE circular. Not a buy/sell call. Education only. I may hold some of the stocks named.
+Tags: nhit, national highways infra trust, invit, nhai invit, invit dividend, passive income india, raajmarg invit, riit, highway invit, moneyincloud

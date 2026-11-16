@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>₹1 lakh in NHIT</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<style>
+@font-face { font-family:"Caveat"; src:url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight:700; }
+@font-face { font-family:"Anton"; src:url("assets/fonts/anton-latin-400-normal.woff") format("woff"); }
+@font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
+:root { --paper:#FBF8F0; --ink:#1B1B1F; --mut:#5B5B66; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
+#root { position:relative; width:100%; height:100%; overflow:hidden; color:var(--ink); font-family:"Caveat","Poppins",cursive; }
+#paper { position:absolute; inset:-60px; background-color:var(--paper);
+  background-image: linear-gradient(rgba(70,120,220,.13) 2px, transparent 2px), linear-gradient(90deg, rgba(70,120,220,.13) 2px, transparent 2px);
+  background-size: 54px 54px; }
+#world { position:absolute; inset:0; }
+.scene { position:absolute; inset:0; overflow:hidden; }
+.cam { position:absolute; inset:0; transform-origin:0 0; }
+.handle { position:absolute; left:40px; top:60px; font-family:"Oswald",sans-serif; font-size:30px; color:#55556A; z-index:50; }
+.hand { font-family:"Caveat",cursive; font-weight:700; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:100px; line-height:1; }
+.scene { background: var(--bg, transparent); }
+.big { position:absolute; font-family:"Anton",sans-serif; line-height:1; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:96px; line-height:1.05; }
+.card { position:absolute; background:#fff; border:6px solid var(--ink); border-radius:26px; box-shadow:12px 12px 0 var(--ink); }
+.pill { position:absolute; border-radius:22px; padding:12px 34px; font-family:"Anton",sans-serif; font-size:66px; color:#fff; border:5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.stk { position:absolute; padding:12px 30px; border:6px solid var(--ink); border-radius:16px; font-family:"Anton",sans-serif; font-size:64px; box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.emo { position:absolute; line-height:1; color:var(--ink); }
+#road { position:absolute; left:-200px; right:-200px; top:640px; height:300px; background:#3C3F4A; border-top:10px solid var(--ink); border-bottom:10px solid var(--ink); }
+#lane { position:absolute; left:0; width:3000px; top:140px; height:20px; background:repeating-linear-gradient(90deg,#FFE45C 0 90px,transparent 90px 170px); }
+.node { position:absolute; width:300px; height:250px; text-align:center; }
+.node .e { font-size:130px; line-height:1.2; } .node b { display:block; font-family:"Anton",sans-serif; font-weight:400; font-size:44px; line-height:1.1; }
+.arr { position:absolute; height:14px; background:var(--ink); border-radius:7px; transform-origin:0 50%; }
+.arr:after { content:""; position:absolute; right:-14px; top:-16px; border-left:30px solid var(--ink); border-top:23px solid transparent; border-bottom:23px solid transparent; }
+.tok { position:absolute; width:46px; height:46px; border-radius:50%; background:#FFC93C; border:4px solid var(--ink); }
+.bar { position:absolute; bottom:0; width:260px; border:6px solid var(--ink); border-radius:18px 18px 0 0; transform-origin:50% 100%; }
+.blab { position:absolute; width:300px; text-align:center; font-family:"Anton",sans-serif; font-size:52px; }
+.cap { position:absolute; left:0; right:0; top:1225px; text-align:center; opacity:0; }
+.cap span { display:inline-block; max-width:930px; background:#fff; border:5px solid var(--ink); border-radius:18px; box-shadow:6px 8px 0 var(--ink); padding:10px 30px; font-family:"Poppins",sans-serif; font-weight:700; font-size:42px; line-height:1.25; }
+#disc { position:absolute; left:30px; right:30px; top:1320px; text-align:center; font-family:"Oswald",sans-serif; font-size:26px; color:rgb(70,70,82); z-index:30; }
+#vignette { position:absolute; inset:0; pointer-events:none; z-index:99; background:radial-gradient(ellipse at center, transparent 60%, rgba(27,27,31,.12) 100%); }
+</style>
+</head><body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="74.15" data-fps="30">
+  <div id="paper"></div>
+  <div class="handle">@moneyincloud</div>
+  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="74.15" data-track-index="9" data-volume="1"></audio>
+  <div id="world">
+<section class="scene clip" id="sc0" style="--bg:#FFF1B8" data-start="0.00" data-duration="7.98" data-track-index="1"><div class="cam" id="cam0"><div class="ttl hand" style="top:240px">₹1 lakh in India's<br>highway trust?</div>
+<div id="road"><div id="lane"></div></div>
+<div class="emo" id="booth" style="left:760px;top:470px;font-size:190px">🛂</div>
+<div class="emo" id="truck" style="color:#fff;left:-260px;top:660px;font-size:210px;transform:scaleX(-1)">🚚</div>
+<div class="emo" id="coin0" style="left:820px;top:520px;font-size:90px">🪙</div>
+<div class="emo" id="coin1" style="left:860px;top:520px;font-size:90px">🪙</div>
+<div class="stk" id="wal" style="left:90px;top:1000px;background:#1E8E4E;color:#fff;transform:rotate(-3deg)">₹1,00,000</div>
+<div class="stk" id="ctch" style="left:560px;top:990px;background:#D93A2B;color:#fff;transform:rotate(4deg)">THE CATCH?</div></div></section>
+<section class="scene clip" id="sc1" style="--bg:#D7F5E9" data-start="7.63" data-duration="11.89" data-track-index="2"><div class="cam" id="cam1"><div class="ttl hand" style="top:220px;font-size:84px">How NHIT pays you</div>
+<div class="node" id="n0" style="left:60px;top:430px"><div class="e">🛣️</div><b>NHAI toll roads</b></div>
+<div class="node" id="n1" style="left:700px;top:430px"><div class="e">🚚</div><b>trucks pay toll</b></div>
+<div class="node" id="n2" style="left:700px;top:820px"><div class="e">🏦</div><b>NHIT trust</b></div>
+<div class="node" id="n3" style="left:60px;top:820px"><div class="e">🙋</div><b>unitholders</b></div>
+<div class="arr" id="a0" style="left:370px;top:540px;width:300px"></div>
+<div class="arr" id="a1" style="left:850px;top:700px;width:100px;transform:rotate(90deg)"></div>
+<div class="arr" id="a2" style="left:670px;top:930px;width:300px;transform:rotate(180deg)"></div></div></section>
+<section class="scene clip" id="sc2" style="--bg:#E6E0FF" data-start="19.17" data-duration="7.28" data-track-index="3"><div class="cam" id="cam2"><div class="card" style="left:70px;right:70px;top:330px;height:300px;display:flex;align-items:center;justify-content:center;gap:24px;font-family:Anton;font-size:96px">
+<span style="color:#1E8E4E">₹1,00,000</span><span>÷</span><span>₹169</span></div>
+<div class="big" id="u591" style="left:0;right:0;text-align:center;top:1010px;font-size:120px;color:#6C4BD8">= 591 units</div>
+<div class="tok" id="tk0" style="left:150px;top:720px"></div>
+<div class="tok" id="tk1" style="left:206px;top:720px"></div>
+<div class="tok" id="tk2" style="left:262px;top:720px"></div>
+<div class="tok" id="tk3" style="left:318px;top:720px"></div>
+<div class="tok" id="tk4" style="left:374px;top:720px"></div>
+<div class="tok" id="tk5" style="left:430px;top:720px"></div>
+<div class="tok" id="tk6" style="left:486px;top:720px"></div>
+<div class="tok" id="tk7" style="left:542px;top:720px"></div>
+<div class="tok" id="tk8" style="left:598px;top:720px"></div>
+<div class="tok" id="tk9" style="left:654px;top:720px"></div>
+<div class="tok" id="tk10" style="left:710px;top:720px"></div>
+<div class="tok" id="tk11" style="left:766px;top:720px"></div>
+<div class="tok" id="tk12" style="left:822px;top:720px"></div>
+<div class="tok" id="tk13" style="left:878px;top:720px"></div>
+<div class="tok" id="tk14" style="left:150px;top:776px"></div>
+<div class="tok" id="tk15" style="left:206px;top:776px"></div>
+<div class="tok" id="tk16" style="left:262px;top:776px"></div>
+<div class="tok" id="tk17" style="left:318px;top:776px"></div>
+<div class="tok" id="tk18" style="left:374px;top:776px"></div>
+<div class="tok" id="tk19" style="left:430px;top:776px"></div>
+<div class="tok" id="tk20" style="left:486px;top:776px"></div>
+<div class="tok" id="tk21" style="left:542px;top:776px"></div>
+<div class="tok" id="tk22" style="left:598px;top:776px"></div>
+<div class="tok" id="tk23" style="left:654px;top:776px"></div>
+<div class="tok" id="tk24" style="left:710px;top:776px"></div>
+<div class="tok" id="tk25" style="left:766px;top:776px"></div>
+<div class="tok" id="tk26" style="left:822px;top:776px"></div>
+<div class="tok" id="tk27" style="left:878px;top:776px"></div>
+<div class="tok" id="tk28" style="left:150px;top:832px"></div>
+<div class="tok" id="tk29" style="left:206px;top:832px"></div>
+<div class="tok" id="tk30" style="left:262px;top:832px"></div>
+<div class="tok" id="tk31" style="left:318px;top:832px"></div>
+<div class="tok" id="tk32" style="left:374px;top:832px"></div>
+<div class="tok" id="tk33" style="left:430px;top:832px"></div>
+<div class="tok" id="tk34" style="left:486px;top:832px"></div>
+<div class="tok" id="tk35" style="left:542px;top:832px"></div>
+<div class="tok" id="tk36" style="left:598px;top:832px"></div>
+<div class="tok" id="tk37" style="left:654px;top:832px"></div>
+<div class="tok" id="tk38" style="left:710px;top:832px"></div>
+<div class="tok" id="tk39" style="left:766px;top:832px"></div>
+<div class="tok" id="tk40" style="left:822px;top:832px"></div>
+<div class="tok" id="tk41" style="left:878px;top:832px"></div>
+<div class="tok" id="tk42" style="left:150px;top:888px"></div>
+<div class="tok" id="tk43" style="left:206px;top:888px"></div>
+<div class="tok" id="tk44" style="left:262px;top:888px"></div>
+<div class="tok" id="tk45" style="left:318px;top:888px"></div>
+<div class="tok" id="tk46" style="left:374px;top:888px"></div>
+<div class="tok" id="tk47" style="left:430px;top:888px"></div>
+<div class="tok" id="tk48" style="left:486px;top:888px"></div>
+<div class="tok" id="tk49" style="left:542px;top:888px"></div>
+<div class="tok" id="tk50" style="left:598px;top:888px"></div>
+<div class="tok" id="tk51" style="left:654px;top:888px"></div>
+<div class="tok" id="tk52" style="left:710px;top:888px"></div>
+<div class="tok" id="tk53" style="left:766px;top:888px"></div>
+<div class="tok" id="tk54" style="left:822px;top:888px"></div>
+<div class="tok" id="tk55" style="left:878px;top:888px"></div>
+<div class="tok" id="tk56" style="left:150px;top:944px"></div>
+<div class="tok" id="tk57" style="left:206px;top:944px"></div>
+<div class="tok" id="tk58" style="left:262px;top:944px"></div>
+<div class="tok" id="tk59" style="left:318px;top:944px"></div>
+<div class="tok" id="tk60" style="left:374px;top:944px"></div>
+<div class="tok" id="tk61" style="left:430px;top:944px"></div>
+<div class="tok" id="tk62" style="left:486px;top:944px"></div>
+<div class="tok" id="tk63" style="left:542px;top:944px"></div>
+<div class="tok" id="tk64" style="left:598px;top:944px"></div>
+<div class="tok" id="tk65" style="left:654px;top:944px"></div>
+<div class="tok" id="tk66" style="left:710px;top:944px"></div>
+<div class="tok" id="tk67" style="left:766px;top:944px"></div>
+<div class="tok" id="tk68" style="left:822px;top:944px"></div>
+<div class="tok" id="tk69" style="left:878px;top:944px"></div>
+<div class="tok" id="tk70" style="left:150px;top:1000px"></div>
+<div class="tok" id="tk71" style="left:206px;top:1000px"></div>
+<div class="tok" id="tk72" style="left:262px;top:1000px"></div>
+<div class="tok" id="tk73" style="left:318px;top:1000px"></div>
+<div class="tok" id="tk74" style="left:374px;top:1000px"></div>
+<div class="tok" id="tk75" style="left:430px;top:1000px"></div>
+<div class="tok" id="tk76" style="left:486px;top:1000px"></div>
+<div class="tok" id="tk77" style="left:542px;top:1000px"></div>
+<div class="tok" id="tk78" style="left:598px;top:1000px"></div>
+<div class="tok" id="tk79" style="left:654px;top:1000px"></div>
+<div class="tok" id="tk80" style="left:710px;top:1000px"></div>
+<div class="tok" id="tk81" style="left:766px;top:1000px"></div>
+<div class="tok" id="tk82" style="left:822px;top:1000px"></div>
+<div class="tok" id="tk83" style="left:878px;top:1000px"></div></div></section>
+<section class="scene clip" id="sc3" style="--bg:#DDF0FF" data-start="26.10" data-duration="18.26" data-track-index="4"><div class="cam" id="cam3"><div class="ttl hand" id="t3" style="top:250px;font-size:84px">What ₹1 lakh earned</div>
+<div id="chart" style="position:absolute;left:120px;right:120px;top:400px;height:620px;border-bottom:8px solid #1B1B1F">
+<div class="bar" id="b0" style="left:60px;height:560px;background:#2BB673"></div>
+<div class="bar" id="b1" style="right:60px;height:444px;background:#3B82F6"></div>
+<div class="blab" id="v0" style="left:40px;top:-10px;color:#1E8E4E">₹1,883</div>
+<div class="blab" id="v1" style="right:40px;top:106px;color:#1D4ED8">₹1,495</div></div>
+<div class="blab" style="left:150px;top:1035px;font-size:40px">JUN QTR · ₹3.187/unit</div>
+<div class="blab" style="right:150px;top:1035px;font-size:40px">SEP QTR · ₹2.529/unit</div>
+<div class="stk" id="chg" style="left:250px;top:250px;background:#FFE45C;transform:rotate(-4deg);font-size:50px">changes every quarter ↕</div></div></section>
+<section class="scene clip" id="sc4" style="--bg:#FFE2D1" data-start="44.01" data-duration="4.38" data-track-index="5"><div class="cam" id="cam4"><div class="emo" id="rcpt" style="left:0;right:0;text-align:center;top:330px;font-size:260px">🧾</div>
+<div class="card" id="taxc" style="left:90px;right:90px;top:690px;padding:34px 40px;text-align:center">
+<div style="font-family:Anton;font-size:76px">MOSTLY <span style="color:#D93A2B">INTEREST</span></div>
+<div style="font-family:Poppins;font-size:44px;margin-top:10px">→ taxed at your income-tax slab</div></div></div></section>
+<section class="scene clip" id="sc5" style="--bg:#FFD6DE" data-start="48.03" data-duration="12.06" data-track-index="6"><div class="cam" id="cam5"><div class="stk" id="ctch2" style="left:300px;top:230px;background:#D93A2B;color:#fff;transform:rotate(-3deg);font-size:80px">THE CATCH</div>
+<div class="card" id="lotc" style="left:70px;right:70px;top:420px;padding:26px 36px">
+<div style="font-family:Poppins;font-size:38px;color:#5B5B66">NSE trading lot (privately placed InvIT)</div>
+<div style="display:flex;justify-content:space-between;font-family:Anton;font-size:64px;margin-top:8px"><span>25,000 units</span><span>× ₹169</span></div>
+<div style="display:flex;justify-content:space-between;border-top:5px solid #1B1B1F;margin-top:10px;padding-top:8px;font-family:Anton;font-size:84px"><span>=</span><span style="color:#D93A2B" id="l42">₹42.25 lakh</span></div></div>
+<div id="cmp" style="position:absolute;left:110px;top:840px;width:860px;height:300px">
+<div style="position:absolute;left:0;top:0;font-family:Anton;font-size:40px">your ₹1 lakh</div>
+<div id="cb0" style="position:absolute;left:0;top:56px;width:20px;height:70px;background:#2BB673;border:5px solid #1B1B1F;border-radius:8px"></div>
+<div style="position:absolute;left:0;top:150px;font-family:Anton;font-size:40px">1 lot = 42× more</div>
+<div id="cb1" style="position:absolute;left:0;top:206px;width:845px;height:70px;background:#D93A2B;border:5px solid #1B1B1F;border-radius:8px;transform-origin:0 50%"></div></div></div></section>
+<section class="scene clip" id="sc6" style="--bg:#D9F7D0" data-start="59.74" data-duration="9.73" data-track-index="7"><div class="cam" id="cam6"><div class="card" id="r0" style="left:80px;right:80px;top:290px;padding:28px 36px;display:flex;align-items:center;gap:28px">
+<span style="font-size:110px">🔒</span><div><div style="font-family:Anton;font-size:62px">NHIT units</div><div style="font-family:Poppins;font-size:38px">₹42 lakh lots · not for ₹1 lakh</div></div></div>
+<div class="card" id="r1" style="left:80px;right:80px;top:640px;padding:28px 36px;display:flex;align-items:center;gap:28px;background:#ECFFF1">
+<span style="font-size:110px">✅</span><div><div style="font-family:Anton;font-size:62px;color:#1E8E4E">Public InvITs</div><div style="font-family:Poppins;font-size:38px">1 unit at a time · e.g. Raajmarg (RIIT)</div></div></div></div></section>
+<section class="scene clip" id="sc7" style="--bg:#FFF1B8" data-start="69.12" data-duration="5.03" data-track-index="8"><div class="cam" id="cam7"><div class="ttl hand" style="top:240px">Would you buy<br>highway income?</div>
+<img id="host" src="assets/img/s0_008.png" style="position:absolute;left:40px;top:600px;width:360px"/>
+<div class="emo" style="left:470px;top:560px;font-size:150px">🛣️</div>
+<div class="pill" id="kw" style="left:430px;top:780px;background:#1E8E4E;font-size:76px">COMMENT ROAD</div>
+<div class="pill" id="sv" style="left:430px;top:960px;background:#FFE45C;color:#1B1B1F;font-size:56px">💾 SAVE THIS</div></div></section>
+  </div>
+  <section class="clip" id="caps" data-start="0" data-duration="74.15" data-track-index="8" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
+<div class="cap" id="cap0"><span>Put ₹1 lakh into India's</span></div>
+<div class="cap" id="cap1"><span>highway trust and toll roads</span></div>
+<div class="cap" id="cap2"><span>pay you every quarter.</span></div>
+<div class="cap" id="cap3"><span>But there's a catch.</span></div>
+<div class="cap" id="cap4"><span>National Highways Infra Trust (NHIT)</span></div>
+<div class="cap" id="cap5"><span>owns toll roads monetised by</span></div>
+<div class="cap" id="cap6"><span>NHAI.</span></div>
+<div class="cap" id="cap7"><span>Every toll a truck pays,</span></div>
+<div class="cap" id="cap8"><span>part flows to unitholders.</span></div>
+<div class="cap" id="cap9"><span>At ₹169 a unit,</span></div>
+<div class="cap" id="cap10"><span>₹1 lakh buys about 591</span></div>
+<div class="cap" id="cap11"><span>units.</span></div>
+<div class="cap" id="cap12"><span>June quarter:</span></div>
+<div class="cap" id="cap13"><span>₹3.187 per unit.</span></div>
+<div class="cap" id="cap14"><span>That's about ₹1,880 on your</span></div>
+<div class="cap" id="cap15"><span>₹1 lakh.</span></div>
+<div class="cap" id="cap16"><span>September quarter:</span></div>
+<div class="cap" id="cap17"><span>₹2.529 declared.</span></div>
+<div class="cap" id="cap18"><span>About ₹1,495.</span></div>
+<div class="cap" id="cap19"><span>The payout changes every quarter.</span></div>
+<div class="cap" id="cap20"><span>Most of it is interest,</span></div>
+<div class="cap" id="cap21"><span>so it's taxed at your</span></div>
+<div class="cap" id="cap22"><span>income-tax slab.</span></div>
+<div class="cap" id="cap23"><span>Now the catch.</span></div>
+<div class="cap" id="cap24"><span>NHIT is privately placed.</span></div>
+<div class="cap" id="cap25"><span>On NSE it trades in</span></div>
+<div class="cap" id="cap26"><span>lots of 25,000 units.</span></div>
+<div class="cap" id="cap27"><span>At today's price,</span></div>
+<div class="cap" id="cap28"><span>that's about ₹42 lakh.</span></div>
+<div class="cap" id="cap29"><span>So with ₹1 lakh you</span></div>
+<div class="cap" id="cap30"><span>can't buy it on the</span></div>
+<div class="cap" id="cap31"><span>exchange.</span></div>
+<div class="cap" id="cap32"><span>Public InvITs,</span></div>
+<div class="cap" id="cap33"><span>like NHAI's newer Raajmarg trust,</span></div>
+<div class="cap" id="cap34"><span>trade 1 unit at a</span></div>
+<div class="cap" id="cap35"><span>time.</span></div>
+<div class="cap" id="cap36"><span>Would you buy highway income?</span></div>
+<div class="cap" id="cap37"><span>Comment ROAD,</span></div>
+<div class="cap" id="cap38"><span>and save this.</span></div>
+  </section>
+  <div id="disc">Price: INDmoney (NSE close 16 Nov 2026) · Payouts: NHIT filings (Jun &amp; Sep 2026 qtrs) · Lot: NSE circular · Not a buy/sell call · Education only</div>
+  <div id="vignette"></div>
+</div>
+<script>
+const T = {"VO": [0.15, 7.932, 19.468666666666667, 26.397333333333336, 35.09370833333333, 44.30504166666666, 48.33237499999999, 60.03970833333332, 69.42170833333331], "DURS": [7.232, 10.986666666666666, 6.378666666666667, 8.146375, 8.661333333333333, 3.477333333333333, 11.157333333333334, 8.832, 3.1786666666666665], "STARTS": [0.0, 7.632000000000001, 19.168666666666667, 26.097333333333335, 34.793708333333335, 44.00504166666666, 48.032374999999995, 59.739708333333326, 69.12170833333332], "DUR": 74.15037499999998, "toll": 3.1827741935483873, "catch0": 5.165741935483871, "owns": 11.112350877192982, "truck": 13.85901754385965, "flows": 16.967087719298245, "units": 23.801345911949685, "jun": 28.048625563063066, "r1880": 31.131037725225227, "sep": 37.27301155913978, "r1495": 38.614121236559136, "changes": 41.74337715053763, "tax": 46.126501984126975, "catch": 48.33237499999999, "priv": 50.22574065656565, "lot": 53.94485176767676, "l42": 58.002063888888884, "cant": 61.895708333333324, "pub": 63.879708333333326, "one": 67.65570833333332, "comment": 71.06584626436779, "save": 72.05232902298849}, CAPS = [[0.15, 2.0, "Put \u20b91 lakh into India's"], [2.0, 4.15, "highway trust and toll roads"], [4.15, 5.84, "pay you every quarter."], [5.84, 7.91, "But there's a catch."], [7.93, 11.26, "National Highways Infra Trust (NHIT)"], [11.26, 13.84, "owns toll roads monetised by"], [13.84, 14.3, "NHAI."], [14.3, 16.52, "Every toll a truck pays,"], [16.52, 19.45, "part flows to unitholders."], [19.47, 21.69, "At \u20b9169 a unit,"], [21.69, 24.96, "\u20b91 lakh buys about 591"], [24.96, 26.38, "units."], [26.4, 28.05, "June quarter:"], [28.05, 30.09, "\u20b93.187 per unit."], [30.09, 33.53, "That's about \u20b91,880 on your"], [33.53, 35.07, "\u20b91 lakh."], [35.09, 37.04, "September quarter:"], [37.04, 38.77, "\u20b92.529 declared."], [38.77, 40.18, "About \u20b91,495."], [40.18, 44.29, "The payout changes every quarter."], [44.31, 45.64, "Most of it is interest,"], [45.64, 46.86, "so it's taxed at your"], [46.86, 48.31, "income-tax slab."], [48.33, 49.66, "Now the catch."], [49.66, 52.02, "NHIT is privately placed."], [52.02, 53.82, "On NSE it trades in"], [53.82, 55.8, "lots of 25,000 units."], [55.8, 57.41, "At today's price,"], [57.41, 60.02, "that's about \u20b942 lakh."], [60.04, 61.49, "So with \u20b91 lakh you"], [61.49, 62.93, "can't buy it on the"], [62.93, 63.62, "exchange."], [63.62, 64.68, "Public InvITs,"], [64.68, 67.2, "like NHAI's newer Raajmarg trust,"], [67.2, 68.49, "trade 1 unit at a"], [68.49, 69.4, "time."], [69.42, 71.07, "Would you buy highway income?"], [71.07, 71.81, "Comment ROAD,"], [71.81, 72.6, "and save this."]], SC = [[0, 7.632000000000001], [7.632000000000001, 19.168666666666667], [19.168666666666667, 26.097333333333335], [26.097333333333335, 44.00504166666666], [44.00504166666666, 48.032374999999995], [48.032374999999995, 59.739708333333326], [59.739708333333326, 69.12170833333332], [69.12170833333332, 74.15037499999998]];
+const tl = gsap.timeline({ paused: true });
+const EIN = "expo.out";
+const pop = (sel, at, r) => tl.fromTo(sel, {scale:0.3, opacity:0, rotation:(r||0)-8}, {scale:1, opacity:1, rotation:r||0, duration:0.5, ease:"back.out(2.2)"}, at);
+const up = (sel, at) => tl.fromTo(sel, {opacity:0, y:30}, {opacity:1, y:0, duration:0.45, ease:EIN}, at);
+const shake = (sel, at, a) => { const kf = []; for (let k = 0; k < 8; k++) kf.push({y:(k%2?-1:1)*(a||14)*(1-k/8), duration:0.04, ease:"none"}); kf.push({y:0, duration:0.04}); tl.to(sel, {keyframes:kf}, at); };
+tl.to("#world", {rotation:0.35, x:5, y:-4, duration:3, ease:"sine.inOut", repeat:Math.max(0, Math.floor(T.DUR/3)-1), yoyo:true}, 0);
+SC.forEach(([a, b], i) => { const s = "#sc" + i;
+  if (i > 0) tl.fromTo(s, {x:(i%2? 1150 : -1150), filter:"blur(14px)"}, {x:0, filter:"blur(0px)", duration:0.5, ease:"power3.out"}, a - 0.05);
+  if (i < SC.length - 1) tl.to(s, {x:(i%2? 1150 : -1150), filter:"blur(14px)", duration:0.42, ease:"power3.in"}, b - 0.37); });
+// 0 hook: truck drives to the toll booth, coins fly to the ₹1 lakh wallet, camera pushes in
+tl.fromTo("#cam0", {scale:1.25, x:-140, y:-120}, {scale:1, x:0, y:0, duration:3.0, ease:"power2.inOut"}, 0);
+tl.fromTo("#lane", {x:0}, {x:-680, duration:SC[0][1], ease:"none"}, 0);
+tl.to("#truck", {x:820, duration:T.toll - 0.2, ease:"power2.out"}, 0.1);
+tl.set(["#coin0", "#coin1", "#wal", "#ctch"], {opacity:0}, 0);
+[0, 1].forEach(k => tl.fromTo("#coin" + k, {opacity:1, x:0, y:0, scale:0.6}, {x:-640 - k*40, y:470, scale:1, duration:0.8, ease:"power2.in"}, T.toll + k*0.2));
+tl.set(["#coin0", "#coin1"], {opacity:0}, T.toll + 1.2);
+pop("#wal", T.toll + 0.9, -3); pop("#ctch", T.catch0, 4); shake("#sc0", T.catch0 + 0.05, 12);
+// 1 how it works: camera follows the money around the loop
+tl.set("#cam1", {scale:1.12, x:-30, y:-110}, SC[1][0]);
+["#n0", "#n1", "#n2", "#n3"].forEach((s, k) => pop(s, SC[1][0] + 0.4 + k*0.55));
+tl.set([".arr"], {scaleX:0}, SC[1][0]);
+tl.to("#a0", {scaleX:1, duration:0.5}, T.truck - 0.3);
+tl.to("#cam1", {x:-100, y:-110, duration:0.9, ease:"power2.inOut"}, T.truck - 0.4);
+tl.to("#a1", {scaleX:1, duration:0.4}, T.truck + 0.6);
+tl.to("#cam1", {x:-100, y:-230, duration:0.9, ease:"power2.inOut"}, T.truck + 0.5);
+tl.to("#a2", {scaleX:1, duration:0.5}, T.flows - 0.3);
+tl.to("#cam1", {scale:1, x:0, y:0, duration:1.0, ease:"power3.inOut"}, T.flows);
+// 2 units: tokens rain in, counter
+tl.fromTo("#cam2", {scale:1.12, x:-60, y:-60}, {scale:1, x:0, y:0, duration:SC[2][1]-SC[2][0], ease:"none"}, SC[2][0]);
+document.querySelectorAll(".tok").forEach((el, k) => tl.fromTo(el, {opacity:0, y:-260}, {opacity:1, y:0, duration:0.3, ease:"bounce.out"}, T.units - 0.8 + k*0.022));
+const c591 = {v:0}; tl.set("#u591", {opacity:0}, SC[2][0]);
+tl.to("#u591", {opacity:1, duration:0.2}, T.units);
+tl.to(c591, {v:591, duration:0.9, ease:"power2.out", onUpdate:() => { document.getElementById("u591").textContent = "= " + Math.round(c591.v) + " units"; }}, T.units);
+// 3 payouts: bars grow, camera pans from June to September
+tl.set(["#b0", "#b1"], {scaleY:0}, SC[3][0]); tl.set(["#v0", "#v1", "#chg"], {opacity:0}, SC[3][0]);
+tl.set("#cam3", {scale:1.3, x:-30, y:-340}, SC[3][0]);
+tl.to("#b0", {scaleY:1, duration:0.8, ease:"back.out(1.6)"}, T.jun); pop("#v0", T.r1880);
+tl.to("#cam3", {x:-300, duration:1.0, ease:"power2.inOut"}, T.sep - 0.8);
+tl.to("#b1", {scaleY:1, duration:0.8, ease:"back.out(1.6)"}, T.sep); pop("#v1", T.r1495);
+tl.to("#cam3", {scale:1, x:0, y:0, duration:1.0, ease:"power3.inOut"}, T.changes - 0.4);
+tl.set("#t3", {opacity:0}, SC[3][0]);
+pop("#chg", T.changes + 0.2, -4);
+tl.to("#b1", {scaleY:0.9, duration:0.5, yoyo:true, repeat:1, ease:"sine.inOut"}, T.changes + 0.4);
+// 4 tax: stamp
+tl.fromTo("#rcpt", {y:-300, rotation:-20}, {y:0, rotation:0, duration:0.6, ease:"bounce.out"}, SC[4][0] + 0.1);
+tl.fromTo("#taxc", {scale:2, opacity:0, rotation:-6}, {scale:1, opacity:1, rotation:-2, duration:0.35, ease:"power4.in"}, T.tax - 0.3);
+shake("#sc4", T.tax + 0.05, 10);
+// 5 catch: the lot card, then the camera pulls back to compare ₹1 lakh with one lot
+tl.set("#cam5", {scale:1.2, x:-108, y:-90}, SC[5][0]);
+pop("#ctch2", T.catch, -3); shake("#sc5", T.catch + 0.1, 12);
+up("#lotc", T.priv);
+tl.fromTo("#l42", {scale:0.4, opacity:0}, {scale:1, opacity:1, duration:0.5, ease:"back.out(2.5)"}, T.lot + 0.9);
+tl.to("#cam5", {scale:1, x:0, y:0, duration:1.1, ease:"power3.inOut"}, T.lot + 0.3);
+tl.set("#cmp", {opacity:0}, SC[5][0]); tl.to("#cmp", {opacity:1, duration:0.3}, T.lot + 1.2);
+tl.fromTo("#cb1", {scaleX:0.02}, {scaleX:1, duration:1.3, ease:"power2.inOut"}, T.lot + 1.4);
+// 6 route: lock vs tick
+tl.fromTo("#cam6", {scale:1.1, x:-54, y:-40}, {scale:1, x:0, y:0, duration:SC[6][1]-SC[6][0], ease:"none"}, SC[6][0]);
+pop("#r0", T.cant - 0.4, -1); shake("#sc6", T.cant, 8); pop("#r1", T.pub + 0.2, 1);
+// 7 CTA
+tl.fromTo("#cam7", {scale:1.1, x:-54, y:-60}, {scale:1, x:0, y:0, duration:1.4, ease:"power2.out"}, SC[7][0]);
+tl.fromTo("#host", {y:120, opacity:0}, {y:0, opacity:1, duration:0.5, ease:EIN}, SC[7][0] + 0.2);
+pop("#kw", T.comment, -3); pop("#sv", T.save, 2);
+CAPS.forEach(([s, e], k) => { const g = "#cap" + k;
+  tl.fromTo(g, {opacity:0, y:14}, {opacity:1, y:0, duration:0.14, ease:"power2.out"}, Math.max(0.15, s - 0.05));
+  tl.to(g, {opacity:0, duration:0.1}, e - 0.1); tl.set(g, {opacity:0, visibility:"hidden"}, e); });
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
