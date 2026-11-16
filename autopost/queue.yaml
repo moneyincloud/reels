@@ -1,297 +1,31 @@
-# moneyincloud auto-post queue. The agent posts ONLY entries with approved: true.
-# publish_at is India time (IST), format YYYY-MM-DD HH:MM. Put the video + cover in autopost/media/.
-# YouTube is uploaded as soon as an entry is approved and released by YouTube at publish_at;
-# Instagram goes out on the first run at or after publish_at (runs every 15 min).
-# Any change to this file starts a run straight away.
-- id: divi-tamil-2026-11-14
-  approved: true   # approved by owner in chat, 13 Nov 2026 19:05 IST (YouTube); Instagram approved 13 Nov 2026 20:50 IST
-  publish_at: 2026-11-14 19:00
-  story: highest-dividend-stocks-india-2026-tamil-story.jpg
-  story_delay_min: 60
-  platforms:
-    - youtube
-    - instagram
-    - instagram_story   # owner approved stories 13 Nov 21:23
-    - instagram_trial   # duplicate as a trial reel (owner asked 13 Nov 21:16)
-  video: highest-dividend-stocks-india-2026-tamil.mp4
-  cover: highest-dividend-stocks-india-2026-tamil-cover.jpg
-  ig_caption: |
-    Highest dividend paying stocks in India 2026: ₹1 lakh can pay you up to ₹6,600 a year 💰 (Tamil audio)
 
-    High dividend yield stocks, ₹1 lakh → yearly dividend (trailing yield, before tax):
-    1️⃣ Coal India: 6.6% → ~₹6,600
-    2️⃣ Wipro: 5.9% → ~₹5,900
-    3️⃣ ONGC: 5.7% → ~₹5,700
-    4️⃣ Indian Oil: 5.5% → ~₹5,500
-    5️⃣ BPCL: 5.4% → ~₹5,400
-    6️⃣ ITC: 5.1% → ~₹5,100
 
-    Thinking of dividend stocks for passive income? Know the catch first:
-    🧾 Dividends are taxed at your slab rate (+10% TDS if one company pays you over ₹10,000 a year)
-    📉 Yield = dividend ÷ price. A high yield can simply mean the price fell.
-    ❌ Dividends are never guaranteed. Companies can cut them any year.
-
-    👇 Which one do you hold? Comment DIVIDEND
-    💾 Save this dividend cheat sheet. Follow @moneyincloud for stock market tips in Tamil and English.
-
-    Yields: Equitymaster screener, 6 Nov 2026 (trailing, before tax). Illustration only; past dividends don't promise future ones.
-    Not a buy/sell call. Education only, not investment or tax advice. I may hold some of the stocks named.
-
-    #DividendStocks #PassiveIncome #StockMarketTamil #moneyincloud
-  first_comment: Dividend stocks or FD for monthly income? Reply DIV or FD 👇
-  yt_title: 'Highest Dividend Paying Stocks in India 2026 (Tamil) | ₹1 Lakh = ₹6,600 a Year? #shorts'
-  yt_description: |
-    Highest dividend paying stocks in India 2026, explained in Tamil. Trailing dividend yields (Equitymaster, 6 Nov 2026), ₹1 lakh → per year before tax:
-    Coal India 6.6% (₹6,600) · Wipro 5.9% · ONGC 5.7% · Indian Oil 5.5% · BPCL 5.4% · ITC 5.1%
-    The catch: dividends are taxed at your slab rate (+10% TDS above ₹10,000/yr per company); a high yield can mean the price fell; dividends aren't guaranteed.
-
-    Education only, not investment or tax advice. Not a buy/sell call. I may hold some of the stocks named.
-    #DividendStocks #Tamil #Shorts
-  yt_tags:
-  - highest dividend paying stocks in india
-  - high dividend yield stocks 2026
-  - dividend stocks tamil
-  - dividend stocks for passive income
-  - best dividend stocks india
-  - coal india dividend
-  - itc dividend
-  - ongc dividend
-  - bpcl dividend
-  - ioc dividend
-  - wipro dividend
-  - stock market tamil
-  - moneyincloud
-- id: penny15-2026-11-15
-  approved: true   # approved by owner in chat, 13 Nov 2026 19:46 IST (YouTube only)
-  publish_at: 2026-11-15 19:00
-  platforms:
-  - youtube   # Instagram added once its token is set up
-  video: penny-stocks-under-40-india-2026.mp4
-  cover: penny-stocks-under-40-india-2026-cover.jpg
-  ig_caption: |
-    Penny stocks under ₹40 in India: this ₹12 stock is worth ₹1.4 lakh crore 🤯
-
-    15 popular low price stocks (live price, 13 Nov 2026):
-    📱 Vodafone Idea ₹12.56 · 🏦 Yes Bank ₹17.57 · 🌬️ Suzlon ₹38.16
-    🏛️ PSU banks: UCO ₹24.85 · Punjab & Sind ₹21.75 · Central Bank ₹32.18 · Indian Overseas ₹31.63
-    🛣️ IRB ₹18.79 · ⚡ Reliance Power ₹18.54 · JP Power ₹14.08 · RattanIndia Power ₹7.00
-    🧵 Alok ₹8.13 · Trident ₹23.51 · 🏗️ HCC ₹18.44 · 📡 GTL Infra ₹1.08
-
-    😳 The twist: ALL 15 are down 20% to 57% from their 1-year high.
-
-    A low share price is NOT cheap. Before buying any penny stock, check:
-    ✅ Market value (Vodafone Idea at ₹12 = ₹1.4 lakh cr; Alok at ₹8 = ₹4,072 cr)
-    ✅ Debt
-    ✅ The exchange's surveillance (ASM/GSM) list
-
-    👇 Which one do you own? Comment PENNY
-    💾 Save this list. Follow @moneyincloud for stock market tips in English & Tamil.
-
-    Prices & 52-week highs: INDmoney, 13 Nov 2026, 3:13 PM. % falls are my calculation.
-    Not a buy/sell call. Education only, not investment advice. I may hold some of the stocks named.
-
-    #PennyStocks #StockMarketIndia #SmallCapStocks #moneyincloud
-  first_comment: Which penny stock have you held the longest? 👇
-  yt_title: '15 Penny Stocks Under ₹40 (India 2026): All Down 20–57%! ₹12 Stock Worth ₹1.4 Lakh Cr #shorts'
-  yt_description: |
-    15 popular penny stocks under ₹40 with live prices (INDmoney, 13 Nov 2026): Vodafone Idea, Yes Bank, Suzlon, UCO Bank, Punjab & Sind Bank, Central Bank, Indian Overseas Bank, IRB, Reliance Power, JP Power, Alok, Trident, HCC, RattanIndia Power, GTL Infra.
-    All 15 are down 20% to 57% from their 1-year high. A low price is not cheap: check market value, debt and the surveillance list.
-    Not a buy/sell call. Education only. I may hold some of the stocks named.
-    #PennyStocks #Shorts
-  yt_tags:
-  - penny stocks
-  - penny stocks india
-  - penny stocks under 40
-  - low price stocks
-  - vodafone idea share
-  - yes bank share
-  - suzlon share
-  - psu bank stocks
-  - reliance power share
-  - jp power share
-  - stock market india
-  - moneyincloud
-- id: cupid-test-2026-11-13
-  approved: true   # owner chose this as the live YouTube test, 13 Nov 2026 19:59 IST
-  publish_at: 2026-11-13 20:00
-  platforms:
-  - youtube
-  video: cupid-results-jump-2026-11-12.mp4
-  cover: cupid-results-jump-2026-11-12-cover.jpg
-  ig_caption: ''
-  first_comment: ''
-  yt_title: 'Cupid Share Jumped 7.6% After Q2 Results (12 Nov): Why, and the Catch 👀 #shorts'
-  yt_description: |
-    Cupid jumped 7.6% to a fresh high (₹381, morning of 12 Nov 2026) after Q2 FY27 results: revenue +122% to ₹188 cr, profit +133% to ₹56 cr.
-    The catch: operating margin fell to 29.2% (from 33.7%); ₹21 cr other income was ~29% of profit before tax.
-    FY27 target ₹800 cr+: ₹343 cr done, ₹457 cr to go (~₹229 cr a quarter). P/E 300x+.
-
-    Sources: Business Upturn (12 Nov 2026), Sahi, Screener.
-    Education only, not investment advice. Not a buy/sell call. I may hold some of the stocks named.
-
-    #Cupid #Shorts
-  yt_tags:
-  - cupid share
-  - cupid share price
-  - cupid results
-  - cupid q2 results
-  - cupid limited
-  - smallcap stocks
-  - why cupid share is rising
-  - stock market india
-  - moneyincloud
-
-- id: tax-gst-carousel-2026-11-13
-  approved: true   # owner asked in chat "create one carousel about the tax and gst post it now", 13 Nov 2026 20:49 IST
-  publish_at: 2026-11-13 20:50
-  platforms:
-    - instagram
-  images:
-    - tax-gst-2026/income-tax-gst-2026-slide1.jpg
-    - tax-gst-2026/income-tax-gst-2026-slide2.jpg
-    - tax-gst-2026/income-tax-gst-2026-slide3.jpg
-    - tax-gst-2026/income-tax-gst-2026-slide4.jpg
-    - tax-gst-2026/income-tax-gst-2026-slide5.jpg
-    - tax-gst-2026/income-tax-gst-2026-slide6.jpg
-    - tax-gst-2026/income-tax-gst-2026-slide7.jpg
-    - tax-gst-2026/income-tax-gst-2026-slide8.jpg
-    - tax-gst-2026/income-tax-gst-2026-slide9.jpg
-  ig_caption: |
-    Income tax and GST in 2026: earn ₹12.75 lakh salary and pay ₹0 tax. Here's the cheat sheet 👇
-
-    🧾 New Income Tax Act, 2025 is in force from 1 April 2026. Budget 2026 kept the slabs the same.
-    📊 New regime (tax year 2026-27): nil up to ₹4L · 5% · 10% · 15% · 20% · 25% · 30% above ₹24L
-    💡 Salaried: 87A rebate (₹12L) + ₹75,000 standard deduction = ₹0 tax up to ₹12.75L
-    ⚠️ Investors: the rebate doesn't cover special-rate stock gains. STCG 20%, LTCG 12.5% above ₹1.25L a year.
-    🛒 GST 2.0 (since 22 Sep 2025): main slabs 5% and 18%, 40% for luxury and sin goods. Individual health and life insurance: 0%.
-
-    👇 Which slab are you in? Comment TAX
-    💾 Save this for ITR time. Follow @moneyincloud for stock market and money tips in English & Tamil.
-
-    Sources: Budget 2026-27 coverage (Business Today), ClearTax GST rate list. Rules have conditions (marginal relief, regime choice).
-    Education only, not tax advice. Check with a CA for your case.
-
-    #IncomeTax #GST #TaxSaving #PersonalFinanceIndia #moneyincloud
-  first_comment: Old regime or new regime, which one are you on? 👇
-
-- id: earn-tax-spend-tax-2026-11-14
-  approved: true   # owner asked in chat to make this reel and "schedule tomorrow morning 7 am", 13 Nov 2026 20:58 IST
-  publish_at: 2026-11-14 07:00
-  story: earn-tax-spend-tax-gst-india-story.jpg
-  story_delay_min: 60
-  platforms:
-    - youtube
-    - instagram
-    - instagram_story   # owner approved stories 13 Nov 21:23
-    - instagram_trial   # duplicate as a trial reel (owner asked 13 Nov 21:16)
-  video: earn-tax-spend-tax-gst-india.mp4
-  cover: earn-tax-spend-tax-gst-india-cover.jpg
-  ig_caption: |
-    Income tax and GST: you pay tax when you earn, and again when you spend 😤
-
-    ₹15 lakh salary (new regime, tax year 2026-27):
-    🧾 Income tax ≈ ₹97,500 a year (after ₹75,000 standard deduction, incl. 4% cess)
-    💸 Take-home ≈ ₹1,16,875 a month (before EPF & professional tax)
-
-    Then you buy a 43" TV for ₹30,000:
-    🏷️ 18% GST is already inside the price = ₹4,576
-    📊 Spend ₹1 lakh a year on 18% items → about ₹15,254 goes to GST
-
-    ✅ Some relief: since 22 Sep 2025, milk, paneer and individual health insurance carry 0% GST.
-
-    Earn → tax. Spend → tax again. Is it fair? 👇 Comment TAX
-    💾 Save this and share it with someone who just got a salary hike.
-
-    Tax: new-regime slabs (Budget 2026-27, unchanged). GST: GST 2.0 rates (ClearTax list). My calculation, rounded.
-    Education only, not tax advice.
-
-    #IncomeTax #GST #MiddleClass #PersonalFinanceIndia #moneyincloud
-  first_comment: Which hurts more, income tax or GST? Reply IT or GST 👇
-  yt_title: "Earn → Tax, Spend → Tax AGAIN! ₹15 LPA Pays ₹97,500 Tax + 18% GST | Income Tax vs GST #shorts"
-  yt_description: |
-    Income tax and GST explained with a ₹15 lakh salary (new regime, tax year 2026-27):
-    Income tax ≈ ₹97,500/yr (after ₹75,000 standard deduction, incl. 4% cess) → take-home ≈ ₹1,16,875/month (before EPF & professional tax).
-    Buy a ₹30,000 43" TV and ₹4,576 of it is 18% GST. Spend ₹1 lakh on 18% items → ~₹15,254 GST.
-    Since 22 Sep 2025 (GST 2.0): milk, paneer, individual health insurance at 0% GST.
-    Is it fair? Comment TAX.
-    Education only, not tax advice. My calculation, rounded.
-    #IncomeTax #GST #Shorts
-  yt_tags: [income tax, gst, income tax vs gst, double tax india, middle class tax, new tax regime 2026, 15 lpa salary tax, take home salary, gst on tv, gst 2.0, income tax calculation, personal finance india, moneyincloud]
-
-- id: top-gainers-week-2026-11-15
-  approved: true   # owner said "post gain looser stock now", 16 Nov 2026 00:22 IST
-  publish_at: 2026-11-16 00:20
-  story: top-gainers-this-week-nifty-large-mid-smallcap-13-nov-2026-story.jpg
+- id: tradetypes-2026-11-16
+  approved: true   # owner said "ok post it now", 16 Nov 2026 10:29 IST
+  publish_at: 2026-11-16 10:30
+  story: intraday-vs-swing-vs-fno-explained-real-examples-story.jpg
   story_delay_min: 60
   platforms: [youtube, instagram, instagram_story, instagram_trial]
-  video: top-gainers-this-week-nifty-large-mid-smallcap-13-nov-2026.mp4
-  cover: top-gainers-this-week-nifty-large-mid-smallcap-13-nov-2026-cover.jpg
+  video: intraday-vs-swing-vs-fno-explained-real-examples.mp4
+  cover: intraday-vs-swing-vs-fno-explained-real-examples-cover.jpg
   ig_caption: |
-    Top gainers this week in the Indian stock market (9–13 Nov 2026) 📈
-    Kalyan Jewellers jumped 17.7% in just four trading days.
+    Intraday vs swing vs F&O trading, explained with real trades from this week 👇
 
-    Top 3 in each index:
-    🏦 Large cap (Nifty 100): Punjab National Bank +13.8%, Hitachi Energy +13.5%, Bank of Baroda +10.0%
-    🚀 Mid cap (Nifty Midcap 150): Kalyan Jewellers +17.7%, Godrej Industries +15.2%, PB Fintech +14.3%
-    🔥 Small cap (Nifty Smallcap 250): Data Patterns +15.2%, Canara HSBC Life +11.9%, Gabriel India +11.3%
+    ⚡ Intraday = buy and sell the same day. 11 Nov: Kalyan Jewellers opened ₹630, hit ₹689 within an hour, closed ₹664.
+    📅 Swing = hold for days or weeks. Kalyan went ₹592 (8 Nov Diwali close) → ₹711 (12 Nov) = +20%. Next morning it opened ₹718 and fell to ₹685 in 15 minutes: that's overnight risk.
+    📜 F&O = futures & options, traded in fixed lots. 1 Nifty lot = 65 units ≈ ₹16.5 lakh (₹25,350 at 9:52 AM, 16 Nov). A 179-point move = ±₹11,642 per lot.
 
-    Meanwhile the Nifty 50 moved just +0.6%. Full top 10 lists in the reel.
+    SEBI's latest study (FY26): nearly 9 in 10 individual F&O traders lost money.
 
-    Which one do you hold? Comment GAIN 👇
-    💾 Save this and follow for next week's list.
+    Which one do you do? Comment INTRADAY, SWING or F&O 👇
+    💾 Save this for later.
 
-    Week change = 8 Nov (Muhurat) close → 13 Nov close. Data: INDmoney.
-    A big weekly jump is not a reason to buy. Not a buy/sell call. Education only. I may hold some of the stocks named.
-
-    #StockMarketIndia #TopGainers #Nifty #SmallCap #moneyincloud
-  first_comment: "Large, mid or small cap: which list surprised you most? 👇"
-  yt_title: "Top Gainers This Week: Kalyan Jewellers +17.7% | Nifty 100, Midcap, Smallcap Top 10 #shorts"
-  yt_description: |
-    Top 10 weekly gainers in the Nifty 100, Nifty Midcap 150 and Nifty Smallcap 250 (9–13 Nov 2026).
-    Biggest jump: Kalyan Jewellers +17.7% (₹592 → ₹697).
-    Large cap: PNB +13.8%, Hitachi Energy +13.5%, Bank of Baroda +10.0%.
-    Mid cap: Kalyan Jewellers +17.7%, Godrej Industries +15.2%, PB Fintech +14.3%.
-    Small cap: Data Patterns +15.2%, Canara HSBC Life +11.9%, Gabriel India +11.3%.
-    Nifty 50 this week: +0.6%.
-    Week change = 8 Nov (Muhurat) close → 13 Nov close. Data: INDmoney.
+    Prices: INDmoney (NSE). Lot size: NSE (65 units from Jan 2026).
     Not a buy/sell call. Education only. I may hold some of the stocks named.
-  yt_tags: [top gainers this week, stock market india, nifty 100, nifty midcap 150, nifty smallcap 250, kalyan jewellers, pnb share, data patterns, weekly gainers, share market tamil, moneyincloud]
 
-- id: top-losers-week-2026-11-16
-  approved: true   # owner said "post gain looser stock now", 16 Nov 2026 00:22 IST
-  publish_at: 2026-11-16 00:20
-  story: top-losers-this-week-nifty-large-mid-smallcap-13-nov-2026-story.jpg
-  story_delay_min: 60
-  platforms: [youtube, instagram, instagram_story, instagram_trial]
-  video: top-losers-this-week-nifty-large-mid-smallcap-13-nov-2026.mp4
-  cover: top-losers-this-week-nifty-large-mid-smallcap-13-nov-2026-cover.jpg
-  ig_caption: |
-    Top losers this week in the Indian stock market (9–13 Nov 2026) 📉
-    Page Industries fell 12.4% in just four trading days.
-
-    Bottom 3 in each index:
-    🏦 Large cap (Nifty 100): Grasim −5.4%, Bharat Petroleum −4.9%, HCL Technologies −4.4%
-    ⚠️ Mid cap (Nifty Midcap 150): Page Industries −12.4%, NHPC −6.4%, Ashok Leyland −4.9%
-    🔻 Small cap (Nifty Smallcap 250): Tata Teleservices −8.7%, R R Kabel −6.2%, Prime Focus −5.6%
-
-    The Nifty 50 rose +0.6% the same week. Index up, these stocks down: that's single-stock risk.
-
-    Did you hold any of these? Comment LOSS 👇
-    💾 Save this and follow for next week's list.
-
-    Week change = 8 Nov (Muhurat) close → 13 Nov close. Data: INDmoney.
-    A big weekly fall is not a reason to buy or sell. Not a buy/sell call. Education only. I may hold some of the stocks named.
-
-    #StockMarketIndia #TopLosers #Nifty #MidCap #moneyincloud
-  first_comment: "Do you average down after a week like this, or wait? 👇"
-  yt_title: "Top Losers This Week: Page Industries −12.4% | Nifty 100, Midcap, Smallcap Top 10 #shorts"
+    #IntradayTrading #SwingTrading #FnO #StockMarketIndia #moneyincloud
+  first_comment: "Be honest: which one did you start with? 👇"
+  yt_title: "Intraday vs Swing vs F&O Explained with Real Trades (Kalyan Jewellers, Nifty) #shorts"
   yt_description: |
-    Top 10 weekly losers in the Nifty 100, Nifty Midcap 150 and Nifty Smallcap 250 (9–13 Nov 2026).
-    Biggest fall: Page Industries −12.4% (₹35,760 → ₹31,325).
-    Large cap: Grasim −5.4%, BPCL −4.9%, HCL Tech −4.4%.
-    Mid cap: Page Industries −12.4%, NHPC −6.4%, Ashok Leyland −4.9%.
-    Small cap: Tata Teleservices −8.7%, R R Kabel −6.2%, Prime Focus −5.6%.
-    Nifty 50 this week: +0.6%.
-    Week change = 8 Nov (Muhurat) close → 13 Nov close. Data: INDmoney.
-    Not a buy/sell call. Education only. I may hold some of the stocks named.
-  yt_tags: [top losers this week, stock market india, nifty 100, nifty midcap 150, nifty smallcap 250, page industries share, nhpc share, tata teleservices, weekly losers, share market tamil, moneyincloud]
+    What is intraday, swing and F&O trading? Real examples: Kalyan Jewellers 11 Nov intraday (₹630 → ₹689 → ₹664), swing ₹592 → ₹711 (+20%) and the next-day drop to ₹685, and one Nifty futures lot (65 units ≈ ₹16.5 lakh; 179 points = ±₹11,642). SEBI FY26 study: nearly 9 in 10 F&O traders lost money. Prices: INDmoney (NSE). Not a buy/sell call. Education only. I may hold some of the stocks named.
+  yt_tags: ["intraday trading", "swing trading", "f&o trading", "futures and options", "nifty lot size 65", "what is intraday", "stock market for beginners", "kalyan jewellers", "sebi f&o study", "moneyincloud"]
