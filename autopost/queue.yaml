@@ -1,31 +1,34 @@
 
 
-- id: tradetypes-2026-11-16
-  approved: true   # owner said "ok post it now", 16 Nov 2026 10:29 IST
-  publish_at: 2026-11-16 10:30
-  story: intraday-vs-swing-vs-fno-explained-real-examples-story.jpg
+- id: nhit-1-lakh-2026-11-17
+  approved: true   # owner said "ok" to posting at 10 AM, 17 Nov 2026 02:28 IST
+  publish_at: 2026-11-17 10:00
+  story: nhit-national-highways-infra-trust-1-lakh-invit-income-story.jpg
   story_delay_min: 60
-  platforms: [youtube, instagram, instagram_story, instagram_trial]
-  video: intraday-vs-swing-vs-fno-explained-real-examples.mp4
-  cover: intraday-vs-swing-vs-fno-explained-real-examples-cover.jpg
+  platforms: [youtube, instagram, instagram_trial, instagram_story]
+  video: nhit-national-highways-infra-trust-1-lakh-invit-income.mp4
+  yt_video: nhit-national-highways-infra-trust-1-lakh-invit-income-yt.mp4
+  cover: nhit-national-highways-infra-trust-1-lakh-invit-income-cover.jpg
   ig_caption: |
-    Intraday vs swing vs F&O trading, explained with real trades from this week 👇
+    ₹1 lakh in NHAI's highway trust (NHIT)? Here's what it would pay, and the catch 👇
 
-    ⚡ Intraday = buy and sell the same day. 11 Nov: Kalyan Jewellers opened ₹630, hit ₹689 within an hour, closed ₹664.
-    📅 Swing = hold for days or weeks. Kalyan went ₹592 (8 Nov Diwali close) → ₹711 (12 Nov) = +20%. Next morning it opened ₹718 and fell to ₹685 in 15 minutes: that's overnight risk.
-    📜 F&O = futures & options, traded in fixed lots. 1 Nifty lot = 65 units ≈ ₹16.5 lakh (₹25,350 at 9:52 AM, 16 Nov). A 179-point move = ±₹11,642 per lot.
+    🛣️ National Highways Infra Trust owns toll roads monetised by NHAI. Toll cash flows to unitholders every quarter.
+    💰 At ₹169 a unit (NSE close, 16 Nov), ₹1 lakh = about 591 units.
+    📅 June 2026 quarter: ₹3.187/unit → about ₹1,883 on ₹1 lakh.
+    📅 Sept 2026 quarter: ₹2.529/unit declared → about ₹1,495. Payouts change every quarter.
+    🧾 Mostly interest, so it's taxed at your income-tax slab.
 
-    SEBI's latest study (FY26): nearly 9 in 10 individual F&O traders lost money.
+    ⚠️ The catch: NHIT is a privately placed InvIT. On NSE its trading lot is 25,000 units, about ₹42 lakh at today's price. So ₹1 lakh can't buy it on the exchange. Public InvITs (like NHAI's Raajmarg trust, RIIT) trade 1 unit at a time.
 
-    Which one do you do? Comment INTRADAY, SWING or F&O 👇
-    💾 Save this for later.
+    Would you buy highway income? Comment ROAD 👇
+    💾 Save this.
 
-    Prices: INDmoney (NSE). Lot size: NSE (65 units from Jan 2026).
+    Sources: INDmoney (NSE price), NHIT exchange filings (distributions), NSE circular (trading lot).
     Not a buy/sell call. Education only. I may hold some of the stocks named.
 
-    #IntradayTrading #SwingTrading #FnO #StockMarketIndia #moneyincloud
-  first_comment: "Be honest: which one did you start with? 👇"
-  yt_title: "Intraday vs Swing vs F&O Explained with Real Trades (Kalyan Jewellers, Nifty) #shorts"
+    #InvIT #NHIT #PassiveIncome #StockMarketIndia #moneyincloud
+  first_comment: "Did you know privately placed InvITs trade in ₹25 lakh+ lots? 👇"
+  yt_title: "₹1 Lakh in NHAI's Highway Trust (NHIT)? What It Pays + The Catch #shorts"
   yt_description: |
-    What is intraday, swing and F&O trading? Real examples: Kalyan Jewellers 11 Nov intraday (₹630 → ₹689 → ₹664), swing ₹592 → ₹711 (+20%) and the next-day drop to ₹685, and one Nifty futures lot (65 units ≈ ₹16.5 lakh; 179 points = ±₹11,642). SEBI FY26 study: nearly 9 in 10 F&O traders lost money. Prices: INDmoney (NSE). Not a buy/sell call. Education only. I may hold some of the stocks named.
-  yt_tags: ["intraday trading", "swing trading", "f&o trading", "futures and options", "nifty lot size 65", "what is intraday", "stock market for beginners", "kalyan jewellers", "sebi f&o study", "moneyincloud"]
+    What would ₹1 lakh in National Highways Infra Trust (NHIT) pay? At ₹169 (NSE close 16 Nov 2026) ₹1 lakh ≈ 591 units. June 2026 quarter distribution ₹3.187/unit ≈ ₹1,883; Sept 2026 quarter ₹2.529/unit ≈ ₹1,495. Mostly interest, taxed at slab. The catch: NHIT is privately placed, NSE trading lot = 25,000 units ≈ ₹42 lakh, so ₹1 lakh can't buy it on the exchange; public InvITs such as Raajmarg (RIIT) trade 1 unit at a time. Sources: INDmoney, NHIT filings, NSE circular. Not a buy/sell call. Education only. I may hold some of the stocks named.
+  yt_tags: ["nhit", "national highways infra trust", "invit", "nhai invit", "invit dividend", "passive income india", "raajmarg invit", "riit", "highway invit", "moneyincloud"]
