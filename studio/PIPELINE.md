@@ -1,7 +1,7 @@
 # @moneyincloud reel studio — agent playbook
 
 This folder lets any fresh Claude session build a finished @moneyincloud reel (video + hook thumbnail),
-host it in this repo, and schedule it in Metricool for Instagram + YouTube. Follow every step.
+host it in this repo, and queue it in autopost/queue.yaml, which posts to Instagram + YouTube through their own APIs (no Metricool). Follow every step.
 
 ## 0. Setup (every fresh session)
 ```
@@ -13,24 +13,22 @@ Paths: `ST=/home/claude/reels/studio`. Renderer code is in `$ST/vox`, voice in `
 Git commits: user `Claude <noreply@anthropic.com>`, and end every message with
 `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`.
 
-## 0b. Posting plan — Metricool FREE plan (max 20 scheduled posts per calendar month)
-A post to Instagram + YouTube together counts as ONE post. Stories and single-image posts are NOT scheduled
-(they would use up the 20) — the owner shares each reel to his Story from the Instagram app (✈️ → "Add reel to your
-story", which is clickable). Weekly plan (IST):
+## 0b. Posting plan (own API auto-poster, no Metricool; owner's instruction 16 Nov 2026)
+Everything posts through `autopost/` (GitHub Actions + YouTube Data API + Instagram Graph API). How to queue a post:
+`autopost/QUEUE_FORMAT.md`. There is no monthly post limit any more, so no budget check. Every reel goes out as
+Instagram reel + trial reel + Story (60 min later) + YouTube Short.
 | Day | Time | Item | Agent |
 |---|---|---|---|
-| Mon | 10:00 | Reel → IG REEL + YouTube Short | Morning agent (runs 06:41 Mon & Wed) |
-| Wed | 10:00 | Reel → IG REEL + YouTube Short | Morning agent |
-| Fri | 16:00 | YouTube long video — weekly recap (YouTube only) | Weekly recap agent (11:23 Fri) |
-| Fri | 18:00 | "Animal Friday" reel → IG REEL + YouTube Short | Animal Friday agent (13:37 Fri) |
-| 1st Mon/Wed run of the month | 16:00 | ONE carousel (Instagram) | Morning agent |
-≈ 13 reels + 4–5 weekly videos + 1 carousel ≈ 18–20 per month.
-BUDGET CHECK (every agent, before scheduling anything): call getScheduledPosts for the whole current calendar month
-(1st 00:00 → last day 23:59, all statuses: published, pending, error) and count the posts. Limit = 20.
-If count + items you plan ≥ 20, drop items in this order until it fits: carousel first, then the reel.
-Never schedule past the limit; report "Monthly Metricool limit reached (<n>/20)" in the final message.
-Reel topics: Mon = today's market news (results, IPO, big movers) with real data; Wed = evergreen viral format
-(myth vs fact, quiz, checklist, past maths, two-character story). Friday evening = Animal Friday: money lessons with
+| Mon | 10:00 | IPO reel: upcoming IPOs this week | Mon & Wed IPO agent (runs 06:41) |
+| Wed | 10:00 | IPO reel: recently listed IPOs, listing-day gain/loss | Mon & Wed IPO agent |
+| Fri | 16:00 | YouTube long video, weekly recap (YouTube only, `yt_long: true`) | Weekly recap agent (11:23 Fri) |
+| Fri | 18:00 | "Animal Friday" reel | Animal Friday agent (13:37 Fri) |
+| Sat | 07:00 / 09:00 | Weekly top gainers / losers reels | Movers agent (16:13 Fri), `studio/weekmov/RUNBOOK.md` |
+| 2nd of month | 08:00 / 12:00 | Monthly top gainers / losers reels | Movers agent (1st, 10:13) |
+| 1st Mon/Wed run of the month | 16:00 | ONE carousel (Instagram) | Mon & Wed agent |
+Before queueing, check queue.yaml for another post within ±60 min of your slot; if there is one, move yours by an hour.
+Reel topics: Mon = upcoming IPOs this week (business, products, countries, price band, size, dates); Wed = recently
+listed IPOs (issue vs listing-day vs today, subscription). Both in Vox animation with real, sourced numbers. Friday evening = Animal Friday: money lessons with
 original paper-style animal characters (bull vs bear, tortoise vs hare = compounding, ant vs grasshopper = saving,
 squirrel's emergency fund, sheep following the herd = FOMO, owl doing research, monkey overtrading, elephant staying
 invested). Educational, real numbers only, no return promises.
@@ -200,22 +198,18 @@ cd $ST/vox; (for k in 0 1; do python3 render_mod.py $k 2 SLUG & done; wait) && c
 ```
 (The thumbnail is the first 0.5 s so it becomes the cover.) GitHub rejects files over 100 MB: if the mp4 is larger, re-encode with -crf 26.
 
-## 9. Host + schedule
-1. Copy `out/<slug>_reel.mp4` and `out/<slug>_thumbnail.jpg` to `/home/claude/reels/YYYY-MM-DD/` (post date),
-   also commit the module/script files under `studio/`, push, then check
-   `https://raw.githubusercontent.com/moneyincloud/reels/main/YYYY-MM-DD/<file>` returns 200.
-2. Metricool `createScheduledPost`, blogId `7366187`, timezone `Asia/Calcutta`, providers instagram + youtube,
-   media = raw mp4 URL, videoThumbnailUrl = raw jpg URL,
-   `instagramData {type: REEL, showReelOnFeed: true, isAiGenerated: true}`,
-   `youtubeData {title: "<hook title> #shorts", type: short, privacy: public, category: EDUCATION, madeForKids: false, isAiGeneratedContent: false, tags: [...]}`.
-   Caption: primary keyword in the first line, short facts with sources + dates, "Education only, not investment advice.",
-   3–5 hashtags incl. #moneyincloud.
-3. Story ("master" story for the reel): make the Story image with
-   `python3 vox/story_card.py out/<slug>_thumbnail.jpg out/<slug>_story.jpg` (adds "NEW REEL · OUT NOW" and
-   "TAP @moneyincloud TO WATCH"; Instagram's API cannot add clickable link stickers, so the Story points to the profile).
-   Host it, then a second `createScheduledPost` 15 min after the reel, provider instagram only,
-   `instagramData {type: STORY, isAiGenerated: true}`, media = the raw story jpg URL, no text, autoPublish true.
-4. Always schedule at least 30 min ahead so the owner can review in the Metricool app.
+## 9. Host + schedule (auto-poster)
+1. Copy the reel mp4, the thumbnail (cover) and the story image to `autopost/media/` with SEO file names, and commit
+   the module/script files under `studio/`.
+2. Make the Story image with `python3 vox/story_card.py out/<slug>_thumbnail.jpg out/<slug>_story.jpg`.
+3. Append the entry to `autopost/queue.yaml` exactly as `autopost/QUEUE_FORMAT.md` shows: platforms
+   [youtube, instagram, instagram_trial, instagram_story], `approved: true` with a comment naming the scheduled task
+   that queued it and the owner's standing order, caption (primary keyword in the first line, facts with sources +
+   dates, "Not a buy/sell call. Education only.", "I may hold some of the stocks named." when stocks are named,
+   3–5 hashtags incl. #moneyincloud), first comment, yt_title ("<hook title> #shorts", ≤100 chars), yt_description, yt_tags.
+4. Validate the YAML, commit, `git pull --rebase`, push. Queue at least 30 min before the slot so the owner can
+   delete the entry if he wants changes. After the push run (`gh run list -R moneyincloud/reels -L 1`, then
+   `gh run watch`), `git pull` and read `autopost/posted.json` for the YouTube link (Instagram links appear after the slot).
 
 ## 9b. POST PACK — deliver with EVERY final video + thumbnail (owner's standing rule)
 Whenever a final reel video and thumbnail are sent to the owner, ALSO send the ready-to-paste content for
@@ -223,8 +217,8 @@ YouTube, Instagram and X, filled from `templates/post_pack.md` and saved as `out
 (send the file AND paste it in the message). It must contain: Instagram caption (hook line ≤125 chars, facts with
 numbers, save/send CTA, sources + dates, disclaimer, SEO keyword line, 3–5 hashtags), first comment, alt text;
 YouTube Shorts title (≤100 chars + #shorts), description, tags (≤500 chars), pinned comment; X single post
-(≤280 chars) + optional 3-post thread; schedule slot + monthly budget count. Run humanize/caption lint where available.
-The same caption is used for the Metricool post.
+(≤280 chars) + optional 3-post thread; schedule slot. Run humanize/caption lint where available.
+The same caption goes into the queue.yaml entry.
 
 ## 10. Friday YouTube long video (weekly recap, YouTube only)
 Every Friday the week's reels (Sat→Fri, 6–8 of them, ~8–10 min total) are compiled into ONE 16:9 YouTube video:
@@ -233,10 +227,10 @@ part ("PART n/N", title, SAVE THIS / SUBSCRIBE, disclaimer), an outro, chapter t
 16:9 thumbnail (`<out>_thumbnail.jpg`). The mp4 is kept under ~95 MB so it can be hosted in this repo.
 Pick the reels from the dated folders of the last 7 days (prefer *_v2_reel.mp4 over older versions; skip trial reels);
 if fewer than 5 exist, include the strongest older reels. Order: best hook first.
-Schedule with Metricool: provider youtube only, `youtubeData {type: "video", title: "This Week in the Indian Market
-(<dates>): <top story> & more", category: EDUCATION, madeForKids: false, privacy: public, tags: [...]}`, media = raw mp4
-URL, videoThumbnailUrl = raw thumbnail URL, text = description (2-line summary, the chapter list, sources, "Education
-only, not investment advice."). Publish Friday 16:00 IST (YouTube peak).
+Queue it in autopost/queue.yaml (see autopost/QUEUE_FORMAT.md): platforms [youtube], `yt_long: true`, video = the mp4
+(≤ 100 MB) and cover = the 16:9 thumbnail in autopost/media, yt_title "This Week in the Indian Market (<dates>): <top
+story> & more" (no #shorts), yt_description = 2-line summary, the chapter list, sources, "Education only, not
+investment advice.", yt_tags. publish_at = Friday 16:00 IST (YouTube peak).
 
 ## Standing rules added 5 Nov 2026 (user request)
 1. **Post time with every reel.** Every delivery states the exact IST slot. Metricool best-time data (IG, 6–12 Nov 2026): peak **10:00 AM** every day; second window **6:00 PM** (Tue–Thu). News reels: post the same day, as early as possible.

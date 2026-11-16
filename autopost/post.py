@@ -166,7 +166,8 @@ def yt_post(entry, dry):
         except Exception as e:  # custom thumbnails need a verified channel
             log("thumbnail skipped:", str(e)[:160])
     log("youtube uploaded", vid, status.get("publishAt", "public now"))
-    return {"video_id": vid, "url": f"https://youtube.com/shorts/{vid}", "publish_at": status.get("publishAt"), "at": dt.datetime.now(IST).isoformat()}
+    url = f"https://www.youtube.com/watch?v={vid}" if entry.get("yt_long") else f"https://youtube.com/shorts/{vid}"
+    return {"video_id": vid, "url": url, "publish_at": status.get("publishAt"), "at": dt.datetime.now(IST).isoformat()}
 
 
 def main():
