@@ -27,6 +27,8 @@ for mode, at in (('gain', gain_at), ('loss', loss_at)):
     for src, suf in ((f'motion/weekmov/renders/{mode}.mp4', '.mp4'), (f'studio/weekmov/cover/{mode}_cover.jpg', '-cover.jpg'),
                      (f'studio/weekmov/cover/{mode}_story.jpg', '-story.jpg')):
         shutil.copy(R + src, R + f'studio/out/{slug}{suf}'); shutil.copy(R + src, R + f'autopost/media/{slug}{suf}')
+    import subprocess
+    subprocess.run(['python3', R + 'studio/yt_endcard.py', R + f'autopost/media/{slug}.mp4'], check=True)
     top = D['top']; verb = 'jumped' if g else 'fell'
     span = f"in just {P['sessions']} trading days" if WK else 'in one month'
     lines = []
@@ -63,6 +65,7 @@ for mode, at in (('gain', gain_at), ('loss', loss_at)):
   story_delay_min: 60
   platforms: [youtube, instagram, instagram_story, instagram_trial]
   video: {slug}.mp4
+  yt_video: {slug}-yt.mp4
   cover: {slug}-cover.jpg
   ig_caption: |
 {ind(cap)}

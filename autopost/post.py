@@ -141,13 +141,21 @@ def yt_service():
     return build("youtube", "v3", credentials=creds, cache_discovery=False)
 
 
+YT_FOOTER = ("🔔 Subscribe for a new episode every week:\n"
+             "MON · Upcoming IPOs explained\nWED · IPO listing report (issue price vs listing day)\n"
+             "FRI · Animal Friday money lesson + weekly market recap\nSAT · Top 10 gainers & losers (large, mid, small caps)")
+
+
 def yt_post(entry, dry):
     t = when(entry)
     status = {"privacyStatus": "public", "selfDeclaredMadeForKids": False}
     if t > dt.datetime.now(IST) + dt.timedelta(minutes=15):  # let YouTube release it at the slot
         status = {"privacyStatus": "private", "publishAt": t.astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                   "selfDeclaredMadeForKids": False}
-    body = {"snippet": {"title": entry["yt_title"][:100], "description": entry.get("yt_description", "").strip(),
+    desc = entry.get("yt_description", "").strip()
+    if not entry.get("yt_long") and "Subscribe" not in desc:
+        desc += "\n\n" + YT_FOOTER
+    body = {"snippet": {"title": entry["yt_title"][:100], "description": desc,
                         "tags": entry.get("yt_tags", []), "categoryId": "27"},  # 27 = Education
             "status": status}
     if dry:
@@ -155,7 +163,7 @@ def yt_post(entry, dry):
     from googleapiclient.http import MediaFileUpload
     yt = yt_service()
     req = yt.videos().insert(part="snippet,status", body=body,
-                             media_body=MediaFileUpload(os.path.join(HERE, "media", entry["video"]), chunksize=8 * 1024 * 1024, resumable=True))
+                             media_body=MediaFileUpload(os.path.join(HERE, "media", entry.get("yt_video") or entry["video"]), chunksize=8 * 1024 * 1024, resumable=True))
     resp = None
     while resp is None:
         _, resp = req.next_chunk()
