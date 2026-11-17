@@ -616,6 +616,13 @@
    "style": "colourful paper Vox, camera moves",
    "length_s": 65.5,
    "status": "draft, awaiting owner review"
+  },
+  {
+   "date": "2026-11-17",
+   "slug": "under50-carousel",
+   "topic": "Carousel: 15 Nifty stocks under \u20b950 by market cap (1 large, 3 mid, 11 small) + 7-step filter",
+   "format": "carousel 9 slides",
+   "status": "draft, awaiting owner review"
   }
  ],
  "next_ideas": [
