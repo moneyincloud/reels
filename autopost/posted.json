@@ -252,6 +252,16 @@
   "youtube_thumb": {
    "ok": true,
    "at": "2026-11-17T02:31:01.859618+05:30"
+  },
+  "instagram": {
+   "media_id": "18067337438520842",
+   "permalink": "https://www.instagram.com/reel/Df1GF44Deqw/",
+   "at": "2026-11-17T10:11:49.790216+05:30"
+  },
+  "instagram_trial": {
+   "media_id": "18091425185270972",
+   "permalink": "https://www.instagram.com/reel/Df1GNc0gOoq/",
+   "at": "2026-11-17T10:12:51.139047+05:30"
   }
  }
 }
