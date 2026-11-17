@@ -198,6 +198,14 @@ cd $ST/vox; (for k in 0 1; do python3 render_mod.py $k 2 SLUG & done; wait) && c
 ```
 (The thumbnail is the first 0.5 s so it becomes the cover.) GitHub rejects files over 100 MB: if the mp4 is larger, re-encode with -crf 26.
 
+## Camera moves (camera kit, owner's request 17 Nov 2026)
+Every reel uses `studio/camera/camera.js` (copy it to the project's assets and load it after GSAP; `const cam = CAM(tl)`).
+Wrap each scene's content in a full-frame `.cam` div and move that div. Use at least 4 different moves per reel:
+pushIn / pullOut (open and reveal), crashZoom (number reveals), track (follow a chart or a line drawing),
+whip (scene changes), dutch (tension, "the catch"), orbit / tilt (3D look at a card or chart; the scene needs perspective:1600px),
+rack (focus pull between two items), shake (impact on drops), dollyZoom (shock moments), parallax (layered sets), handheld (whole video).
+Demo of all 12: studio/out/camera-kit-demo-12-moves.mp4 (motion/camerademo).
+
 ## 9. Host + schedule (auto-poster)
 1. Copy the reel mp4, the thumbnail (cover) and the story image to `autopost/media/` with SEO file names, and commit
    the module/script files under `studio/`.
