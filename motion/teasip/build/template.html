@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Tea money to SIP</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<style>
+@font-face { font-family:"Caveat"; src:url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight:700; }
+@font-face { font-family:"Anton"; src:url("assets/fonts/anton-latin-400-normal.woff") format("woff"); }
+@font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
+:root { --paper:#FBF8F0; --ink:#1B1B1F; --mut:#5B5B66; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
+#root { position:relative; width:100%; height:100%; overflow:hidden; color:var(--ink); font-family:"Caveat","Poppins",cursive; }
+#paper { position:absolute; inset:-60px; background-color:var(--paper);
+  background-image: linear-gradient(rgba(70,120,220,.13) 2px, transparent 2px), linear-gradient(90deg, rgba(70,120,220,.13) 2px, transparent 2px);
+  background-size: 54px 54px; }
+#world { position:absolute; inset:0; }
+.scene { position:absolute; inset:0; overflow:hidden; }
+.cam { position:absolute; inset:0; transform-origin:0 0; }
+.handle { position:absolute; left:40px; top:60px; font-family:"Oswald",sans-serif; font-size:30px; color:#55556A; z-index:50; }
+.hand { font-family:"Caveat",cursive; font-weight:700; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:100px; line-height:1; }
+.scene { background: var(--bg, transparent); }
+.big { position:absolute; font-family:"Anton",sans-serif; line-height:1; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:96px; line-height:1.05; }
+.card { position:absolute; background:#fff; border:6px solid var(--ink); border-radius:26px; box-shadow:12px 12px 0 var(--ink); }
+.pill { position:absolute; border-radius:22px; padding:12px 34px; font-family:"Anton",sans-serif; font-size:66px; color:#fff; border:5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.stk { position:absolute; padding:12px 30px; border:6px solid var(--ink); border-radius:16px; font-family:"Anton",sans-serif; font-size:64px; box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.emo { position:absolute; line-height:1; color:var(--ink); }
+#road { position:absolute; left:-200px; right:-200px; top:640px; height:300px; background:#3C3F4A; border-top:10px solid var(--ink); border-bottom:10px solid var(--ink); }
+#lane { position:absolute; left:0; width:3000px; top:140px; height:20px; background:repeating-linear-gradient(90deg,#FFE45C 0 90px,transparent 90px 170px); }
+.node { position:absolute; width:300px; height:250px; text-align:center; }
+.node .e { font-size:130px; line-height:1.2; } .node b { display:block; font-family:"Anton",sans-serif; font-weight:400; font-size:44px; line-height:1.1; }
+.arr { position:absolute; height:14px; background:var(--ink); border-radius:7px; transform-origin:0 50%; }
+.arr:after { content:""; position:absolute; right:-14px; top:-16px; border-left:30px solid var(--ink); border-top:23px solid transparent; border-bottom:23px solid transparent; }
+.tok { position:absolute; width:46px; height:46px; border-radius:50%; background:#FFC93C; border:4px solid var(--ink); }
+.bar { position:absolute; bottom:0; width:260px; border:6px solid var(--ink); border-radius:18px 18px 0 0; transform-origin:50% 100%; }
+.blab { position:absolute; width:300px; text-align:center; font-family:"Anton",sans-serif; font-size:52px; }
+.cap { position:absolute; left:0; right:0; top:1225px; text-align:center; opacity:0; }
+.cap span { display:inline-block; max-width:930px; background:#fff; border:5px solid var(--ink); border-radius:18px; box-shadow:6px 8px 0 var(--ink); padding:10px 30px; font-family:"Poppins",sans-serif; font-weight:700; font-size:42px; line-height:1.25; }
+#disc { position:absolute; left:30px; right:30px; top:1320px; text-align:center; font-family:"Oswald",sans-serif; font-size:26px; color:rgb(70,70,82); z-index:30; }
+#vignette { position:absolute; inset:0; pointer-events:none; z-index:99; background:radial-gradient(ellipse at center, transparent 60%, rgba(27,27,31,.12) 100%); }
+</style>
+</head><body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="__DUR__" data-fps="30">
+  <div id="paper"></div>
+  <div class="handle">@moneyincloud</div>
+  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="__DUR__" data-track-index="9" data-volume="1"></audio>
+  <div id="world">
+__BODY__
+  </div>
+  <section class="clip" id="caps" data-start="0" data-duration="__DUR__" data-track-index="8" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
+__CAPS_HTML__
+  </section>
+  <div id="disc">Assumes ~245 working days/yr · 12.44% = Nifty 50 TRI 20-yr return to Feb 2026 (NSE Indices); past returns are not a promise · Education only, not investment advice</div>
+  <div id="vignette"></div>
+</div>
+<script>
+__JS__
+</script>
+</body>
+</html>

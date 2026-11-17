@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Tea money to SIP</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<style>
+@font-face { font-family:"Caveat"; src:url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight:700; }
+@font-face { font-family:"Anton"; src:url("assets/fonts/anton-latin-400-normal.woff") format("woff"); }
+@font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
+:root { --paper:#FBF8F0; --ink:#1B1B1F; --mut:#5B5B66; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
+#root { position:relative; width:100%; height:100%; overflow:hidden; color:var(--ink); font-family:"Caveat","Poppins",cursive; }
+#paper { position:absolute; inset:-60px; background-color:var(--paper);
+  background-image: linear-gradient(rgba(70,120,220,.13) 2px, transparent 2px), linear-gradient(90deg, rgba(70,120,220,.13) 2px, transparent 2px);
+  background-size: 54px 54px; }
+#world { position:absolute; inset:0; }
+.scene { position:absolute; inset:0; overflow:hidden; }
+.cam { position:absolute; inset:0; transform-origin:0 0; }
+.handle { position:absolute; left:40px; top:60px; font-family:"Oswald",sans-serif; font-size:30px; color:#55556A; z-index:50; }
+.hand { font-family:"Caveat",cursive; font-weight:700; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:100px; line-height:1; }
+.scene { background: var(--bg, transparent); }
+.big { position:absolute; font-family:"Anton",sans-serif; line-height:1; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:96px; line-height:1.05; }
+.card { position:absolute; background:#fff; border:6px solid var(--ink); border-radius:26px; box-shadow:12px 12px 0 var(--ink); }
+.pill { position:absolute; border-radius:22px; padding:12px 34px; font-family:"Anton",sans-serif; font-size:66px; color:#fff; border:5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.stk { position:absolute; padding:12px 30px; border:6px solid var(--ink); border-radius:16px; font-family:"Anton",sans-serif; font-size:64px; box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.emo { position:absolute; line-height:1; color:var(--ink); }
+#road { position:absolute; left:-200px; right:-200px; top:640px; height:300px; background:#3C3F4A; border-top:10px solid var(--ink); border-bottom:10px solid var(--ink); }
+#lane { position:absolute; left:0; width:3000px; top:140px; height:20px; background:repeating-linear-gradient(90deg,#FFE45C 0 90px,transparent 90px 170px); }
+.node { position:absolute; width:300px; height:250px; text-align:center; }
+.node .e { font-size:130px; line-height:1.2; } .node b { display:block; font-family:"Anton",sans-serif; font-weight:400; font-size:44px; line-height:1.1; }
+.arr { position:absolute; height:14px; background:var(--ink); border-radius:7px; transform-origin:0 50%; }
+.arr:after { content:""; position:absolute; right:-14px; top:-16px; border-left:30px solid var(--ink); border-top:23px solid transparent; border-bottom:23px solid transparent; }
+.tok { position:absolute; width:46px; height:46px; border-radius:50%; background:#FFC93C; border:4px solid var(--ink); }
+.bar { position:absolute; bottom:0; width:260px; border:6px solid var(--ink); border-radius:18px 18px 0 0; transform-origin:50% 100%; }
+.blab { position:absolute; width:300px; text-align:center; font-family:"Anton",sans-serif; font-size:52px; }
+.cap { position:absolute; left:0; right:0; top:1225px; text-align:center; opacity:0; }
+.cap span { display:inline-block; max-width:930px; background:#fff; border:5px solid var(--ink); border-radius:18px; box-shadow:6px 8px 0 var(--ink); padding:10px 30px; font-family:"Poppins",sans-serif; font-weight:700; font-size:42px; line-height:1.25; }
+#disc { position:absolute; left:30px; right:30px; top:1320px; text-align:center; font-family:"Oswald",sans-serif; font-size:26px; color:rgb(70,70,82); z-index:30; }
+#vignette { position:absolute; inset:0; pointer-events:none; z-index:99; background:radial-gradient(ellipse at center, transparent 60%, rgba(27,27,31,.12) 100%); }
+#zp { fill:none; stroke-linecap:round; stroke-linejoin:round; }
+.steam { position:absolute; top:330px; width:26px; height:120px; border-radius:13px; background:rgba(120,120,130,.35); }
+.day { position:absolute; top:0; width:160px; height:160px; background:#fff; border:5px solid #1B1B1F; border-radius:20px; box-shadow:6px 6px 0 #1B1B1F;
+  text-align:center; font-family:"Anton",sans-serif; font-size:44px; padding-top:12px; }
+.day b { display:block; font-weight:400; font-size:64px; color:#1E8E4E; }
+.tr { display:flex; justify-content:space-between; align-items:baseline; padding:30px 0; border-bottom:2px solid #444; font-family:"Poppins",sans-serif; font-size:44px; }
+.tr:last-child { border:0; } .tr b { font-family:"Anton",sans-serif; font-weight:400; font-size:66px; color:#FFE45C; }
+</style>
+</head><body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="65.49" data-fps="30">
+  <div id="paper"></div>
+  <div class="handle">@moneyincloud</div>
+  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="65.49" data-track-index="9" data-volume="1"></audio>
+  <div id="world">
+<section class="scene clip" id="sc0" style="--bg:#FFF1B8" data-start="0.00" data-duration="7.87" data-track-index="1"><div class="cam" id="cam0"><div class="emo" id="cup" style="left:0;right:0;text-align:center;top:400px;font-size:330px">☕</div>
+<div class="steam" id="st0" style="left:470px"></div><div class="steam" id="st1" style="left:540px"></div><div class="steam" id="st2" style="left:610px"></div>
+<div class="stk" id="tag25" style="left:640px;top:760px;background:#1E8E4E;color:#fff;transform:rotate(8deg)">₹25/day</div>
+<div class="stk" id="trad" style="left:120px;top:250px;background:#D93A2B;color:#fff;transform:rotate(-4deg);font-size:58px">NOT OUR TRADITION?</div></div></section>
+<section class="scene clip" id="sc1" style="--bg:#DDF0FF" data-start="7.52" data-duration="8.77" data-track-index="2"><div class="cam" id="cam1"><div class="card" id="poster" style="left:90px;right:90px;top:260px;padding:30px;text-align:center;background:#FFF7E0">
+<div style="font-family:Anton;font-size:44px;color:#B45309">1930s · INDIAN TEA MARKET EXPANSION BOARD</div>
+<div style="font-family:Caveat;font-weight:700;font-size:96px;line-height:1">“Drink tea!”</div></div>
+<div id="track" style="position:absolute;left:-100px;right:-100px;top:930px;height:16px;background:repeating-linear-gradient(90deg,#1B1B1F 0 40px,transparent 40px 70px)"></div>
+<div class="emo" id="train" style="left:-420px;top:740px;font-size:200px">🚂</div>
+<div class="emo cupf" id="cf0" style="left:320px;top:620px;font-size:90px">🍵</div>
+<div class="emo cupf" id="cf1" style="left:470px;top:580px;font-size:90px">🍵</div>
+<div class="emo cupf" id="cf2" style="left:620px;top:620px;font-size:90px">🍵</div>
+<div class="stk" id="free" style="left:330px;top:1010px;background:#FFE45C;transform:rotate(-3deg);font-size:54px">FREE CUPS AT STATIONS</div></div></section>
+<section class="scene clip" id="sc2" style="--bg:#D7F5E9" data-start="15.95" data-duration="7.49" data-track-index="3"><div class="cam" id="cam2"><div class="ttl hand" style="top:230px;font-size:84px">Tamil Nadu mornings</div>
+<div class="card" id="old" style="left:70px;width:420px;top:420px;height:430px;text-align:center;padding-top:30px">
+<div style="font-size:150px">🥣</div><div style="font-family:Anton;font-size:52px">neeragaram<br>&amp; kanji</div><div style="font-family:Poppins;font-size:30px;color:#5B5B66">before</div></div>
+<div class="arr" id="ar2" style="left:500px;top:620px;width:80px"></div>
+<div class="card" id="new" style="right:70px;width:420px;top:420px;height:430px;text-align:center;padding-top:30px;background:#FFF7E0">
+<div style="font-size:150px">☕</div><div style="font-family:Anton;font-size:52px">filter<br>coffee</div><div style="font-family:Poppins;font-size:30px;color:#5B5B66">early 1900s</div></div></div></section>
+<section class="scene clip" id="sc3" style="--bg:#E6E0FF" data-start="23.09" data-duration="7.30" data-track-index="4"><div class="cam" id="cam3"><div class="emo" id="cup3" style="left:420px;top:300px;font-size:200px">☕</div>
+<div class="emo" id="coin3" style="left:440px;top:320px;font-size:170px">🪙</div>
+<div class="card" id="jar" style="left:330px;top:540px;width:420px;height:230px;text-align:center;padding-top:40px;background:#ECFFF1">
+<div style="font-family:Anton;font-size:80px;color:#1E8E4E">DAILY SIP</div><div style="font-family:Poppins;font-size:34px">₹25 a day</div></div>
+<div id="days" style="position:absolute;left:0;right:0;top:880px;height:180px"><div class="day" id="dy0" style="left:80px">MON<b>✓</b></div><div class="day" id="dy1" style="left:266px">TUE<b>✓</b></div><div class="day" id="dy2" style="left:452px">WED<b>✓</b></div><div class="day" id="dy3" style="left:638px">THU<b>✓</b></div><div class="day" id="dy4" style="left:824px">FRI<b>✓</b></div></div></div></section>
+<section class="scene clip" id="sc4" style="--bg:#FFE2D1" data-start="30.04" data-duration="9.19" data-track-index="5"><div class="cam" id="cam4"><div class="card" id="tbl" style="left:70px;right:70px;top:260px;padding:16px 40px;background:#1B1B1F;color:#fff">
+<div class="tr" id="t0"><span>Per working day</span><b>₹25</b></div>
+<div class="tr" id="t1"><span>Per week (5 days)</span><b>₹125</b></div>
+<div class="tr" id="t2"><span>Per month</span><b>≈ ₹510</b></div>
+<div class="tr" id="t3"><span>Per year (~245 days)</span><b>≈ ₹6,125</b></div></div></div></section>
+<section class="scene clip" id="sc5" style="--bg:#FFF1B8" data-start="38.88" data-duration="5.47" data-track-index="6"><div class="cam" id="cam5"><div class="ttl hand" style="top:240px">20 years later</div>
+<div class="big" id="inv" style="left:0;right:0;text-align:center;top:420px;font-size:150px;color:#B45309">₹1,22,500</div>
+<div style="position:absolute;left:0;right:0;text-align:center;top:600px;font-family:Poppins;font-size:40px">invested · just ₹25 a working day</div>
+<div class="tok" id="cn0" style="left:300px;top:1000px"></div>
+<div class="tok" id="cn1" style="left:460px;top:1000px"></div>
+<div class="tok" id="cn2" style="left:620px;top:1000px"></div>
+<div class="tok" id="cn3" style="left:340px;top:954px"></div>
+<div class="tok" id="cn4" style="left:500px;top:954px"></div>
+<div class="tok" id="cn5" style="left:660px;top:954px"></div>
+<div class="tok" id="cn6" style="left:300px;top:908px"></div>
+<div class="tok" id="cn7" style="left:460px;top:908px"></div>
+<div class="tok" id="cn8" style="left:620px;top:908px"></div>
+<div class="tok" id="cn9" style="left:340px;top:862px"></div>
+<div class="tok" id="cn10" style="left:500px;top:862px"></div>
+<div class="tok" id="cn11" style="left:660px;top:862px"></div>
+<div class="tok" id="cn12" style="left:300px;top:816px"></div>
+<div class="tok" id="cn13" style="left:460px;top:816px"></div>
+<div class="tok" id="cn14" style="left:620px;top:816px"></div>
+<div class="tok" id="cn15" style="left:340px;top:770px"></div>
+<div class="tok" id="cn16" style="left:500px;top:770px"></div>
+<div class="tok" id="cn17" style="left:660px;top:770px"></div></div></section>
+<section class="scene clip" id="sc6" style="--bg:#D9F7D0" data-start="43.99" data-duration="9.87" data-track-index="7"><div class="cam" id="cam6"><div class="ttl hand" style="top:230px;font-size:80px">If it grew like Nifty 50's<br>last 20 years (12.44%/yr)</div>
+<div id="chart" style="position:absolute;left:140px;right:140px;top:470px;height:560px;border-bottom:8px solid #1B1B1F">
+<div class="bar" id="g0" style="left:60px;height:132px;background:#F59E0B"></div>
+<div class="bar" id="g1" style="right:60px;height:534px;background:#2BB673"></div>
+<div class="blab" id="gv0" style="left:40px;top:340px">₹1.22 L</div>
+<div class="blab" id="gv1" style="right:40px;top:-62px;color:#1E8E4E">≈ ₹4.95 L</div></div>
+<div class="blab" style="left:160px;top:1045px;font-size:38px">you put in</div>
+<div class="blab" style="right:160px;top:1045px;font-size:38px">illustration*</div></div></section>
+<section class="scene clip" id="sc7" style="--bg:#FFD6DE" data-start="53.51" data-duration="6.66" data-track-index="8"><div class="cam" id="cam7"><div class="ttl hand" style="top:240px">Past ≠ promise</div>
+<svg id="zz" viewBox="0 0 920 360" style="position:absolute;left:80px;top:440px;width:920px;height:360px;overflow:visible">
+<path id="zp" d="M40 300 L140 250 L220 290 L300 180 L380 230 L450 120 L520 330 L600 260 L700 160 L780 210 L880 60" style="stroke:#1B1B1F;stroke-width:12"/></svg>
+<div class="stk" id="dn" style="left:330px;top:840px;background:#D93A2B;color:#fff;transform:rotate(-3deg)">markets fall too 📉</div>
+<div class="stk" id="pat" style="left:240px;top:990px;background:#FFE45C;transform:rotate(2deg);font-size:54px">needs patience, not luck</div></div></section>
+<section class="scene clip" id="sc8" style="--bg:#FFF1B8" data-start="59.82" data-duration="5.67" data-track-index="9"><div class="cam" id="cam8"><div class="ttl hand" style="top:240px">Swap one tea<br>for this?</div>
+<img id="host" src="assets/img/s0_008.png" style="position:absolute;left:40px;top:600px;width:360px"/>
+<div class="emo" style="left:480px;top:560px;font-size:150px">☕➜🪙</div>
+<div class="pill" id="kw" style="left:430px;top:790px;background:#1E8E4E;font-size:76px">COMMENT SIP</div>
+<div class="pill" id="sv" style="left:430px;top:970px;background:#FFE45C;color:#1B1B1F;font-size:56px">💾 SAVE THIS</div></div></section>
+  </div>
+  <section class="clip" id="caps" data-start="0" data-duration="65.49" data-track-index="8" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
+<div class="cap" id="cap0"><span>Your daily tea or</span></div>
+<div class="cap" id="cap1"><span>coffee isn't even our</span></div>
+<div class="cap" id="cap2"><span>tradition.</span></div>
+<div class="cap" id="cap3"><span>But it quietly takes</span></div>
+<div class="cap" id="cap4"><span>₹25 from you every</span></div>
+<div class="cap" id="cap5"><span>day.</span></div>
+<div class="cap" id="cap6"><span>Tea became an Indian</span></div>
+<div class="cap" id="cap7"><span>habit only after British-era</span></div>
+<div class="cap" id="cap8"><span>campaigns in the 1930s,</span></div>
+<div class="cap" id="cap9"><span>with free cups at</span></div>
+<div class="cap" id="cap10"><span>railway stations.</span></div>
+<div class="cap" id="cap11"><span>In Tamil Nadu,</span></div>
+<div class="cap" id="cap12"><span>coffee replaced our morning</span></div>
+<div class="cap" id="cap13"><span>neeragaram and kanji only</span></div>
+<div class="cap" id="cap14"><span>in the early 1900s.</span></div>
+<div class="cap" id="cap15"><span>So here's a swap:</span></div>
+<div class="cap" id="cap16"><span>put that ₹25 into</span></div>
+<div class="cap" id="cap17"><span>a daily SIP,</span></div>
+<div class="cap" id="cap18"><span>only on working days.</span></div>
+<div class="cap" id="cap19"><span>That's ₹125 a week,</span></div>
+<div class="cap" id="cap20"><span>about ₹510 a month,</span></div>
+<div class="cap" id="cap21"><span>around ₹6,100 a year.</span></div>
+<div class="cap" id="cap22"><span>In 20 years you'd</span></div>
+<div class="cap" id="cap23"><span>invest about ₹1.22 lakh.</span></div>
+<div class="cap" id="cap24"><span>If it grew the</span></div>
+<div class="cap" id="cap25"><span>way the Nifty 50</span></div>
+<div class="cap" id="cap26"><span>did over the last</span></div>
+<div class="cap" id="cap27"><span>20 years (about 12%</span></div>
+<div class="cap" id="cap28"><span>a year),</span></div>
+<div class="cap" id="cap29"><span>it could be around</span></div>
+<div class="cap" id="cap30"><span>₹4.9 lakh.</span></div>
+<div class="cap" id="cap31"><span>But past returns are</span></div>
+<div class="cap" id="cap32"><span>not a promise.</span></div>
+<div class="cap" id="cap33"><span>Markets fall too,</span></div>
+<div class="cap" id="cap34"><span>so this needs patience,</span></div>
+<div class="cap" id="cap35"><span>not luck.</span></div>
+<div class="cap" id="cap36"><span>Would you swap one</span></div>
+<div class="cap" id="cap37"><span>tea for this?</span></div>
+<div class="cap" id="cap38"><span>Comment SIP,</span></div>
+<div class="cap" id="cap39"><span>and save this.</span></div>
+  </section>
+  <div id="disc">Assumes ~245 working days/yr · 12.44% = Nifty 50 TRI 20-yr return to Feb 2026 (NSE Indices); past returns are not a promise · Education only, not investment advice</div>
+  <div id="vignette"></div>
+</div>
+<script>
+const T = {"VO": [0.15, 7.823125, 16.245125, 23.387125, 30.337125000000004, 39.177875, 44.29320833333333, 53.80925, 60.119249999999994], "DURS": [7.123125, 7.872, 6.592, 6.4, 8.29075, 4.565333333333333, 8.966041666666667, 5.76, 3.8186666666666667], "STARTS": [0.0, 7.523125, 15.945125, 23.087125, 30.037125000000003, 38.877875, 43.993208333333335, 53.50925, 59.81925], "DUR": 65.48791666666666, "trad": 1.946824324324324, "rs25": 4.8345777027027035, "tea30": 12.182001033057851, "cups": 13.743389462809919, "kanji": 19.024105392156866, "early": 21.28606617647059, "swap": 24.801078488372095, "work": 28.819683139534884, "wk": 30.821256386861318, "mo": 33.42346259124088, "yr": 36.2677344890511, "inv": 41.58068201754386, "nifty": 45.735298951048954, "twelve": 48.87027855477855, "l49": 51.503661421911424, "past": 54.0740775862069, "fall": 56.19269827586207, "comment": 62.219516666666664, "save": 63.301472222222216}, CAPS = [[0.15, 1.5, "Your daily tea or"], [1.5, 3.16, "coffee isn't even our"], [3.16, 3.95, "tradition."], [3.95, 5.53, "But it quietly takes"], [5.53, 6.96, "\u20b925 from you every"], [6.96, 7.8, "day."], [7.82, 9.32, "Tea became an Indian"], [9.32, 11.42, "habit only after British-era"], [11.42, 13.15, "campaigns in the 1930s,"], [13.15, 14.42, "with free cups at"], [14.42, 16.23, "railway stations."], [16.25, 17.33, "In Tamil Nadu,"], [17.33, 19.42, "coffee replaced our morning"], [19.42, 21.36, "neeragaram and kanji only"], [21.36, 23.37, "in the early 1900s."], [23.39, 25.01, "So here's a swap:"], [25.01, 26.63, "put that \u20b925 into"], [26.63, 27.78, "a daily SIP,"], [27.78, 30.32, "only on working days."], [30.34, 33.01, "That's \u20b9125 a week,"], [33.01, 35.68, "about \u20b9510 a month,"], [35.68, 39.16, "around \u20b96,100 a year."], [39.18, 41.07, "In 20 years you'd"], [41.07, 44.27, "invest about \u20b91.22 lakh."], [44.29, 45.52, "If it grew the"], [45.52, 46.93, "way the Nifty 50"], [46.93, 48.42, "did over the last"], [48.42, 50.09, "20 years (about 12%"], [50.09, 50.8, "a year),"], [50.8, 52.38, "it could be around"], [52.38, 53.79, "\u20b94.9 lakh."], [53.81, 55.2, "But past returns are"], [55.2, 56.17, "not a promise."], [56.17, 57.35, "Markets fall too,"], [57.35, 58.94, "so this needs patience,"], [58.94, 60.1, "not luck."], [60.12, 61.33, "Would you swap one"], [61.33, 62.2, "tea for this?"], [62.2, 63.0, "Comment SIP,"], [63.0, 63.94, "and save this."]], SC = [[0.0, 7.523125], [7.523125, 15.945125], [15.945125, 23.087125], [23.087125, 30.037125000000003], [30.037125000000003, 38.877875], [38.877875, 43.993208333333335], [43.993208333333335, 53.50925], [53.50925, 59.81925], [59.81925, 65.48791666666666]];
+const tl = gsap.timeline({ paused: true });
+const EIN = "expo.out";
+const pop = (sel, at, r) => tl.fromTo(sel, {scale:0.3, opacity:0, rotation:(r||0)-8}, {scale:1, opacity:1, rotation:r||0, duration:0.5, ease:"back.out(2.2)"}, at);
+const up = (sel, at) => tl.fromTo(sel, {opacity:0, y:30}, {opacity:1, y:0, duration:0.45, ease:EIN}, at);
+const shake = (sel, at, a) => { const kf = []; for (let k = 0; k < 8; k++) kf.push({y:(k%2?-1:1)*(a||14)*(1-k/8), duration:0.04, ease:"none"}); kf.push({y:0, duration:0.04}); tl.to(sel, {keyframes:kf}, at); };
+tl.to("#world", {rotation:0.35, x:5, y:-4, duration:3, ease:"sine.inOut", repeat:Math.max(0, Math.floor(T.DUR/3)-1), yoyo:true}, 0);
+SC.forEach(([a, b], i) => { const s = "#sc" + i;
+  if (i > 0) tl.fromTo(s, {x:(i%2? 1150 : -1150), filter:"blur(14px)"}, {x:0, filter:"blur(0px)", duration:0.5, ease:"power3.out"}, a - 0.05);
+  if (i < SC.length - 1) tl.to(s, {x:((i+1)%2? -1150 : 1150), filter:"blur(14px)", duration:0.42, ease:"power3.in"}, b - 0.37); });
+
+// 0 hook: steaming cup, price tag swings, "not our tradition" stamp
+tl.fromTo("#cam0", {scale:1.3, x:-162, y:-200}, {scale:1, x:0, y:0, duration:3.0, ease:"power2.inOut"}, 0);
+["#st0", "#st1", "#st2"].forEach((s, k) => tl.fromTo(s, {y:40, opacity:0, scaleY:0.5}, {y:-80, opacity:0.9, scaleY:1.2, duration:1.6, repeat:3, ease:"sine.out"}, 0.1 + k*0.3));
+tl.set(["#tag25", "#trad"], {opacity:0}, 0);
+pop("#trad", T.trad, -4); shake("#sc0", T.trad + 0.05, 10);
+pop("#tag25", T.rs25, 8); tl.to("#tag25", {rotation:-6, duration:0.5, yoyo:true, repeat:3, ease:"sine.inOut"}, T.rs25 + 0.5);
+// 1 tea history: poster drops, train rolls in handing out cups, camera tracks the train
+tl.set("#cam1", {scale:1.15, x:-40, y:-80}, SC[1][0]);
+tl.fromTo("#poster", {y:-400, rotation:-6}, {y:0, rotation:-1, duration:0.7, ease:"bounce.out"}, SC[1][0] + 0.2);
+tl.to("#train", {x:900, duration:2.2, ease:"power2.out"}, T.tea30 - 0.4);
+tl.to("#cam1", {x:-120, duration:2.2, ease:"power2.out"}, T.tea30 - 0.4);
+tl.set([".cupf", "#free"], {opacity:0}, SC[1][0]);
+[0, 1, 2].forEach(k => pop("#cf" + k, T.cups + k*0.18));
+pop("#free", T.cups + 0.7, -3); tl.to("#cam1", {scale:1, x:0, y:0, duration:0.9, ease:"power3.inOut"}, T.cups + 0.3);
+// 2 Tamil Nadu: old drink card, arrow, coffee card
+tl.fromTo("#cam2", {scale:1.08, x:-43, y:-40}, {scale:1, x:0, y:0, duration:SC[2][1]-SC[2][0], ease:"none"}, SC[2][0]);
+tl.set(["#old", "#new"], {opacity:0}, SC[2][0]); tl.set("#ar2", {scaleX:0}, SC[2][0]);
+pop("#old", T.kanji - 0.3, -2); tl.to("#ar2", {scaleX:1, duration:0.4}, T.early - 0.5); pop("#new", T.early, 2);
+// 3 swap: cup spins into a coin and drops into the SIP jar; Mon-Fri ticks
+tl.set(["#coin3", "#jar"], {opacity:0}, SC[3][0]); tl.set(".day", {opacity:0}, SC[3][0]);
+tl.to("#cup3", {rotationY:90, duration:0.25, ease:"power2.in"}, T.swap);
+tl.set("#cup3", {opacity:0}, T.swap + 0.25); tl.set("#coin3", {opacity:1, rotationY:-90}, T.swap + 0.25);
+tl.to("#coin3", {rotationY:0, duration:0.25}, T.swap + 0.25);
+pop("#jar", T.swap + 0.2); tl.to("#coin3", {y:250, scale:0.4, opacity:0, duration:0.5, ease:"power2.in"}, T.swap + 0.6);
+document.querySelectorAll(".day").forEach((el, k) => pop(el, T.work + k*0.15));
+tl.fromTo("#cam3", {scale:1.1, x:-54, y:-60}, {scale:1, x:0, y:0, duration:SC[3][1]-SC[3][0], ease:"none"}, SC[3][0]);
+// 4 table: rows slide in with the voice
+tl.set("#tbl", {opacity:0}, SC[4][0]); up("#tbl", SC[4][0] + 0.2);
+tl.set([".tr"], {opacity:0}, SC[4][0]);
+up("#t0", SC[4][0] + 0.4); up("#t1", T.wk); up("#t2", T.mo); up("#t3", T.yr);
+tl.fromTo("#cam4", {scale:1.15, x:-81, y:-40}, {scale:1, x:0, y:0, duration:SC[4][1]-SC[4][0], ease:"power1.out"}, SC[4][0]);
+// 5 20 years: counter + coin stack
+const ci = {v:0}; tl.set("#inv", {opacity:0}, SC[5][0]); tl.to("#inv", {opacity:1, duration:0.2}, T.inv - 0.3);
+tl.to(ci, {v:122500, duration:1.2, ease:"power2.out", onUpdate:() => { document.getElementById("inv").textContent = "₹" + Math.round(ci.v).toLocaleString("en-IN"); }}, T.inv - 0.3);
+document.querySelectorAll("#sc5 .tok").forEach((el, k) => tl.fromTo(el, {opacity:0, y:-300}, {opacity:1, y:0, duration:0.3, ease:"bounce.out"}, SC[5][0] + 0.3 + k*0.12));
+tl.fromTo("#cam5", {scale:1.2, x:-108, y:-120}, {scale:1, x:0, y:0, duration:1.4, ease:"power2.inOut"}, SC[5][0]);
+// 6 growth illustration: bars, camera tilts up the tall bar
+tl.set(["#g0", "#g1"], {scaleY:0}, SC[6][0]); tl.set(["#gv0", "#gv1"], {opacity:0}, SC[6][0]);
+tl.set("#cam6", {scale:1, x:0, y:0}, SC[6][0]);
+tl.to("#g0", {scaleY:1, duration:0.6, ease:"back.out(1.6)"}, T.nifty - 0.3); pop("#gv0", T.nifty);
+tl.to("#g1", {scaleY:1, duration:1.2, ease:"power2.out"}, T.twelve);
+tl.to("#cam6", {scale:1.12, x:-90, y:-30, duration:1.0, ease:"power2.inOut"}, T.twelve);
+pop("#gv1", T.l49); tl.to("#cam6", {scale:1, x:0, y:0, duration:0.8, ease:"power2.inOut"}, T.l49 + 0.6);
+// 7 risk: zigzag line draws, drops, shake
+const zp = document.getElementById("zp"), ZL = zp.getTotalLength();
+tl.set(zp, {strokeDasharray:ZL, strokeDashoffset:ZL}, SC[7][0]);
+tl.to(zp, {strokeDashoffset:0, duration:2.4, ease:"none"}, SC[7][0] + 0.3);
+tl.set(["#dn", "#pat"], {opacity:0}, SC[7][0]);
+pop("#dn", T.fall, -3); shake("#sc7", T.fall + 0.1, 12); pop("#pat", T.fall + 1.2, 2);
+tl.fromTo("#cam7", {scale:1.1, x:-54, y:-50}, {scale:1, x:0, y:0, duration:SC[7][1]-SC[7][0], ease:"none"}, SC[7][0]);
+// 8 CTA
+tl.fromTo("#cam8", {scale:1.1, x:-54, y:-60}, {scale:1, x:0, y:0, duration:1.4, ease:"power2.out"}, SC[8][0]);
+tl.fromTo("#host", {y:120, opacity:0}, {y:0, opacity:1, duration:0.5, ease:EIN}, SC[8][0] + 0.2);
+pop("#kw", T.comment, -3); pop("#sv", T.save, 2);
+
+CAPS.forEach(([s, e], k) => { const g = "#cap" + k;
+  tl.fromTo(g, {opacity:0, y:14}, {opacity:1, y:0, duration:0.14, ease:"power2.out"}, Math.max(0.15, s - 0.05));
+  tl.to(g, {opacity:0, duration:0.1}, e - 0.1); tl.set(g, {opacity:0, visibility:"hidden"}, e); });
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
