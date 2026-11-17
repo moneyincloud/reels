@@ -1,34 +1,25 @@
 
 
-- id: nhit-1-lakh-2026-11-17
-  approved: true   # owner said "ok" to posting at 10 AM, 17 Nov 2026 02:28 IST
-  publish_at: 2026-11-17 10:00
-  story: nhit-national-highways-infra-trust-1-lakh-invit-income-story.jpg
-  story_delay_min: 60
-  platforms: [youtube, instagram, instagram_trial, instagram_story]
-  video: nhit-national-highways-infra-trust-1-lakh-invit-income.mp4
-  yt_video: nhit-national-highways-infra-trust-1-lakh-invit-income-yt.mp4
-  cover: nhit-national-highways-infra-trust-1-lakh-invit-income-cover.jpg
+- id: under50-carousel-2026-11-17
+  approved: true   # owner said "today", 17 Nov 2026 13:52 IST
+  publish_at: 2026-11-17 16:00
+  platforms: [instagram]
+  images: ["stocks-under-50-rupees-nifty-slide1.jpg", "stocks-under-50-rupees-nifty-slide2.jpg", "stocks-under-50-rupees-nifty-slide3.jpg", "stocks-under-50-rupees-nifty-slide4.jpg", "stocks-under-50-rupees-nifty-slide5.jpg", "stocks-under-50-rupees-nifty-slide6.jpg", "stocks-under-50-rupees-nifty-slide7.jpg", "stocks-under-50-rupees-nifty-slide8.jpg", "stocks-under-50-rupees-nifty-slide9.jpg"]
   ig_caption: |
-    ₹1 lakh in NHAI's highway trust (NHIT)? Here's what it would pay, and the catch 👇
+    Stocks under ₹50 in the Nifty large, mid & small-cap indices, plus the 7-step filter to check any of them 👇
 
-    🛣️ National Highways Infra Trust owns toll roads monetised by NHAI. Toll cash flows to unitholders every quarter.
-    💰 At ₹169 a unit (NSE close, 16 Nov), ₹1 lakh = about 591 units.
-    📅 June 2026 quarter: ₹3.187/unit → about ₹1,883 on ₹1 lakh.
-    📅 Sept 2026 quarter: ₹2.529/unit declared → about ₹1,495. Payouts change every quarter.
-    🧾 Mostly interest, so it's taxed at your income-tax slab.
+    A ₹12 share is not a cheap company: Vodafone Idea at ₹12.26 is worth ₹1.36 lakh crore. Price alone tells you nothing; market cap, profit and debt do.
 
-    ⚠️ The catch: NHIT is a privately placed InvIT. On NSE its trading lot is 25,000 units, about ₹42 lakh at today's price. So ₹1 lakh can't buy it on the exchange. Public InvITs (like NHAI's Raajmarg trust, RIIT) trade 1 unit at a time.
+    Listed by market cap (INDmoney/NSE, 17 Nov 2026, 1:48 PM):
+    Large (Nifty 100): Vodafone Idea
+    Mid (Midcap 150): Indian Overseas Bank, Yes Bank, Suzlon Energy
+    Small (Smallcap 250): UCO Bank, Central Bank of India, Motherson Sumi Wiring, IRB Infrastructure, Sagility, Ola Electric, Bharat Coking Coal, Vedanta Power, Trident, NMDC Steel, Vedanta Oil and Gas
 
-    Would you buy highway income? Comment ROAD 👇
-    💾 Save this.
+    The 7-step filter: market cap not price · 3+ years of profit · debt-to-equity under 1 · promoter holding & pledge · dilution · liquidity & circuit band · ASM/GSM/T2T check.
 
-    Sources: INDmoney (NSE price), NHIT exchange filings (distributions), NSE circular (trading lot).
-    Not a buy/sell call. Education only. I may hold some of the stocks named.
+    Which one are you researching? Comment 50 👇 Save this and share it with a friend.
 
-    #InvIT #NHIT #PassiveIncome #StockMarketIndia #moneyincloud
-  first_comment: "Did you know privately placed InvITs trade in ₹25 lakh+ lots? 👇"
-  yt_title: "₹1 Lakh in NHAI's Highway Trust (NHIT)? What It Pays + The Catch #shorts"
-  yt_description: |
-    What would ₹1 lakh in National Highways Infra Trust (NHIT) pay? At ₹169 (NSE close 16 Nov 2026) ₹1 lakh ≈ 591 units. June 2026 quarter distribution ₹3.187/unit ≈ ₹1,883; Sept 2026 quarter ₹2.529/unit ≈ ₹1,495. Mostly interest, taxed at slab. The catch: NHIT is privately placed, NSE trading lot = 25,000 units ≈ ₹42 lakh, so ₹1 lakh can't buy it on the exchange; public InvITs such as Raajmarg (RIIT) trade 1 unit at a time. Sources: INDmoney, NHIT filings, NSE circular. Not a buy/sell call. Education only. I may hold some of the stocks named.
-  yt_tags: ["nhit", "national highways infra trust", "invit", "nhai invit", "invit dividend", "passive income india", "raajmarg invit", "riit", "highway invit", "moneyincloud"]
+    Low price ≠ low risk. Not a buy/sell call. Education only, not investment advice. I may hold some of the stocks named.
+
+    #StocksUnder50 #StockMarketIndia #SmallCap #PennyStocks #moneyincloud
+  first_comment: "Swipe to slide 8 for the screener query 📸 Which filter step do you skip most often?"
