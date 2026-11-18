@@ -34,7 +34,7 @@ Not a buy/sell call. Education only.
 #Anthropic #IPO #USStocks #moneyincloud
 
 ## First comment
-Final IPO price: (fill in once announced). Would you buy on listing day, or wait? 👇
+Price band was $70–78. Check the final IPO price in your app before investing. Would you buy on listing day, or wait? 👇
 
 ## Alt text
 Paper-collage explainer on the Anthropic IPO: Nasdaq ticker ANT, $70–78 price band, ~$1.4 trillion valuation, revenue growth, net loss and founder voting control.
