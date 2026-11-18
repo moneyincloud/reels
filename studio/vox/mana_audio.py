@@ -1,7 +1,7 @@
 import numpy as np, wave, subprocess, sys
 sys.path.insert(0,'.')
 import importlib
-F = importlib.import_module(sys.argv[1] if len(sys.argv) > 1 else "pcj2")
+F = importlib.import_module(sys.argv[1] if len(sys.argv) > 1 else "mana")
 from sfx_lib import whoosh, pop, tick, hit
 SR=48000; N=int(F.DUR*SR)
 def load(p):
@@ -108,25 +108,23 @@ def kaching():
     y+=ding(2093)[:n]*1.2 if len(ding(2093))>=n else np.pad(ding(2093),(0,n-len(ding(2093))))*1.2
     y[int(0.08*SR):]+=(ding(2637)[:n-int(0.08*SR)])*1.0
     return y*0.7
-at=F.at; S=F.STARTS
-put(drum(3),0.02,0.8); put(kaching(),at(0,'twelve',-0.2),0.6); put(hit(),at(0,'twelve',-0.1),0.7); put(pop(1000),at(0,'a day',-0.3),0.5)
-put(whoosh(),S[1]-0.1,0.5)
-for k in range(30): put(tick(),at(1,'five thousand',-0.2)+k*0.06,0.18)
-put(clunk(),at(1,'five thousand',1.7),0.6); put(kaching(),at(1,'five hundred',-0.2),0.5)
-put(whoosh(),S[2]-0.1,0.6); put(pop(900),at(2,'eleven lakh',-0.2),0.5); put(riser(0.6),at(2,'twelve thousand',-0.8),0.3); put(hit(),at(2,'twelve thousand',-0.2),0.9)
-put(whoosh(),S[3]-0.1,0.6); put(clink(),at(3,'walk in',-0.2),0.6)
-for k,ph in enumerate(('test it','weigh it','sixty five')): put(pop(800+k*200),at(3,ph,-0.25),0.5)
-put(clink(2200),at(3,'weigh',-0.2),0.5); put(kaching(),at(3,'in minutes',-0.2),0.4)
-put(whoosh(),S[4]-0.1,0.6); put(hit(),at(4,'eighteen',-0.2),0.7); put(clunk(),at(4,'if you do not',-0.3),0.6)
-put(whoosh(),S[5]-0.1,0.6); put(riser(0.8),at(5,'fifty seven',-1.0),0.3)
-for k in range(16): put(tick(),at(5,'fifty seven',-0.3)+k*0.05,0.2)
-put(hit(),at(5,'almost double',-0.2),0.8)
-put(drum(2),S[6]+0.05,0.6); put(pop(1000),at(6,'twenty six',-0.2),0.5)
-put(whoosh(),S[7]-0.1,0.6)
-for ph in ('Five hundred','twenty five','Bain','new CEO'): put(whoosh(),at(7,ph,-0.3),0.45); put(clunk(),at(7,ph,0),0.45)
-put(whoosh(),S[8]-0.1,0.6); put(hit(),at(8,'three hundred',-0.2),0.7); put(kaching(),at(8,'Market value',-0.2),0.4)
-put(horn(220,0.6),S[9]+0.05,0.3); put(clunk(),at(9,'gold prices fall',-0.3),0.6); put(hit(),at(9,'vehicle',-0.3),0.8); put(rumble(1.0),at(9,'vehicle',0),0.4)
-put(whoosh(),S[10]-0.1,0.5); put(pop(900),at(10,'follow',-0.1),0.6); put(ding(1318),at(10,'Have you',-0.2),0.4)
+put(drum(3),0.05,0.8)
+put(whoosh(),0.45,0.5); put(clunk(),0.75,0.6)
+put(creak(0.5),1.2,0.25)
+for k in range(10): put(tick(),0.15+k*0.11,0.3)
+put(kaching(),1.4,0.5); put(clunk(),1.0,0.4); put(clunk(),at(0,'fell almost',-0.2),0.8); put(horn(160,0.6),at(0,'fell almost',-0.1),0.3)
+put(ding(1568),at(0,'Multibagger',-0.25),0.5); put(clunk(),at(0,'trap',-0.2),0.8); put(horn(170,0.6),at(0,'trap',-0.1),0.35)
+put(whoosh(),F.STARTS[1]+0.1,0.5); put(clink(2600),F.STARTS[1]+0.5,0.3); put(clink(3100),F.STARTS[1]+0.9,0.3)
+for ph in ('You pledge','get cash','Pay back'): put(whoosh(),at(1,ph,-0.35),0.3); put(pop(750),at(1,ph,-0.25),0.5)
+put(riser(0.9),at(2,'thirty one',-0.4),0.3); put(kaching(),at(2,'sixty thousand',0.6),0.5); put(clunk(),at(2,'almost doubled',-0.2),0.8)
+for k in range(12): put(tick(),at(3,'four thousand',-0.4)+k*0.1,0.3)
+put(kaching(),at(3,'four thousand',0.8),0.45); put(clunk(),at(3,'now runs',0.2),0.7)
+put(clunk(),F.STARTS[4]+0.3,0.5); put(creak(0.5),F.STARTS[4]+0.6,0.25); put(ding(1568),at(4,'seven hundred',0.3),0.5); put(clunk(),at(4,'more than three',-0.3),0.8)
+put(drum(2),F.STARTS[5]+0.05,0.7); put(rumble(0.8),at(5,'lost',-0.3),0.45); put(ding(1568),at(5,'it made',-0.2),0.45); put(pop(700),at(5,'bad year',-0.3),0.5)
+put(rumble(1.0),at(6,'If gold',-0.3),0.4); put(riser(0.6),at(6,'The stock',-0.3),0.3); put(clunk(),at(6,'twenty six',-0.3),0.9)
+put(rumble(0.8),F.STARTS[7]+0.05,0.4); put(drum(3),at(7,'Right now',-0.3),0.7)
+put(ding(1568),at(7,'business is strong',-0.3),0.45); put(ding(1568),at(7,'business is strong',0.3),0.45); put(clunk(),at(7,'rides on gold',-0.3),0.55); put(clunk(),at(7,'watch Aashirvaad',-0.3),0.55)
+put(whoosh(),at(8,'send it',-0.3),0.5); put(pop(900),at(8,'Follow',-0.2),0.6)
 put(whoosh(),F.DUR-0.6,0.6)
 mix=vo+mus+fx[:N]*0.8
 mix=np.tanh(mix*1.1)/np.tanh(1.1)
