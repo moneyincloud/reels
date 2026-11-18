@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>FirstCry business explained</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="assets/camera.js"></script>
+<style>
+/* "Soft Nursery" light template: cream paper, drifting pastel blobs, soft rounded cards, gradient pills. */
+@font-face { font-family:"Caveat"; src:url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight:700; }
+@font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
+:root { --paper:#FFFCF6; --ink:#2D2346; --mut:#6E6787; --coral:#D9382C; --mint:#2EC4A0; --sky:#4C9BFF; --lav:#8A6CFF; --sun:#FFB830; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
+#root { position:relative; width:100%; height:100%; overflow:hidden; color:var(--ink); font-family:"Poppins",sans-serif; }
+#paper { position:absolute; inset:0; background-color:var(--paper);
+  background-image: radial-gradient(rgba(138,108,255,.16) 3px, transparent 3.5px); background-size: 46px 46px; }
+.blob { position:absolute; border-radius:50%; filter:blur(60px); opacity:.7; }
+#bl0 { left:-180px; top:120px; width:620px; height:620px; background:#BDF0DD; }
+#bl1 { right:-200px; top:520px; width:680px; height:680px; background:#FFD8C2; }
+#bl2 { left:-120px; top:1120px; width:560px; height:560px; background:#E3D9FF; }
+#bl3 { right:-160px; top:-160px; width:520px; height:520px; background:#CDE8FF; }
+#world { position:absolute; inset:0; }
+.scene { position:absolute; inset:0; overflow:hidden; background:var(--bg, transparent); }
+.cam { position:absolute; inset:0; transform-origin:50% 40%; }
+.handle { position:absolute; left:40px; top:56px; z-index:50; padding:8px 22px; border-radius:999px; background:rgba(255,255,255,.85);
+  box-shadow:0 6px 18px rgba(45,35,70,.12); font-family:"Oswald",sans-serif; font-size:30px; color:var(--mut); }
+.kick { position:absolute; left:0; right:0; text-align:center; font-family:"Caveat",cursive; font-weight:700; font-size:70px; color:var(--coral); line-height:1; }
+.ttl { position:absolute; left:40px; right:40px; text-align:center; font-family:"Poppins",sans-serif; font-weight:700; font-size:80px; line-height:1.08; letter-spacing:-1px; }
+.ttl em { font-style:normal; color:var(--coral); }
+.num { position:absolute; font-family:"Poppins",sans-serif; font-weight:700; line-height:1; letter-spacing:-2px; }
+.card { position:absolute; background:#fff; border-radius:36px; box-shadow:0 22px 50px rgba(45,35,70,.16), 0 2px 0 rgba(45,35,70,.05); }
+.pill { position:absolute; border-radius:999px; padding:14px 38px; font-family:"Poppins",sans-serif; font-weight:700; font-size:52px; color:#fff; white-space:nowrap;
+  box-shadow:0 14px 30px rgba(45,35,70,.20); }
+.g-coral { background:linear-gradient(135deg,#FF8A65,#FF5C7A); } .g-mint { background:linear-gradient(135deg,#17A27F,#0E7F63); }
+.g-sky { background:linear-gradient(135deg,#6DB3FF,#4C7DFF); } .g-lav { background:linear-gradient(135deg,#A68BFF,#7B5CFF); }
+.g-sun { background:linear-gradient(135deg,#FFC94D,#FF9F1C); color:var(--ink); }
+.emo { position:absolute; line-height:1; }
+.bar { position:absolute; bottom:0; border-radius:28px 28px 10px 10px; transform-origin:50% 100%; }
+.cap { position:absolute; left:0; right:0; top:1225px; text-align:center; opacity:0; }
+.cap span { display:inline-block; max-width:930px; background:#fff; border-radius:999px; padding:12px 38px; border-bottom:6px solid var(--coral);
+  box-shadow:0 12px 30px rgba(45,35,70,.16); font-family:"Poppins",sans-serif; font-weight:700; font-size:42px; line-height:1.25; color:var(--ink); }
+#disc { position:absolute; left:40px; right:40px; top:1322px; text-align:center; font-family:"Oswald",sans-serif; font-size:28px; color:#5E5873; z-index:30; }
+#prog { position:absolute; left:40px; right:40px; top:40px; height:8px; border-radius:4px; background:rgba(45,35,70,.08); z-index:51; overflow:hidden; }
+#progf { position:absolute; left:0; top:0; bottom:0; width:100%; border-radius:4px; background:linear-gradient(90deg,#34D1A6,#6DB3FF,#A68BFF,#FF5C7A); transform-origin:0 50%; }
+
+.st { text-align:center; padding-top:40px; } .st .n { font-size:78px; line-height:1.1; letter-spacing:-2px; } .st .l { font-size:36px; color:var(--mut); }
+.ml { position:absolute; left:40px; font-size:38px; }
+.mb { position:absolute; left:40px; right:40px; height:84px; border-radius:42px; overflow:hidden; display:flex; background:#F1EDFA; }
+.seg { height:100%; display:flex; align-items:center; justify-content:center; font-size:32px; transform-origin:0 50%; white-space:nowrap; }
+.bz { padding:26px 30px; } .bz .e { font-size:96px; line-height:1.1; } .bz b { display:block; font-size:46px; } .bz span { display:block; font-size:32px; color:var(--mut); }
+.chk { height:170px; padding:28px 36px 0 160px; } .chk .e { position:absolute; left:36px; top:34px; font-size:96px; line-height:1; }
+.chk b { display:block; font-size:52px; line-height:1.1; } .chk i { font-style:normal; font-size:38px; color:var(--mut); }
+.pick { width:400px; height:330px; text-align:center; padding-top:30px; } .pick .e { font-size:150px; line-height:1.2; } .pick b { font-size:46px; }
+</style>
+</head><body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="99.47" data-fps="30">
+  <div id="paper"></div>
+  <div class="blob" id="bl0"></div><div class="blob" id="bl1"></div><div class="blob" id="bl2"></div><div class="blob" id="bl3"></div>
+  <div id="prog"><div id="progf"></div></div>
+  <div class="handle">@moneyincloud</div>
+  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="99.47" data-track-index="11" data-volume="1"></audio>
+  <div id="world">
+<section class="scene clip" id="sc0" style="--bg:rgba(255,216,194,.35)" data-start="0.00" data-duration="12.02" data-track-index="1"><div class="cam" id="cam0"><div class="kick" style="top:180px">17 Nov 2026</div>
+<div class="card" id="tick" style="left:90px;right:90px;top:270px;height:300px;padding:34px 44px">
+<div style="font-size:40px;color:var(--mut)">🍼 FIRSTCRY · NSE</div>
+<div class="num" id="px" style="left:44px;top:100px;font-size:140px">₹158.59</div>
+<div class="pill g-mint" id="chg" style="right:30px;top:24px;font-size:44px;padding:8px 26px">▲ 12.85%</div></div>
+<div class="card" id="volc" style="left:90px;right:90px;top:620px;height:200px;padding:28px 44px">
+<div style="font-size:38px;color:var(--mut)">Shares traded vs usual day</div>
+<div style="position:absolute;left:44px;right:44px;top:100px;height:56px;border-radius:28px;background:#F1EDFA;overflow:hidden">
+<div id="volf" style="position:absolute;left:0;top:0;bottom:0;width:100%;border-radius:28px;background:linear-gradient(90deg,#FFC94D,#FF5C7A);transform-origin:0 50%"></div></div>
+<div class="num" id="volx" style="right:56px;top:94px;font-size:60px;color:var(--ink)">~75x</div></div>
+<div class="card" id="ipoc" style="left:90px;right:90px;top:870px;height:250px;padding:28px 44px">
+<div style="font-size:38px;color:var(--mut)">IPO price (2024) vs now</div>
+<div class="num" style="left:44px;top:96px;font-size:96px;color:var(--mut)">₹465</div>
+<div class="num" style="left:330px;top:100px;font-size:90px">→</div>
+<div class="num" id="now" style="left:470px;top:96px;font-size:96px;color:var(--coral)">₹179</div>
+<div class="emo" id="qq" style="right:40px;top:80px;font-size:120px">🤔</div></div></div></section>
+<section class="scene clip" id="sc1" style="--bg:rgba(205,232,255,.35)" data-start="11.67" data-duration="8.24" data-track-index="2"><div class="cam" id="cam1"><div class="kick" style="top:200px">meet</div>
+<div class="ttl" id="fc" style="top:280px;font-size:150px">First<em>Cry</em></div>
+<div class="pill g-lav" id="bb" style="left:200px;top:470px;font-size:46px">by Brainbees Solutions</div>
+<div class="emo" id="pin" style="left:150px;top:640px;font-size:150px">📍</div>
+<div class="num" id="pune" style="left:330px;top:680px;font-size:96px">Pune</div>
+<div id="tline" style="position:absolute;left:160px;right:160px;top:1000px;height:12px;border-radius:6px;background:linear-gradient(90deg,#34D1A6,#A68BFF);transform-origin:0 50%"></div>
+<div class="card" id="y10" style="left:80px;top:900px;width:300px;height:210px;text-align:center;padding-top:26px"><div style="font-size:84px;line-height:1">2010</div><div style="font-size:36px;color:var(--mut)">founded</div></div>
+<div class="card" id="y24" style="right:80px;top:900px;width:300px;height:210px;text-align:center;padding-top:26px"><div style="font-size:84px;line-height:1;color:var(--lav)">2024</div><div style="font-size:36px;color:var(--mut)">listed 🔔</div></div></div></section>
+<section class="scene clip" id="sc2" style="--bg:rgba(189,240,221,.35)" data-start="19.56" data-duration="14.13" data-track-index="3"><div class="cam" id="cam2"><div class="card it" id="it0" style="left:90px;top:290px;width:200px;height:200px;text-align:center;font-size:120px;line-height:200px">👶</div>
+<div class="card it" id="it1" style="left:320px;top:290px;width:200px;height:200px;text-align:center;font-size:120px;line-height:200px">🧸</div>
+<div class="card it" id="it2" style="left:550px;top:290px;width:200px;height:200px;text-align:center;font-size:120px;line-height:200px">👕</div>
+<div class="card it" id="it3" style="left:780px;top:290px;width:200px;height:200px;text-align:center;font-size:120px;line-height:200px">🛒</div>
+<div class="card it" id="it4" style="left:90px;top:520px;width:200px;height:200px;text-align:center;font-size:120px;line-height:200px">🍼</div>
+<div class="card it" id="it5" style="left:320px;top:520px;width:200px;height:200px;text-align:center;font-size:120px;line-height:200px">👟</div>
+<div class="card it" id="it6" style="left:550px;top:520px;width:200px;height:200px;text-align:center;font-size:120px;line-height:200px">🧴</div>
+<div class="card it" id="it7" style="left:780px;top:520px;width:200px;height:200px;text-align:center;font-size:120px;line-height:200px">🚼</div>
+<div class="card st" id="s0" style="left:70px;top:790px;width:300px;height:250px"><div class="n" id="n0">0</div><div class="l">products</div></div>
+<div class="card st" id="s1" style="left:390px;top:790px;width:300px;height:250px"><div class="n" id="n1">0</div><div class="l">brands</div></div>
+<div class="card st" id="s2" style="left:710px;top:790px;width:300px;height:250px"><div class="n" id="n2">0</div><div class="l">stores</div></div></div></section>
+<section class="scene clip" id="sc3" style="--bg:rgba(227,217,255,.45)" data-start="33.34" data-duration="4.26" data-track-index="4"><div class="cam" id="cam3"><div class="kick" style="top:260px">the secret is on the…</div>
+<div id="tagw" style="position:absolute;left:290px;top:420px;width:500px;height:560px;transform-origin:50% 0%">
+<div style="position:absolute;left:246px;top:0;width:8px;height:120px;background:var(--ink);border-radius:4px"></div>
+<div class="card" style="left:0;top:110px;width:500px;height:440px;text-align:center;padding-top:60px;background:linear-gradient(160deg,#fff,#FFF1EA)">
+<div style="width:60px;height:60px;border-radius:50%;margin:0 auto;border:8px solid #EBDDF2"></div>
+<div style="font-size:120px;line-height:1.15;margin:10px 0;color:var(--coral)">LABEL</div><div style="font-size:44px;color:var(--mut)">🏷️ look closer</div></div></div></div></section>
+<section class="scene clip" id="sc4" style="--bg:rgba(255,216,194,.35)" data-start="37.25" data-duration="10.91" data-track-index="5"><div class="cam" id="cam4"><div class="ttl" style="top:200px">Its <em>own</em> brands</div>
+<div class="pill g-coral" id="br0" style="left:110px;top:360px">BabyHug</div>
+<div class="pill g-sky" id="br1" style="left:520px;top:360px">CuteWalk</div>
+<div class="pill g-mint" id="br2" style="left:300px;top:490px">Pine Kids</div>
+<div class="card" id="mg" style="left:70px;right:70px;top:650px;height:480px;padding:30px 40px">
+<div style="font-size:38px;color:var(--mut)">Where the margin goes on ₹100 of sales*</div>
+<div class="ml" style="top:110px">Outside brand</div>
+<div class="mb" style="top:170px"><div id="m0a" class="seg" style="width:50%;background:#C9C2DE">brand's cut</div><div id="m0b" class="seg" style="width:50%;background:#FFC94D">shop</div></div>
+<div class="ml" style="top:290px">Own brand</div>
+<div class="mb" style="top:350px"><div id="m1" class="seg" style="width:100%;background:linear-gradient(90deg,#34D1A6,#1FAE8C);color:#fff">FirstCry keeps it all 💚</div></div></div>
+<div style="position:absolute;left:70px;right:70px;top:1140px;text-align:center;font-size:26px;color:var(--mut)">*illustration of how private labels work, not FirstCry's actual split</div></div></section>
+<section class="scene clip" id="sc5" style="--bg:rgba(205,232,255,.35)" data-start="47.81" data-duration="13.10" data-track-index="6"><div class="cam" id="cam5"><div class="ttl" style="top:190px"><em>4</em> businesses</div>
+<div class="card bz" id="bz0" style="left:70px;top:340px;width:460px;height:380px"><div class="e">🇮🇳</div><b>India business</b><span>stores + app · biggest</span><div class="pill g-coral" style="left:30px;bottom:24px;font-size:36px;padding:8px 26px">FY26 rev ₹5,753 cr</div></div>
+<div class="card bz" id="bz1" style="left:550px;top:340px;width:460px;height:380px"><div class="e">🌍</div><b>UAE + Saudi</b><span>online shopping</span><div class="pill g-sky" style="left:30px;bottom:24px;font-size:36px;padding:8px 26px">FY26 rev ₹947 cr</div></div>
+<div class="card bz" id="bz2" style="left:70px;top:750px;width:460px;height:380px"><div class="e">🐝</div><b>GlobalBees</b><span>online brands</span><div class="pill g-sun" style="left:30px;bottom:24px;font-size:36px;padding:8px 26px">FY26 rev ₹1,894 cr</div></div>
+<div class="card bz" id="bz3" style="left:550px;top:750px;width:460px;height:380px"><div class="e">🎒</div><b>Intellitots</b><span>preschools</span><div class="pill g-lav" style="left:30px;bottom:24px;font-size:36px;padding:8px 26px">smallest</div></div></div></section>
+<section class="scene clip" id="sc6" style="--bg:rgba(189,240,221,.35)" data-start="60.56" data-duration="13.34" data-track-index="7"><div class="cam" id="cam6"><div class="ttl" style="top:190px">The <em>profit</em> check</div>
+<div class="kick" style="top:300px;font-size:56px;color:var(--mut)">September quarter, year on year</div>
+<div class="card" id="rv" style="left:70px;top:400px;width:460px;height:660px;padding:26px 30px">
+<div style="font-size:40px">Revenue</div>
+<div style="position:absolute;left:40px;right:40px;top:120px;height:380px">
+<div class="bar" id="r0" style="left:10px;width:160px;height:333px;background:#D8D2EA"></div>
+<div class="bar" id="r1" style="right:10px;width:160px;height:380px;background:linear-gradient(180deg,#34D1A6,#1FAE8C)"></div></div>
+<div style="position:absolute;left:40px;top:515px;width:190px;text-align:center;font-size:30px;color:var(--mut)">₹2,099 cr<br>Q2 FY26</div>
+<div style="position:absolute;right:40px;top:515px;width:190px;text-align:center;font-size:30px">₹2,396 cr<br>Q2 FY27</div>
+<div class="pill g-mint" id="rp" style="right:24px;top:20px;font-size:38px;padding:6px 22px">▲ 14.1%</div></div>
+<div class="card" id="ls" style="left:550px;top:400px;width:460px;height:660px;padding:26px 30px">
+<div style="font-size:40px">Net loss</div>
+<div style="position:absolute;left:40px;right:40px;top:120px;height:380px">
+<div class="bar" id="l0" style="left:10px;width:160px;height:380px;background:linear-gradient(180deg,#FF8A65,#FF5C7A)"></div>
+<div class="bar" id="l1" style="right:10px;width:160px;height:95px;background:linear-gradient(180deg,#FF8A65,#FF5C7A)"></div></div>
+<div style="position:absolute;left:40px;top:515px;width:190px;text-align:center;font-size:30px;color:var(--mut)">₹50.5 cr<br>Q2 FY26</div>
+<div style="position:absolute;right:40px;top:515px;width:190px;text-align:center;font-size:30px">₹12.6 cr<br>Q2 FY27</div>
+<div class="pill g-coral" id="lp" style="right:20px;top:66px;font-size:38px;padding:6px 22px">▼ 75% smaller</div></div></div></section>
+<section class="scene clip" id="sc7" style="--bg:rgba(227,217,255,.40)" data-start="73.56" data-duration="14.70" data-track-index="8"><div class="cam" id="cam7"><div class="ttl" style="top:190px">So… <em>good</em> or not?</div>
+<div class="card chk" id="k0" style="left:70px;right:70px;top:360px"><span class="e">✅</span><b>India business</b><i>profitable in FY26</i></div>
+<div class="card chk" id="k1" style="left:70px;right:70px;top:560px"><span class="e">⚠️</span><b>Whole company</b><i>still a small loss</i></div>
+<div class="card" id="gauge" style="left:70px;right:70px;top:760px;height:330px;padding:28px 40px">
+<div style="font-size:38px;color:var(--mut)">Share price vs IPO price</div>
+<div style="position:absolute;left:40px;right:40px;top:120px;height:56px;border-radius:28px;background:#F1EDFA"></div>
+<div id="gf" style="position:absolute;left:40px;top:120px;width:357px;height:56px;border-radius:28px;background:linear-gradient(90deg,#FF8A65,#FF5C7A);transform-origin:0 50%"></div>
+<div style="position:absolute;right:40px;top:196px;font-size:40px">IPO ₹465</div>
+<div style="position:absolute;left:40px;top:196px;font-size:40px;color:var(--coral)">Now ₹179</div>
+<div class="pill g-coral" id="gp" style="left:330px;top:250px;font-size:36px;padding:6px 24px">about 62% below</div></div></div></section>
+<section class="scene clip" id="sc8" style="--bg:rgba(255,216,194,.35)" data-start="87.91" data-duration="11.56" data-track-index="9"><div class="cam" id="cam8"><div class="ttl" style="top:190px">Would you buy…</div>
+<div class="card pick" id="p0" style="left:80px;top:370px"><div class="e">🍼</div><b>the products</b></div>
+<div class="kick" id="or" style="top:520px;left:0;right:0;font-size:90px">or</div>
+<div class="card pick" id="p1" style="right:80px;top:370px"><div class="e">📈</div><b>the company</b></div>
+<img id="host" src="assets/img/s0_008.png" style="position:absolute;left:60px;top:780px;width:330px"/>
+<div class="pill g-sun" id="cm" style="left:420px;top:820px;font-size:50px">💬 Comment below</div>
+<div class="pill g-lav" id="fl" style="left:420px;top:960px;font-size:50px">➕ Follow for more</div></div></section>
+  </div>
+  <section class="clip" id="caps" data-start="0" data-duration="99.47" data-track-index="10" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
+<div class="cap" id="cap0"><span>This baby shop stock</span></div>
+<div class="cap" id="cap1"><span>jumped 13% in one</span></div>
+<div class="cap" id="cap2"><span>day,</span></div>
+<div class="cap" id="cap3"><span>on about 75x its</span></div>
+<div class="cap" id="cap4"><span>usual volume.</span></div>
+<div class="cap" id="cap5"><span>Yet it still trades</span></div>
+<div class="cap" id="cap6"><span>at less than half</span></div>
+<div class="cap" id="cap7"><span>its IPO price.</span></div>
+<div class="cap" id="cap8"><span>Why?</span></div>
+<div class="cap" id="cap9"><span>Meet FirstCry,</span></div>
+<div class="cap" id="cap10"><span>run by Brainbees Solutions</span></div>
+<div class="cap" id="cap11"><span>from Pune.</span></div>
+<div class="cap" id="cap12"><span>Founded in 2010,</span></div>
+<div class="cap" id="cap13"><span>listed in 2024.</span></div>
+<div class="cap" id="cap14"><span>It sells almost everything</span></div>
+<div class="cap" id="cap15"><span>for babies and kids.</span></div>
+<div class="cap" id="cap16"><span>Diapers,</span></div>
+<div class="cap" id="cap17"><span>clothes,</span></div>
+<div class="cap" id="cap18"><span>toys and strollers.</span></div>
+<div class="cap" id="cap19"><span>About 2 million products</span></div>
+<div class="cap" id="cap20"><span>from 7,800+ brands,</span></div>
+<div class="cap" id="cap21"><span>online and in nearly</span></div>
+<div class="cap" id="cap22"><span>1,200 stores.</span></div>
+<div class="cap" id="cap23"><span>But the smartest part</span></div>
+<div class="cap" id="cap24"><span>of the business is</span></div>
+<div class="cap" id="cap25"><span>hiding on the label.</span></div>
+<div class="cap" id="cap26"><span>Its own brands,</span></div>
+<div class="cap" id="cap27"><span>like BabyHug,</span></div>
+<div class="cap" id="cap28"><span>CuteWalk and Pine Kids.</span></div>
+<div class="cap" id="cap29"><span>When FirstCry sells its</span></div>
+<div class="cap" id="cap30"><span>own brand,</span></div>
+<div class="cap" id="cap31"><span>it doesn't share the</span></div>
+<div class="cap" id="cap32"><span>margin with an outside</span></div>
+<div class="cap" id="cap33"><span>company.</span></div>
+<div class="cap" id="cap34"><span>It runs four businesses.</span></div>
+<div class="cap" id="cap35"><span>The India business,</span></div>
+<div class="cap" id="cap36"><span>the biggest one.</span></div>
+<div class="cap" id="cap37"><span>Online shopping in the</span></div>
+<div class="cap" id="cap38"><span>UAE and Saudi Arabia.</span></div>
+<div class="cap" id="cap39"><span>GlobalBees,</span></div>
+<div class="cap" id="cap40"><span>a group of online</span></div>
+<div class="cap" id="cap41"><span>brands.</span></div>
+<div class="cap" id="cap42"><span>And Intellitots preschools.</span></div>
+<div class="cap" id="cap43"><span>Now,</span></div>
+<div class="cap" id="cap44"><span>the profit.</span></div>
+<div class="cap" id="cap45"><span>In the September quarter,</span></div>
+<div class="cap" id="cap46"><span>revenue grew 14% to</span></div>
+<div class="cap" id="cap47"><span>₹2,396 crore.</span></div>
+<div class="cap" id="cap48"><span>And the loss shrank</span></div>
+<div class="cap" id="cap49"><span>75%,</span></div>
+<div class="cap" id="cap50"><span>to just ₹12.6 crore.</span></div>
+<div class="cap" id="cap51"><span>That's what excited the</span></div>
+<div class="cap" id="cap52"><span>market.</span></div>
+<div class="cap" id="cap53"><span>The India business already</span></div>
+<div class="cap" id="cap54"><span>made a profit last</span></div>
+<div class="cap" id="cap55"><span>year.</span></div>
+<div class="cap" id="cap56"><span>But the company as</span></div>
+<div class="cap" id="cap57"><span>a whole is still</span></div>
+<div class="cap" id="cap58"><span>in a small loss,</span></div>
+<div class="cap" id="cap59"><span>and the share is</span></div>
+<div class="cap" id="cap60"><span>far below its IPO</span></div>
+<div class="cap" id="cap61"><span>price of ₹465.</span></div>
+<div class="cap" id="cap62"><span>Would you buy the</span></div>
+<div class="cap" id="cap63"><span>baby products,</span></div>
+<div class="cap" id="cap64"><span>or the company that</span></div>
+<div class="cap" id="cap65"><span>sells them?</span></div>
+<div class="cap" id="cap66"><span>Tell me in the</span></div>
+<div class="cap" id="cap67"><span>comments,</span></div>
+<div class="cap" id="cap68"><span>and follow @moneyincloud.</span></div>
+<div class="cap" id="cap69"><span>Education only,</span></div>
+<div class="cap" id="cap70"><span>not a buy or</span></div>
+<div class="cap" id="cap71"><span>sell call.</span></div>
+  </section>
+  <div id="disc">Data: Brainbees Q2 FY27 results (14 Nov 2026), FY26 investor presentation, NSE price 17 Nov 2026 · I may hold some stocks named · Education only, not a buy/sell call</div>
+</div>
+<script>
+const T = {"VO": [0.15, 11.973125000000001, 19.86179166666667, 33.641958333333335, 37.552, 48.11087499999999, 60.863541666666656, 73.85691666666665, 88.20958333333331], "DURS": [11.273125, 7.338666666666667, 13.230166666666667, 3.3600416666666666, 10.008875, 12.202666666666667, 12.443375, 13.802666666666667, 9.710791666666667], "STARTS": [0.0, 11.673125, 19.561791666666668, 33.34195833333334, 37.252, 47.810874999999996, 60.56354166666666, 73.55691666666665, 87.90958333333332], "DUR": 99.47037499999998, "jump": 1.62959765625, "vol": 4.166050781250001, "ipo0": 7.407074218750001, "why": 11.141296875, "meet": 11.973125000000001, "pune": 15.258051984126986, "y10": 15.677404365079367, "y24": 17.284921825396825, "items": 22.99010693760263, "skus": 25.466689860426932, "brands": 27.22636720032841, "stores": 30.289509236453206, "label": 35.90034699453552, "own": 37.552, "marg": 41.17937751677852, "four": 48.11087499999999, "b1": 49.884518410852706, "b2": 52.50951065891472, "b3": 55.7020687984496, "b4": 58.39800678294573, "prof": 60.863541666666656, "rev": 63.525557213930334, "loss": 68.78768097014924, "exc": 73.85691666666665, "indp": 75.94033805031445, "still": 79.32589779874212, "ipo": 82.77656446540878, "q": 88.20958333333331, "cmt": 92.25574652777776, "fol": 94.06095779914529}, CAPS = [[0.15, 1.97, "This baby shop stock"], [1.97, 3.51, "jumped 13% in one"], [3.51, 3.88, "day,"], [3.88, 5.33, "on about 75x its"], [5.33, 6.51, "usual volume."], [6.51, 8.24, "Yet it still trades"], [8.24, 9.79, "at less than half"], [9.79, 11.06, "its IPO price."], [11.06, 11.95, "Why?"], [11.97, 13.24, "Meet FirstCry,"], [13.24, 15.6, "run by Brainbees Solutions"], [15.6, 16.5, "from Pune."], [16.5, 17.95, "Founded in 2010,"], [17.95, 19.84, "listed in 2024."], [19.86, 22.05, "It sells almost everything"], [22.05, 23.74, "for babies and kids."], [23.74, 24.41, "Diapers,"], [24.41, 25.09, "clothes,"], [25.09, 26.69, "toys and strollers."], [26.69, 28.71, "About 2 million products"], [28.71, 30.31, "from 7,800+ brands,"], [30.31, 32.0, "online and in nearly"], [32.0, 33.62, "1,200 stores."], [33.64, 34.84, "But the smartest part"], [34.84, 35.86, "of the business is"], [35.86, 37.53, "hiding on the label."], [37.55, 38.67, "Its own brands,"], [38.67, 39.64, "like BabyHug,"], [39.64, 41.36, "CuteWalk and Pine Kids."], [41.36, 43.08, "When FirstCry sells its"], [43.08, 43.83, "own brand,"], [43.83, 45.32, "it doesn't share the"], [45.32, 46.96, "margin with an outside"], [46.96, 48.09, "company."], [48.11, 49.9, "It runs four businesses."], [49.9, 51.31, "The India business,"], [51.31, 52.5, "the biggest one."], [52.5, 54.14, "Online shopping in the"], [54.14, 55.7, "UAE and Saudi Arabia."], [55.7, 56.52, "GlobalBees,"], [56.52, 57.78, "a group of online"], [57.78, 58.3, "brands."], [58.3, 60.84, "And Intellitots preschools."], [60.86, 61.3, "Now,"], [61.3, 62.49, "the profit."], [62.49, 65.19, "In the September quarter,"], [65.19, 67.25, "revenue grew 14% to"], [67.25, 68.65, "\u20b92,396 crore."], [68.65, 70.71, "And the loss shrank"], [70.71, 71.14, "75%,"], [71.14, 73.84, "to just \u20b912.6 crore."], [73.86, 75.66, "That's what excited the"], [75.66, 76.21, "market."], [76.21, 78.25, "The India business already"], [78.25, 79.66, "made a profit last"], [79.66, 80.05, "year."], [80.05, 81.46, "But the company as"], [81.46, 82.72, "a whole is still"], [82.72, 83.97, "in a small loss,"], [83.97, 85.23, "and the share is"], [85.23, 86.56, "far below its IPO"], [86.56, 88.19, "price of \u20b9465."], [88.21, 89.34, "Would you buy the"], [89.34, 90.27, "baby products,"], [90.27, 91.54, "or the company that"], [91.54, 92.27, "sells them?"], [92.27, 93.2, "Tell me in the"], [93.2, 93.8, "comments,"], [93.8, 95.46, "and follow @moneyincloud."], [95.46, 96.46, "Education only,"], [96.46, 97.26, "not a buy or"], [97.26, 97.92, "sell call."]], SC = [[0.0, 11.673125], [11.673125, 19.561791666666668], [19.561791666666668, 33.34195833333334], [33.34195833333334, 37.252], [37.252, 47.810874999999996], [47.810874999999996, 60.56354166666666], [60.56354166666666, 73.55691666666665], [73.55691666666665, 87.90958333333332], [87.90958333333332, 99.47037499999998]];
+const tl = gsap.timeline({ paused: true });
+const EIN = "expo.out";
+const pop = (sel, at, r) => tl.fromTo(sel, {scale:0.3, opacity:0, rotation:(r||0)-8}, {scale:1, opacity:1, rotation:r||0, duration:0.5, ease:"back.out(2.2)"}, at);
+const up = (sel, at) => tl.fromTo(sel, {opacity:0, y:30}, {opacity:1, y:0, duration:0.45, ease:EIN}, at);
+const shake = (sel, at, a) => { const kf = []; for (let k = 0; k < 8; k++) kf.push({y:(k%2?-1:1)*(a||14)*(1-k/8), duration:0.04, ease:"none"}); kf.push({y:0, duration:0.04}); tl.to(sel, {keyframes:kf}, at); };
+// ambient: blobs drift, progress bar fills
+[["#bl0",60,40],["#bl1",-70,50],["#bl2",50,-60],["#bl3",-40,60]].forEach(([b,x,y]) => tl.fromTo(b, {x:0, y:0}, {x:x, y:y, duration:T.DUR/2, ease:"sine.inOut", yoyo:true, repeat:1}, 0));
+tl.fromTo("#progf", {scaleX:0}, {scaleX:1, duration:T.DUR, ease:"none"}, 0);
+// transitions: soft iris on even scenes, float-up on odd scenes; outgoing scene sinks back
+SC.forEach(([a, b], i) => { const s = "#sc" + i;
+  if (i > 0 && i % 2 === 0) tl.fromTo(s, {clipPath:"circle(0% at 50% 45%)"}, {clipPath:"circle(150% at 50% 45%)", duration:0.6, ease:"power2.inOut"}, a - 0.1);
+  if (i > 0 && i % 2 === 1) tl.fromTo(s, {y:1950, rotation:4}, {y:0, rotation:0, duration:0.6, ease:"power3.out"}, a - 0.1);
+  if (i < SC.length - 1) tl.to("#cam" + i, {scale:0.9, filter:"blur(8px)", duration:0.5, ease:"power2.in"}, b - 0.35); });
+
+const cam = CAM(tl);
+const cnt = (id, from, to, at, dur, fmt) => { const o = {v:from}; tl.to(o, {v:to, duration:dur, ease:"power2.out", onUpdate:() => { document.getElementById(id).textContent = fmt(o.v); }}, at); };
+const inr = (v, d) => v.toLocaleString("en-IN", {minimumFractionDigits:d, maximumFractionDigits:d});
+// 0 hook
+tl.set(["#tick", "#chg", "#volc", "#ipoc", "#qq"], {opacity:0}, 0); tl.set("#volf", {scaleX:0}, 0);
+up("#tick", 0.15); cnt("px", 158.59, 178.97, T.jump - 0.2, 1.2, v => "₹" + inr(v, 2)); pop("#chg", T.jump + 0.6, -3);
+up("#volc", T.vol - 0.1); tl.to("#volf", {scaleX:1, duration:1.2, ease:"power2.inOut"}, T.vol + 0.1);
+up("#ipoc", T.ipo0 - 0.1); pop("#qq", T.why - 0.1, 8); tl.to("#qq", {rotation:-10, duration:0.3, yoyo:true, repeat:3, ease:"sine.inOut"}, T.why + 0.4);
+cam.pushIn("#cam0", 0, {from:1.08, to:1, dur:1.4, ease:"power2.out"});
+cam.crashZoom("#cam0", T.ipo0 + 0.6, {to:1.22, oy:"55%", hold:0.8});
+// 1 meet
+tl.set(["#fc", "#bb", "#pin", "#pune", "#y10", "#y24"], {opacity:0}, SC[1][0]); tl.set("#tline", {scaleX:0}, SC[1][0]);
+pop("#fc", T.meet); pop("#bb", T.meet + 1.0, -2);
+tl.fromTo("#pin", {y:-300, opacity:0}, {y:0, opacity:1, duration:0.6, ease:"bounce.out"}, T.pune - 0.2); up("#pune", T.pune);
+pop("#y10", T.y10); tl.to("#tline", {scaleX:1, duration:0.9, ease:"power2.inOut"}, T.y10 + 0.3); pop("#y24", T.y24, 2);
+cam.track("#cam1", SC[1][0], {x0:0, y0:40, x:0, y:-20, dur:SC[1][1]-SC[1][0], ease:"sine.inOut"});
+// 2 products
+tl.set([".it", ".st"], {opacity:0}, SC[2][0]);
+document.querySelectorAll("#sc2 .it").forEach((el, k) => pop(el, T.items - 0.2 + k * 0.22, (k % 2 ? 6 : -6)));
+pop("#s0", T.skus); cnt("n0", 0, 2, T.skus, 1.0, v => inr(v, 1) + " mn");
+pop("#s1", T.brands); cnt("n1", 0, 7800, T.brands, 1.0, v => inr(Math.round(v / 100) * 100, 0) + "+");
+pop("#s2", T.stores); cnt("n2", 0, 1189, T.stores, 1.0, v => inr(Math.round(v), 0));
+cam.orbit("#cam2", SC[2][0], {from:-10, to:8, dur:SC[2][1]-SC[2][0]});
+// 3 rehook: swinging tag
+tl.fromTo("#tagw", {rotation:-28, y:-700}, {rotation:-28, y:0, duration:0.5, ease:"power3.out"}, SC[3][0] + 0.15);
+tl.to("#tagw", {keyframes:[{rotation:18, duration:0.6, ease:"sine.inOut"}, {rotation:-10, duration:0.55, ease:"sine.inOut"}, {rotation:5, duration:0.5, ease:"sine.inOut"}, {rotation:0, duration:0.45, ease:"sine.out"}]}, SC[3][0] + 0.65);
+cam.crashZoom("#cam3", T.label, {to:1.3, oy:"45%", hold:0.7});
+// 4 own brands + margin bars
+tl.set(["#br0", "#br1", "#br2", "#mg"], {opacity:0}, SC[4][0]); tl.set(["#m0a", "#m0b", "#m1"], {scaleX:0}, SC[4][0]);
+pop("#br0", T.own + 1.0, -4); pop("#br1", T.own + 1.6, 3); pop("#br2", T.own + 2.3, -2);
+up("#mg", T.marg - 0.2); tl.to("#m0a", {scaleX:1, duration:0.5}, T.marg + 0.3); tl.to("#m0b", {scaleX:1, duration:0.5}, T.marg + 0.7);
+tl.to("#m1", {scaleX:1, duration:0.9, ease:"power2.out"}, T.marg + 1.6);
+cam.pushIn("#cam4", SC[4][0], {from:1, to:1.06, dur:SC[4][1]-SC[4][0]-0.4, ease:"none", oy:"70%"});
+// 5 four businesses
+tl.set(".bz", {opacity:0}, SC[5][0]);
+[["#bz0", T.b1], ["#bz1", T.b2], ["#bz2", T.b3], ["#bz3", T.b4]].forEach(([s, t], k) => tl.fromTo(s, {opacity:0, y:120, rotation:(k%2?6:-6)}, {opacity:1, y:0, rotation:0, duration:0.55, ease:"back.out(1.8)"}, t - 0.15));
+cam.tilt("#cam5", SC[5][0], {from:18, to:0, dur:1.6});
+// 6 profit bars
+tl.set(["#rv", "#ls", "#rp", "#lp"], {opacity:0}, SC[6][0]); tl.set(["#r0", "#r1", "#l0", "#l1"], {scaleY:0}, SC[6][0]);
+up("#rv", T.prof); up("#ls", T.prof + 0.3);
+tl.to("#r0", {scaleY:1, duration:0.6}, T.rev); tl.to("#r1", {scaleY:1, duration:0.8, ease:"back.out(1.6)"}, T.rev + 0.5); pop("#rp", T.rev + 1.4);
+tl.to("#l0", {scaleY:1, duration:0.6}, T.loss - 0.2); tl.to("#l1", {scaleY:1, duration:0.6, ease:"back.out(1.6)"}, T.loss + 0.6); pop("#lp", T.loss + 1.3, -3);
+cam.crashZoom("#cam6", T.loss + 1.3, {to:1.1, ox:"75%", oy:"45%", hold:0.5});
+// 7 verdict
+tl.set(["#k0", "#k1", "#gauge", "#gp"], {opacity:0}, SC[7][0]); tl.set("#gf", {scaleX:0}, SC[7][0]);
+pop("#k0", T.indp - 0.2); pop("#k1", T.still - 0.1); up("#gauge", T.ipo - 0.2);
+tl.to("#gf", {scaleX:1, duration:1.0, ease:"power2.out"}, T.ipo + 0.2); pop("#gp", T.ipo + 1.2, -2);
+cam.dutch("#cam7", T.still, {deg:-4, dur:0.5, hold:1.6});
+// 8 CTA
+tl.set(["#p0", "#p1", "#or", "#host", "#cm", "#fl"], {opacity:0}, SC[8][0]);
+pop("#p0", T.q + 0.6, -4); pop("#or", T.q + 1.4); pop("#p1", T.q + 2.0, 4);
+tl.fromTo("#host", {y:120, opacity:0}, {y:0, opacity:1, duration:0.5, ease:EIN}, T.cmt - 0.4);
+pop("#cm", T.cmt, -2); pop("#fl", T.fol, 2);
+cam.pullOut("#cam8", SC[8][0], {from:1.12, to:1, dur:1.4});
+
+CAPS.forEach(([s, e], k) => { const g = "#cap" + k;
+  tl.fromTo(g, {opacity:0, y:14}, {opacity:1, y:0, duration:0.14, ease:"power2.out"}, Math.max(0.15, s - 0.05));
+  tl.to(g, {opacity:0, duration:0.1}, e - 0.1); tl.set(g, {opacity:0, visibility:"hidden"}, e); });
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
