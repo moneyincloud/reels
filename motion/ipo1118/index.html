@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>IPO listing report 18 Nov 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="assets/camera.js"></script>
+<style>
+@font-face { font-family:"Caveat"; src:url("assets/fonts/Caveat-700-latin.woff2") format("woff2"); font-weight:700; }
+@font-face { font-family:"Anton"; src:url("assets/fonts/anton-latin-400-normal.woff") format("woff"); }
+@font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
+:root { --paper:#FBF8F0; --ink:#1B1B1F; --mut:#5B5B66; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
+#root { position:relative; width:100%; height:100%; overflow:hidden; color:var(--ink); font-family:"Caveat","Poppins",cursive; }
+#paper { position:absolute; inset:-60px; background-color:var(--paper);
+  background-image: linear-gradient(rgba(70,120,220,.13) 2px, transparent 2px), linear-gradient(90deg, rgba(70,120,220,.13) 2px, transparent 2px);
+  background-size: 54px 54px; }
+#world { position:absolute; inset:0; }
+.scene { position:absolute; inset:0; overflow:hidden; }
+.cam { position:absolute; inset:0; transform-origin:0 0; }
+.handle { position:absolute; left:40px; top:60px; font-family:"Oswald",sans-serif; font-size:30px; color:#55556A; z-index:50; }
+.hand { font-family:"Caveat",cursive; font-weight:700; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:100px; line-height:1; }
+.scene { background: var(--bg, transparent); }
+.big { position:absolute; font-family:"Anton",sans-serif; line-height:1; }
+.ttl { position:absolute; left:0; right:0; text-align:center; font-size:96px; line-height:1.05; }
+.card { position:absolute; background:#fff; border:6px solid var(--ink); border-radius:26px; box-shadow:12px 12px 0 var(--ink); }
+.pill { position:absolute; border-radius:22px; padding:12px 34px; font-family:"Anton",sans-serif; font-size:66px; color:#fff; border:5px solid var(--ink); box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.stk { position:absolute; padding:12px 30px; border:6px solid var(--ink); border-radius:16px; font-family:"Anton",sans-serif; font-size:64px; box-shadow:8px 8px 0 var(--ink); white-space:nowrap; }
+.emo { position:absolute; line-height:1; color:var(--ink); }
+#road { position:absolute; left:-200px; right:-200px; top:640px; height:300px; background:#3C3F4A; border-top:10px solid var(--ink); border-bottom:10px solid var(--ink); }
+#lane { position:absolute; left:0; width:3000px; top:140px; height:20px; background:repeating-linear-gradient(90deg,#FFE45C 0 90px,transparent 90px 170px); }
+.node { position:absolute; width:300px; height:250px; text-align:center; }
+.node .e { font-size:130px; line-height:1.2; } .node b { display:block; font-family:"Anton",sans-serif; font-weight:400; font-size:44px; line-height:1.1; }
+.arr { position:absolute; height:14px; background:var(--ink); border-radius:7px; transform-origin:0 50%; }
+.arr:after { content:""; position:absolute; right:-14px; top:-16px; border-left:30px solid var(--ink); border-top:23px solid transparent; border-bottom:23px solid transparent; }
+.tok { position:absolute; width:46px; height:46px; border-radius:50%; background:#FFC93C; border:4px solid var(--ink); }
+.bar { position:absolute; bottom:0; width:260px; border:6px solid var(--ink); border-radius:18px 18px 0 0; transform-origin:50% 100%; }
+.blab { position:absolute; width:300px; text-align:center; font-family:"Anton",sans-serif; font-size:52px; }
+.cap { position:absolute; left:0; right:0; top:1225px; text-align:center; opacity:0; }
+.cap span { display:inline-block; max-width:930px; background:#fff; border:5px solid var(--ink); border-radius:18px; box-shadow:6px 8px 0 var(--ink); padding:10px 30px; font-family:"Poppins",sans-serif; font-weight:700; font-size:42px; line-height:1.25; }
+#disc { position:absolute; left:40px; right:40px; top:1560px; text-align:center; font-family:"Oswald",sans-serif; font-size:28px; color:rgb(70,70,82); z-index:30; }
+#vignette { position:absolute; inset:0; pointer-events:none; z-index:99; background:radial-gradient(ellipse at center, transparent 60%, rgba(27,27,31,.12) 100%); }
+
+#prog { position:absolute; left:0; top:0; height:12px; width:1080px; background:#6B3FD4; transform-origin:0 50%; z-index:60; }
+.tag { position:absolute; left:40px; font-family:"Anton",sans-serif; font-size:44px; background:#1B1B1F; color:#fff; padding:2px 16px; border-radius:10px; }
+.ipo { width:460px; height:470px; text-align:center; padding:24px 20px; }
+.ipo .e { font-size:150px; line-height:1.2; } .ipo b { display:block; font-family:"Anton",sans-serif; font-weight:400; font-size:54px; line-height:1.1; }
+.ipo span { display:block; font-family:"Poppins",sans-serif; font-weight:700; font-size:34px; margin-top:10px; color:#55556A; }
+.col { position:absolute; width:300px; height:220px; border:6px solid #1B1B1F; border-radius:22px; box-shadow:8px 8px 0 #1B1B1F; text-align:center; padding-top:34px;
+  font-family:"Anton",sans-serif; font-size:64px; line-height:1.05; } .col small { font-family:"Poppins",sans-serif; font-weight:700; font-size:30px; }
+.fight { position:absolute; width:400px; height:470px; border:6px solid #1B1B1F; border-radius:26px; box-shadow:10px 10px 0 #1B1B1F; text-align:center; font-size:130px; padding-top:30px; line-height:1.1; }
+.fight b { display:block; font-family:"Anton",sans-serif; font-weight:400; font-size:120px; } .fight span { display:block; font-family:"Caveat",cursive; font-size:54px; }
+.ring { position:absolute; left:440px; top:1240px; width:200px; height:200px; border-radius:50%; border:12px solid #6B3FD4; background:#fff; text-align:center; font-family:"Anton",sans-serif; font-size:120px; line-height:176px; }
+.chipx { position:absolute; padding:10px 28px; background:#fff; border:5px solid #1B1B1F; border-radius:18px; box-shadow:6px 6px 0 #1B1B1F; font-family:"Poppins",sans-serif; font-weight:700; font-size:44px; }
+.chipx b { font-family:"Anton",sans-serif; font-weight:400; color:#6B3FD4; font-size:58px; }
+.bchart { position:absolute; left:90px; width:900px; border-bottom:8px solid #1B1B1F; }
+.bval { position:absolute; width:300px; text-align:center; font-family:"Anton",sans-serif; font-size:56px; }
+.blab2 { position:absolute; width:300px; text-align:center; font-family:"Oswald",sans-serif; font-size:40px; }
+.panel { position:absolute; top:0; width:1080px; height:1920px; }
+.spark { overflow:visible; }
+.note { position:absolute; font-family:"Oswald",sans-serif; font-size:30px; color:#55556A; }
+.row { display:grid; grid-template-columns: 1.7fr 0.9fr 1fr 1fr; padding:16px 6px; border-bottom:3px solid #ddd; font-family:"Poppins",sans-serif; font-weight:700; font-size:40px; }
+.row span:not(:first-child) { text-align:right; font-family:"Anton",sans-serif; font-weight:400; font-size:48px; }
+.row.hd { font-family:"Oswald",sans-serif; font-size:34px; color:#55556A; } .row.hd span { font-family:"Oswald",sans-serif !important; font-size:34px !important; }
+.row .hi { color:#6B3FD4; }
+.src { font-family:"Oswald",sans-serif; font-size:26px; color:#55556A; margin-top:12px; text-align:center; }
+</style>
+</head><body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="79.12" data-fps="30">
+  <div id="paper"></div>
+  <div id="prog"></div>
+  <div class="handle">@moneyincloud · IPO listing report</div>
+  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="79.12" data-track-index="9" data-volume="1"></audio>
+  <div id="world">
+<section class="scene clip" id="sc0" style="--bg:#EFE7FF" data-start="0.00" data-duration="5.34" data-track-index="1"><div class="cam" id="cam0"><div class="ttl hand" style="top:190px;font-size:76px">One November IPO was</div>
+<div class="big" id="h64" style="left:0;right:0;text-align:center;top:300px;font-size:430px;color:#6B3FD4">64x</div>
+<div class="stk" id="hsub" style="left:250px;top:770px;background:#FFE45C;transform:rotate(-3deg);font-size:76px">SUBSCRIBED</div>
+<div class="pill" id="hd1" style="left:80px;top:1000px;background:#1E8E4E;font-size:66px">DAY 1 ▲ 15.6%</div>
+<div class="arr" id="harr" style="left:540px;top:1180px;width:150px;background:#D93A2B;transform:rotate(90deg)"></div>
+<div class="pill" id="hnow" style="left:330px;top:1290px;background:#D93A2B;font-size:76px;transform:rotate(2deg)">NOW ▲ 1.7%</div></div></section>
+<section class="scene clip" id="sc1" style="--bg:#FFF1B8" data-start="4.99" data-duration="4.31" data-track-index="2"><div class="cam" id="cam1"><div class="ttl hand" style="top:190px">4 mainboard IPOs</div>
+<div class="ttl" style="top:300px;font-family:Oswald;font-size:44px;color:#55556A">listed on NSE &amp; BSE, 3–5 Nov 2026</div>
+<div class="card ipo" id="c0" style="left:70px;top:420px;background:#DDF0FF"><div class="e">🧪</div><b>BLS Polymers</b><span>listed 3 Nov</span></div>
+<div class="card ipo" id="c1" style="left:550px;top:420px;background:#D7F5E9"><div class="e">💧</div><b>SFC Environmental</b><span>listed 3 Nov</span></div>
+<div class="card ipo" id="c2" style="left:70px;top:940px;background:#FFF1B8"><div class="e">💍</div><b>M.K. Sons Fine Jewels</b><span>listed 4 Nov</span></div>
+<div class="card ipo" id="c3" style="left:550px;top:940px;background:#FFD6DE"><div class="e">🔩</div><b>Bombay Coated & Special Steels</b><span>listed 5 Nov</span></div></div></section>
+<section class="scene clip" id="sc2" style="--bg:#FFE2D1" data-start="8.95" data-duration="7.73" data-track-index="3"><div class="cam" id="cam2"><div class="card" id="myth" style="left:80px;right:80px;top:220px;padding:30px;text-align:center;background:#fff">
+<div style="font-family:Anton;font-size:56px;color:#D93A2B">THE MYTH</div>
+<div style="font-family:Poppins;font-weight:700;font-size:54px;line-height:1.2">More subscription<br>= bigger gains?</div></div>
+<div class="stk" id="mq" style="left:780px;top:180px;background:#FFE45C;font-size:90px;transform:rotate(8deg)">?</div>
+<div class="ttl hand" id="sbt" style="top:690px;font-size:90px">The scoreboard</div>
+<div class="col" id="k0" style="left:60px;top:860px;background:#fff">ISSUE<br><small>price</small></div>
+<div class="arr" id="ka0" style="left:370px;top:960px;width:70px"></div>
+<div class="col" id="k1" style="left:400px;top:860px;background:#FFE45C">DAY 1<br><small>listing close</small></div>
+<div class="arr" id="ka1" style="left:710px;top:960px;width:70px"></div>
+<div class="col" id="k2" style="left:740px;top:860px;background:#D7F5E9">TODAY<br><small>17 Nov close</small></div></div></section>
+<section class="scene clip" id="sc3" style="--bg:#E6E0FF" data-start="16.32" data-duration="6.15" data-track-index="4"><div class="cam" id="cam3"><div class="ttl hand" style="top:200px;font-size:96px">But wait…</div>
+<div class="fight" id="f5" style="left:90px;top:470px;background:#FFF1B8">💍<b>5x</b><span>least wanted</span></div>
+<div class="big" id="vs" style="left:0;right:0;text-align:center;top:620px;font-size:120px">VS</div>
+<div class="fight" id="f64" style="left:590px;top:470px;background:#FFD6DE">🔩<b>64x</b><span>most hyped?</span></div>
+<div class="stk" id="beat" style="left:150px;top:1080px;background:#6B3FD4;color:#fff;transform:rotate(-3deg);font-size:64px">WHO'S AHEAD NOW?</div>
+<div class="ring" id="ring"><span id="cd">3</span></div></div></section>
+<section class="scene clip" id="sc4" style="--bg:#D7F5E9" data-start="22.12" data-duration="9.11" data-track-index="5"><div class="cam" id="cam4"><div class="tag" style="top:190px">1/4</div><div class="ttl hand" style="top:200px">🧪 BLS Polymers</div>
+<div class="chipx" id="bsub" style="left:120px;top:330px">Subscribed <b>241x</b></div>
+<div class="bchart" style="top:480px;height:520px">
+<div class="bar" id="pb0" style="left:40px;width:220px;height:234px;background:#B9B9C6"></div>
+<div class="bval" id="pv0" style="left:0px;bottom:248px">₹<span id="pn0">150.00</span></div>
+<div class="blab2" style="left:0px;top:534px">ISSUE</div>
+<div class="bar" id="pb1" style="left:340px;width:220px;height:419px;background:#FFE45C"></div>
+<div class="bval" id="pv1" style="left:300px;bottom:433px">₹<span id="pn1">268.80</span></div>
+<div class="blab2" style="left:300px;top:534px">DAY 1</div>
+<div class="bar" id="pb2" style="left:640px;width:220px;height:430px;background:#2BB673"></div>
+<div class="bval" id="pv2" style="left:600px;bottom:444px">₹<span id="pn2">275.50</span></div>
+<div class="blab2" style="left:600px;top:534px">17 NOV</div>
+</div>
+<div class="pill" id="p79" style="left:330px;top:1150px;background:#1E8E4E;font-size:64px">DAY 1 ▲ 79.2%</div>
+<div class="pill" id="p84" style="left:310px;top:1300px;background:#6B3FD4;font-size:64px;transform:rotate(-2deg)">NOW ▲ 83.7%</div></div></section>
+<section class="scene clip" id="sc5" style="--bg:#DDF0FF" data-start="30.89" data-duration="9.28" data-track-index="6"><div class="cam" id="cam5"><div class="tag" style="top:190px">2/4</div><div class="ttl hand" style="top:200px">💧 SFC Environmental</div>
+<div class="chipx" id="ssub" style="left:120px;top:330px">Subscribed <b>9.5x</b></div>
+<div class="bchart" style="top:480px;height:520px">
+<div class="bar" id="qb0" style="left:40px;width:220px;height:328px;background:#B9B9C6"></div>
+<div class="bval" id="qv0" style="left:0px;bottom:342px">₹<span id="qn0">330.00</span></div>
+<div class="blab2" style="left:0px;top:534px">ISSUE</div>
+<div class="bar" id="qb1" style="left:340px;width:220px;height:423px;background:#FFE45C"></div>
+<div class="bval" id="qv1" style="left:300px;bottom:437px">₹<span id="qn1">426.10</span></div>
+<div class="blab2" style="left:300px;top:534px">DAY 1</div>
+<div class="bar" id="qb2" style="left:640px;width:220px;height:430px;background:#2BB673"></div>
+<div class="bval" id="qv2" style="left:600px;bottom:444px">₹<span id="qn2">432.50</span></div>
+<div class="blab2" style="left:600px;top:534px">17 NOV</div>
+</div>
+<div class="stk" id="suc" style="left:540px;top:405px;background:#D93A2B;color:#fff;transform:rotate(-4deg);font-size:44px">UPPER CIRCUIT DAY 1</div>
+<div class="pill" id="q29" style="left:330px;top:1150px;background:#1E8E4E;font-size:64px">DAY 1 ▲ 29.1%</div>
+<div class="pill" id="q31" style="left:310px;top:1300px;background:#6B3FD4;font-size:64px;transform:rotate(-2deg)">NOW ▲ 31.1%</div></div></section>
+<section class="scene clip" id="sc6" style="--bg:#FFD6DE" data-start="39.82" data-duration="15.39" data-track-index="7"><div class="cam" id="cam6"><div class="panel" style="left:0">
+<div class="tag" style="top:190px">3/4</div><div class="ttl hand" style="top:200px">🔩 Bombay Coated</div>
+<div class="chipx" id="csub" style="left:120px;top:330px">Subscribed <b>63.9x</b></div>
+<div class="pill" id="c16" style="left:90px;top:470px;background:#1E8E4E;font-size:58px">DAY 1 ▲ 15.6%</div>
+<div style="position:absolute;left:90px;top:620px"><svg class="spark" id="csp" width="900" height="330" viewBox="0 0 900 330"><line x1="0" x2="900" y1="255.3" y2="255.3" stroke="#1B1B1F" stroke-width="4" stroke-dasharray="14 12"/><text x="10" y="243.3" text-anchor="start" font-family="Oswald" font-size="30" fill="#1B1B1F">issue ₹82</text><polyline id="cpl" pathLength="1" points="20.0,32.9 127.5,115.2 235.0,193.3 342.5,267.5 450.0,222.0 557.5,260.2 665.0,271.3 772.5,288.3 880.0,230.8" fill="none" stroke="#6B3FD4" stroke-width="10" stroke-linejoin="round" stroke-linecap="round" style="stroke-dasharray:1 1.2;stroke-dashoffset:1.1"/><circle id="cdot" cx="880.0" cy="230.8" r="16" fill="#6B3FD4" stroke="#1B1B1F" stroke-width="5"/></svg></div>
+<div class="stk" id="clc" style="left:200px;top:990px;background:#D93A2B;color:#fff;transform:rotate(4deg);font-size:50px">3 LOWER CIRCUITS IN A ROW</div>
+<div class="pill" id="c17" style="left:290px;top:1140px;background:#D93A2B;font-size:70px;transform:rotate(-2deg)">NOW ▲ 1.7%</div>
+<div class="note" style="left:90px;top:1290px">NSE daily closes, 5–17 Nov 2026</div></div>
+<div class="panel" style="left:1080px">
+<div class="tag" style="top:190px">4/4</div><div class="ttl hand" style="top:200px">💍 M.K. Sons</div>
+<div class="chipx" id="msub" style="left:120px;top:330px">Subscribed <b>5.1x</b></div>
+<div class="pill" id="mflat" style="left:90px;top:470px;background:#8A8A99;font-size:58px">DAY 1 ▲ 0.1% (flat)</div>
+<div style="position:absolute;left:90px;top:620px"><svg class="spark" id="msp" width="900" height="330" viewBox="0 0 900 330"><line x1="0" x2="900" y1="233.9" y2="233.9" stroke="#1B1B1F" stroke-width="4" stroke-dasharray="14 12"/><text x="10" y="221.9" text-anchor="start" font-family="Oswald" font-size="30" fill="#1B1B1F">issue ₹162</text><polyline id="mpl" pathLength="1" points="20.0,232.4 115.6,245.6 211.1,265.1 306.7,266.4 402.2,293.1 497.8,234.7 593.3,162.7 688.9,115.7 784.4,66.0 880.0,29.9" fill="none" stroke="#6B3FD4" stroke-width="10" stroke-linejoin="round" stroke-linecap="round" style="stroke-dasharray:1 1.2;stroke-dashoffset:1.1"/><circle id="mdot" cx="880.0" cy="29.9" r="16" fill="#6B3FD4" stroke="#1B1B1F" stroke-width="5"/></svg></div>
+<div class="pill" id="m16" style="left:290px;top:1060px;background:#1E8E4E;font-size:70px;transform:rotate(-2deg)">NOW ▲ 15.8%</div>
+<div class="note" style="left:90px;top:1210px">NSE daily closes, 4–17 Nov 2026</div></div></div></section>
+<section class="scene clip" id="sc7" style="--bg:#FFF7E0" data-start="54.85" data-duration="9.26" data-track-index="8"><div class="cam" id="cam7"><div class="ttl hand" style="top:190px;font-size:84px">The answer</div>
+<div class="card" id="sheet" style="left:50px;right:50px;top:310px;padding:20px 26px;background:#fff">
+<div class="row hd"><span>IPO</span><span>Subs</span><span>Day 1</span><span>17 Nov</span></div>
+<div class="row" id="r0"><span>BLS Polymers</span><span>241x</span><span>+79.2%</span><span class="">+83.7%</span></div>
+<div class="row" id="r1"><span>SFC Environ.</span><span>9.5x</span><span>+29.1%</span><span class="">+31.1%</span></div>
+<div class="row" id="r2"><span>M.K. Sons</span><span>5.1x</span><span>+0.1%</span><span class="hi">+15.8%</span></div>
+<div class="row" id="r3"><span>Bombay Coated</span><span>63.9x</span><span>+15.6%</span><span class="hi">+1.7%</span></div>
+<div class="src">% vs issue price · NSE closes via INDmoney · subscription: chittorgarh (final day)</div></div>
+<div class="card" id="ans" style="left:70px;right:70px;top:1010px;padding:22px 26px;text-align:center;background:#FFF7E0">
+<div style="font-family:Anton;font-size:52px;line-height:1.15">Subscription = demand on bidding day</div>
+<div style="font-family:Poppins;font-weight:700;font-size:38px;margin-top:6px">not where the price goes next</div></div>
+<div class="stk" id="chap" style="left:150px;top:1290px;background:#6B3FD4;color:#fff;transform:rotate(-2deg);font-size:50px">LISTING DAY = ONE CHAPTER</div>
+<div class="stk" id="bm" style="left:760px;top:170px;background:#FFE45C;transform:rotate(6deg);font-size:46px">🔖 SAVE THIS</div></div></section>
+<section class="scene clip" id="sc8" style="--bg:#EFE7FF" data-start="63.77" data-duration="15.35" data-track-index="9"><div class="cam" id="cam8"><div class="ttl hand" style="top:330px;font-size:84px">64x subscribed ≠<br>64x safe</div>
+<img id="host" src="assets/img/s0_008.png" style="position:absolute;left:40px;top:620px;width:360px"/>
+<div class="card" id="send" style="left:420px;top:620px;width:600px;padding:20px 24px;background:#fff">
+<div style="font-family:Anton;font-size:46px">✈️ SEND THIS TO</div>
+<div style="font-family:Poppins;font-weight:700;font-size:36px;line-height:1.2">the friend who applies for every IPO</div></div>
+<div class="emo" id="plane" style="left:430px;top:900px;font-size:110px">✈️</div>
+<div class="pill" id="sv" style="left:430px;top:960px;background:#FFE45C;color:#1B1B1F;font-size:58px">🔖 SAVE THIS</div>
+<div class="pill" id="fl" style="left:430px;top:1120px;background:#6B3FD4;font-size:52px">FOLLOW · every Wed</div>
+<div class="stk" id="edu" style="left:110px;top:1320px;background:#fff;font-size:42px;transform:rotate(-1deg)">Education only · Not investment advice</div></div></section>
+  </div>
+  <section class="clip" id="caps" data-start="0" data-duration="79.12" data-track-index="8" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
+
+  </section>
+  <div id="disc">Data: NSE daily closes via INDmoney (to 17 Nov 2026) · subscription: chittorgarh.com final day · I may hold some stocks named · Not a recommendation to apply for any IPO · Education only, not investment advice</div>
+  <div id="vignette"></div>
+</div>
+<script>
+const T = {"VO": [0.15, 5.286666666666667, 9.247000000000002, 16.62366666666667, 22.42166666666667, 31.185000000000006, 40.119, 55.15433333333333, 64.067], "DURS": [4.586666666666667, 3.4103333333333334, 6.826666666666667, 5.248, 8.213333333333333, 8.384, 14.485333333333333, 8.362666666666666, 13.504], "STARTS": [0.0, 4.986666666666667, 8.947000000000001, 16.323666666666668, 22.12166666666667, 30.885000000000005, 39.819, 54.85433333333333, 63.766999999999996], "DUR": 79.121, "lost": 2.2981856540084387, "four": 5.286666666666667, "myth": 9.247000000000002, "board": 12.486774011299437, "iss": 13.990954802259889, "lday": 14.743045197740114, "tday": 15.49513559322034, "wait": 16.62366666666667, "least": 17.50887148594378, "sixty": 20.543859437751006, "bls": 22.42166666666667, "b241": 23.45641732283465, "b79": 26.043293963254598, "b84": 28.630170603674543, "sfc": 31.185000000000006, "s9": 32.57133070866142, "suc": 36.13618110236221, "s31": 37.85259055118111, "bc": 40.119, "bc64": 41.120290322580644, "bc16": 43.056118279569894, "lc": 45.12545161290323, "bc17": 47.52854838709678, "mk": 49.998397849462364, "mk5": 50.93293548387096, "mkflat": 52.46824731182796, "mk16": 53.603043010752685, "ans": 55.15433333333333, "subs": 56.440897435897426, "chap": 60.70995104895104, "send": 64.067, "save": 67.41022330097087, "follow": 68.39352427184465, "edu": 70.9501067961165, "loop": 73.50668932038835}, CAPS = [], SC = [[0.0, 4.986666666666667], [4.986666666666667, 8.947000000000001], [8.947000000000001, 16.323666666666668], [16.323666666666668, 22.12166666666667], [22.12166666666667, 30.885000000000005], [30.885000000000005, 39.819], [39.819, 54.85433333333333], [54.85433333333333, 63.766999999999996], [63.766999999999996, 79.121]];
+const tl = gsap.timeline({ paused: true });
+const EIN = "expo.out";
+const pop = (sel, at, r) => tl.fromTo(sel, {scale:0.3, opacity:0, rotation:(r||0)-8}, {scale:1, opacity:1, rotation:r||0, duration:0.5, ease:"back.out(2.2)"}, at);
+const up = (sel, at) => tl.fromTo(sel, {opacity:0, y:30}, {opacity:1, y:0, duration:0.45, ease:EIN}, at);
+const shake = (sel, at, a) => { const kf = []; for (let k = 0; k < 8; k++) kf.push({y:(k%2?-1:1)*(a||14)*(1-k/8), duration:0.04, ease:"none"}); kf.push({y:0, duration:0.04}); tl.to(sel, {keyframes:kf}, at); };
+tl.to("#world", {rotation:0.35, x:5, y:-4, duration:3, ease:"sine.inOut", repeat:Math.max(0, Math.floor(T.DUR/3)-1), yoyo:true}, 0);
+SC.forEach(([a, b], i) => { const s = "#sc" + i;
+  if (i > 0) tl.fromTo(s, {x:(i%2? 1150 : -1150), filter:"blur(14px)"}, {x:0, filter:"blur(0px)", duration:0.5, ease:"power3.out"}, a - 0.05);
+  if (i < SC.length - 1) tl.to(s, {x:((i+1)%2? -1150 : 1150), filter:"blur(14px)", duration:0.42, ease:"power3.in"}, b - 0.37); });
+
+const cam = CAM(tl);
+tl.fromTo("#prog", {scaleX:0}, {scaleX:1, duration:T.DUR, ease:"none"}, 0);
+const count = (id, a, b, at, d, dec) => { const o = {v:a}; tl.to(o, {v:b, duration:d||1.2, ease:"power2.out", onUpdate:() => { const e = document.getElementById(id); if (e) e.textContent = o.v.toLocaleString("en-IN", {minimumFractionDigits:dec===undefined?2:dec, maximumFractionDigits:dec===undefined?2:dec}); }}, at); };
+// 0 HOOK: 64x already on screen and moving at frame 0
+tl.fromTo("#h64", {scale:1.6, rotation:-6}, {scale:1, rotation:0, duration:0.9, ease:"back.out(1.6)"}, 0);
+tl.fromTo("#hsub", {scale:0.3, opacity:0}, {scale:1, opacity:1, duration:0.4, ease:"back.out(2.2)"}, 0.5);
+tl.set(["#hd1", "#harr", "#hnow"], {opacity:0}, 0);
+pop("#hd1", T.lost - 0.1); tl.fromTo("#harr", {opacity:1, scaleX:0}, {scaleX:1, duration:0.4, ease:"power2.out"}, T.lost + 0.5);
+pop("#hnow", T.lost + 0.9, 2); shake("#sc0", T.lost + 0.95, 16);
+cam.crashZoom("#cam0", T.lost + 0.9, {to:1.3, ox:"50%", oy:"70%", hold:0.5});
+tl.to("#h64", {scale:1.04, duration:0.6, yoyo:true, repeat:5, ease:"sine.inOut"}, 1.2);
+// 1 four IPO cards drop in, camera tracks down
+tl.set(["#c0", "#c1", "#c2", "#c3"], {opacity:0}, SC[1][0]);
+["#c0", "#c1", "#c2", "#c3"].forEach((c, k) => pop(c, T.four + 0.3 + k * 0.45, k % 2 ? 2 : -2));
+cam.pushIn("#cam1", SC[1][0], {from:1.15, to:1, dur:SC[1][1] - SC[1][0], oy:"40%", ease:"power1.out"});
+// 2 myth + scoreboard columns
+tl.set(["#myth", "#mq", "#sbt", "#k0", "#k1", "#k2", "#ka0", "#ka1"], {opacity:0}, SC[2][0]);
+up("#myth", T.myth - 0.2); pop("#mq", T.myth + 1.2, 8); tl.to("#mq", {rotation:-8, duration:0.3, yoyo:true, repeat:5}, T.myth + 1.7);
+up("#sbt", T.board - 0.1); pop("#k0", T.iss); pop("#ka0", T.lday - 0.2); pop("#k1", T.lday); pop("#ka1", T.tday - 0.2); pop("#k2", T.tday);
+cam.dutch("#cam2", T.myth, {deg:-5, dur:0.5, hold:1.6});
+cam.track("#cam2", T.board - 0.3, {y0:0, y:-50, x0:0, x:0, dur:1.6});
+// 3 REHOOK: colour flash + vs + countdown
+tl.fromTo("#sc3", {backgroundColor:"#6B3FD4"}, {backgroundColor:"#E6E0FF", duration:0.6, ease:"power2.out"}, SC[3][0] + 0.05);
+tl.set(["#f5", "#f64", "#vs", "#beat", "#ring"], {opacity:0}, SC[3][0]);
+tl.fromTo("#f5", {x:-600, opacity:1}, {x:0, duration:0.5, ease:"back.out(1.6)"}, T.least);
+tl.fromTo("#f64", {x:600, opacity:1}, {x:0, duration:0.5, ease:"back.out(1.6)"}, T.sixty - 0.3);
+pop("#vs", T.sixty + 0.3); shake("#sc3", T.sixty + 0.35, 12); pop("#beat", T.sixty + 1.2, -3);
+pop("#ring", SC[3][0] + 1.0);
+tl.set("#cd", {textContent:"2"}, SC[3][0] + 2.4); tl.set("#cd", {textContent:"1"}, SC[3][0] + 3.6);
+cam.orbit("#cam3", SC[3][0] + 0.4, {from:-16, to:10, dur:SC[3][1] - SC[3][0] - 0.6});
+// 4/5 bar races
+tl.set(["#bsub", "#p79", "#p84", "#sc4 .bchart"], {opacity:0}, SC[4][0]);
+pop("#bsub", T.b241 - 0.1);
+tl.to("#sc4 .bchart", {opacity:1, duration:0.3}, SC[4][0] + 0.5);
+[["#pb0", "#pv0", "pn0", 150, SC[4][0] + 0.6], ["#pb1", "#pv1", "pn1", 268.80, T.b79 - 0.3], ["#pb2", "#pv2", "pn2", 275.50, T.b84 - 0.3]].forEach(([b, v, n, val, at]) => {
+  tl.fromTo(b, {scaleY:0}, {scaleY:1, duration:0.9, ease:"power3.out"}, at); tl.fromTo(v, {opacity:0}, {opacity:1, duration:0.2}, at); count(n, 0, val, at, 0.9); });
+pop("#p79", T.b79 + 0.4); pop("#p84", T.b84 + 0.4, -2);
+cam.pushIn("#cam4", SC[4][0], {from:1, to:1.12, dur:3, oy:"30%"}); cam.pullOut("#cam4", T.b79 - 0.4, {from:1.12, to:1, dur:1.2});
+tl.set(["#ssub", "#q29", "#q31", "#suc", "#sc5 .bchart"], {opacity:0}, SC[5][0]);
+pop("#ssub", T.s9);
+tl.to("#sc5 .bchart", {opacity:1, duration:0.3}, SC[5][0] + 0.4);
+[["#qb0", "#qv0", "qn0", 330, SC[5][0] + 0.5], ["#qb1", "#qv1", "qn1", 426.10, T.suc - 0.5], ["#qb2", "#qv2", "qn2", 432.50, T.s31 - 0.2]].forEach(([b, v, n, val, at]) => {
+  tl.fromTo(b, {scaleY:0}, {scaleY:1, duration:0.9, ease:"power3.out"}, at); tl.fromTo(v, {opacity:0}, {opacity:1, duration:0.2}, at); count(n, 0, val, at, 0.9); });
+pop("#suc", T.suc + 0.2, -6); shake("#sc5", T.suc + 0.25, 12); pop("#q29", T.suc + 0.9); pop("#q31", T.s31 + 0.4, -2);
+cam.tilt("#cam5", SC[5][0], {from:22, to:0, dur:1.4});
+cam.crashZoom("#cam5", T.suc + 0.2, {to:1.25, oy:"35%", hold:0.6});
+// 6 Bombay Coated chart, then track to M.K. Sons
+tl.set(["#csub", "#c16", "#clc", "#c17", "#cdot", "#msub", "#mflat", "#m16", "#mdot"], {opacity:0}, SC[6][0]);
+pop("#csub", T.bc64 - 0.1); pop("#c16", T.bc16);
+tl.fromTo("#cpl", {strokeDashoffset:1.1}, {strokeDashoffset:0, duration:T.bc17 - T.lc + 0.3, ease:"power1.inOut"}, T.lc - 0.3);
+pop("#clc", T.lc + 0.6, 4); shake("#sc6", T.lc + 0.65, 14);
+tl.to("#cdot", {opacity:1, duration:0.2}, T.bc17); pop("#c17", T.bc17 + 0.2, -2);
+cam.track("#cam6", T.mk - 0.5, {x0:0, x:-1080, dur:0.7, ease:"power3.inOut"});
+tl.fromTo("#cam6", {filter:"blur(0px)"}, {filter:"blur(10px)", duration:0.35, yoyo:true, repeat:1}, T.mk - 0.5);
+pop("#msub", T.mk5); pop("#mflat", T.mkflat);
+tl.fromTo("#mpl", {strokeDashoffset:1.1}, {strokeDashoffset:0, duration:SC[6][1] - T.mk16 + 0.4, ease:"power1.inOut"}, T.mkflat + 0.4);
+tl.to("#mdot", {opacity:1, duration:0.2}, SC[6][1] - 0.3); pop("#m16", T.mk16 + 0.2, -2);
+// 7 ANSWER: cheat sheet stamps in row by row
+tl.set(["#sheet", "#r0", "#r1", "#r2", "#r3", "#ans", "#chap", "#bm"], {opacity:0}, SC[7][0]);
+up("#sheet", SC[7][0] + 0.2); ["#r0", "#r1", "#r2", "#r3"].forEach((r, k) => up(r, SC[7][0] + 0.5 + k * 0.3));
+up("#ans", T.subs); pop("#chap", T.chap, -2); shake("#sc7", T.chap + 0.05, 10);
+pop("#bm", SC[7][0] + 1.6, 6); tl.to("#bm", {y:-16, duration:0.35, yoyo:true, repeat:9, ease:"sine.inOut"}, SC[7][0] + 2.2);
+cam.pullOut("#cam7", SC[7][0], {from:1.2, to:1, dur:1.6, oy:"30%"});
+cam.rack("#sheet", T.subs - 0.3, {blur:6, dur:0.5, out:true}); cam.rack("#sheet", T.chap + 1.2, {blur:6, dur:0.6});
+// 8 CTA: send / save / follow, plane flies
+tl.set(["#host", "#send", "#plane", "#sv", "#fl", "#edu"], {opacity:0}, SC[8][0]);
+tl.fromTo("#host", {y:120, opacity:0}, {y:0, opacity:1, duration:0.5, ease:EIN}, SC[8][0] + 0.2);
+up("#send", T.send); tl.fromTo("#plane", {x:0, y:0, opacity:1, rotation:0}, {x:620, y:-520, rotation:-20, opacity:0, duration:1.4, ease:"power2.in"}, T.send + 1.2);
+pop("#sv", T.save, -3); tl.to("#sv", {scale:1.12, duration:0.2, yoyo:true, repeat:3}, T.save + 0.5);
+pop("#fl", T.follow, 2); up("#edu", T.edu);
+cam.pushIn("#cam8", SC[8][0], {from:1.1, to:1, dur:1.4, ease:"power2.out"});
+cam.dollyZoom("#host", "#sc8 .ttl", T.loop - 0.2, {amt:0.12, dur:1.6});
+
+CAPS.forEach(([s, e], k) => { const g = "#cap" + k;
+  tl.fromTo(g, {opacity:0, y:14}, {opacity:1, y:0, duration:0.14, ease:"power2.out"}, Math.max(0.15, s - 0.05));
+  tl.to(g, {opacity:0, duration:0.1}, e - 0.1); tl.set(g, {opacity:0, visibility:"hidden"}, e); });
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
