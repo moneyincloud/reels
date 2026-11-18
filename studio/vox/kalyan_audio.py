@@ -47,8 +47,8 @@ fade=np.ones(N); fl=int(1.2*SR); fade[-fl:]=np.linspace(1,0,fl); mus*=fade
 fx=np.zeros(N+SR)
 def put(sig,tm,g=1.0):
     a=int(max(0,tm)*SR); fx[a:a+len(sig)]+=sig*g
-for b in F.B: put(whoosh(),b-0.3,0.9)
-for ts in F.slam_times(): put(hit(),ts,0.8)
+pass
+pass
 rg=np.random.default_rng(7)
 def clink(f=2600):
     n=int(0.25*SR); t=np.arange(n)/SR
@@ -108,28 +108,40 @@ def kaching():
     y+=ding(2093)[:n]*1.2 if len(ding(2093))>=n else np.pad(ding(2093),(0,n-len(ding(2093))))*1.2
     y[int(0.08*SR):]+=(ding(2637)[:n-int(0.08*SR)])*1.0
     return y*0.7
-at=F.at
-put(drum(3),0.05,0.8)
-put(pop(1100),0.45,0.55); put(whoosh(),F.PHOTO_END-0.15,0.6); put(clunk(),F.PHOTO_END+0.1,0.6); put(creak(0.5),F.PHOTO_END+0.6,0.3)
-put(pop(800),at(0,'One shop',-0.2),0.5); put(kaching(),at(0,'five hundred',-0.2),0.6); put(horn(170,0.6),at(0,'Multibagger',-0.2),0.35)
-put(ding(1318),at(1,'1993',-0.2),0.4)
-for ph in ('three hundred sixty','thirty eight','two in the US','two in the UK','one hundred thirty'):
-    for k in range(6): put(tick(),at(1,ph,-0.3)+k*0.07,0.22)
-    put(pop(900),at(1,ph,0.2),0.4)
-for k,ph in enumerate(('nine thousand','thirty five')): put(riser(0.6),at(2,ph,-0.7),0.35); put(ding(1318+k*250),at(2,ph,0.2),0.45)
-put(clunk(),at(2,'four times',-0.2),0.8)
-put(pop(500),at(3,'a loss',-0.3),0.5); put(riser(0.7),at(3,'one thousand',-0.8),0.35); put(kaching(),at(3,'in FY26',0.0),0.6); put(clunk(),at(3,'June quarter',-0.2),0.7)
-put(clunk(),at(4,'twenty six',-0.2),0.8); put(clunk(),at(4,'same store',0.2),0.7)
-for k in range(3): put(pop(700+k*150),at(4,'Old showrooms',-0.2)+k*0.12,0.45)
-put(ding(1568),at(5,'eighty seven',-0.3),0.4); put(rumble(0.8),at(5,'fifteen percent',-0.3),0.4); put(riser(1.6),F.STARTS[5]+0.4,0.35); put(kaching(),at(5,'five hundred sixty',-0.2),0.5); put(drum(2),at(5,'who owns',-0.3),0.6)
-put(pop(800),at(6,'Promoters',-0.2),0.5)
-for k in range(10): put(tick(),at(6,'six point seven',-0.3)+k*0.1,0.3)
-put(rumble(0.8),at(6,'foreign investors',-0.3),0.4)
-put(rumble(0.8),F.STARTS[7]+0.05,0.4)
-for ph in ('forty times','six thousand','gold demand'): put(clunk(),at(7,ph,-0.2),0.6)
-put(kaching(),at(8,'Save',-0.2),0.5); put(whoosh(),at(8,'send it',-0.3),0.5); put(pop(900),at(8,'Follow',-0.2),0.6)
-put(whoosh(),F.DUR-0.6,0.6)
-mix=vo+mus+fx[:N]*0.8
+at=F.at; S=F.STARTS
+def swish(t0,v=0.35): put(whoosh(),t0,v)
+def kick():
+    n=int(SR*0.14); tt=np.arange(n)/SR; return np.sin(2*np.pi*np.cumsum(45+110*np.exp(-28*tt))/SR)*np.exp(-tt/0.05)
+put(whoosh(),0.0,0.5)
+T=F.timing()
+for k in range(12): put(tick(), T['profit']-0.1+k*0.11, 0.25)
+put(kaching(), T['profit']+1.3, 0.5); put(hit(), T['profit']+1.3, 0.4)
+for k in range(3): swish(T['months']+0.2+k*0.18, 0.35); put(chime(), T['months']+1.2+k*0.2, 0.18) if 'chime' in globals() else None
+put(pop(800), T['kerala'], 0.5)
+for i in range(1,9): put(whoosh(), F.STARTS[i]-0.2, 0.7)
+put(pop(900), T['first']-0.3, 0.5); put(clunk(), T['thr']+0.4, 0.5)
+for k in range(9): put(tick(), T['y93']+k*0.11, 0.2)
+put(pop(1000), T['five']-0.2, 0.5); swish(T['five'], 0.35)
+for key in ['k365','c138']:
+    put(pop(900), key and T[key]-0.2, 0.45)
+    for k in range(10): put(tick(), T[key]+k*0.11, 0.2)
+put(riser(0.8), F.STARTS[3]+0.1, 0.3); put(hit(), F.STARTS[3]+0.9, 0.55); put(pop(1100), T['notjust'], 0.5)
+swish(T['me'], 0.45); put(riser(1.1), T['me'], 0.25)
+for k in range(4): put(pop(1200+k*80), T['me']+0.6+k*0.25, 0.35)
+put(pop(900), T['me']+1.2, 0.5); swish(T['us'], 0.45); put(pop(1000), T['us']+0.8, 0.5); swish(T['uk'], 0.45); put(pop(1100), T['uk']+0.7, 0.5)
+put(hit(), T['total'], 0.7); put(kaching(), T['total']+0.1, 0.5)
+put(riser(0.7), T['rev']-0.1, 0.25); put(kaching(), T['rev']+1.3, 0.45); put(kaching(), T['prof']+1.1, 0.45); put(clunk(), T['land'], 0.5)
+for k in range(10): put(tick(), T['india']+k*0.12, 0.2)
+put(kaching(), T['india']+1.2, 0.45); put(rumble(0.6), T['mideast']+0.3, 0.35)
+put(pop(900), T['fr']-0.2, 0.5); swish(T['p59'], 0.4); put(kaching(), T['p59']+1.2, 0.4)
+for k in range(8): put(tick(), T['p84']+k*0.12, 0.2)
+put(hit(), T['p84']+1.0, 0.5)
+put(pop(900), T['q']+0.5, 0.5); put(pop(1100), T['q']+1.8, 0.5); put(pop(1000), T['cmt'], 0.55); put(pop(1250), T['fol'], 0.55)
+put(whoosh(), F.DUR-0.6, 0.6)
+mix=vo+mus*0.7+fx[:N]*0.8
 mix=np.tanh(mix*1.1)/np.tanh(1.1)
+mix=mix/np.max(np.abs(mix))*0.89
+fo=int(SR*0.5); mix[-fo:]*=np.linspace(1,0,fo)
 w=wave.open(f'{F.SH}mix.wav','wb'); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
 w.writeframes((np.clip(mix,-1,1)*32767).astype(np.int16).tobytes()); w.close(); print('mix ok', round(F.DUR,1))
+import json as _j; _j.dump(T,open('/home/claude/reels/motion/kalyan/build/t.json','w'))

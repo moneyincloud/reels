@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Kalyan Jewellers business explained</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="assets/camera.js"></script>
+<style>
+/* "Royal Gold" template: maroon velvet, gold dust, glass-gold cards, serif accents. */
+@font-face { font-family:"Anton"; src:url("assets/fonts/anton-latin-400-normal.woff") format("woff"); }
+@font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"Playfair"; src:url("assets/fonts/playfair-display-latin-700-italic.woff") format("woff"); font-style:italic; }
+@font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
+:root { --cream:#FFF4DC; --gold:#E8B64C; --gold2:#FFE7A3; --mut:#D9C29A; --ruby:#FF9C8A; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:#22040C; }
+#root { position:relative; width:100%; height:100%; overflow:hidden; color:var(--cream); font-family:"Poppins",sans-serif; }
+#paper { position:absolute; inset:0; background:radial-gradient(120% 80% at 50% 30%,#6B1328 0%,#3A0816 55%,#22040C 100%); }
+#paper:after { content:""; position:absolute; inset:0; background-image:radial-gradient(rgba(246,210,122,.10) 2px,transparent 2.5px); background-size:52px 52px; }
+.blob { position:absolute; border-radius:50%; filter:blur(70px); opacity:.35; }
+#bl0 { left:-200px; top:200px; width:600px; height:600px; background:#B07A22; }
+#bl1 { right:-220px; top:700px; width:640px; height:640px; background:#8E1B36; }
+#bl2 { left:-140px; top:1150px; width:520px; height:520px; background:#B07A22; }
+#bl3 { right:-160px; top:-160px; width:520px; height:520px; background:#8E1B36; }
+#world { position:absolute; inset:0; }
+.scene { position:absolute; inset:0; overflow:hidden; }
+.cam { position:absolute; inset:0; transform-origin:50% 40%; }
+.handle { position:absolute; left:40px; top:56px; z-index:50; padding:8px 22px; border-radius:999px; border:2px solid rgba(246,210,122,.5);
+  background:rgba(34,4,12,.6); font-family:"Oswald",sans-serif; font-size:30px; color:#F6D27A; }
+.gold { background:linear-gradient(180deg,#FFE7A3,#E8B64C 55%,#B07A22); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.ser { position:absolute; left:0; right:0; text-align:center; font-family:"Playfair",serif; font-style:italic; font-size:78px; line-height:1.1; color:#F6D27A; }
+.big { position:absolute; left:0; right:0; text-align:center; font-family:"Anton",sans-serif; line-height:1; }
+.card { position:absolute; border-radius:30px; background:linear-gradient(160deg,rgba(255,244,220,.12),rgba(255,244,220,.04)); border:2px solid rgba(246,210,122,.5);
+  box-shadow:0 20px 50px rgba(0,0,0,.4); }
+.pill { position:absolute; border-radius:999px; padding:12px 36px; font-family:"Poppins",sans-serif; font-weight:700; white-space:nowrap; color:#3A0816;
+  background:linear-gradient(135deg,#FFE7A3,#E8B64C); box-shadow:0 10px 26px rgba(0,0,0,.4); }
+.jw { position:absolute; border-radius:24px; overflow:hidden; border:4px solid #E8B64C; box-shadow:0 18px 40px rgba(0,0,0,.5); }
+.jw img { width:100%; height:100%; object-fit:cover; display:block; }
+.shine { position:absolute; inset:0; background:linear-gradient(110deg,transparent 35%,rgba(255,240,200,.55) 50%,transparent 65%); }
+.emo { position:absolute; line-height:1; }
+.cap { position:absolute; left:0; right:0; top:1225px; text-align:center; opacity:0; }
+.cap span { display:inline-block; max-width:930px; padding:12px 36px; border-radius:999px; background:rgba(20,2,8,.82); border:2px solid #E8B64C;
+  font-family:"Poppins",sans-serif; font-weight:700; font-size:42px; line-height:1.25; color:var(--cream); }
+#disc { position:absolute; left:40px; right:40px; top:1322px; text-align:center; font-family:"Oswald",sans-serif; font-size:28px; color:#D9C29A; z-index:30; }
+#prog { position:absolute; left:40px; right:40px; top:40px; height:8px; border-radius:4px; background:rgba(246,210,122,.15); z-index:51; overflow:hidden; }
+#progf { position:absolute; left:0; top:0; bottom:0; width:100%; border-radius:4px; background:linear-gradient(90deg,#B07A22,#FFE7A3,#E8B64C); transform-origin:0 50%; }
+</style>
+</head><body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1080" data-height="1920" data-duration="__DUR__" data-fps="30">
+  <div id="paper"></div>
+  <div class="blob" id="bl0"></div><div class="blob" id="bl1"></div><div class="blob" id="bl2"></div><div class="blob" id="bl3"></div>
+  <div id="prog"><div id="progf"></div></div>
+  <div class="handle">@moneyincloud</div>
+  <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="__DUR__" data-track-index="11" data-volume="1"></audio>
+  <div id="world">
+__BODY__
+  </div>
+  <section class="clip" id="caps" data-start="0" data-duration="__DUR__" data-track-index="10" data-track-kind="captions" style="position:absolute;inset:0;z-index:40">
+__CAPS_HTML__
+  </section>
+  <div id="disc">Data: Kalyan Jewellers Q2 FY27 results &amp; investor presentation (10 Nov 2026) · Logo shown for identification only · I may hold some stocks named · Education only, not a buy/sell call</div>
+</div>
+<script>
+__JS__
+</script>
+</body>
+</html>
