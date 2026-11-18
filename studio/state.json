@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -63,7 +63,7 @@
   {
    "date": "2026-10-30",
    "slug": "iepf",
-   "topic": "Forgotten shares IEPF ₹89,000 Cr",
+   "topic": "Forgotten shares IEPF \u20b989,000 Cr",
    "voice": "af_heart",
    "posted": "manual"
   },
@@ -127,7 +127,7 @@
    "date": "2026-10-30",
    "slug": "tortoise",
    "tag": "animal-friday",
-   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (₹5k from 25 vs ₹10k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
+   "topic": "Animal Friday: Tortoise vs Hare - time beats amount (\u20b95k from 25 vs \u20b910k from 35, 10% illustration; Nifty 1,000 -> 23,053)",
    "angle": "story",
    "voice": "af_heart",
    "length_s": 75.6,
@@ -284,7 +284,7 @@
    "date": "2026-11-05",
    "slug": "turkey",
    "tag": "animal-friday",
-   "topic": "Animal Friday: Turkey Problem with Yes Bank (₹404 Aug 2018 -> ₹5.55 Mar 2020 -> ₹16.24 today), 3 warning signs",
+   "topic": "Animal Friday: Turkey Problem with Yes Bank (\u20b9404 Aug 2018 -> \u20b95.55 Mar 2020 -> \u20b916.24 today), 3 warning signs",
    "style": "normal light template (chalkboard rejected)",
    "voice": "am_michael",
    "length_s": 98.3,
@@ -298,7 +298,7 @@
   {
    "date": "2026-11-05",
    "slug": "kalyan",
-   "topic": "Kalyan Jewellers Part 1: 546 showrooms, sales 3.7x, profit to ₹1,350 Cr, ₹87 IPO to ₹560, ownership, catch (P/E 40, gold loans)",
+   "topic": "Kalyan Jewellers Part 1: 546 showrooms, sales 3.7x, profit to \u20b91,350 Cr, \u20b987 IPO to \u20b9560, ownership, catch (P/E 40, gold loans)",
    "style": "PCJ paper collage",
    "voice": "af_heart",
    "length_s": 92.3,
@@ -476,7 +476,7 @@
   {
    "slug": "eqmf",
    "date": "2026-11-11",
-   "topic": "Stocks vs mutual funds: ownership vs basket, who picks/how many, ₹10,000 example, costs, tax, who should pick what",
+   "topic": "Stocks vs mutual funds: ownership vs basket, who picks/how many, \u20b910,000 example, costs, tax, who should pick what",
    "style": "Vox paper collage + paper-cut",
    "voice": "af_heart",
    "colour": "teal",
@@ -537,7 +537,7 @@
    "date": "2026-11-13",
    "slug": "weekly_2026-11-13",
    "tag": "weekly-recap",
-   "topic": "YouTube weekly recap 7–13 Nov 2026: race10, turkey, lossmath, under20, midcap6, usstock, invest4 (10:07, 7 parts)",
+   "topic": "YouTube weekly recap 7\u201313 Nov 2026: race10, turkey, lossmath, under20, midcap6, usstock, invest4 (10:07, 7 parts)",
    "voice": "am_michael",
    "metricool_id": 426578967,
    "publish": "2026-11-13 16:00 IST",
@@ -554,7 +554,7 @@
    "date": "2026-11-13",
    "slug": "monkey",
    "tag": "animal-friday",
-   "topic": "Animal Friday: Monkey vs Elephant - overtrading; SEBI FY26 F&O study (87.7% lost, ₹91,685 Cr loss, avg loser -₹1.47 L, ~₹24,800 Cr costs, options 92% of losses)",
+   "topic": "Animal Friday: Monkey vs Elephant - overtrading; SEBI FY26 F&O study (87.7% lost, \u20b991,685 Cr loss, avg loser -\u20b91.47 L, ~\u20b924,800 Cr costs, options 92% of losses)",
    "angle": "story",
    "style": "paper Vox v2 light, original monkey + elephant characters",
    "voice": "af_heart",
@@ -580,7 +580,7 @@
   },
   {
    "slug": "earntax",
-   "title": "Earn → tax, spend → tax again (income tax + GST)",
+   "title": "Earn \u2192 tax, spend \u2192 tax again (income tax + GST)",
    "voice": "female af_heart",
    "style": "doodle paper + owner's doodle stickers",
    "date": "2026-11-13",
@@ -602,7 +602,7 @@
   {
    "date": "2026-11-16",
    "slug": "nhit-1-lakh",
-   "topic": "₹1 lakh in NHIT InvIT: payouts (Jun ₹3.187, Sep ₹2.529/unit) + catch: 25,000-unit lot ≈ ₹42 lakh; public InvITs (RIIT) 1 unit",
+   "topic": "\u20b91 lakh in NHIT InvIT: payouts (Jun \u20b93.187, Sep \u20b92.529/unit) + catch: 25,000-unit lot \u2248 \u20b942 lakh; public InvITs (RIIT) 1 unit",
    "voice": "af_heart",
    "style": "colourful paper Vox, camera moves",
    "length_s": 74.2,
@@ -611,7 +611,7 @@
   {
    "date": "2026-11-17",
    "slug": "teasip",
-   "topic": "Tea/coffee not our tradition → ₹25 daily SIP: ₹1.22L in 20 yrs, ≈₹4.9L at Nifty 50 TRI past 12.44%",
+   "topic": "Tea/coffee not our tradition \u2192 \u20b925 daily SIP: \u20b91.22L in 20 yrs, \u2248\u20b94.9L at Nifty 50 TRI past 12.44%",
    "voice": "am_michael",
    "style": "colourful paper Vox, camera moves",
    "length_s": 65.5,
@@ -620,7 +620,7 @@
   {
    "date": "2026-11-17",
    "slug": "under50-carousel",
-   "topic": "Carousel: 15 Nifty stocks under ₹50 by market cap (1 large, 3 mid, 11 small) + 7-step filter",
+   "topic": "Carousel: 15 Nifty stocks under \u20b950 by market cap (1 large, 3 mid, 11 small) + 7-step filter",
    "format": "carousel 9 slides",
    "status": "draft, awaiting owner review"
   },
@@ -646,12 +646,17 @@
    "status": "queued",
    "scheduled": "2026-11-18 10:00 IST IG reel + trial + story 11:00 + YT Short",
    "files": "autopost/media/ipo-listing-report-bls-polymers-sfc-mk-sons-bombay-coated-18-nov-2026*"
+  },
+  {
+   "date": "2026-11-18",
+   "slug": "firstcry-brainbees-business-model-baby-products-profit-explained",
+   "voice": "male"
   }
  ],
  "next_ideas": [
-  "Best week since 2021, explained: reports say Sensex +8.82% to 81,028, Nifty back above 25,000, ₹28.7 lakh Cr added, FIIs returning (HDFC Sky/Upstox). Decode 'FII inflows' and why 'market cap added' is not money in your pocket. Explainer format, education only, no return predictions",
-  "₹31,595 per share is not 'expensive': Hitachi Energy India +10.68% in the last session, mcap ~₹1.41 lakh Cr (INDmoney). Price vs market cap vs valuation, follow-up to the penny15 'price ≠ size' idea. No buy/sell call",
-  "Volume tells a story: V2 Retail −11.83% to ₹164.1 on ~4.18 Cr shares traded vs MSTC +20% locked at upper circuit (INDmoney, last session). What volume, price bands and circuits mean, with a 3-question checklist before reacting to a big mover. No buy/sell call"
+  "Best week since 2021, explained: reports say Sensex +8.82% to 81,028, Nifty back above 25,000, \u20b928.7 lakh Cr added, FIIs returning (HDFC Sky/Upstox). Decode 'FII inflows' and why 'market cap added' is not money in your pocket. Explainer format, education only, no return predictions",
+  "\u20b931,595 per share is not 'expensive': Hitachi Energy India +10.68% in the last session, mcap ~\u20b91.41 lakh Cr (INDmoney). Price vs market cap vs valuation, follow-up to the penny15 'price \u2260 size' idea. No buy/sell call",
+  "Volume tells a story: V2 Retail \u221211.83% to \u20b9164.1 on ~4.18 Cr shares traded vs MSTC +20% locked at upper circuit (INDmoney, last session). What volume, price bands and circuits mean, with a 3-question checklist before reacting to a big mover. No buy/sell call"
  ],
  "rules": {
   "no_avatar": "31 Oct 2026: old caricature removed; use emotion pose avatar host/poses (40 poses) via listx.draw_pose"
@@ -693,7 +698,7 @@
   "doodle paper": "HyperFrames + hand-drawn kit: grid notebook paper, Caveat handwriting, hw-boil wobble, draw-on circles/arrows/cards, highlighter, red stamps, checkboxes (motion/penny15/build/gen.py)"
  },
  "hook_rules": [
-  "Never open a hook with 'Stop' (user instruction, 10 Nov 2026). Rotate openers: 'Never…', 'Nobody tells you…', a number, a direct claim.",
+  "Never open a hook with 'Stop' (user instruction, 10 Nov 2026). Rotate openers: 'Never\u2026', 'Nobody tells you\u2026', a number, a direct claim.",
   "Hook must still score >= 70 on hookscore.py"
  ],
  "tamil_voices": {
