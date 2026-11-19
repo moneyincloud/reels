@@ -22,7 +22,11 @@ Instagram reel + trial reel + Story (60 min later) + YouTube Short.
 | Mon | 10:00 | IPO reel: upcoming IPOs this week | Mon & Wed IPO agent (runs 06:41) |
 | Wed | 10:00 | IPO reel: recently listed IPOs, listing-day gain/loss | Mon & Wed IPO agent |
 | Fri | 16:00 | YouTube long video, weekly recap (YouTube only, `yt_long: true`) | Weekly recap agent (11:23 Fri) |
-| Fri | 18:00 | "Animal Friday" reel | Animal Friday agent (13:37 Fri) |
+| Mon | 18:00 | King's Treasury story episode (`studio/series/kings_treasury.md`) | King's Treasury agent (Mon 13:47) |
+| Tue / Thu | 19:00 | Multibagger or Trap / business explainer (owner picks the stock) | one-off tasks |
+| Fri | 18:00 | "Animal Friday" = Kaadu Bank story episode (`studio/series/jungle_bank.md`) | Animal Friday agent (13:37 Fri) |
+| Sat | 12:00 | 15 Penny Stocks of the Week (`studio/series/weekly_penny_dividend.md`) | Penny agent (Sat 09:53) |
+| Sun | 18:00 | Dividend Week Ahead (`studio/series/weekly_penny_dividend.md`) | Dividend agent (Sun 14:27) |
 | Sat | 07:00 / 09:00 | Weekly top gainers / losers reels | Movers agent (16:13 Fri), `studio/weekmov/RUNBOOK.md` |
 | 2nd of month | 08:00 / 12:00 | Monthly top gainers / losers reels | Movers agent (1st, 10:13) |
 | 1st Mon/Wed run of the month | 16:00 | ONE carousel (Instagram) | Mon & Wed agent |
@@ -48,7 +52,7 @@ Use INDmoney MCP tools (`get_indian_stocks_movers`: top-gainers, top-losers, mos
 Good formats: "why X fell/rose today", IPO explainers (subscription, allotment, listing dates), a concept explained
 with a live example (P/E, P/B, 52-week low), market history, a group of big names with the reason for each.
 NEVER call networth/holdings/portfolio tools — the owner's portfolio must never appear in content.
-Avoid penny stocks and "multibagger" hype.
+Avoid penny stocks and "multibagger" hype, except the owner-ordered series in studio/series/ (data + risk framing only).
 
 ## 3. Compliance (must pass before scheduling)
 Never: return predictions ("will double"), guarantees, fake profit screenshots/testimonials, paid tips,
