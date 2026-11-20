@@ -217,6 +217,14 @@
    "error": null,
    "api": "https://graph.facebook.com/v23.0",
    "at": "2026-11-20T14:07:18.070039+05:30"
+  },
+  "2026-11-20T15:54:16.847119+05:30": {
+   "ok": true,
+   "username": "moneyincloud",
+   "media_count": 109,
+   "error": null,
+   "api": "https://graph.facebook.com/v23.0",
+   "at": "2026-11-20T15:54:16.847119+05:30"
   }
  },
  "tax-gst-carousel-2026-11-13": {
@@ -541,6 +549,28 @@
   "youtube_thumb": {
    "ok": true,
    "at": "2026-11-20T14:07:33.946412+05:30"
+  }
+ },
+ "goldpredict-2026-11-20": {
+  "youtube": {
+   "video_id": "dYlWYyIeoO8",
+   "url": "https://youtube.com/shorts/dYlWYyIeoO8",
+   "publish_at": null,
+   "at": "2026-11-20T15:54:25.249800+05:30"
+  },
+  "instagram": {
+   "media_id": "18451115038130605",
+   "permalink": "https://www.instagram.com/reel/Df9bzOWFWR7/",
+   "at": "2026-11-20T15:55:25.973344+05:30"
+  },
+  "instagram_trial": {
+   "media_id": "18131221786857391",
+   "permalink": "https://www.instagram.com/reel/Df9b7kdChKi/",
+   "at": "2026-11-20T15:56:55.933941+05:30"
+  },
+  "youtube_thumb": {
+   "ok": true,
+   "at": "2026-11-20T15:56:58.498383+05:30"
   }
  }
 }
