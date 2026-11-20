@@ -269,3 +269,40 @@
   yt_description: |
     Anthropic, the company behind Claude, lists on Nasdaq under ticker ANT on 19 Nov 2026 (after 8 PM IST). 825M shares at a $70–78 price band, up to ~$64.4B raised, valuation ~$1.26–1.41T fully diluted. H1 2026 revenue $16.3B vs $1.2B; run rate ~$81B. H1 net loss $80.7B, mostly (~$72.4B) non-cash fair-value changes. Seven co-founders hold 50.1% of votes via a Class F share. At the top of the band it's ~17x run rate. Sources: Anthropic S-1 & amendments, Yahoo Finance, CNBC. Disclosure: made with the help of Claude, an Anthropic product. Education only, not a buy/sell call.
   yt_tags: ["anthropic ipo", "ant stock", "anthropic share price", "claude ai", "ai ipo", "us stocks india", "nasdaq ipo", "how to invest in us stocks", "stock market tamil", "moneyincloud"]
+
+- id: weekly-recap-2026-11-20
+  approved: true   # standing order: Friday weekly recap task (20 Nov 2026)
+  publish_at: 2026-11-20 16:00
+  platforms: [youtube]
+  yt_long: true
+  video: this-week-in-indian-market-weekly-recap-14-20-nov-2026.mp4
+  cover: this-week-in-indian-market-weekly-recap-14-20-nov-2026-thumbnail.jpg
+  yt_title: "This Week in the Indian Market (14–20 Nov 2026): Anthropic IPO, IRFC & more"
+  yt_description: |
+    7 stories from this week in 10 minutes: the Anthropic (ANT) Nasdaq IPO, IRFC and Manappuram as "multibagger or trap", how 4 November IPOs held up after listing, Kalyan Jewellers' business, NHIT InvIT income and the tax you pay twice.
+    Every number is from company filings or exchange data, with the source and date on screen in each part.
+
+    Chapters
+    0:00 Intro
+    0:26 Anthropic IPO: opportunity or bubble?
+    2:08 IRFC: multibagger or trap?
+    3:43 IPO listing report: 4 IPOs
+    5:02 Manappuram: profit up 223%
+    6:29 How Kalyan Jewellers makes money
+    7:48 1 lakh in NHIT InvIT
+    9:02 Earn, tax, spend, tax again
+    9:54 Wrap-up
+
+    Key numbers & sources
+    • Anthropic IPO: $70–78 price band, 825M shares, valuation ~$1.26–1.41T fully diluted (Anthropic S-1 & amendments, Nov 2026).
+    • IRFC: ₹26 at listing (Jan 2021) → ₹229 (Jul 2024) → ~₹81 (18 Nov 2026); Q2 FY27 profit ₹1,958 cr, +10.2% (IRFC Q2 FY27 results; NSE data).
+    • IPO listings: BLS Polymers ₹150 → ₹268.80 on listing day (+79.2%) → ₹275.50 on 17 Nov 2026 (NSE via INDmoney; subscription: chittorgarh.com).
+    • Manappuram: Q2 FY27 profit ₹701 cr vs ₹217 cr a year ago (company results, 12 Nov 2026).
+    • Kalyan Jewellers: 546 stores; Q2 FY27 revenue ₹10,323 cr, profit ₹427 cr incl. a one-time ₹73.5 cr gain (Q2 FY27 results, 10 Nov 2026).
+    • NHIT InvIT: payouts ₹3.187 (Jun 2026) and ₹2.529 (Sep 2026) per unit (NHIT distribution announcements).
+    • Tax & GST: new income-tax regime FY 2026-27 slabs; GST rates as notified (Income Tax Dept, GST Council).
+
+    Not a buy/sell call. Education only, not investment advice. I may hold some of the stocks named. Made with the help of Claude, an Anthropic product.
+
+    #IndianStockMarket #StockMarketIndia #WeeklyRecap
+  yt_tags: ["indian stock market", "stock market this week", "weekly market recap", "anthropic ipo", "irfc share", "manappuram finance", "kalyan jewellers", "ipo listing", "nhit invit", "gst income tax", "moneyincloud"]
