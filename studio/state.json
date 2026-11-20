@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -681,6 +681,28 @@
    "publish": "2026-11-20 16:00 IST",
    "platform": "youtube video (own auto-poster)",
    "youtube": "https://www.youtube.com/watch?v=Spf2wQeVNeE"
+  },
+  {
+   "date": "2026-11-20",
+   "slug": "kaadu1",
+   "tag": "animal-friday",
+   "topic": "Kaadu Bank Ep 1: Ammu's Weekly Grain - small SIP, big pile (AMFI Oct 2026: SIP inflow ₹32,160 Cr, 9.99 Cr accounts paid, ~₹3,216/account, SIP AUM ₹17.68 L Cr)",
+   "series": "Kaadu Bank",
+   "episode": 1,
+   "angle": "story",
+   "style": "paper Vox v2 light + camera moves, Kaadu Bank cast (vox/kaadu_cast.py)",
+   "voice": "am_michael",
+   "length_s": 78.1,
+   "hook": "Never laugh at your small SIP. Almost ten crore accounts paid one last month.",
+   "hook_score": 82.3,
+   "thumb_theme": "green",
+   "follow_overlay": true,
+   "callback": "Ep1 opens with pilot: Mani paid a fee on every jump",
+   "next": "Ep 2: Kili's Hot Tip",
+   "status": "queued",
+   "scheduled": "2026-11-20 18:00 IST IG reel + trial + story 19:00 + YT Short (own auto-poster)",
+   "queue_id": "kaadu-bank-ep1-2026-11-20",
+   "files": "2026-11-20/kaadu1_*"
   }
  ],
  "next_ideas": [

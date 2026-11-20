@@ -149,7 +149,7 @@ VEST = (40, 100, 200)
 
 
 @functools.lru_cache(maxsize=96)
-def monkey(mood='calm', pose='down', step=0, scale=1.0, phone=False):
+def monkey(mood='calm', pose='down', step=0, scale=1.0, phone=False, cap=False):
     """front view monkey in a blue trader vest. poses: down up both_up head hang (arms up holding a branch) point"""
     W_, H_ = 520, 760; im = Image.new('RGBA', (W_, H_), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     cx = W_ // 2; ph = step % 4
@@ -196,6 +196,10 @@ def monkey(mood='calm', pose='down', step=0, scale=1.0, phone=False):
     d.ellipse((cx - 80, hy - 6, cx + 80, hy + 104), fill=MSKIN)
     _face(d, cx, hy + 6, r, mood)
     for s in (-1, 1): d.ellipse((cx + s * 14 - 6, hy + 30, cx + s * 14 + 6, hy + 40), fill=MFUR_D)
+    if cap:  # Kaadu Bank: Mani's yellow cap
+        d.chord((cx - r - 2, hy - r - 34, cx + r + 2, hy + r - 66), 180, 360, fill=YEL, outline=INK, width=OUT)
+        d.rounded_rectangle((cx - 40, hy - 64, cx + 180, hy - 40), 12, fill=YEL, outline=INK, width=OUT)
+        d.ellipse((cx - 12, hy - r - 38, cx + 12, hy - r - 14), fill=YEL, outline=INK, width=5)
     if mood == 'cry':
         for s in (-1, 1): d.ellipse((cx + s * 41 - 9, hy + 24, cx + s * 41 + 9, hy + 52), fill=(120, 190, 240), outline=INK, width=3)
     if scale != 1.0: im = im.resize((int(W_ * scale), int(H_ * scale)), Image.LANCZOS)
@@ -203,7 +207,7 @@ def monkey(mood='calm', pose='down', step=0, scale=1.0, phone=False):
 
 
 @functools.lru_cache(maxsize=32)
-def elephant(mood='calm', trunk=0, scale=1.0, sitting=True):
+def elephant(mood='calm', trunk=0, scale=1.0, sitting=True, shawl=False):
     """front view sitting elephant. trunk: 0 down/curl, 1 raised"""
     W_, H_ = 760, 760; im = Image.new('RGBA', (W_, H_), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
     cx = W_ // 2
@@ -214,6 +218,11 @@ def elephant(mood='calm', trunk=0, scale=1.0, sitting=True):
         d.rounded_rectangle((cx + s * 150 - 80, 560, cx + s * 150 + 80, 730), 50, fill=EGREY, outline=INK, width=OUT)
         for k in (-1, 0, 1): d.ellipse((cx + s * 150 + k * 36 - 15, 700, cx + s * 150 + k * 36 + 15, 724), fill=CREAM, outline=INK, width=3)
     d.ellipse((cx - 110, 420, cx + 110, 660), fill=(176, 184, 196))
+    if shawl:  # Kaadu Bank: Yaanai Thatha's blue shawl
+        sp = [(cx - 225, 430), (cx + 225, 430), (cx + 180, 540), (cx, 640), (cx - 180, 540)]
+        d.polygon(sp, fill=(40, 90, 180)); d.line(sp + [sp[0]], fill=INK, width=OUT, joint='curve')
+        d.line([(cx - 190, 520), (cx, 610), (cx + 190, 520)], fill=(214, 160, 40), width=12)
+        for k in range(-3, 4): d.ellipse((cx + k * 50 - 6, 470 - 6, cx + k * 50 + 6, 470 + 6), fill=(214, 160, 40))
     # ears
     for s in (-1, 1):
         ear = [(cx + s * 90, 120), (cx + s * 330, 90), (cx + s * 370, 260), (cx + s * 300, 420), (cx + s * 120, 380)]
