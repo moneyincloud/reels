@@ -666,6 +666,16 @@
   "youtube_thumb": {
    "ok": true,
    "at": "2026-11-21T10:22:09.888858+05:30"
+  },
+  "instagram": {
+   "media_id": "18136486912740928",
+   "permalink": "https://www.instagram.com/reel/Df_nKgZif4x/",
+   "at": "2026-11-21T12:13:13.209894+05:30"
+  },
+  "instagram_trial": {
+   "media_id": "18041579858845545",
+   "permalink": "https://www.instagram.com/reel/Df_nRxmicz1/",
+   "at": "2026-11-21T12:14:11.649300+05:30"
   }
  }
 }
