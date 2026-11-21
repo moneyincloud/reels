@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -715,6 +715,25 @@
    "slug": "gold-price-india-1990-2026-why-it-fell-why-it-rose",
    "topic": "Gold in India 1990-2026: every fall and jump and why (RBI Table 35)",
    "voice": "male"
+  },
+  {
+   "date": "2026-11-21",
+   "slug": "penny15_1121",
+   "tag": "penny-weekly",
+   "topic": "15 Penny Stocks of the Week 16–20 Nov 2026 (Nifty 500 under ₹50): only 4 rose, all banks; top Central Bank +6.67%, worst Vedanta Iron & Steel −9.34%; all 15 below 1-yr high (Reliance Power −57.7%)",
+   "series": "15 Penny Stocks of the Week",
+   "angle": "numbered",
+   "style": "doodle HyperFrames (motion/penny15) + camera moves, no subtitles",
+   "voice": "af_heart",
+   "length_s": 67.1,
+   "hook": "You won't guess what the only four rising penny stocks this week have in common.",
+   "hook_score": 70.0,
+   "thumb_theme": "blue",
+   "data": "own fallback: INDmoney 1week candles (movers run for 20 Nov missing; period.json still 13 Nov)",
+   "status": "queued",
+   "scheduled": "2026-11-21 12:00 IST IG reel + trial + story 13:00 + YT Short (own auto-poster)",
+   "queue_id": "penny15-weekly-2026-11-21",
+   "files": "autopost/media/15-penny-stocks-this-week-india-16-20-nov-2026*"
   }
  ],
  "next_ideas": [
