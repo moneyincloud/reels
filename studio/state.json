@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -734,6 +734,26 @@
    "scheduled": "2026-11-21 12:00 IST IG reel + trial + story 13:00 + YT Short (own auto-poster)",
    "queue_id": "penny15-weekly-2026-11-21",
    "files": "autopost/media/15-penny-stocks-this-week-india-16-20-nov-2026*"
+  },
+  {
+   "date": "2026-11-21",
+   "slug": "antday1",
+   "tag": "anthropic-ipo-followup",
+   "topic": "Anthropic (ANT) listed on Nasdaq: IPO $83 (band $70-78), 980M shares, $81.3B raised; day 1 open $111.50 / high $115.10 / low $92.72 / close $97.17 (+17.1%), ~$1.76T; day 2 close $88.91 (-8.5%, +7.1% vs IPO), low $83.05; opening buyers ~-20.3%",
+   "angle": "result-first / POV (who's up)",
+   "style": "paper-collage (antipo engine) with real daily candles, no subtitles",
+   "voice": "am_michael",
+   "length_s": 86.7,
+   "hook": "Nobody tells you this about Anthropic's IPO. Opening buyers are down. Who's up?",
+   "hook_score": 81.6,
+   "thumb_theme": "navy",
+   "data": "INDmoney get_us_stocks_ohlc/details (19-20 Nov 2026); IPO price/size SEC filing via TechCrunch/AP/Forbes; value at close CNN; S-1 for revenue/loss/votes",
+   "disclosure": "Made with Claude, an Anthropic AI (conflict of interest) on screen + caption + YT description",
+   "status": "queued",
+   "scheduled": "2026-11-21 18:00 IST IG reel + trial + story 19:00 + YT Short (own auto-poster)",
+   "queue_id": "antday1-2026-11-21",
+   "files": "autopost/media/anthropic-ipo-ant-day-1-2-what-happened-nasdaq-20-nov-2026*",
+   "approval": "owner chat 19 Nov 2026 21:25 IST 'ok for above all'"
   }
  ],
  "next_ideas": [
