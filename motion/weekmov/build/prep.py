@@ -5,7 +5,12 @@ W = '/home/claude/reels/studio/weekmov/'
 IDX = json.load(open(W + 'indices.json'))
 SAY = json.load(open(H + '/say.json')) if os.path.exists(H + '/say.json') else {}   # pronunciation fixes: display -> spoken
 
-NAMES = {'Kalyan Jewellers India': 'Kalyan Jewellers', 'Canara HSBC Life Insurance': 'Canara HSBC Life',
+NAMES = {'Apollo Hospitals Enterprise': 'Apollo Hospitals', 'Indian Renewable Energy Development Agency': 'IREDA',
+         'Aptus Value Housing Finance India': 'Aptus Value Housing', 'Motherson Sumi Wiring India': 'Motherson Sumi Wiring',
+         'Krishna Institute of Medical Sciences': 'KIMS', 'Tata Motors Passenger Vehicles': 'Tata Motors PV',
+         'Caplin Point Laboratories': 'Caplin Point Labs', 'Kaynes Technology India': 'Kaynes Technology',
+         'Max Healthcare Institute': 'Max Healthcare', 'Steel Authority of India': 'SAIL',
+         'Kalyan Jewellers India': 'Kalyan Jewellers', 'Canara HSBC Life Insurance': 'Canara HSBC Life',
          'Tata Teleservices (Maharashtra)': 'Tata Teleservices', 'Schneider Electric Infrastructure': 'Schneider Electric Infra',
          'Deepak Fertilisers & Petrochem': 'Deepak Fertilisers', 'Navin Fluorine International': 'Navin Fluorine',
          'Hitachi Energy India': 'Hitachi Energy', 'Aditya Birla Real Estate': 'Aditya Birla Real Estate',

@@ -1,13 +1,13 @@
 {
  "mode": "loss",
  "title": "Top 10 weekly losers by market cap",
- "kw": "TOP LOSERS THIS WEEK · 9–13 NOV 2026",
+ "kw": "TOP LOSERS THIS WEEK · 16–20 NOV 2026",
  "hook_ttl": "biggest fall this week",
  "hook2": "+ top 10 losers in<br><b>large · mid · small</b> caps 👇",
  "top": {
-  "name": "Page Industries",
-  "pct": -12.4,
-  "sub": "Nifty Midcap 150 · ₹35,760.00 → ₹31,325.00"
+  "name": "Kaynes Technology",
+  "pct": -15.16,
+  "sub": "Nifty Smallcap 250 · ₹3,430.00 → ₹2,910.00"
  },
  "groups": [
   {
@@ -15,84 +15,84 @@
    "sub": "Nifty 100",
    "rows": [
     {
-     "name": "Grasim Industries",
-     "spk": "Grasim Industries",
-     "pct": -5.4,
-     "full": "Grasim Industries",
-     "prev": 3207.2,
-     "close": 3034.0
+     "name": "Muthoot Finance",
+     "spk": "Muthoot Finance",
+     "pct": -10.19,
+     "full": "Muthoot Finance",
+     "prev": 2840.0,
+     "close": 2550.5
     },
     {
-     "name": "Bharat Petroleum",
-     "spk": "Bharat Petroleum",
-     "pct": -4.91,
-     "full": "Bharat Petroleum",
-     "prev": 317.6,
-     "close": 302.0
+     "name": "Vedanta",
+     "spk": "Vedanta",
+     "pct": -8.33,
+     "full": "Vedanta",
+     "prev": 259.68,
+     "close": 238.04
     },
     {
-     "name": "HCL Technologies",
-     "spk": "HCL Technologies",
-     "pct": -4.44,
-     "full": "HCL Technologies",
-     "prev": 1442.0,
-     "close": 1378.0
+     "name": "Tata Motors PV",
+     "spk": "Tata Motors PV",
+     "pct": -7.32,
+     "full": "Tata Motors Passenger Vehicles",
+     "prev": 287.4,
+     "close": 266.35
     },
     {
-     "name": "ONGC",
-     "spk": "ONGC",
-     "pct": -4.17,
-     "full": "Oil & Natural Gas Corpn",
-     "prev": 234.8,
-     "close": 225.0
+     "name": "Cummins",
+     "spk": "Cummins",
+     "pct": -6.16,
+     "full": "Cummins India",
+     "prev": 4369.0,
+     "close": 4100.0
     },
     {
-     "name": "TCS",
-     "spk": "TCS",
-     "pct": -3.65,
-     "full": "Tata Consultancy Services",
-     "prev": 2498.8,
-     "close": 2407.5
+     "name": "Hindustan Zinc",
+     "spk": "Hindustan Zinc",
+     "pct": -5.99,
+     "full": "Hindustan Zinc",
+     "prev": 554.85,
+     "close": 521.6
     },
     {
-     "name": "Tech Mahindra",
-     "spk": "Tech Mahindra",
-     "pct": -3.6,
-     "full": "Tech Mahindra",
-     "prev": 1829.9,
-     "close": 1764.0
+     "name": "Siemens Energy",
+     "spk": "Siemens Energy",
+     "pct": -5.82,
+     "full": "Siemens Energy India",
+     "prev": 3125.9,
+     "close": 2944.0
     },
     {
-     "name": "Ambuja Cements",
-     "spk": "Ambuja Cements",
-     "pct": -3.59,
-     "full": "Ambuja Cements",
-     "prev": 395.65,
-     "close": 381.45
+     "name": "Tata Steel",
+     "spk": "Tata Steel",
+     "pct": -4.65,
+     "full": "Tata Steel",
+     "prev": 186.68,
+     "close": 178.0
     },
     {
-     "name": "Hindustan Aeronautics",
-     "spk": "Hindustan Aeronautics",
-     "pct": -3.51,
-     "full": "Hindustan Aeronautics",
-     "prev": 4985.0,
-     "close": 4809.8
+     "name": "Titan",
+     "spk": "Titan",
+     "pct": -4.64,
+     "full": "Titan",
+     "prev": 4844.9,
+     "close": 4620.0
     },
     {
-     "name": "Pidilite Industries",
-     "spk": "Pidilite Industries",
-     "pct": -3.33,
-     "full": "Pidilite Industries",
-     "prev": 1578.2,
-     "close": 1525.7
+     "name": "Hitachi Energy",
+     "spk": "Hitachi Energy",
+     "pct": -4.57,
+     "full": "Hitachi Energy India",
+     "prev": 31595.0,
+     "close": 30150.0
     },
     {
-     "name": "UltraTech Cement",
-     "spk": "UltraTech Cement",
-     "pct": -3.19,
-     "full": "UltraTech Cement",
-     "prev": 12499.0,
-     "close": 12100.0
+     "name": "Wipro",
+     "spk": "Wipro",
+     "pct": -4.57,
+     "full": "Wipro",
+     "prev": 194.6,
+     "close": 185.7
     }
    ]
   },
@@ -101,84 +101,84 @@
    "sub": "Nifty Midcap 150",
    "rows": [
     {
-     "name": "Page Industries",
-     "spk": "Page Industries",
-     "pct": -12.4,
-     "full": "Page Industries Ltd",
-     "prev": 35760.0,
-     "close": 31325.0
+     "name": "Paytm (One 97)",
+     "spk": "Paytm (One 97)",
+     "pct": -10.3,
+     "full": "One 97 Communications Ltd",
+     "prev": 1939.9,
+     "close": 1740.0
     },
     {
-     "name": "NHPC",
-     "spk": "NHPC",
-     "pct": -6.43,
-     "full": "NHPC Ltd",
-     "prev": 81.04,
-     "close": 75.83
+     "name": "Kalyan Jewellers",
+     "spk": "Kalyan Jewellers",
+     "pct": -8.36,
+     "full": "Kalyan Jewellers India Ltd",
+     "prev": 697.0,
+     "close": 638.7
     },
     {
-     "name": "Ashok Leyland",
-     "spk": "Ashok Leyland",
-     "pct": -4.94,
-     "full": "Ashok Leyland Ltd",
-     "prev": 178.0,
-     "close": 169.2
+     "name": "National Aluminium",
+     "spk": "National Aluminium",
+     "pct": -8.12,
+     "full": "National Aluminium Company Ltd",
+     "prev": 330.0,
+     "close": 303.2
     },
     {
-     "name": "Balkrishna Industries",
-     "spk": "Balkrishna Industries",
-     "pct": -4.83,
-     "full": "Balkrishna Industries Ltd",
-     "prev": 2386.6,
-     "close": 2271.4
+     "name": "PB Fintech",
+     "spk": "PB Fintech",
+     "pct": -7.44,
+     "full": "PB Fintech Ltd",
+     "prev": 1105.0,
+     "close": 1022.8
     },
     {
-     "name": "Cochin Shipyard",
-     "spk": "Cochin Shipyard",
-     "pct": -4.73,
-     "full": "Cochin Shipyard Ltd",
-     "prev": 1236.5,
-     "close": 1178.0
+     "name": "SAIL",
+     "spk": "SAIL",
+     "pct": -6.86,
+     "full": "Steel Authority of India Ltd",
+     "prev": 176.2,
+     "close": 164.11
     },
     {
-     "name": "Torrent Power",
-     "spk": "Torrent Power",
-     "pct": -4.18,
-     "full": "Torrent Power Ltd",
-     "prev": 1274.2,
-     "close": 1221.0
+     "name": "PI Industries",
+     "spk": "PI Industries",
+     "pct": -6.85,
+     "full": "PI Industries Ltd",
+     "prev": 1714.8,
+     "close": 1597.4
     },
     {
-     "name": "Hexaware Technologies",
-     "spk": "Hexaware Technologies",
-     "pct": -3.86,
-     "full": "Hexaware Technologies Ltd",
-     "prev": 513.4,
-     "close": 493.6
+     "name": "Premier Energies",
+     "spk": "Premier Energies",
+     "pct": -6.85,
+     "full": "Premier Energies Ltd",
+     "prev": 895.9,
+     "close": 834.5
     },
     {
-     "name": "Bharat Dynamics",
-     "spk": "Bharat Dynamics",
-     "pct": -3.65,
-     "full": "Bharat Dynamics Ltd",
-     "prev": 1069.0,
-     "close": 1030.0
+     "name": "FACT",
+     "spk": "FACT",
+     "pct": -6.3,
+     "full": "Fertilizers & Chemicals Travancore Ltd",
+     "prev": 808.2,
+     "close": 757.3
     },
     {
-     "name": "Escorts Kubota",
-     "spk": "Escorts Kubota",
-     "pct": -3.6,
-     "full": "Escorts Kubota Ltd",
-     "prev": 2491.6,
-     "close": 2401.8
+     "name": "CRISIL",
+     "spk": "CRISIL",
+     "pct": -6.21,
+     "full": "CRISIL Ltd",
+     "prev": 4352.4,
+     "close": 4082.0
     },
     {
-     "name": "Alkem Laboratories",
-     "spk": "Alkem Laboratories",
-     "pct": -3.58,
-     "full": "Alkem Laboratories Ltd",
-     "prev": 5304.0,
-     "close": 5114.0
+     "name": "APL Apollo Tubes",
+     "spk": "APL Apollo Tubes",
+     "pct": -5.77,
+     "full": "APL Apollo Tubes Ltd",
+     "prev": 2251.6,
+     "close": 2121.6
     }
    ]
   },
@@ -187,126 +187,126 @@
    "sub": "Nifty Smallcap 250",
    "rows": [
     {
-     "name": "Tata Teleservices",
-     "spk": "Tata Teleservices",
-     "pct": -8.7,
-     "full": "Tata Teleservices (Maharashtra) Ltd",
-     "prev": 41.51,
-     "close": 37.9
+     "name": "Kaynes Technology",
+     "spk": "Kaynes Technology",
+     "pct": -15.16,
+     "full": "Kaynes Technology India Ltd",
+     "prev": 3430.0,
+     "close": 2910.0
     },
     {
-     "name": "R R Kabel",
-     "spk": "R R Kabel",
-     "pct": -6.24,
-     "full": "R R Kabel Ltd",
-     "prev": 2115.4,
-     "close": 1983.5
+     "name": "Caplin Point Labs",
+     "spk": "Caplin Point Labs",
+     "pct": -15.05,
+     "full": "Caplin Point Laboratories Ltd",
+     "prev": 2388.7,
+     "close": 2029.1
     },
     {
-     "name": "Prime Focus",
-     "spk": "Prime Focus",
-     "pct": -5.6,
-     "full": "Prime Focus Limited",
-     "prev": 285.95,
-     "close": 269.95
+     "name": "Inox Wind",
+     "spk": "Inox Wind",
+     "pct": -13.95,
+     "full": "Inox Wind Limited",
+     "prev": 64.45,
+     "close": 55.46
     },
     {
-     "name": "HEG Advanced Materials",
-     "spk": "HEG Advanced Materials",
-     "pct": -5.29,
-     "full": "HEG Advanced Materials Ltd",
-     "prev": 293.36,
-     "close": 277.85
+     "name": "Sterlite Technologies",
+     "spk": "Sterlite Technologies",
+     "pct": -12.51,
+     "full": "Sterlite Technologies Ltd",
+     "prev": 710.75,
+     "close": 621.85
     },
     {
-     "name": "HFCL",
-     "spk": "HFCL",
-     "pct": -5.09,
-     "full": "HFCL Ltd",
-     "prev": 216.49,
-     "close": 205.47
+     "name": "CreditAccess Grameen",
+     "spk": "CreditAccess Grameen",
+     "pct": -10.96,
+     "full": "CreditAccess Grameen Ltd",
+     "prev": 1102.6,
+     "close": 981.7
     },
     {
-     "name": "Schneider Electric Infra",
-     "spk": "Schneider Electric Infra",
-     "pct": -4.79,
-     "full": "Schneider Electric Infrastructure Ltd",
-     "prev": 1114.4,
-     "close": 1061.0
+     "name": "KEC International",
+     "spk": "KEC International",
+     "pct": -10.04,
+     "full": "KEC International Ltd",
+     "prev": 333.65,
+     "close": 300.15
     },
     {
-     "name": "Manappuram Finance",
-     "spk": "Manappuram Finance",
-     "pct": -4.64,
-     "full": "Manappuram Finance Ltd",
-     "prev": 323.0,
-     "close": 308.0
+     "name": "Pine Labs",
+     "spk": "Pine Labs",
+     "pct": -9.46,
+     "full": "Pine Labs Limited",
+     "prev": 176.44,
+     "close": 159.75
     },
     {
-     "name": "Birlasoft",
-     "spk": "Birlasoft",
-     "pct": -4.3,
-     "full": "Birlasoft Limited",
-     "prev": 339.25,
-     "close": 324.65
+     "name": "Vedanta Iron And Steel",
+     "spk": "Vedanta Iron And Steel",
+     "pct": -9.34,
+     "full": "Vedanta Iron And Steel Limited",
+     "prev": 26.34,
+     "close": 23.88
     },
     {
-     "name": "Swan Corp",
-     "spk": "Swan Corp",
-     "pct": -3.99,
-     "full": "Swan Corp Ltd",
-     "prev": 242.14,
-     "close": 232.49
+     "name": "Sammaan Capital",
+     "spk": "Sammaan Capital",
+     "pct": -9.16,
+     "full": "Sammaan Capital Ltd",
+     "prev": 137.52,
+     "close": 124.93
     },
     {
-     "name": "Zensar Technologies",
-     "spk": "Zensar Technologies",
-     "pct": -3.96,
-     "full": "Zensar Technologies Ltd",
-     "prev": 572.2,
-     "close": 549.55
+     "name": "Thangamayil Jewellery",
+     "spk": "Thangamayil Jewellery",
+     "pct": -9.11,
+     "full": "Thangamayil Jewellery Ltd",
+     "prev": 4195.0,
+     "close": 3813.0
     }
    ]
   }
  ],
  "spoken": [
-  "Top losers this week: Page Industries fell 12.4% in just four trading days.",
-  "Large caps, Nifty 100: Grasim Industries, Bharat Petroleum and HCL Technologies fell the most.",
-  "Midcaps, Nifty Midcap 150: Page Industries, NHPC and Ashok Leyland fell the most.",
-  "Smallcaps, Nifty Smallcap 250: Tata Teleservices, R R Kabel and Prime Focus fell the most.",
-  "And this was a week when the Nifty 50 rose 0.6%.",
+  "Top losers this week: Kaynes Technology fell 15.2% in just five trading days.",
+  "Large caps, Nifty 100: Muthoot Finance, Vedanta and Tata Motors PV fell the most.",
+  "Midcaps, Nifty Midcap 150: Paytm (One 97), Kalyan Jewellers and National Aluminium fell the most.",
+  "Smallcaps, Nifty Smallcap 250: Kaynes Technology, Caplin Point Labs and Inox Wind fell the most.",
+  "And this was a week when the Nifty 50 rose 2.6%.",
   "Did you hold any of these? Comment LOSS, and follow for next week's list."
  ],
  "context": {
   "rows": [
    [
     "Nifty 50",
-    0.63
+    2.61
    ],
    [
     "Nifty 100",
-    0.74
+    2.22
    ],
    [
     "Nifty Midcap 150",
-    1.58
+    0.31
    ]
   ],
   "line": "Index up, these stocks <b style='color:#D93A2B'>down</b>.<br>That's stock risk."
  },
  "cta_ttl": "Did you hold any of these?",
  "cta_kw": "LOSS",
- "disc": "Week change: 8 Nov (Muhurat) close → 13 Nov close · Data: INDmoney · Not a buy/sell call · Education only",
+ "disc": "Week change: 13 Nov close → 20 Nov close · Data: INDmoney · Not a buy/sell call · Education only",
  "follow_pill": "FOLLOW FOR NEXT WEEK",
  "period": {
   "kind": "week",
-  "end": "2026-11-13",
-  "start": "2026-11-09",
-  "prev_close": "2026-11-08",
-  "sessions": 4,
-  "prev_label": "8 Nov (Muhurat)",
-  "end_label": "13 Nov",
+  "end": "2026-11-20",
+  "start": "2026-11-16",
+  "prev_close": "2026-11-13",
+  "sessions": 5,
+  "prev_label": "13 Nov",
+  "end_label": "20 Nov",
   "month_name": "November 2026",
-  "range_label": "9–13 NOV 2026"
+  "range_label": "16–20 NOV 2026"
  }
 }

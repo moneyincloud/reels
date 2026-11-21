@@ -754,6 +754,25 @@
    "queue_id": "antday1-2026-11-21",
    "files": "autopost/media/anthropic-ipo-ant-day-1-2-what-happened-nasdaq-20-nov-2026*",
    "approval": "owner chat 19 Nov 2026 21:25 IST 'ok for above all'"
+  },
+  {
+   "date": "2026-11-21",
+   "slug": "weekmov-2026-11-20",
+   "tag": "movers-weekly",
+   "topic": "Top 10 weekly gainers/losers 16–20 Nov 2026 (Nifty 100/Midcap 150/Smallcap 250): top gainer Max Healthcare +14.1%, top loser Kaynes Technology −15.2%; Nifty 50 +2.6%",
+   "voices": "gain=male(am_michael), loss=female(af_heart)",
+   "length_s": {
+    "gain": 42.0,
+    "loss": 37.3
+   },
+   "data": "INDmoney 1week candles, 500/500 constituents; extremes spot-checked vs 1day candles",
+   "status": "queued",
+   "scheduled": "2026-11-22 07:00 gainers, 09:00 losers IST (YT+IG+trial+story); owner approved rerun 21 Nov 18:39 IST",
+   "queue_id": [
+    "top-gainers-this-week-nifty-large-mid-smallcap-2026-11-20",
+    "top-losers-this-week-nifty-large-mid-smallcap-2026-11-20"
+   ],
+   "files": "autopost/media/top-{gainers,losers}-this-week-nifty-large-mid-smallcap-2026-11-20*"
   }
  ],
  "next_ideas": [

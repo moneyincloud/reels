@@ -77,4 +77,5 @@ for mode, at in (('gain', gain_at), ('loss', loss_at)):
 """)
     print(slug)
 qy = R + 'autopost/queue.yaml'
-open(qy, 'w').write(open(qy).read().rstrip('\n') + '\n\n' + '\n'.join(entries))
+old = open(qy).read()   # read BEFORE opening for write (opening with 'w' truncates the file)
+open(qy, 'w').write(old.rstrip('\n') + '\n\n' + '\n'.join(entries))

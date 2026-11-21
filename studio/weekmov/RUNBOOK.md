@@ -19,7 +19,10 @@ All paths below are relative to `/home/claude/reels`.
 ## 0. Setup
 - Repo at /home/claude/reels (`add_repo moneyincloud/reels`, access push, if missing), `git pull`.
 - `bash studio/setup.sh`; `cd motion/weekmov && npm install` if `node_modules` is missing.
-- `export HYPERFRAMES_BROWSER_PATH=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell | tail -1)`
+- `export HYPERFRAMES_BROWSER_PATH=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell /opt/pw-browsers/chromium-*/chrome-linux64/chrome 2>/dev/null | tail -1)`
+  (must be non-empty: hyperframes cannot download Chrome here, so render fails with "Chrome not found" otherwise).
+- Start renders fully detached (`setsid nohup ... &`); a plain `nohup ... &` is killed with the shell ("render_cancelled_parent_exited").
+- ASR check needs `pip install --break-system-packages sherpa-onnx` and the whisper model in /home/claude/models (sherpa-onnx-whisper-base.en from the k2-fsa asr-models release).
 - Never use INDmoney portfolio / holdings / networth tools. Never place trades.
 
 ## 1. Constituents (members/*.csv)
@@ -30,8 +33,10 @@ Nifty Midcap 150 Smallcap 250 replacement") since the ASOF date. If anything cha
 (resolve new ind_keys with `lookup_ind_keys`) and update ASOF.txt. Skip a name that has no price yet.
 
 ## 2. Fetch candles (INDmoney, about 505 calls)
-INDmoney allows ~500 calls per hour shared across everything, so the fetch takes 1–2 hours. Use 3
-background helper agents, one per cap (large 100, mid 150, small 250), each told:
+INDmoney limits (measured 21 Nov 2026): 60 units/min AND 500 units/hour, global, each OHLC call costs 2 units →
+30 calls/min, 250 calls/hour. The full fetch (~505 calls) therefore takes ~2–2.5 hours. Do NOT run 3 agents in
+parallel (they all hit the per-minute cap within seconds). Use ONE background helper agent that does large, mid,
+small in order, 12 calls per batch then `sleep 30`, sleeping in 540 s chunks through the hourly cap. Tell it:
 - For every row of `studio/weekmov/members/<cap>.csv` call
   `get_indian_stocks_ohlc(ind_key, interval=<1week|1month>, lookback=<14d for week | 1y for month>)`.
 - Append one JSON line per stock to `studio/weekmov/raw/<cap>.jsonl`:

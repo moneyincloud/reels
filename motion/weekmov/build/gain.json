@@ -1,13 +1,13 @@
 {
  "mode": "gain",
  "title": "Top 10 weekly gainers by market cap",
- "kw": "TOP GAINERS THIS WEEK · 9–13 NOV 2026",
+ "kw": "TOP GAINERS THIS WEEK · 16–20 NOV 2026",
  "hook_ttl": "biggest jump this week",
  "hook2": "+ top 10 gainers in<br><b>large · mid · small</b> caps 👇",
  "top": {
-  "name": "Kalyan Jewellers",
-  "pct": 17.74,
-  "sub": "Nifty Midcap 150 · ₹592.00 → ₹697.00"
+  "name": "Max Healthcare",
+  "pct": 14.14,
+  "sub": "Nifty 100 · ₹947.10 → ₹1,081.00"
  },
  "groups": [
   {
@@ -15,84 +15,84 @@
    "sub": "Nifty 100",
    "rows": [
     {
+     "name": "Max Healthcare",
+     "spk": "Max Healthcare",
+     "pct": 14.14,
+     "full": "Max Healthcare Institute",
+     "prev": 947.1,
+     "close": 1081.0
+    },
+    {
+     "name": "Maruti Suzuki India",
+     "spk": "Maruti Suzuki India",
+     "pct": 9.0,
+     "full": "Maruti Suzuki India",
+     "prev": 12854.0,
+     "close": 14011.0
+    },
+    {
      "name": "Punjab National Bank",
      "spk": "Punjab National Bank",
-     "pct": 13.75,
+     "pct": 8.77,
      "full": "Punjab National Bank",
-     "prev": 125.55,
-     "close": 142.81
+     "prev": 142.81,
+     "close": 155.33
     },
     {
-     "name": "Hitachi Energy",
-     "spk": "Hitachi Energy",
-     "pct": 13.49,
-     "full": "Hitachi Energy India",
-     "prev": 27840.0,
-     "close": 31595.0
+     "name": "Axis Bank",
+     "spk": "Axis Bank",
+     "pct": 8.64,
+     "full": "Axis Bank",
+     "prev": 1331.0,
+     "close": 1446.0
     },
     {
-     "name": "Bank of Baroda",
-     "spk": "Bank of Baroda",
-     "pct": 10.02,
-     "full": "Bank of Baroda",
-     "prev": 248.9,
-     "close": 273.84
-    },
-    {
-     "name": "Siemens Energy",
-     "spk": "Siemens Energy",
-     "pct": 9.51,
-     "full": "Siemens Energy India",
-     "prev": 2854.5,
-     "close": 3125.9
-    },
-    {
-     "name": "Union Bank of India",
-     "spk": "Union Bank of India",
-     "pct": 8.82,
-     "full": "Union Bank of India",
-     "prev": 186.55,
-     "close": 203.0
+     "name": "Apollo Hospitals",
+     "spk": "Apollo Hospitals",
+     "pct": 7.91,
+     "full": "Apollo Hospitals Enterprise",
+     "prev": 8526.0,
+     "close": 9200.0
     },
     {
      "name": "State Bank of India",
      "spk": "State Bank of India",
-     "pct": 6.3,
+     "pct": 7.88,
      "full": "State Bank of India",
-     "prev": 1016.0,
-     "close": 1080.0
+     "prev": 1080.0,
+     "close": 1165.1
     },
     {
-     "name": "Canara Bank",
-     "spk": "Canara Bank",
-     "pct": 6.3,
-     "full": "Canara Bank",
-     "prev": 123.15,
-     "close": 130.91
+     "name": "Union Bank of India",
+     "spk": "Union Bank of India",
+     "pct": 7.81,
+     "full": "Union Bank of India",
+     "prev": 203.0,
+     "close": 218.85
     },
     {
-     "name": "Cummins",
-     "spk": "Cummins",
-     "pct": 6.17,
-     "full": "Cummins India",
-     "prev": 4115.0,
-     "close": 4369.0
+     "name": "Tata Consumer Products",
+     "spk": "Tata Consumer Products",
+     "pct": 7.13,
+     "full": "Tata Consumer Products",
+     "prev": 1079.0,
+     "close": 1155.9
     },
     {
-     "name": "CG Power",
-     "spk": "CG Power",
-     "pct": 5.79,
-     "full": "CG Power & Industrial Solutions",
-     "prev": 782.7,
-     "close": 828.0
+     "name": "UltraTech Cement",
+     "spk": "UltraTech Cement",
+     "pct": 6.93,
+     "full": "UltraTech Cement",
+     "prev": 12100.0,
+     "close": 12939.0
     },
     {
-     "name": "HDFC Life Insurance",
-     "spk": "HDFC Life Insurance",
-     "pct": 5.38,
-     "full": "HDFC Life Insurance",
-     "prev": 562.0,
-     "close": 592.25
+     "name": "Hyundai Motor India",
+     "spk": "Hyundai Motor India",
+     "pct": 6.7,
+     "full": "Hyundai Motor India",
+     "prev": 2076.0,
+     "close": 2215.0
     }
    ]
   },
@@ -101,84 +101,84 @@
    "sub": "Nifty Midcap 150",
    "rows": [
     {
-     "name": "Kalyan Jewellers",
-     "spk": "Kalyan Jewellers",
-     "pct": 17.74,
-     "full": "Kalyan Jewellers India Ltd",
-     "prev": 592.0,
-     "close": 697.0
+     "name": "Blue Star",
+     "spk": "Blue Star",
+     "pct": 12.84,
+     "full": "Blue Star Ltd",
+     "prev": 1587.2,
+     "close": 1791.0
     },
     {
-     "name": "Godrej Industries",
-     "spk": "Godrej Industries",
-     "pct": 15.15,
-     "full": "Godrej Industries Ltd",
-     "prev": 970.15,
-     "close": 1117.15
+     "name": "IREDA",
+     "spk": "IREDA",
+     "pct": 11.33,
+     "full": "Indian Renewable Energy Development Agency Ltd",
+     "prev": 118.3,
+     "close": 131.7
     },
     {
-     "name": "PB Fintech",
-     "spk": "PB Fintech",
-     "pct": 14.27,
-     "full": "PB Fintech Ltd",
-     "prev": 967.0,
-     "close": 1105.0
+     "name": "IDFC First Bank",
+     "spk": "IDFC First Bank",
+     "pct": 9.71,
+     "full": "IDFC First Bank Ltd",
+     "prev": 79.54,
+     "close": 87.26
     },
     {
-     "name": "Bank of India",
-     "spk": "Bank of India",
-     "pct": 11.1,
-     "full": "Bank of India",
-     "prev": 138.71,
-     "close": 154.1
+     "name": "IndusInd Bank",
+     "spk": "IndusInd Bank",
+     "pct": 9.69,
+     "full": "IndusInd Bank Ltd",
+     "prev": 914.4,
+     "close": 1003.0
     },
     {
-     "name": "Meesho",
-     "spk": "Meesho",
-     "pct": 10.0,
-     "full": "Meesho Ltd",
-     "prev": 233.7,
-     "close": 257.07
+     "name": "Exide Industries",
+     "spk": "Exide Industries",
+     "pct": 9.53,
+     "full": "Exide Industries Ltd",
+     "prev": 373.0,
+     "close": 408.55
     },
     {
-     "name": "Max Financial Services",
-     "spk": "Max Financial Services",
-     "pct": 9.29,
-     "full": "Max Financial Services Ltd",
-     "prev": 1282.0,
-     "close": 1401.1
+     "name": "Voltas",
+     "spk": "Voltas",
+     "pct": 8.99,
+     "full": "Voltas Ltd",
+     "prev": 1133.1,
+     "close": 1235.0
     },
     {
-     "name": "GE Vernova T&D India",
-     "spk": "GE Vernova T&D India",
-     "pct": 9.0,
-     "full": "GE Vernova T&D India Ltd",
-     "prev": 4055.0,
-     "close": 4420.0
+     "name": "Bank of Maharashtra",
+     "spk": "Bank of Maharashtra",
+     "pct": 8.45,
+     "full": "Bank of Maharashtra",
+     "prev": 91.7,
+     "close": 99.45
     },
     {
-     "name": "LIC Housing Finance",
-     "spk": "LIC Housing Finance",
-     "pct": 8.75,
-     "full": "LIC Housing Finance Ltd",
-     "prev": 538.0,
-     "close": 585.1
+     "name": "Fortis Healthcare",
+     "spk": "Fortis Healthcare",
+     "pct": 7.98,
+     "full": "Fortis Healthcare Ltd",
+     "prev": 764.0,
+     "close": 825.0
     },
     {
-     "name": "Paytm (One 97)",
-     "spk": "Paytm (One 97)",
-     "pct": 7.71,
-     "full": "One 97 Communications Ltd",
-     "prev": 1801.0,
-     "close": 1939.9
+     "name": "Aster DM Healthcare",
+     "spk": "Aster DM Healthcare",
+     "pct": 7.86,
+     "full": "Aster DM Healthcare Ltd",
+     "prev": 722.5,
+     "close": 779.3
     },
     {
-     "name": "FACT",
-     "spk": "FACT",
-     "pct": 7.34,
-     "full": "Fertilizers & Chemicals Travancore Ltd",
-     "prev": 752.95,
-     "close": 808.2
+     "name": "AIA Engineering",
+     "spk": "AIA Engineering",
+     "pct": 7.77,
+     "full": "AIA Engineering Ltd",
+     "prev": 3186.0,
+     "close": 3433.5
     }
    ]
   },
@@ -187,126 +187,126 @@
    "sub": "Nifty Smallcap 250",
    "rows": [
     {
-     "name": "Data Patterns",
-     "spk": "Data Patterns",
-     "pct": 15.23,
-     "full": "Data Patterns (India) Ltd",
-     "prev": 3704.0,
-     "close": 4268.0
-    },
-    {
-     "name": "Canara HSBC Life",
-     "spk": "Canara HSBC Life",
-     "pct": 11.87,
-     "full": "Canara HSBC Life Insurance Company Ltd",
-     "prev": 120.5,
-     "close": 134.8
-    },
-    {
-     "name": "Gabriel India",
-     "spk": "Gabriel India",
-     "pct": 11.26,
-     "full": "Gabriel India Ltd",
-     "prev": 1395.5,
-     "close": 1552.7
-    },
-    {
-     "name": "Aditya Birla Real Estate",
-     "spk": "Aditya Birla Real Estate",
-     "pct": 10.8,
-     "full": "Aditya Birla Real Estate Ltd",
-     "prev": 1085.7,
-     "close": 1203.0
-    },
-    {
-     "name": "Sai Life Sciences",
-     "spk": "Sai Life Sciences",
-     "pct": 10.6,
-     "full": "Sai Life Sciences Limited",
-     "prev": 1744.0,
-     "close": 1928.8
-    },
-    {
-     "name": "Navin Fluorine",
-     "spk": "Navin Fluorine",
-     "pct": 10.34,
-     "full": "Navin Fluorine International Ltd",
-     "prev": 9065.0,
-     "close": 10002.0
-    },
-    {
-     "name": "Cupid",
-     "spk": "Cupid",
-     "pct": 10.24,
-     "full": "Cupid Ltd",
-     "prev": 342.7,
-     "close": 377.8
-    },
-    {
-     "name": "Anupam Rasayan India",
-     "spk": "Anupam Rasayan India",
-     "pct": 9.68,
-     "full": "Anupam Rasayan India Ltd",
-     "prev": 1185.8,
-     "close": 1300.6
-    },
-    {
      "name": "Deepak Fertilisers",
      "spk": "Deepak Fertilisers",
-     "pct": 9.25,
+     "pct": 13.9,
      "full": "Deepak Fertilisers and Petrochemicals Corp Ltd",
-     "prev": 1155.0,
-     "close": 1261.8
+     "prev": 1261.8,
+     "close": 1437.2
     },
     {
-     "name": "Graphite India",
-     "spk": "Graphite India",
-     "pct": 9.24,
-     "full": "Graphite India Ltd",
-     "prev": 732.3,
-     "close": 799.95
+     "name": "Signatureglobal",
+     "spk": "Signatureglobal",
+     "pct": 12.11,
+     "full": "Signatureglobal (India) Ltd",
+     "prev": 766.6,
+     "close": 859.4
+    },
+    {
+     "name": "Aptus Value Housing",
+     "spk": "Aptus Value Housing",
+     "pct": 11.78,
+     "full": "Aptus Value Housing Finance India Ltd",
+     "prev": 174.98,
+     "close": 195.6
+    },
+    {
+     "name": "Vijaya Diagnostic Centre",
+     "spk": "Vijaya Diagnostic Centre",
+     "pct": 11.5,
+     "full": "Vijaya Diagnostic Centre Limited",
+     "prev": 1410.1,
+     "close": 1572.3
+    },
+    {
+     "name": "Belrise Industries",
+     "spk": "Belrise Industries",
+     "pct": 9.82,
+     "full": "Belrise Industries Ltd",
+     "prev": 215.2,
+     "close": 236.33
+    },
+    {
+     "name": "Motherson Sumi Wiring",
+     "spk": "Motherson Sumi Wiring",
+     "pct": 9.46,
+     "full": "Motherson Sumi Wiring India Ltd",
+     "prev": 39.02,
+     "close": 42.71
+    },
+    {
+     "name": "Jammu and Kashmir Bank",
+     "spk": "Jammu and Kashmir Bank",
+     "pct": 9.08,
+     "full": "Jammu and Kashmir Bank Ltd",
+     "prev": 137.27,
+     "close": 149.73
+    },
+    {
+     "name": "KIMS",
+     "spk": "KIMS",
+     "pct": 9.04,
+     "full": "Krishna Institute of Medical Sciences Ltd",
+     "prev": 729.65,
+     "close": 795.6
+    },
+    {
+     "name": "Tata Technologies",
+     "spk": "Tata Technologies",
+     "pct": 8.84,
+     "full": "Tata Technologies Ltd",
+     "prev": 668.8,
+     "close": 727.9
+    },
+    {
+     "name": "Indraprastha Gas",
+     "spk": "Indraprastha Gas",
+     "pct": 8.75,
+     "full": "Indraprastha Gas Limited",
+     "prev": 142.33,
+     "close": 154.79
     }
    ]
   }
  ],
  "spoken": [
-  "Top gainers this week: Kalyan Jewellers jumped 17.7% in just four trading days.",
-  "Large caps, Nifty 100: Punjab National Bank, Hitachi Energy and Bank of Baroda led the gains.",
-  "Midcaps, Nifty Midcap 150: Kalyan Jewellers, Godrej Industries and PB Fintech led the gains.",
-  "Smallcaps, Nifty Smallcap 250: Data Patterns, Canara HSBC Life and Gabriel India led the gains.",
-  "Meanwhile, the Nifty 50 moved just 0.6% this week.",
+  "Top gainers this week: Max Healthcare jumped 14.1% in just five trading days.",
+  "Large caps, Nifty 100: Max Healthcare, Maruti Suzuki India and Punjab National Bank led the gains.",
+  "Midcaps, Nifty Midcap 150: Blue Star, IREDA and IDFC First Bank led the gains.",
+  "Smallcaps, Nifty Smallcap 250: Deepak Fertilisers, Signatureglobal and Aptus Value Housing led the gains.",
+  "Meanwhile, the Nifty 50 moved just 2.6% this week.",
   "Which one do you hold? Comment GAIN, and follow for next week's list."
  ],
  "context": {
   "rows": [
    [
     "Nifty 50",
-    0.63
+    2.61
    ],
    [
     "Nifty 100",
-    0.74
+    2.22
    ],
    [
     "Nifty Midcap 150",
-    1.58
+    0.31
    ]
   ],
-  "line": "Nifty 50: just <b style='color:#1E8E4E'>+0.6%</b>.<br>These stocks did far more."
+  "line": "Nifty 50: just <b style='color:#1E8E4E'>+2.6%</b>.<br>These stocks did far more."
  },
  "cta_ttl": "Which one do you hold?",
  "cta_kw": "GAIN",
- "disc": "Week change: 8 Nov (Muhurat) close → 13 Nov close · Data: INDmoney · Not a buy/sell call · Education only",
+ "disc": "Week change: 13 Nov close → 20 Nov close · Data: INDmoney · Not a buy/sell call · Education only",
  "follow_pill": "FOLLOW FOR NEXT WEEK",
  "period": {
   "kind": "week",
-  "end": "2026-11-13",
-  "start": "2026-11-09",
-  "prev_close": "2026-11-08",
-  "sessions": 4,
-  "prev_label": "8 Nov (Muhurat)",
-  "end_label": "13 Nov",
+  "end": "2026-11-20",
+  "start": "2026-11-16",
+  "prev_close": "2026-11-13",
+  "sessions": 5,
+  "prev_label": "13 Nov",
+  "end_label": "20 Nov",
   "month_name": "November 2026",
-  "range_label": "9–13 NOV 2026"
+  "range_label": "16–20 NOV 2026"
  }
 }
