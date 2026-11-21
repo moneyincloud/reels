@@ -1,0 +1,167 @@
+[
+ {
+  "name": "Central Bank",
+  "symbol": "CENTRALBK",
+  "ind_key": "INDS01862",
+  "prev": 32.22,
+  "close": 34.37,
+  "week_pct": 6.67,
+  "hi52": 40.92,
+  "mcap_cr": 31109.67,
+  "below_hi": -16.0
+ },
+ {
+  "name": "Yes Bank",
+  "symbol": "YESBANK",
+  "ind_key": "INDS02937",
+  "prev": 17.42,
+  "close": 17.91,
+  "week_pct": 2.81,
+  "hi52": 25.78,
+  "mcap_cr": 56220.83,
+  "below_hi": -30.5
+ },
+ {
+  "name": "UCO Bank",
+  "symbol": "UCOBANK",
+  "ind_key": "INDS02381",
+  "prev": 24.84,
+  "close": 25.42,
+  "week_pct": 2.33,
+  "hi52": 32.12,
+  "mcap_cr": 31875.56,
+  "below_hi": -20.9
+ },
+ {
+  "name": "Indian Overseas Bank",
+  "symbol": "IOB",
+  "ind_key": "INDS00229",
+  "prev": 31.63,
+  "close": 31.99,
+  "week_pct": 1.14,
+  "hi52": 40.54,
+  "mcap_cr": 61601.83,
+  "below_hi": -21.1
+ },
+ {
+  "name": "Vedanta Power",
+  "symbol": "VEDPOWER",
+  "ind_key": "INDS43055",
+  "prev": 34.92,
+  "close": 34.7,
+  "week_pct": -0.63,
+  "hi52": 49.88,
+  "mcap_cr": 13569.05,
+  "below_hi": -30.4
+ },
+ {
+  "name": "Trident",
+  "symbol": "TRIDENT",
+  "ind_key": "INDS00196",
+  "prev": 23.54,
+  "close": 23.39,
+  "week_pct": -0.64,
+  "hi52": 30.94,
+  "mcap_cr": 11919.44,
+  "below_hi": -24.4
+ },
+ {
+  "name": "Vodafone Idea",
+  "symbol": "IDEA",
+  "ind_key": "INDS03017",
+  "prev": 12.57,
+  "close": 12.15,
+  "week_pct": -3.34,
+  "hi52": 15.79,
+  "mcap_cr": 131636.79,
+  "below_hi": -23.1
+ },
+ {
+  "name": "Bharat Coking Coal",
+  "symbol": "BHARATCOAL",
+  "ind_key": "INDS40658",
+  "prev": 31.54,
+  "close": 30.46,
+  "week_pct": -3.42,
+  "hi52": 45.09,
+  "mcap_cr": 14185.22,
+  "below_hi": -32.4
+ },
+ {
+  "name": "IRB Infra",
+  "symbol": "IRB",
+  "ind_key": "INDS03137",
+  "prev": 18.78,
+  "close": 18.05,
+  "week_pct": -3.89,
+  "hi52": 23.95,
+  "mcap_cr": 21800.79,
+  "below_hi": -24.6
+ },
+ {
+  "name": "Reliance Power",
+  "symbol": "RPOWER",
+  "ind_key": "INDS01338",
+  "prev": 18.55,
+  "close": 17.66,
+  "week_pct": -4.8,
+  "hi52": 41.75,
+  "mcap_cr": 7303.77,
+  "below_hi": -57.7
+ },
+ {
+  "name": "Tata Teleservices",
+  "symbol": "TTML",
+  "ind_key": "INDS01930",
+  "prev": 37.9,
+  "close": 36.02,
+  "week_pct": -4.96,
+  "hi52": 54.78,
+  "mcap_cr": 7041.65,
+  "below_hi": -34.2
+ },
+ {
+  "name": "JP Power",
+  "symbol": "JPPOWER",
+  "ind_key": "INDS02953",
+  "prev": 14.07,
+  "close": 13.37,
+  "week_pct": -4.98,
+  "hi52": 24.5,
+  "mcap_cr": 9163.07,
+  "below_hi": -45.4
+ },
+ {
+  "name": "Vedanta Oil & Gas",
+  "symbol": "VOGL",
+  "ind_key": "INDS43040",
+  "prev": 30.87,
+  "close": 29.19,
+  "week_pct": -5.44,
+  "hi52": 47.6,
+  "mcap_cr": 11414.42,
+  "below_hi": -38.7
+ },
+ {
+  "name": "Ola Electric",
+  "symbol": "OLAELEC",
+  "ind_key": "INDS32068",
+  "prev": 34.65,
+  "close": 32.59,
+  "week_pct": -5.95,
+  "hi52": 49.05,
+  "mcap_cr": 16290.7,
+  "below_hi": -33.6
+ },
+ {
+  "name": "Vedanta Iron & Steel",
+  "symbol": "VISL",
+  "ind_key": "INDS43035",
+  "prev": 26.34,
+  "close": 23.88,
+  "week_pct": -9.34,
+  "hi52": 44.78,
+  "mcap_cr": 9338.01,
+  "below_hi": -46.7
+ }
+]
