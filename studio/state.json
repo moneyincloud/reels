@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -773,6 +773,16 @@
     "top-losers-this-week-nifty-large-mid-smallcap-2026-11-20"
    ],
    "files": "autopost/media/top-{gainers,losers}-this-week-nifty-large-mid-smallcap-2026-11-20*"
+  },
+  {
+   "date": "2026-11-22",
+   "slot": "11:00",
+   "slug": "teasip",
+   "topic": "Tea/coffee money → ₹25 daily SIP (20-yr Nifty 50 TRI illustration)",
+   "voice": "af_heart",
+   "engine": "hyperframes",
+   "status": "posted",
+   "posted": "autopost queue teasip-2026-11-22"
   }
  ],
  "next_ideas": [
