@@ -802,6 +802,16 @@
   "youtube_thumb": {
    "ok": true,
    "at": "2026-11-22T07:57:25.191846+05:30"
+  },
+  "instagram": {
+   "media_id": "17958799170335305",
+   "permalink": "https://www.instagram.com/reel/DgCJ7r8Empn/",
+   "at": "2026-11-22T11:55:31.291594+05:30"
+  },
+  "instagram_trial": {
+   "media_id": "17936978964146720",
+   "permalink": "https://www.instagram.com/reel/DgCKGj1FH5U/",
+   "at": "2026-11-22T11:57:01.966119+05:30"
   }
  }
 }
