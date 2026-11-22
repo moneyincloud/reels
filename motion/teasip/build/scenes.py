@@ -1,8 +1,8 @@
 """Scene content + animation for the tea money -> SIP reel. Assembled by build.py."""
 CAPTXT = [
     "Your daily tea or coffee isn't even our tradition. But it quietly takes ₹25 from you every day.",
-    "Tea became an Indian habit only after British-era campaigns in the 1930s, with free cups at railway stations.",
-    "In Tamil Nadu, coffee replaced our morning neeragaram and kanji only in the early 1900s.",
+    "Tea became a mass Indian habit through British-era tea board campaigns. In the 1930s they handed out millions of free cups, with posters at railway stations.",
+    "And in Tamil Nadu, mornings began with neeragaram. Coffee only won people over in the early 1900s.",
     "So here's a swap: put that ₹25 into a daily SIP, only on working days.",
     "That's ₹125 a week, about ₹510 a month, around ₹6,100 a year.",
     "In 20 years you'd invest about ₹1.22 lakh.",
@@ -29,10 +29,10 @@ SCN[1] = '''<div class="card" id="poster" style="left:90px;right:90px;top:260px;
 <div class="emo cupf" id="cf0" style="left:320px;top:620px;font-size:90px">🍵</div>
 <div class="emo cupf" id="cf1" style="left:470px;top:580px;font-size:90px">🍵</div>
 <div class="emo cupf" id="cf2" style="left:620px;top:620px;font-size:90px">🍵</div>
-<div class="stk" id="free" style="left:330px;top:1010px;background:#FFE45C;transform:rotate(-3deg);font-size:54px">FREE CUPS AT STATIONS</div>'''
+<div class="stk" id="free" style="left:330px;top:1010px;background:#FFE45C;transform:rotate(-3deg);font-size:54px">MILLIONS OF FREE CUPS</div>'''
 SCN[2] = '''<div class="ttl hand" style="top:230px;font-size:84px">Tamil Nadu mornings</div>
 <div class="card" id="old" style="left:70px;width:420px;top:420px;height:430px;text-align:center;padding-top:30px">
-<div style="font-size:150px">🥣</div><div style="font-family:Anton;font-size:52px">neeragaram<br>&amp; kanji</div><div style="font-family:Poppins;font-size:30px;color:#5B5B66">before</div></div>
+<div style="font-size:150px">🥣</div><div style="font-family:Anton;font-size:52px">neeragaram</div><div style="font-family:Poppins;font-size:30px;color:#5B5B66">before</div></div>
 <div class="arr" id="ar2" style="left:500px;top:620px;width:80px"></div>
 <div class="card" id="new" style="right:70px;width:420px;top:420px;height:430px;text-align:center;padding-top:30px;background:#FFF7E0">
 <div style="font-size:150px">☕</div><div style="font-family:Anton;font-size:52px">filter<br>coffee</div><div style="font-family:Poppins;font-size:30px;color:#5B5B66">early 1900s</div></div>'''
@@ -55,7 +55,7 @@ SCN[6] = '''<div class="ttl hand" style="top:230px;font-size:80px">If it grew li
 <div class="bar" id="g0" style="left:60px;height:132px;background:#F59E0B"></div>
 <div class="bar" id="g1" style="right:60px;height:534px;background:#2BB673"></div>
 <div class="blab" id="gv0" style="left:40px;top:340px">₹1.22 L</div>
-<div class="blab" id="gv1" style="right:40px;top:-62px;color:#1E8E4E">≈ ₹4.95 L</div></div>
+<div class="blab" id="gv1" style="right:40px;top:-62px;color:#1E8E4E">≈ ₹4.9 L</div></div>
 <div class="blab" style="left:160px;top:1045px;font-size:38px">you put in</div>
 <div class="blab" style="right:160px;top:1045px;font-size:38px">illustration*</div>'''
 SCN[7] = f'''<div class="ttl hand" style="top:240px">Past ≠ promise</div>

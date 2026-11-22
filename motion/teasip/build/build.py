@@ -17,6 +17,7 @@ for i, line in enumerate(CAPTXT):
         caps.append([round(st, 2), round(en, 2), txt])
 for k in range(len(caps) - 1):
     caps[k][1] = round(min(max(caps[k][1], caps[k + 1][0] - 0.02), caps[k][1] + 0.6), 2)
+caps = []  # NO subtitles (owner's standing rule)
 SC = [(S[i], S[i + 1] if i + 1 < len(S) else DUR) for i in range(len(S))]
 esc = lambda s: s.replace('&', '&amp;').replace('<', '&lt;')
 body = '\n'.join(f'<section class="scene clip" id="sc{i}" style="--bg:{BG[i]}" data-start="{a:.2f}" data-duration="{min(b + 0.35, DUR) - a:.2f}" data-track-index="{i + 1}"><div class="cam" id="cam{i}">{SCN[i]}</div></section>' for i, (a, b) in enumerate(SC))
