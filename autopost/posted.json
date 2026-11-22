@@ -281,6 +281,14 @@
    "error": null,
    "api": "https://graph.facebook.com/v23.0",
    "at": "2026-11-21T21:19:42.904447+05:30"
+  },
+  "2026-11-22T07:55:32.919322+05:30": {
+   "ok": true,
+   "username": "moneyincloud",
+   "media_count": 116,
+   "error": null,
+   "api": "https://graph.facebook.com/v23.0",
+   "at": "2026-11-22T07:55:32.919322+05:30"
   }
  },
  "tax-gst-carousel-2026-11-13": {
@@ -742,6 +750,16 @@
   "youtube_thumb": {
    "ok": true,
    "at": "2026-11-21T21:19:56.685889+05:30"
+  },
+  "instagram": {
+   "media_id": "18117691685331782",
+   "permalink": "https://www.instagram.com/reel/DgBulaBDU2O/",
+   "at": "2026-11-22T07:56:16.757553+05:30"
+  },
+  "instagram_trial": {
+   "media_id": "18132498698479873",
+   "permalink": "https://www.instagram.com/reel/DgBuqs4lBkE/",
+   "at": "2026-11-22T07:57:17.899303+05:30"
   }
  },
  "top-losers-this-week-nifty-large-mid-smallcap-2026-11-20": {
@@ -754,6 +772,18 @@
   "youtube_thumb": {
    "ok": true,
    "at": "2026-11-21T21:19:59.355275+05:30"
+  }
+ },
+ "teasip-2026-11-22": {
+  "youtube": {
+   "video_id": "0xDO6W23968",
+   "url": "https://youtube.com/shorts/0xDO6W23968",
+   "publish_at": "2026-11-22T05:30:00Z",
+   "at": "2026-11-22T07:57:22.691918+05:30"
+  },
+  "youtube_thumb": {
+   "ok": true,
+   "at": "2026-11-22T07:57:25.191846+05:30"
   }
  }
 }
