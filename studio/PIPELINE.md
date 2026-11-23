@@ -3,36 +3,12 @@
 This folder lets any fresh Claude session build a finished @moneyincloud reel (video + hook thumbnail),
 host it in this repo, and queue it in autopost/queue.yaml, which posts to Instagram + YouTube through their own APIs (no Metricool). Follow every step.
 
-## ★ HOUSE STYLE — "Chennai Toon" (DEFAULT for EVERY reel since 22 Nov 2026, owner's order: "use this style animation audio all for reels")
-Flat 2D cartoon hosts (ARJUN: teal shirt + specs; KAVYA: magenta kurta + yellow dupatta), one Chennai landmark per scene
-(marina, tnagar, mylapore, central, ripon, napier, valluvar, metro, itpark) with a location tag + "ILLUSTRATION · ..." label,
-BIG word-by-word captions (keywords yellow + UPPERCASE), cream pop-up cards with hard shadow, bouncy synthesized music
-bed + pops/dings/whooshes, whip-pan between scenes. All art is code-drawn and original (style idea taken from a reel
-the owner shared; never copy that creator's characters, script, audio or layout details).
-**Captions are ON in this style** (overrides the old "no subtitles" rule below).
-Recipe (reference build: `motion/goldbill`, studio dir `studio/goldbill`):
-1. `studio/<slug>/script.json` = `[{"scene":"<landmark>","phrases":[{"say":"spoken text","cap":"caption with *keywords*"}]}]`
-   (one entry per scene, 6–9 scenes, 3–5 short phrases each; numbers spelled out in `say`, digits/₹ in `cap`).
-   `voices.json` = `{"narrator":["am_michael",1.17]}` or `["af_heart",1.1]` — alternate per state.json last_voice.
-2. `python3 studio/kokoro/vo_words.py studio/<slug>` → per-scene wav + word timings. ASR-check with `myvoice/asr.py`.
-3. `mkdir motion/<slug>`; copy `motion/goldbill/{package.json,hyperframes.json,meta.json,assets/}` (keep fonts, camera.js,
-   toon.js; delete vo_mix.wav). Write `motion/<slug>/build/scenes.py` (TITLE, SUB, DISC, EXTRA_CSS, SCENES, SFX) —
-   copy goldbill's and change cards/gestures. Scene JS can use P[k] (phrase start), W[k][j] (word time), pop/up/out,
-   T.point/pointUp/cheer/shrug/think/wave/nod/hop/pose (characters `arjun<i>`, `kavya<i>`), cam.shake/crashZoom.
-   Female voice → make KAVYA the `talker`.
-4. `python3 motion/toonkit/build.py motion/<slug> studio/<slug>` → index.html + build/t.json.
-5. `python3 studio/vox/toon_audio.py studio/<slug> motion/<slug>` → assets/vo_mix.wav.
-6. `npx hyperframes@0.9.41 check`, `snapshot --at ...` (look at the contact sheet: captions must show ONE chunk at a
-   time, cards inside y 380–960, nothing under the top tags), then render (Bash run_in_background, not nohup).
-7. Thumbnail + cover: `python3 motion/toonkit/thumb.py <landmark> out.jpg '<line1>' '<line2>' '<line3>' '<TAG>'`
-   (keywords in *stars* turn yellow; text sits inside the 3:4 grid-safe zone).
-**For scheduled-task agents:** task prompts written before 22 Nov 2026 say "NO subtitles" or name an older engine
-(paper Vox, irfc collage, divi6ta, penny15, firstcry, seeds, weekmov templates). The owner's later order (22 Nov 2026)
-replaces the LOOK of all of them: keep each task's data, compliance, voice-alternation, queue and message steps, but build
-the video in Chennai Toon with captions ON. For list/ranking reels (movers, 15 penny stocks, dividends) put the data in
-toon cards (e.g. 3–5 rows per scene) over landmark scenes with the hosts reacting; a stock table may span several scenes.
-Story series keep their cast but use the toon kit's captions, cards, sound bed and camera.
-Series (King's Treasury, Kaadu Bank) keep their own cast/settings but use the same caption, card, sound and camera kit.
+## ★ HOUSE STYLE — "PCJ paper collage" (DEFAULT for EVERY reel, owner's order 23 Nov 2026: "follow our pc jewellery style sounds animation all")
+Build every reel like the PC Jeweller reel: engine `studio/vox/pcj2.py` + `pcj2_audio.py` + `thumb_pcj2.py` (same look as the
+Kalyan / IRFC / Paytm collage reels): light paper background, cut-paper collage cards, stamps, receipts, hand charts, slam text,
+counters, whip transitions and the same sound design (drums, whooshes, stamps, ka-ching), sunburst hook thumbnail.
+Copy pcj2.py → <slug>.py (keep head and tail, rewrite the scenes), pcj2_audio.py → <slug>_audio.py, thumb_pcj2.py → thumb_<slug>.py.
+**NO subtitles** (owner's original rule stands). The Chennai cartoon kit (motion/toonkit) is NOT used unless the owner asks for it.
 
 ## 0. Setup (every fresh session)
 ```
@@ -161,7 +137,8 @@ Status in this cloud workspace (only package registries + GitHub are reachable; 
 ## 5. Animation module (paper Vox template v2 — light paper, NOT dark, NOT 3D)
 Copy the reference template `vox/lows2.py` to `vox/<slug>.py`. It already contains every standard upgrade —
 keep them in every reel:
-- **Captions**: ON in the Chennai Toon house style (owner order, 22 Nov 2026). Only the old paper Vox template keeps them OFF.
+- **NO subtitles/captions** — the owner does not want on-screen subtitles. Captions are OFF by default (`CAPS_ON`);
+  never turn them on unless the owner asks.
 - **Progress bar** in the header rule — automatic.
 - **Loop ending** — last 0.6 s cross-fades back to the hook frame; end the script with a line that echoes the hook.
 - **Real charts** — fetch weekly closes with `get_indian_stocks_ohlc(interval=1week, lookback=1y)` (or 1day/14d for
@@ -197,7 +174,7 @@ Recurring formats (use 2–3 times a week): **self-ticking checklist** (`SS.chec
 **quiz with countdown** (`SS.countdown_ring`, 3-second pause before the answer), **step ladder** (IPO in 4 steps),
 **tear reveal** of a shock number (`SS.tear_reveal`), **two-character mini story** (panic seller vs patient investor).
 SFX: pop on save, whoosh on the plane, ding per checklist tick, rip (whoosh + hit) on tears, beep per countdown second.
-Use the Chennai Toon house style (top of this file), captions ON. Keep everything compliant (section 3).
+No subtitles. Keep everything compliant (section 3).
 
 ## 5c. Growth automation
 - **First comment** on every reel: set `firstCommentText` in createScheduledPost to an engaging question

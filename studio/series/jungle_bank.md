@@ -28,4 +28,4 @@ N+1 of Kaadu Bank" + save CTA. End the caption with the episode number and the n
 7. Crow and the Shiny Stone: penny-stock traps (link to the Saturday penny reel).
 8. Yaanai Thatha's 20 Years: staying invested through crashes (real: Nifty 50 2008, 2020 falls and recovery).
 
-> Style (22 Nov 2026): build every episode with the Chennai Toon kit (motion/toonkit: word-by-word captions, pop-up cards, toon sound bed, whip pans). Keep this series cast; draw them in the same flat outlined style.
+> Style (23 Nov 2026): owner's house style is the PCJ paper collage (studio/vox/pcj2.py look and sounds), no subtitles.

@@ -32,4 +32,4 @@ Every story number is an illustration, and every real-market number is sourced. 
 11. The Sweet Shop's Books: how to read a business (revenue, profit, debt).
 12. Season finale: the King's Test again, where both princes show their treasuries.
 
-> Style (22 Nov 2026): build every episode with the Chennai Toon kit (motion/toonkit: word-by-word captions, pop-up cards, toon sound bed, whip pans). Keep this series cast; draw them in the same flat outlined style.
+> Style (23 Nov 2026): owner's house style is the PCJ paper collage (studio/vox/pcj2.py look and sounds), no subtitles.
