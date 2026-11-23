@@ -1,0 +1,36 @@
+[
+ {"scene":"central","phrases":[
+  {"say":"Nifty fell four hundred and fifty points today.","cap":"Nifty fell *450 points* today"},
+  {"say":"From the day's high, it lost over six hundred.","cap":"*643 points* off the day's high"},
+  {"say":"Here are the five reasons.","cap":"Here are *5 reasons*"}]},
+ {"scene":"itpark","phrases":[
+  {"say":"Reason one. Profit booking.","cap":"1. *PROFIT BOOKING*"},
+  {"say":"Nifty had rallied about ten percent this month,","cap":"Nifty was up about *10%* this month"},
+  {"say":"and touched twenty five thousand nine hundred ninety two, just below twenty six thousand.","cap":"Hit *25,992*, just below *26,000*"},
+  {"say":"Traders sold near that wall.","cap":"Traders *SOLD* near that wall"}]},
+ {"scene":"ripon","phrases":[
+  {"say":"Reason two. Banks.","cap":"2. *BANKS* fell hard"},
+  {"say":"Bank Nifty fell over three percent, right after a record high.","cap":"Bank Nifty *−3.17%* after a record"},
+  {"say":"H D F C Bank alone fell three point three percent.","cap":"HDFC Bank *−3.33%*"}]},
+ {"scene":"mylapore","phrases":[
+  {"say":"Reason three. Tata Steel crashed eight percent.","cap":"3. *TATA STEEL* −8.43%"},
+  {"say":"It agreed to buy twenty six percent of A P L Apollo Tubes for fifteen thousand five hundred crore rupees,","cap":"Buying *26.6%* of APL Apollo for *₹15,510 Cr*"},
+  {"say":"plus an open offer for twenty six percent more.","cap":"plus an open offer for *26%* more"},
+  {"say":"Investors did not like the bill.","cap":"Investors *didn't like* it"}]},
+ {"scene":"napier","phrases":[
+  {"say":"Reason four. America.","cap":"4. *US FED* worries"},
+  {"say":"The Fed's minutes sounded tougher on inflation.","cap":"Fed minutes sounded *HAWKISH*"},
+  {"say":"Traders now see a ninety three percent chance of a December rate hike.","cap":"*93%* odds of a December hike"},
+  {"say":"Higher US rates can pull foreign money out of India.","cap":"That can pull *foreign money* out"}]},
+ {"scene":"tnagar","phrases":[
+  {"say":"Reason five. The rupee.","cap":"5. *RUPEE* near 93 a dollar"},
+  {"say":"It closed at ninety two point six seven on Friday, and slipped toward ninety three.","cap":"*₹92.67* on Friday, near *₹93* today"},
+  {"say":"A weak rupee makes foreign investors nervous.","cap":"Weak rupee = *nervous* FIIs"}]},
+ {"scene":"valluvar","phrases":[
+  {"say":"So, is this a crash?","cap":"So, is this a *CRASH*?"},
+  {"say":"Nifty closed at twenty five thousand three hundred fifty.","cap":"Nifty closed at *25,349.65*"},
+  {"say":"That's still only about four percent below its record high.","cap":"Still only *3.9%* below its record"},
+  {"say":"One red day is not a crash.","cap":"One red day *isn't* a crash"}]},
+ {"scene":"marina","phrases":[
+  {"say":"Save this, and follow money in cloud for tomorrow's update.","cap":"*SAVE* this + follow *@moneyincloud*"}]}
+]

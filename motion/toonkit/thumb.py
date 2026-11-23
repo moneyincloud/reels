@@ -5,7 +5,10 @@ F = '/home/claude/reels/motion/goldbill/assets/fonts/'
 fmt = lambda s: re.sub(r'\*(.+?)\*', r'<span class="k">\1</span>', H.escape(s))
 bg, lab = toon.backdrop(land)
 rot = lambda svg, cid, side, d: svg.replace(f'id="{cid}-arm{side}" style="transform-origin:', f'id="{cid}-arm{side}" style="transform:rotate({d}deg);transform-origin:')
-k = rot(rot(toon.kavya('kt'), 'kt', 'R', -150), 'kt', 'L', 150).replace('id="kt-mo" opacity="0"', 'id="kt-mo" opacity="1"').replace('id="kt-mc" ', 'opacity="0" id="kt-mc" ')
+import os
+shock = os.environ.get('MOOD') == 'shock'
+k = rot(rot(toon.kavya('kt'), 'kt', 'R', -40 if shock else -150), 'kt', 'L', 40 if shock else 150)
+if shock: k = k.replace('id="kt-foreR" style="transform-origin:', 'id="kt-foreR" style="transform:rotate(-120deg);transform-origin:').replace('id="kt-foreL" style="transform-origin:', 'id="kt-foreL" style="transform:rotate(120deg);transform-origin:').replace('id="kt-mo" opacity="0"', 'id="kt-mo" opacity="1"').replace('id="kt-mc" ', 'opacity="0" id="kt-mc" ')
 a = rot(toon.arjun('at'), 'at', 'R', -100)
 page = f'''<html><head><meta charset='utf-8'><style>@font-face{{font-family:P;src:url({F}Poppins-Bold.ttf)}}@font-face{{font-family:O;src:url({F}oswald-latin-500-normal.woff)}}
 body{{margin:0;width:1080px;height:1920px;position:relative;overflow:hidden;font-family:P}} .bgsvg{{position:absolute;inset:0;width:100%;height:100%}}
