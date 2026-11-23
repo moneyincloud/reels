@@ -132,6 +132,9 @@ Status in this cloud workspace (only package registries + GitHub are reachable; 
 | onetake (feitangyuan) | PolyForm NONCOMMERCIAL | Do NOT use its code/assets (monetised channel) | Only the general idea: carry one element across each scene boundary instead of hard wipes |
 | Collage B-roll (pyang5166) | MIT | Needs a paid `GEMINI_API_KEY` + Codex image_gen — not available | Only with the owner's Gemini key; otherwise imitate halftone paper-collage in Pillow |
 | Hypit (hypit-ai/hypit) | Apache-2.0 + conditions (own-channel commercial use OK; no reselling/hosting for others; keep its name/logo in CLI reports) | Skill + `@hypit/hypit` 0.3.1 installed via ext_setup.sh | Clone a viral reel's structure (hook, captions-off, B-roll, effects) into a re-runnable workflow; code-rendered visuals need no paid model; AI-generated footage needs a model-service key |
+| vox-director (Alisa0808) | MIT | Installed; needs a paid ATLASCLOUD_API_KEY (Atlas Cloud image/video/voice) — not set | Without the key: ideas only (its collage keyframe → motion → VO pipeline); our PCJ engine stays the house style |
+| anidoodle (alexgreensh) | Apache-2.0 | Installed; Node + playwright-core chromium (use /opt/pw-browsers) | Code-drawn stills/films in 30+ styles with own music + SFX; usable for monetised reels (keep NOTICE credit) |
+| lemo-opuscar (lemomo-ai) | Code MIT · docs/style prompts CC BY-NC 4.0 · demo films CC BY 4.0 | Installed (library at ~/lemo-opuscar) | Monetised channel: may use its CODE/tools; do NOT copy its style-prompt docs (non-commercial) — write our own prompts |
 | faster-whisper | MIT | Model download blocked (HuggingFace) | Use existing sherpa-onnx whisper (scratchpad asr) for WORD TIMINGS to sync animations; (Chennai Toon uses vo_words.py timings instead) |
 
 ## 5. Animation module (paper Vox template v2 — light paper, NOT dark, NOT 3D)

@@ -20,4 +20,11 @@ npm install --global @hypit/hypit >/dev/null 2>&1 || true
 npx -y skills add vercel-labs/skills --skill find-skills -g -y >/dev/null 2>&1 || true
 # Dalal Street Skills (NSE/BSE analysis, paper trading only). Data needs query1/query2.finance.yahoo.com, nsearchives.nseindia.com, niftyindices.com, news.google.com allowed
 npx -y skills add Adityaraj0421/dalal-street-skills -g -y >/dev/null 2>&1 || true
+# Video skills installed 23 Nov 2026 (owner: "vox-director, anidoodle, lemo-opuscar, git install all")
+mkdir -p ~/.claude/skills /home/claude/ext
+for r in Alisa0808/vox-director alexgreensh/anidoodle lemomo-ai/lemo-opuscar; do d=/home/claude/ext/$(basename $r); [ -d $d ] || git clone -q --depth 1 https://github.com/$r.git $d; done
+ln -sfn /home/claude/ext/vox-director ~/.claude/skills/vox-director
+ln -sfn /home/claude/ext/anidoodle/plugins/anidoodle/skills/anidoodle ~/.claude/skills/anidoodle
+ln -sfn /home/claude/ext/lemo-opuscar/plugin/skills/lemo-opuscar ~/.claude/skills/lemo-opuscar
+ln -sfn /home/claude/ext/lemo-opuscar ~/lemo-opuscar
 echo "ext ok · export HYPERFRAMES_BROWSER_PATH=$HYPERFRAMES_BROWSER_PATH PLAYWRIGHT_CHROME=$PLAYWRIGHT_CHROME"
