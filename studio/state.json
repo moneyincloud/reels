@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -834,6 +834,13 @@
    "status": "queued",
    "scheduled": "2026-11-23 18:00 IST (autopost kt3-2026-11-23)",
    "files": "autopost/media/kings-treasury-ep3-one-ship-all-the-gold-diversification-yes-bank-nifty*"
+  },
+  {
+   "slug": "gold-jewellery-bill-chennai-making-charges-va-gst-hallmark",
+   "date": "2026-11-23",
+   "voice": "male",
+   "tag": "chennai-toon",
+   "topic": "Gold board rate vs jewellery bill (VA, GST, hallmark) - first Chennai Toon reel"
   }
  ],
  "next_ideas": [
