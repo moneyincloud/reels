@@ -25,6 +25,6 @@ mkdir -p ~/.claude/skills /home/claude/ext
 for r in Alisa0808/vox-director alexgreensh/anidoodle lemomo-ai/lemo-opuscar; do d=/home/claude/ext/$(basename $r); [ -d $d ] || git clone -q --depth 1 https://github.com/$r.git $d; done
 ln -sfn /home/claude/ext/vox-director ~/.claude/skills/vox-director
 ln -sfn /home/claude/ext/anidoodle/plugins/anidoodle/skills/anidoodle ~/.claude/skills/anidoodle
-ln -sfn /home/claude/ext/lemo-opuscar/plugin/skills/lemo-opuscar ~/.claude/skills/lemo-opuscar
+claude plugin marketplace add lemomo-ai/lemo-opuscar >/dev/null 2>&1; claude plugin install lemo-opuscar@lemolab >/dev/null 2>&1 || ln -sfn /home/claude/ext/lemo-opuscar/plugin/skills/lemo-opuscar ~/.claude/skills/lemo-opuscar
 ln -sfn /home/claude/ext/lemo-opuscar ~/lemo-opuscar
 echo "ext ok · export HYPERFRAMES_BROWSER_PATH=$HYPERFRAMES_BROWSER_PATH PLAYWRIGHT_CHROME=$PLAYWRIGHT_CHROME"
