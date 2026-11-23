@@ -1,0 +1,12 @@
+[
+ {"scene":"porthole","phrases":[{"say":"I T C's share fell from four hundred and nine rupees to two hundred and fifty three, in ten months."},{"say":"Let's cut the factory open and see why."}]},
+ {"scene":"intake","phrases":[{"say":"Last quarter, thirty thousand crore rupees of sales came in through the roof."}]},
+ {"scene":"sorter","phrases":[{"say":"The sorter splits it four ways."},{"say":"Cigarettes. F M C G. Agri. And paper."}]},
+ {"scene":"press","phrases":[{"say":"Floor two, the cigarette press. Fifteen thousand five hundred crore of sales."},{"say":"But since February, every stick pays a new excise duty, on top of forty percent G S T."},{"say":"Cigarette profit fell twenty seven percent, to three thousand eight hundred crore."},{"say":"Yet this one floor still earns about three quarters of the profit."}]},
+ {"scene":"fmcg","phrases":[{"say":"Floor three, the packing line. Atta, biscuits, chips."},{"say":"Profit up twenty eight percent."}]},
+ {"scene":"agri","phrases":[{"say":"Floor four, agri. Profit up eleven percent."}]},
+ {"scene":"paper","phrases":[{"say":"Floor five, the paper mill. Profit up forty eight percent, helped by a mill it bought in August."}]},
+ {"scene":"hotels","phrases":[{"say":"And the hotels? A crane lifted them out."},{"say":"I T C Hotels became a separate company in January twenty twenty five. I T C kept forty percent."}]},
+ {"scene":"vault","phrases":[{"say":"Everything lands in the vault. Four thousand one hundred crore of profit, down twenty percent."}]},
+ {"scene":"pullback","phrases":[{"say":"The share is three hundred and one rupees today."},{"say":"Can the new floors grow fast enough to carry the old one?"},{"say":"Follow money in cloud."}]}
+]

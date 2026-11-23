@@ -1,0 +1,7 @@
+ITC: the factory, cut open — @moneyincloud
+Style grammar: Assembly-Line Diagram (Lemo-Opuscar library, github.com/lemomo-ai/lemo-opuscar). Drawing, animation and sound code written for this film; no library text, prompts or demo assets copied.
+Fonts: Big Shoulders Display, Archivo (SIL OFL 1.1, via @fontsource); Poppins (OFL); Noto Sans Tamil (OFL).
+Voice: Kokoro-82M TTS, voice af_heart (Apache-2.0).
+Music and sound effects: synthesised in code for this film (build/audio.py).
+Animation runtime: GSAP (standard licence), rendered with HyperFrames.
+Data: ITC Ltd Q2 FY27 results (2 Nov 2026) as reported by Investywise, Upstox, Multibagg.ai, PSU Connect; excise duty from 1 Feb 2026 (Business Standard, Business Today); ITC Hotels demerger effective 1 Jan 2025 (Business Today, Business Standard); share prices NSE via INDmoney, 23 Nov 2026.
