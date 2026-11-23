@@ -1,0 +1,37 @@
+[
+ {"scene":"tnagar","phrases":[
+  {"say":"The board says ninety five thousand.","cap":"The *BOARD* says *₹95,840*"},
+  {"say":"The bill says one lakh ten thousand.","cap":"The *BILL* says *₹1,10,561*"},
+  {"say":"Where did fifteen thousand rupees go?","cap":"Where did *₹15,000* go?"}]},
+ {"scene":"mylapore","phrases":[
+  {"say":"On nineteen November,","cap":"On *19 November*,"},
+  {"say":"twenty two carat gold in Chennai was eleven thousand nine hundred and eighty rupees a gram.","cap":"*22K* gold in Chennai: *₹11,980* a gram"},
+  {"say":"One sovereign, eight grams, is ninety five thousand eight hundred and forty.","cap":"1 sovereign = 8 g = *₹95,840*"},
+  {"say":"That's only the gold.","cap":"That's *ONLY* the gold."}]},
+ {"scene":"central","phrases":[
+  {"say":"Then comes V A, value addition.","cap":"Then comes *VA*: value addition"},
+  {"say":"That's wastage plus making charges.","cap":"*Wastage* + *making* charges"},
+  {"say":"Shops add anywhere from three to twenty five percent.","cap":"Shops add *3% to 25%*"},
+  {"say":"At twelve percent, that's eleven thousand five hundred more.","cap":"At *12%*: *₹11,501* more"}]},
+ {"scene":"ripon","phrases":[
+  {"say":"Every piece needs a hallmark.","cap":"Every piece needs a *HALLMARK*"},
+  {"say":"In September, B I S raised the fee from forty five to seventy five rupees a piece.","cap":"BIS fee: *₹45* to *₹75* a piece"},
+  {"say":"Most shops build it into the price.","cap":"Usually *built into* the price"}]},
+ {"scene":"napier","phrases":[
+  {"say":"Then G S T.","cap":"Then *GST*"},
+  {"say":"Three percent on the whole amount.","cap":"*3%* on the WHOLE amount"},
+  {"say":"That's three thousand two hundred more.","cap":"*₹3,220* more"}]},
+ {"scene":"valluvar","phrases":[
+  {"say":"Add it up.","cap":"Add it up:"},
+  {"say":"One lakh, ten thousand, five hundred and sixty one.","cap":"*₹1,10,561*"},
+  {"say":"Fifteen percent above the board rate.","cap":"*15%* above the board rate!"}]},
+ {"scene":"metro","phrases":[
+  {"say":"Three tips before you buy.","cap":"*3 TIPS* before you buy"},
+  {"say":"Ask the V A percent before you pick a design.","cap":"Ask the *VA %* first"},
+  {"say":"Check the six digit H U I D in the B I S Care app.","cap":"Check the *HUID* in BIS Care app"},
+  {"say":"Buying only as an investment?","cap":"Only *investing*?"},
+  {"say":"Gold E T Fs have no making charges and no G S T, just a small yearly fee.","cap":"*Gold ETFs*: no making, no GST, small yearly fee"}]},
+ {"scene":"marina","phrases":[
+  {"say":"Save this before your next jewellery shop visit.","cap":"*SAVE* this before your next shop visit"},
+  {"say":"Follow money in cloud for more.","cap":"Follow *@moneyincloud*"}]}
+]

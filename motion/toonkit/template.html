@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>__TITLE__</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="assets/camera.js"></script>
+<script src="assets/toon.js"></script>
+<style>
+/* @moneyincloud "Chennai Toon" house style: flat 2D characters, Chennai landmarks, word-by-word captions, pop-up cards. */
+@font-face { font-family:"Poppins"; src:url("assets/fonts/Poppins-Bold.ttf") format("truetype"); font-weight:700; }
+@font-face { font-family:"Oswald"; src:url("assets/fonts/oswald-latin-500-normal.woff") format("woff"); font-weight:500; }
+:root { --ink:#2a1810; --cream:#fffaf0; --yel:#ffd23f; --red:#e63946; --grn:#2a9d8f; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:1080px; height:1920px; overflow:hidden; background:#000; }
+#root { position:relative; width:100%; height:100%; overflow:hidden; font-family:"Poppins",sans-serif; color:var(--ink); }
+.scene { position:absolute; inset:0; overflow:hidden; }
+.cam { position:absolute; inset:0; transform-origin:50% 55%; }
+.bgsvg { position:absolute; inset:0; width:100%; height:100%; }
+.chrw { position:absolute; }
+.chrw svg { width:100%; height:100%; overflow:visible; }
+.ui { position:absolute; inset:0; z-index:20; }
+.loc { position:absolute; left:40px; top:232px; z-index:30; display:flex; align-items:center; gap:12px; padding:10px 22px 10px 16px; border-radius:14px;
+  background:rgba(20,14,40,.82); border:3px solid #fff; font-family:"Oswald",sans-serif; font-size:32px; letter-spacing:3px; color:#fff; }
+.loc i { display:inline-block; width:22px; height:30px; background:var(--yel); border-radius:50% 50% 50% 0; transform:rotate(-45deg); border:3px solid var(--ink); }
+.sub { position:absolute; left:40px; top:300px; z-index:30; padding:6px 16px; border-radius:10px; background:rgba(255,255,255,.85); border:2px solid var(--ink);
+  font-family:"Oswald",sans-serif; font-size:28px; letter-spacing:2px; color:var(--ink); }
+#handle { position:absolute; right:40px; top:232px; z-index:60; padding:10px 22px; border-radius:999px; background:var(--yel); border:4px solid var(--ink);
+  font-size:30px; box-shadow:5px 5px 0 var(--ink); }
+#caps { position:absolute; left:40px; right:40px; top:1300px; height:220px; z-index:70; }
+.chunk { position:absolute; left:0; right:0; top:0; text-align:center; opacity:0; font-size:76px; line-height:1.08; color:#fff;
+  -webkit-text-stroke:14px #140c06; paint-order:stroke fill; text-shadow:0 8px 0 rgba(0,0,0,.35); }
+.chunk .w { display:inline-block; opacity:0; margin:0 9px; }
+.chunk .k { color:var(--yel); }
+.card { position:absolute; background:var(--cream); border:6px solid var(--ink); border-radius:28px; box-shadow:12px 12px 0 var(--ink); padding:26px 32px; }
+.card h3 { font-family:"Oswald",sans-serif; font-weight:500; font-size:34px; letter-spacing:3px; color:#6b5a4c; }
+.card .big { font-size:96px; line-height:1.05; }
+.card .row { display:flex; justify-content:space-between; font-size:44px; padding:10px 0; border-bottom:4px dashed #d8ccb8; }
+.card .row:last-child { border-bottom:none; }
+.card .row b { color:var(--red); }
+.card .src { font-family:"Oswald",sans-serif; font-size:28px; color:#8a7a6a; margin-top:12px; letter-spacing:1px; }
+.pill { position:absolute; padding:12px 30px; border-radius:999px; border:5px solid var(--ink); background:var(--yel); font-size:44px; box-shadow:7px 7px 0 var(--ink); white-space:nowrap; }
+.stamp { position:absolute; padding:8px 26px; border:8px solid var(--red); color:var(--red); border-radius:16px; font-size:72px; background:rgba(255,250,240,.92); white-space:nowrap; }
+#disc { position:absolute; left:0; right:0; top:1560px; text-align:center; z-index:65; font-family:"Oswald",sans-serif; font-size:28px; letter-spacing:1px; color:#fff;
+  text-shadow:0 2px 6px rgba(0,0,0,.9); }
+#prog { position:absolute; left:40px; right:40px; top:200px; height:8px; border-radius:4px; background:rgba(255,255,255,.35); z-index:61; overflow:hidden; }
+#progf { position:absolute; inset:0; background:var(--yel); transform-origin:0 50%; }
+__EXTRA_CSS__
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="__DUR__" data-width="1080" data-height="1920" data-fps="30">
+__BODY__
+<div id="handle" data-layout-allow-overlap>@moneyincloud</div>
+<div id="prog" data-layout-ignore><div id="progf"></div></div>
+<div id="caps" data-layout-ignore>__CAPS__</div>
+<div id="disc" data-layout-ignore>__DISC__</div>
+<audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="__DUR__" data-track-index="40" data-volume="1"></audio>
+</div>
+<script>
+__JS__
+</script>
+</body>
+</html>

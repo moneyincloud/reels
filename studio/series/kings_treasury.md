@@ -31,3 +31,5 @@ Every story number is an illustration, and every real-market number is sourced. 
 10. The Burning Warehouse: Selvan's warehouse catches fire. Insurance before investing.
 11. The Sweet Shop's Books: how to read a business (revenue, profit, debt).
 12. Season finale: the King's Test again, where both princes show their treasuries.
+
+> Style (22 Nov 2026): build every episode with the Chennai Toon kit (motion/toonkit: word-by-word captions, pop-up cards, toon sound bed, whip pans). Keep this series cast; draw them in the same flat outlined style.

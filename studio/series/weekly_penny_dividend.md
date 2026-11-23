@@ -26,3 +26,5 @@ promotion, no buy/sell calls, risks next to any upside).
 - If fewer than 3 qualify, make "Dividend payers to know" with trailing-12-month yields from INDmoney
   for 6 Nifty 500 stocks not featured in the last 4 weeks.
 - Template: motion/divi6ta (build/gen.py) and studio/divi6 / divi6ta. History tag "dividend-weekly".
+
+> Style (22 Nov 2026): build every episode with the Chennai Toon kit (motion/toonkit: word-by-word captions, pop-up cards, toon sound bed, whip pans). Keep this series cast; draw them in the same flat outlined style.
