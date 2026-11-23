@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -795,6 +795,29 @@
    "slug": "1-lakh-in-2021-which-stock-made-crores-2026",
    "topic": "Rs 1 lakh in 2021 story (Ravi): 10 real stocks, Cupid 1.49 cr, Nurture Well 1.28 cr, Paytm IPO loss; cinematic HyperFrames",
    "voice": "female"
+  },
+  {
+   "date": "2026-11-23",
+   "slug": "ipo1123",
+   "tag": "ipo-upcoming",
+   "ipos": [
+    "Foodlink F&B Holdings (India)",
+    "Integris Medtech"
+   ],
+   "topic": "IPOs this week: Foodlink F&B (opens 26 Nov; China Bistro/India Bistro/Art of Dum + wedding catering; 28 outlets, 13 UAE; FY26 rev ₹567.5 cr, PAT ₹29.1 cr, Apr–Sep 26 loss ₹16.2 cr; ₹192 cr fresh + OFS 88.35 lakh sh) and Integris Medtech (opens 27 Nov; stents, balloons, lab diagnostics; plants India/Germany/Netherlands; 65+ markets, ~65% revenue abroad; FY25 rev ₹1,902 cr, PAT ₹70.7 cr; ₹600 cr fresh + OFS 1.08 cr sh); price bands not out as of 23 Nov 7 am",
+   "angle": "numbered / business-first (price band not out)",
+   "hook": "Two IPOs open this week. Your mistake? Not knowing what they sell.",
+   "hook_score": 93.8,
+   "voice": "am_michael",
+   "length_s": 85.3,
+   "style": "paper Vox HyperFrames, camera moves, world maps + profit bars + donut, no subtitles",
+   "thumb_theme": "purple",
+   "follow_overlay": true,
+   "data": "chittorgarh.com (updated 20 Nov 2026), multibagg.ai RHP note (20 Nov), newboard.in DRHP study (15 Nov), goodreturns.in (22 Nov)",
+   "status": "queued",
+   "scheduled": "2026-11-23 10:00 IST (autopost ipo-upcoming-2026-11-23)",
+   "youtube": "https://youtube.com/shorts/DNfnljh6jSo",
+   "files": "autopost/media/ipos-this-week-foodlink-integris-medtech-business-price-band-23-nov-2026*"
   }
  ],
  "next_ideas": [
