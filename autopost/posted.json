@@ -904,6 +904,20 @@
   "youtube_thumb": {
    "ok": true,
    "at": "2026-11-23T07:15:25.911542+05:30"
+  },
+  "instagram": {
+   "media_id": "18172775857486896",
+   "permalink": "https://www.instagram.com/reel/DgE50O4jluh/",
+   "at": "2026-11-23T13:32:21.847440+05:30"
+  },
+  "instagram_trial": {
+   "media_id": "18005336957822726",
+   "permalink": "https://www.instagram.com/reel/DgE57kOk5Xk/",
+   "at": "2026-11-23T13:33:20.235879+05:30"
+  },
+  "instagram_story": {
+   "media_id": "17992530195079537",
+   "at": "2026-11-23T13:33:37.489674+05:30"
   }
  }
 }
