@@ -1,0 +1,7 @@
+[
+ {"scene":"hook","phrases":[{"say":"I T C is twenty six percent below its high."},{"say":"Here's the whole year, in three moments."}]},
+ {"scene":"m1","phrases":[{"say":"Moment one. New Year's Day."},{"say":"A new excise duty on cigarettes was announced."},{"say":"I T C fell ten percent in a single day."}]},
+ {"scene":"m2","phrases":[{"say":"Moment two. The slow bleed."},{"say":"Ten months down, to two hundred and fifty three in October."},{"say":"Last quarter, cigarette profit fell twenty seven percent."}]},
+ {"scene":"m3","phrases":[{"say":"Moment three. The bounce."},{"say":"Up nineteen percent from the low."},{"say":"F M C G profit grew twenty eight percent, and paper forty eight."}]},
+ {"scene":"end","phrases":[{"say":"Is the worst priced in? Nobody knows."},{"say":"Save this, and follow money in cloud."}]}
+]
