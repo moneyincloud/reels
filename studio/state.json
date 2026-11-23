@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -818,6 +818,22 @@
    "scheduled": "2026-11-23 10:00 IST (autopost ipo-upcoming-2026-11-23)",
    "youtube": "https://youtube.com/shorts/DNfnljh6jSo",
    "files": "autopost/media/ipos-this-week-foodlink-integris-medtech-business-price-band-23-nov-2026*"
+  },
+  {
+   "date": "2026-11-23",
+   "slug": "kt3",
+   "tag": "kings-treasury",
+   "episode": 3,
+   "topic": "King's Treasury Ep 3 'One Ship, All the Gold': diversification; Yes Bank ₹404 (Aug 2018 high, stockpricearchive.com) → ₹5.55 (6 Mar 2020 intraday low, Business Standard) −98.6% vs Nifty 50 above 11,700 (28 Aug 2018) → 10,989 (6 Mar 2020) ≈ −6%; today Yes Bank ₹17.91, Nifty 25,800.6 (NSE close 20 Nov 2026, INDmoney)",
+   "hook": "General Veeran put all his gold on one ship. One storm, and ninety nine percent was gone.",
+   "voice": "af_heart",
+   "length_s": 79.4,
+   "style": "paper storybook (seeds engine), flat vector cast, no subtitles",
+   "thumb_theme": "navy",
+   "follow_overlay": true,
+   "status": "queued",
+   "scheduled": "2026-11-23 18:00 IST (autopost kt3-2026-11-23)",
+   "files": "autopost/media/kings-treasury-ep3-one-ship-all-the-gold-diversification-yes-bank-nifty*"
   }
  ],
  "next_ideas": [
