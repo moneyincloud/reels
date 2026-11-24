@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -841,6 +841,22 @@
    "voice": "male",
    "tag": "chennai-toon",
    "topic": "Gold board rate vs jewellery bill (VA, GST, hallmark) - first Chennai Toon reel"
+  },
+  {
+   "date": "2026-11-24",
+   "slug": "ireda-multibagger-or-trap-32-to-310-to-132",
+   "tag": "multibagger-or-trap",
+   "topic": "IREDA multibagger or trap: IPO ₹32 (Nov 2023, 5paisa) → record high ₹310 intraday (15 Jul 2024, Business Standard) → ₹132.20 (NSE close 23 Nov 2026, INDmoney), -57% from top; Q2 FY27 (19 Oct 2026): income +14%, disbursements +31%, net NPA 1.97%→1.08%, PAT ₹554 cr (+1%), finance cost +13%, provisions ₹187 vs ₹70 cr; ₹673 cr Gensol-linked fraud exposure; govt stake 75%→71.76% after Jun 2025 QIP; ~2.6x book",
+   "angle": "contrarian / result-first",
+   "hook": "Nobody tells you why IREDA fell 57% while its new loans jumped 31%.",
+   "hook_score": 81.6,
+   "voice": "af_heart",
+   "length_s": 88.5,
+   "style": "PCJ paper collage (ireda.py), no subtitles",
+   "thumb_theme": "emerald",
+   "status": "queued",
+   "scheduled": "2026-11-24 19:00 IST (autopost ireda-multibagger-or-trap-2026-11-24)",
+   "files": "autopost/media/ireda-multibagger-or-trap-32-to-310-to-132*"
   }
  ],
  "next_ideas": [
