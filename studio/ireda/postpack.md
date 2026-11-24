@@ -1,0 +1,41 @@
+# IREDA Multibagger or Trap? post pack (slot Tue 24 Nov 2026 19:00 IST)
+
+## Instagram caption
+IREDA: multibagger or trap? Nobody tells you why it fell 57% while new loans jumped 31% ⚡
+
+📈 IPO Nov 2023 at ₹32 → record high ₹310 (15 Jul 2024), almost 9.7x
+📉 Now ₹132.20 (NSE close, 23 Nov 2026), about 57% below the top
+
+☀️ What IREDA does: the government's green energy lender. It borrows (bonds, bank loans) and lends to solar, wind and other clean power projects, earning the gap.
+
+📊 Q2 FY27 (Jul–Sep 2026, results 19 Oct 2026):
+• Total income ₹2,345 cr, +14%
+• New loans disbursed ₹10,579 cr, +31%
+• Net NPA 1.08% (from 1.97% a year ago), gross NPA 3.57%
+
+⚠️ The catch:
+• Profit ₹554 cr vs ₹549 cr, just +1%
+• Finance costs ₹1,376 cr, +13%; bad-loan provisions ₹187 cr vs ₹70 cr
+• ₹673 cr of exposure tagged as fraud, linked to Gensol
+• Govt stake 75% → 71.76% after the June 2025 QIP (floor ₹173.83)
+• Trades at ~2.6x book value (₹51/share)
+
+Verdict: neither, for now. At ₹310 the price ran far ahead of the business. Lending grows fast, profit isn't keeping up. Watch bad loans and borrowing costs.
+
+💾 Save this · send it to the friend who bought IREDA near the top.
+
+Which PSU stock should I break down next? 👇
+
+Sources: IREDA Q2 FY27 results, 19 Oct 2026 (Indian Masterminds, Kotak Neo, INDmoney); IPO & listing: 5paisa (29 Nov 2023); record high: Business Standard (15 Jul 2024); QIP: Business Standard (6 Jun 2025); shareholding & book value: Screener (Sep 2026 / 23 Nov 2026); price: NSE via INDmoney (23 Nov 2026).
+Not a buy/sell call. Education only. I may hold some of the stocks named.
+
+#IREDA #PSUStocks #MultibaggerOrTrap #RenewableEnergy #moneyincloud
+
+## First comment
+Would you call IREDA a multibagger or a trap at ₹132? Tell me why 👇
+
+## YouTube
+Title: IREDA: Multibagger or Trap? ₹32 → ₹310 → ₹132 Explained #shorts
+
+## X
+IREDA: ₹32 IPO (Nov 2023) → ₹310 high (Jul 2024) → ₹132.20 (23 Nov 2026). Q2 FY27: new loans +31%, net NPA 1.08%, but profit +1%. Multibagger or trap? Education only, not a buy/sell call.
