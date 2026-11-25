@@ -1,0 +1,15 @@
+# Comment-to-DM rules (comment_dm.py, runs every 15 min via .github/workflows/comment-dm.yml).
+# Owner's instruction 25 Nov 2026. Each commenter gets ONE DM per rule (tracked in comment_dm_state.json).
+# reels: queue ids from queue.yaml (looked up in posted.json) or raw Instagram media ids.
+# To pause a rule: enabled: false. To change the message: edit dm, commit, push.
+rules:
+  - id: office-agent-guide
+    enabled: true
+    keywords: ["AGENT"]
+    reels: []          # filled in when the office agent reel is queued
+    dm: |
+      Hi! 👋 Here's the free setup guide for your first AI office agent (5 steps + 3 safety rules):
+      https://github.com/moneyincloud/reels/blob/main/guides/office-agent-setup.md
+      Start read-only, approve every send, and never share passwords or bank details with any agent.
+      — @moneyincloud
+    public_reply: "Sent you the guide in DMs 📩"

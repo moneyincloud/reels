@@ -1,0 +1,50 @@
+name: comment-dm
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"   # every 15 min
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "check = read-only list, dry = print only, send = real"
+        type: choice
+        options: [check, dry, send]
+        default: check
+permissions:
+  contents: write
+concurrency:
+  group: comment-dm
+  cancel-in-progress: false
+jobs:
+  dm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests pyyaml
+      - name: Answer keyword comments
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+        run: |
+          MODE="${{ inputs.mode || 'send' }}"
+          FLAG=""; [ "$MODE" = check ] && FLAG="--check"; [ "$MODE" = dry ] && FLAG="--dry-run"
+          python autopost/comment_dm.py $FLAG
+      - name: Save who was answered
+        if: always()
+        run: |
+          [ -f autopost/comment_dm_state.json ] || exit 0
+          git config user.name "autopost-bot"; git config user.email "autopost-bot@users.noreply.github.com"
+          cp autopost/comment_dm_state.json /tmp/s.json
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            cp /tmp/s.json autopost/comment_dm_state.json
+            git add autopost/comment_dm_state.json
+            git diff --cached --quiet && exit 0
+            git commit -qm "comment-dm: record replies" && git push -q && exit 0
+            sleep 5
+          done
