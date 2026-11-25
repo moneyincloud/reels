@@ -10,4 +10,4 @@ Goal: a 5–6 slide carousel queued for 08:00 IST, before MCX opens at 9:00. It 
 3. Append {date, est} to history.json (fill mcx_open the next day).
 4. Skip NSE/MCX holidays (if MCX is closed today, stop and report).
 5. Queue a carousel entry (platforms [instagram], images: the slide files) at publish_at "<date> 08:00", approved: true with comment "standing order: owner chat 25 Nov 2026 – daily gold carousel".
-   Caption: hook line with the estimate, the 3 inputs with sources, the formula, "Estimate, not a forecast. Not a buy/sell call. Education only.", 3–5 hashtags (#goldrate #goldpricetoday #mcx #comex #moneyincloud).
+   Caption: hook line "Gold today (<DD Mon>): 22K ₹<g22>/g · 8 g ₹<g22x8> (formula estimate, before GST)" (owner wants 22K 1 g and 8 g, not 24K 10 g), the 3 inputs with sources, the formula, "Estimate, not a forecast. Not a buy/sell call. Education only.", 3–5 hashtags (#goldrate #goldpricetoday #mcx #comex #moneyincloud).

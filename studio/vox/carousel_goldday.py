@@ -16,6 +16,8 @@ GREY = (120, 112, 104); BLUE = (40, 100, 200); ORG = (230, 120, 30); TEAL = (20,
 DT = datetime.date.fromisoformat(J['date']); DS = DT.strftime('%d %b').upper().lstrip('0')
 EST = J['comex'] * J['usdinr'] / 3.11035 * 1.15
 DIFF = EST - J['mcx_prev']
+G22 = EST / 10 * 0.916          # 22K per gram (91.6% pure)
+D22 = DIFF / 10 * 0.916
 SLIDES = []
 def inr(v):
     s = f'{int(round(v)):d}'
@@ -30,17 +32,19 @@ def num(c, k, n):
 def foot(c, s, col=GREY):
     c.alpha_composite(text_img(s, 'type', 24, col, 1), (70, 1205))
 
-# 1 cover
+# 1 cover: 22K, 1 g and 8 g (1 sovereign)
 c = base()
-place(c, text_img('GOLD TODAY', 'anton', 150, INK), 540, 200)
-place(c, tag(DS + ' · BEFORE 9 AM', RED, 64), 540, 340, 1.0, -2)
-place(c, SS._card(900, 540), 540, 680, 1.0, -1)
-place(c, text_img('Formula estimate · 24K · 10 g', 'osw5', 44, GREY), 540, 490)
-place(c, text_img(inr(EST), 'anton', 170, GOLD), 540, 640)
-up = DIFF >= 0
-place(c, text_img(f'{"UP" if up else "DOWN"} {inr(abs(DIFF))} vs MCX close', 'anton', 60, GRN if up else RED), 540, 800)
-place(c, text_img('before GST and making charges', 'osw5', 38, GREY), 540, 860)
-place(c, text_img('Swipe for the maths >>', 'anton', 56, RED), 540, 1060)
+place(c, text_img('GOLD TODAY', 'anton', 150, INK), 540, 190)
+place(c, tag(DS + ' · 22K · BEFORE 9 AM', RED, 60), 540, 330, 1.0, -2)
+place(c, SS._card(900, 600), 540, 700, 1.0, -1)
+place(c, text_img('22K · 1 gram', 'osw5', 46, GREY), 540, 470)
+place(c, text_img(inr(G22), 'anton', 150, GOLD), 540, 590)
+d = ImageDraw.Draw(c); d.line((200, 690, 880, 690), fill=INK, width=4)
+place(c, text_img('22K · 8 g (1 sovereign)', 'osw5', 46, GREY), 540, 740)
+place(c, text_img(inr(G22 * 8), 'anton', 120, GOLD), 540, 845)
+up = D22 >= 0
+place(c, text_img(f'{"UP" if up else "DOWN"} {inr(abs(D22))} / g vs MCX close', 'anton', 52, GRN if up else RED), 540, 1065)
+place(c, text_img('formula estimate · before 3% GST and making charges', 'osw5', 34, GREY), 540, 1135)
 SLIDES.append(c)
 # 2 comex
 c = base()
@@ -68,25 +72,26 @@ SLIDES.append(c)
 # 4 maths
 c = base()
 place(c, tag('STEP 3 · THE MATHS', RED, 64), 540, 150)
-place(c, SS._card(920, 760), 540, 640, 1.0, -0.5)
+place(c, SS._card(920, 820), 540, 660, 1.0, -0.5)
 rows = [('Comex $ / oz', f'{J["comex"]:,.1f}', BLUE), ('x Rupee', f'{J["usdinr"]:.2f}', ORG), ('÷ to 10 g', '3.11035', INK), ('x Duty 15%', '1.15', RED)]
 for i, (a, b, col) in enumerate(rows):
     c.alpha_composite(text_img(a, 'osw5', 50, GREY), (140, 320 + i * 105))
     v = text_img(b, 'anton', 72, col); c.alpha_composite(v, (940 - v.size[0], 308 + i * 105))
 d = ImageDraw.Draw(c); d.line((140, 760, 940, 760), fill=INK, width=6)
-place(c, text_img('= ' + inr(EST) + ' / 10 g', 'anton', 92, GRN), 540, 830)
-place(c, text_img(f'+3% GST = {inr(EST * 1.03)}  ·  22K ~ {inr(EST * 0.916 * 1.03 / 10)} / g', 'osw5', 40, INK), 540, 930)
+place(c, text_img('= ' + inr(EST) + ' / 10 g (24K)', 'anton', 72, INK), 540, 820)
+place(c, text_img('÷ 10 x 0.916 = 22K ' + inr(G22) + ' / g', 'anton', 66, GRN), 540, 910)
+place(c, text_img(f'8 g = {inr(G22*8)}  ·  with 3% GST = {inr(G22*8*1.03)}', 'osw5', 40, INK), 540, 990)
 foot(c, 'Duty 15% since 13 May 2026. Shops add making charges.')
 SLIDES.append(c)
 # 5 yesterday's check (track record)
 if J.get('check'):
-    k = J['check']; e, o = k['est'], k['mcx_open']; gap = abs(e / o - 1) * 100
+    k = J['check']; e, o = k['est'] / 10 * 0.916, k['mcx_open'] / 10 * 0.916; gap = abs(e / o - 1) * 100
     c = base()
     place(c, text_img("YESTERDAY'S CHECK", 'anton', 110, INK), 540, 180)
     place(c, SS._card(900, 520), 540, 560, 1.0, 0.5)
     kd = datetime.date.fromisoformat(k['date']).strftime('%d %b').lstrip('0')
-    c.alpha_composite(text_img(f'Formula ({kd})', 'osw5', 50, GREY), (150, 380)); v = text_img(inr(e), 'anton', 76, INK); c.alpha_composite(v, (930 - v.size[0], 368))
-    c.alpha_composite(text_img('MCX opened', 'osw5', 50, GREY), (150, 500)); v = text_img(inr(o), 'anton', 76, GRN); c.alpha_composite(v, (930 - v.size[0], 488))
+    c.alpha_composite(text_img(f'22K/g formula ({kd})', 'osw5', 46, GREY), (150, 380)); v = text_img(inr(e), 'anton', 76, INK); c.alpha_composite(v, (930 - v.size[0], 368))
+    c.alpha_composite(text_img('22K/g at MCX open', 'osw5', 46, GREY), (150, 500)); v = text_img(inr(o), 'anton', 76, GRN); c.alpha_composite(v, (930 - v.size[0], 488))
     place(c, stamp_c(f'{gap:.1f}% APART', RED if gap > 1 else GRN, 84, -4, 4), 540, 700)
     place(c, text_img('We show the miss too. Every day.', 'anton', 56, INK), 540, 950)
     foot(c, 'MCX Gold front-month futures open, INDmoney')
@@ -105,5 +110,5 @@ SLIDES.append(c)
 N = len(SLIDES); out = []
 for k, c in enumerate(SLIDES, 1):
     num(c, k, N); p = f'../../autopost/media/gold-today-{J["date"]}-slide{k}.jpg'; c.convert('RGB').save(p, quality=92); out.append(p.split('/')[-1])
-json.dump({'date': J['date'], 'est': round(EST), 'slides': out}, open(sys.argv[1].replace('.json', '.out.json'), 'w'))
-print('estimate', round(EST), 'diff', round(DIFF), out)
+json.dump({'date': J['date'], 'est': round(EST), 'g22': round(G22), 'g22x8': round(G22 * 8), 'slides': out}, open(sys.argv[1].replace('.json', '.out.json'), 'w'))
+print('estimate', round(EST), '22K/g', round(G22), '8g', round(G22*8), 'diff', round(DIFF), out)
