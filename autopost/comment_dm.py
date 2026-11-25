@@ -75,7 +75,10 @@ def main():
     rules = (yaml.safe_load(open(os.path.join(HERE, "comment_rules.yaml"))) or {}).get("rules", [])
     posted = load(os.path.join(HERE, "posted.json"), {})
     state = load(STATE, {})
-    me = requests.get(f"{G}/me", params={"fields": "username", "access_token": tok}, timeout=30).json().get("username", "")
+    me = requests.get(f"{G}/{uid}", params={"fields": "username", "access_token": tok}, timeout=30).json().get("username", "")
+    if not me:
+        log("STOP: could not read our own username; refusing to run so we never reply to ourselves"); return 1
+    own_texts = {str(e.get("first_comment", "")).strip() for e in (yaml.safe_load(open(os.path.join(HERE, "queue.yaml"))) or [])}
     now, sent = dt.datetime.now(dt.timezone.utc), 0
     for rule in rules:
         if not rule.get("enabled"):
@@ -84,7 +87,8 @@ def main():
         for mid in media_ids(rule, posted):
             for c in comments(G, mid, tok):
                 cid, who = c["id"], c.get("username") or c.get("from", {}).get("username", "")
-                if cid in done or who == me or not matches(c.get("text"), rule["keywords"]):
+                own = who.lower() == me.lower() or str(c.get("from", {}).get("id", "")) == str(uid) or (c.get("text") or "").strip() in own_texts
+                if cid in done or own or not matches(c.get("text"), rule["keywords"]):
                     continue
                 ts = dt.datetime.strptime(c["timestamp"], "%Y-%m-%dT%H:%M:%S%z")
                 if now - ts > WINDOW:
