@@ -1,46 +1,16 @@
 
 
-- id: swteam-2026-11-25
-  approved: true   # owner chat 25 Nov 2026 13:12 IST: "post it now" (AI software team reel)
-  publish_at: 2026-11-25 13:13
+- id: twofriends-2026-11-25
+  approved: true   # owner chat 25 Nov 2026 22:51 IST: "post it" (two friends reel)
+  publish_at: 2026-11-25 22:51
   platforms: [youtube, instagram, instagram_trial, instagram_story]
-  video: 8-ai-agents-1-human-software-company-developer-tester-release.mp4
-  yt_video: 8-ai-agents-1-human-software-company-developer-tester-release-yt.mp4
-  cover: 8-ai-agents-1-human-software-company-developer-tester-release-cover.jpg
-  story: 8-ai-agents-1-human-software-company-developer-tester-release-story.jpg
+  video: same-salary-sip-at-25-vs-45-crore-vs-lakh-two-friends.mp4
+  yt_video: same-salary-sip-at-25-vs-45-crore-vs-lakh-two-friends-yt.mp4
+  cover: same-salary-sip-at-25-vs-45-crore-vs-lakh-two-friends-cover.jpg
+  story: same-salary-sip-at-25-vs-45-crore-vs-lakh-two-friends-story.jpg
   story_delay_min: 60
-  ig_caption: "8 AI agents. 1 human. One software company 🤖💻\n\nOne week inside (example company, example client):\n🗓️ Mon: client wants an online saree store (UPI + order tracking), live by Friday\n📋 Product agent writes the spec (loyalty points can wait)\n🏗️ Architect agent: web app, API server, database, payment gateway\n👩‍💻 Developer agents build frontend, backend, DevOps, with code review on every change\n🐞 Tester agent tries to break it: empty carts, slow networks, failed payments\n🔐 Security agent checks payments and data → 🚀 release agent ships it\n\nThe one human desk? YOU. You approve the spec, the design and the release.\n\n💬 Which job in your team would you hand to an AI first? Comment below.\n\nExample company and client, for illustration. Education only.\n\n#aiagents #softwaredevelopment #developer #softwaretesting #moneyincloud"
-  first_comment: "Developer, tester, or release manager: which one goes to AI first? 👇"
-  yt_title: "8 AI Agents Run a Software Company: Developer, Tester, Release #shorts"
-  yt_description: "One week inside an example AI software company: product agent writes the spec, architect plans, developer agents build with code review, tester agent breaks it, security checks, release ships, and a human approves every step. Example company and client, for illustration. Education only."
-  yt_tags: ["ai agents", "ai software team", "ai developer", "ai tester", "software development", "moneyincloud"]
-
-- id: offagent-2026-11-25
-  approved: true   # owner chat 25 Nov 2026 22:22 IST: "post all now"
-  publish_at: 2026-11-25 22:23
-  platforms: [youtube, instagram, instagram_trial, instagram_story]
-  video: ai-office-agent-how-it-works-5-steps-3-safety-rules.mp4
-  yt_video: ai-office-agent-how-it-works-5-steps-3-safety-rules-yt.mp4
-  cover: ai-office-agent-how-it-works-5-steps-3-safety-rules-cover.jpg
-  story: ai-office-agent-how-it-works-5-steps-3-safety-rules-story.jpg
-  story_delay_min: 60
-  ig_caption: "Your next office colleague might be an AI agent 🤖☕\n\nA chatbot answers. An agent DOES the work:\n1️⃣ You give it ONE goal (\"every morning, turn yesterday's sales emails into one table\")\n2️⃣ It plans the steps\n3️⃣ It uses your tools: email, sheets, files\n4️⃣ It checks its own work\n5️⃣ It ASKS YOU before anything goes out\n\n3 safety rules: start read-only · approve every send · never give it passwords or bank details.\n\n💬 Comment AGENT and I'll DM you my free setup guide (5 steps + 3 rules + checklist).\n🔖 Save this for Monday morning.\n\nCheck your office IT policy before using any AI tool. Education only.\nMade with help from Claude (Anthropic), one of the tools named in the guide.\n\n#aiagent #ai #productivity #officehacks #moneyincloud"
-  first_comment: "Comment AGENT 👇 and the guide lands in your DMs within ~15 minutes."
-  yt_title: "How an AI Office Agent Actually Works (5 Steps + 3 Safety Rules) #shorts"
-  yt_description: "A chatbot answers; an agent does the work. One goal, it plans, uses your tools, checks itself, and asks you before sending. Rules: start read-only, approve every send, never share passwords or bank details. Free setup guide: https://github.com/moneyincloud/reels/blob/main/guides/office-agent-setup.md\nEducation only. Made with help from Claude (Anthropic), one of the tools named in the guide."
-  yt_tags: ["ai agent", "ai at work", "office automation", "productivity", "moneyincloud"]
-
-- id: ipochain-2026-11-25
-  approved: true   # owner chat 25 Nov 2026 22:22 IST: "post all now"
-  publish_at: 2026-11-25 22:24
-  platforms: [youtube, instagram, instagram_trial, instagram_story]
-  video: how-an-ipo-works-full-chain-lenskart-stt-gst-tax.mp4
-  yt_video: how-an-ipo-works-full-chain-lenskart-stt-gst-tax-yt.mp4
-  cover: how-an-ipo-works-full-chain-lenskart-stt-gst-tax-cover.jpg
-  story: how-an-ipo-works-full-chain-lenskart-stt-gst-tax-story.jpg
-  story_delay_min: 60
-  ig_caption: "How an IPO actually works, from your UPI block to your tax bill 🔗 (real example: Lenskart)\n\n1️⃣ Papers: draft to SEBI (Jul 2025), price band ₹382–₹402\n2️⃣ You bid: 1 lot = 37 shares = ₹14,874, only BLOCKED by UPI\n3️⃣ Allotment: 28.2x subscribed. Not allotted? Block released\n4️⃣ Where ₹7,278 Cr went: ₹2,150 Cr to Lenskart (fresh issue, 30%), ₹5,128 Cr to old shareholders (OFS, 70%)\n   Lenskart's part: store rent ₹591 Cr, marketing ₹320 Cr, new stores ₹273 Cr, tech ₹213 Cr\n5️⃣ Listing, 10 Nov 2025: opened ₹390 (−3%)\n6️⃣ 1-year timeline: anchors unlocked at 30 & 90 days; 6 months (8 May 2026) ~60% of shares unlocked → block deals\n   Today ₹723 (+80% from ₹402). Past returns don't repeat.\n7️⃣ Selling 1 lot: brokerage often ₹0 · STT 0.1% ₹26.76 · exchange+SEBI ₹0.85 · GST 18% on fees ₹0.15 · DP ~₹21.83 → about ₹50\n8️⃣ Tax on the ₹11,890 gain: within 1 year 20% (₹2,378); after 1 year 12.5% only above ₹1.25 lakh gains a year\n\n🔖 Save this before your next IPO. 📤 Send it to the friend who applies to every IPO.\n\nSources: Lenskart RHP via Chittorgarh/Zerodha/Business Standard; subscription Kotak Neo; listing 5paisa; lock-ins BSE notice & Business Today; prices NSE via INDmoney (25 Nov 2026); charges Zerodha/INDmoney pricing pages; tax: Budget 2026 (Business Standard).\nNot a buy/sell call. Education only. Not tax advice. I may hold some of the stocks named.\n\n#ipo #lenskart #stockmarketindia #ipoallotment #moneyincloud"
-  first_comment: "Which step surprised you most: the 70% OFS, the lock-ins, or the ₹50 sell cost? 👇"
-  yt_title: "How an IPO Works: Where Your Money Goes, STT, GST & Tax (Lenskart, 1 Year) #shorts"
-  yt_description: "The full IPO chain with a real example (Lenskart): papers to SEBI, UPI bid, allotment, fresh issue vs OFS (where the money went), listing day, one-year timeline with lock-ins, the costs of selling one lot (STT, exchange/SEBI fees, GST, DP), and capital gains tax.\nSources: Lenskart RHP, Kotak Neo, 5paisa, BSE, Business Today, Zerodha/INDmoney pricing, Budget 2026. Prices NSE via INDmoney (25 Nov 2026).\nNot a buy/sell call. Education only. Not tax advice. I may hold some of the stocks named."
-  yt_tags: ["ipo explained", "how ipo works", "lenskart ipo", "ofs vs fresh issue", "ipo lock in", "stt gst brokerage", "capital gains tax", "moneyincloud"]
+  ig_caption: "Same salary. Same SIP. One ended with ₹5.5 CRORE, the other ₹47 LAKH 🤯\n\nArun 🟢 started a ₹10,000/month Nifty index SIP at 25.\nKarthik 🟠 said \"I'll start later\": bike EMI → phone → wedding → car. Started the same SIP at 45.\n\nBoth stopped at 60:\n💰 Put in: Arun ₹42 L · Karthik ₹18 L (2.3x)\n📈 Ended with: Arun ₹5.51 Cr · Karthik ₹47.6 L (11.6x)\n\nHonest note: at 6% inflation that's ~₹72 L vs ~₹6 L in today's money. Still an 11.6x gap. The extra 20 years did the heavy lifting.\n\nMaths: ₹10,000/month, 12% a year (illustration; Nifty 50 TRI's 20-year CAGR was 12.44% per NSE's 2026 whitepaper). Returns are not guaranteed. Names are fictional.\n\n🏷️ Tag your Karthik. 🔖 Save this.\nNot a buy/sell call. Education only.\n\n#sip #mutualfunds #compounding #personalfinance #moneyincloud"
+  first_comment: "Be honest 👇 Arun or Karthik? (Starting today still beats starting at 45.)"
+  yt_title: "Same Salary, ₹5.5 Crore vs ₹47 Lakh: Start Your SIP at 25 or 45? #shorts"
+  yt_description: "Two friends, same salary, same Rs 10,000/month Nifty index SIP. Arun starts at 25, Karthik at 45. At 60: Rs 5.51 crore vs Rs 47.6 lakh (12% a year, illustration; Nifty 50 TRI 20-year CAGR 12.44% per NSE whitepaper 2026). In today's money at 6% inflation: ~Rs 72 lakh vs ~Rs 6 lakh. Returns are not guaranteed. Names are fictional.\nNot a buy/sell call. Education only."
+  yt_tags: ["sip", "compounding", "sip calculator", "start investing early", "nifty index fund", "moneyincloud"]
