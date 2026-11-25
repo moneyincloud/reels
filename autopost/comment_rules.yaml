@@ -6,7 +6,7 @@ rules:
   - id: office-agent-guide
     enabled: true
     keywords: ["AGENT"]
-    reels: []          # filled in when the office agent reel is queued
+    reels: [offagent-2026-11-25]   # office agent reel, posted 25 Nov 2026
     dm: |
       Hi! 👋 Here's the free setup guide for your first AI office agent (5 steps + 3 safety rules):
       https://github.com/moneyincloud/reels/blob/main/guides/office-agent-setup.md
