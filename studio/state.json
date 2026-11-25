@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -857,6 +857,30 @@
    "status": "queued",
    "scheduled": "2026-11-24 19:00 IST (autopost ireda-multibagger-or-trap-2026-11-24)",
    "files": "autopost/media/ireda-multibagger-or-trap-32-to-310-to-132*"
+  },
+  {
+   "date": "2026-11-25",
+   "slug": "ipo1125",
+   "tag": "ipo-listing",
+   "ipos": [
+    "Mahanadi Coalfields",
+    "Crystal Crop Protection",
+    "EAAA India Alternatives"
+   ],
+   "topic": "IPO listing report (no new mainboard listing 11-24 Nov, so closed IPOs + latest uncovered listing): Mahanadi Coalfields ₹8,981 cr 100% OFS, band ₹129-136, 1.52x (QIB 4.95x, NII 0.66x, retail 0.48x), lists 27 Nov; Crystal Crop Protection ₹455 cr, band ₹259-272, 17.68x (NII 39.16x, QIB 15.81x, retail 9.71x), lists 26 Nov; EAAA India Alternatives 5.3x, issue ₹1,665 → NSE open ₹1,675.50 (+0.6%) → day-1 close ₹1,727.80 (+3.8%) → ₹1,822.20 on 23 Nov (+9.4%)",
+   "angle": "myth-busting / contrast (big demand ≠ big listing)",
+   "hook": "Never trust IPO hype: a ₹8,981 crore IPO got retail bids for just 48%.",
+   "hook_score": 77.5,
+   "voice": "am_michael",
+   "length_s": 85.0,
+   "style": "PCJ paper collage (ipo1125.py), scoreboard + real NSE daily closes, myth vs fact, no subtitles",
+   "thumb_theme": "purple",
+   "follow_overlay": true,
+   "data": "Chittorgarh + Trendlyne subscription (20/23 Nov 2026); Business Standard (19 Nov 2026); NSE daily closes via INDmoney (2-23 Nov 2026); 5paisa/Groww listing (2 Nov 2026)",
+   "status": "queued",
+   "scheduled": "2026-11-25 10:00 IST IG reel + trial + story 11:00 + YT Short (own auto-poster)",
+   "queue_id": "ipo-listing-2026-11-25",
+   "files": "autopost/media/ipo-listing-report-mahanadi-coalfields-crystal-crop-eaaa-25-nov-2026*"
   }
  ],
  "next_ideas": [
