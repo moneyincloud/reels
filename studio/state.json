@@ -891,6 +891,16 @@
    "length_s": 57.6,
    "queue_id": "bigbull-2026-11-25",
    "scheduled": "2026-11-25 12:01 IST IG reel + trial + story + YT Short"
+  },
+  {
+   "date": "2026-11-25",
+   "slug": "swteam",
+   "topic": "AI software company: 8 agents (PM, architect, devs, tester, security, release) + 1 human approver",
+   "voice": "af_heart",
+   "style": "PCJ paper collage",
+   "length_s": 59.4,
+   "queue_id": "swteam-2026-11-25",
+   "scheduled": "2026-11-25 13:13 IST IG reel + trial + story + YT Short"
   }
  ],
  "next_ideas": [
