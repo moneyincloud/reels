@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -931,6 +931,16 @@
    "length_s": 65.1,
    "queue_id": "twofriends-2026-11-25",
    "scheduled": "2026-11-25 22:51 IST IG reel + trial + story + YT Short"
+  },
+  {
+   "date": "2026-11-26",
+   "slug": "hypecheck",
+   "topic": "Penny stock hype vs reality: 'best multibagger under ₹20 for 2026' list, 10/10 below list price, ₹1 L -> ₹63,810",
+   "voice": "am_michael",
+   "style": "PCJ paper collage",
+   "length_s": 71.5,
+   "queue_id": "hypecheck-2026-11-26",
+   "scheduled": "2026-11-26 15:13 IST IG reel + trial + story + YT Short"
   }
  ],
  "next_ideas": [
