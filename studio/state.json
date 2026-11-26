@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -941,6 +941,23 @@
    "length_s": 71.5,
    "queue_id": "hypecheck-2026-11-26",
    "scheduled": "2026-11-26 15:13 IST IG reel + trial + story + YT Short"
+  },
+  {
+   "date": "2026-11-26",
+   "slug": "paytm-multibagger-or-trap-ipo-2150-low-310-today-1769",
+   "tag": "multibagger-or-trap",
+   "topic": "Paytm multibagger or trap: IPO ₹2,150 (Nov 2021) → day-1 close ₹1,564 (-27%, BSE) → record low ₹310 (9 May 2024, after RBI Jan 2024 action on Paytm Payments Bank) → ₹1,768.90 (26 Nov 2026, NSE via INDmoney): -18% vs IPO, 5.7x from low; Q2 FY27 (26 Oct 2026): revenue ₹2,648 cr +28%, PAT ₹225 cr vs ₹21 cr, EBITDA ₹270 cr +90%, GMV ₹7.1 lakh cr +26%, fin services ₹912 cr +49%; 19 Nov -8.68% on UPI MDR delay report; RBI cancelled PPBL licence 24 Apr 2026",
+   "angle": "two endings / result-first",
+   "hook": "Never judge Paytm by its IPO. It crashed 86%, then rose 5.7 times. Multibagger, or trap?",
+   "hook_score": 71.8,
+   "voice": "af_heart",
+   "length_s": 88.5,
+   "style": "PCJ paper collage (paytm.py), no subtitles",
+   "thumb_theme": "blue",
+   "status": "queued",
+   "scheduled": "2026-11-26 19:00 IST IG reel + trial + story 20:00 + YT Short (own auto-poster)",
+   "queue_id": "paytm-multibagger-or-trap-2026-11-26",
+   "files": "autopost/media/paytm-multibagger-or-trap-ipo-2150-low-310-today-1769*"
   }
  ],
  "next_ideas": [
