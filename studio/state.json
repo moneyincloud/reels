@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -968,6 +968,21 @@
    "length_s": 106.1,
    "queue_id": "autoten-2026-11-27",
    "scheduled": "2026-11-27 11:02 IST IG reel + trial + story + YT Short"
+  },
+  {
+   "date": "2026-11-27",
+   "slug": "weekly_2026-11-27",
+   "tag": "weekly-recap",
+   "topic": "YouTube weekly recap 21–27 Nov 2026: paytm, autoten, ireda, hypecheck, ipo1123, ipo1125 (9:20, 6 parts)",
+   "voice": "am_michael",
+   "parts": 6,
+   "length_s": 559.8,
+   "size_mb": 95.6,
+   "publish": "2026-11-27 16:00 IST",
+   "platform": "youtube video (own auto-poster)",
+   "queue_id": "weekly-recap-2026-11-27",
+   "youtube": "https://www.youtube.com/watch?v=fLfJhua_MEQ",
+   "files": "autopost/media/this-week-in-indian-market-weekly-recap-21-27-nov-2026*"
   }
  ],
  "next_ideas": [
