@@ -1,5 +1,5 @@
 {
- "last_voice": "male",
+ "last_voice": "female",
  "history": [
   {
    "date": "2026-10-23",
@@ -983,6 +983,28 @@
    "queue_id": "weekly-recap-2026-11-27",
    "youtube": "https://www.youtube.com/watch?v=fLfJhua_MEQ",
    "files": "autopost/media/this-week-in-indian-market-weekly-recap-21-27-nov-2026*"
+  },
+  {
+   "date": "2026-11-27",
+   "slug": "kaadu2",
+   "tag": "animal-friday",
+   "topic": "Kaadu Bank Ep 2: Kili's Hot Tip - free tips and pump-and-dump (SEBI final order 26 Apr 2023: Telegram tip channel ~50,000 subscribers, unlawful gains ~₹2.84 Cr, penalties ~₹5.8 Cr, bans 1-3 years)",
+   "series": "Kaadu Bank",
+   "episode": 2,
+   "angle": "story",
+   "style": "paper Vox v2 light + camera moves, Kaadu Bank cast (vox/kaadu_cast.py)",
+   "voice": "af_heart",
+   "length_s": 80.5,
+   "hook": "Never trust a free stock tip. Fifty thousand people learned why.",
+   "hook_score": 92.6,
+   "thumb_theme": "red",
+   "follow_overlay": true,
+   "callback": "Ep1: Kili laughed at Ammu's one small grain ('Nothing!')",
+   "next": "Ep 3: Ponni's Hidden Nuts",
+   "status": "queued",
+   "scheduled": "2026-11-27 18:00 IST IG reel + trial + story 19:00 + YT Short (own auto-poster)",
+   "queue_id": "kaadu-bank-ep2-2026-11-27",
+   "files": "autopost/media/kaadu-bank-ep2-kili-hot-tip-*"
   }
  ],
  "next_ideas": [
