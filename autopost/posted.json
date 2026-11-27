@@ -449,6 +449,14 @@
    "error": null,
    "api": "https://graph.facebook.com/v23.0",
    "at": "2026-11-27T14:03:34.233218+05:30"
+  },
+  "2026-11-27T18:48:32.758614+05:30": {
+   "ok": true,
+   "username": "moneyincloud",
+   "media_count": 135,
+   "error": null,
+   "api": "https://graph.facebook.com/v23.0",
+   "at": "2026-11-27T18:48:32.758614+05:30"
   }
  },
  "tax-gst-carousel-2026-11-13": {
@@ -1371,6 +1379,40 @@
   "youtube_thumb": {
    "ok": true,
    "at": "2026-11-27T14:04:05.766807+05:30"
+  },
+  "instagram": {
+   "media_id": "18157262143553693",
+   "permalink": "https://www.instagram.com/reel/DgPxSuntAoR/",
+   "at": "2026-11-27T18:50:01.781283+05:30"
+  },
+  "instagram_trial": {
+   "media_id": "18037059788898522",
+   "permalink": "https://www.instagram.com/reel/DgPxd2vSn3H/",
+   "at": "2026-11-27T18:51:31.289735+05:30"
+  }
+ },
+ "top-gainers-this-week-nifty-large-mid-smallcap-2026-11-27": {
+  "youtube": {
+   "video_id": "kyg_iCt1tSA",
+   "url": "https://youtube.com/shorts/kyg_iCt1tSA",
+   "publish_at": "2026-11-28T01:30:00Z",
+   "at": "2026-11-27T18:51:38.502266+05:30"
+  },
+  "youtube_thumb": {
+   "ok": true,
+   "at": "2026-11-27T18:51:46.840850+05:30"
+  }
+ },
+ "top-losers-this-week-nifty-large-mid-smallcap-2026-11-27": {
+  "youtube": {
+   "video_id": "9JDNEH1deUk",
+   "url": "https://youtube.com/shorts/9JDNEH1deUk",
+   "publish_at": "2026-11-28T03:30:00Z",
+   "at": "2026-11-27T18:51:42.609774+05:30"
+  },
+  "youtube_thumb": {
+   "ok": true,
+   "at": "2026-11-27T18:51:50.026424+05:30"
   }
  }
 }
