@@ -17,7 +17,7 @@ NAMES = {'Apollo Hospitals Enterprise': 'Apollo Hospitals', 'Indian Renewable En
          'CG Power & Industrial Solutions': 'CG Power', 'Oil & Natural Gas Corpn': 'ONGC', 'Tata Consultancy Services': 'TCS',
          'Fertilizers & Chemicals Travancore': 'FACT', 'Deepak Fertilisers and Petrochemicals Corporation': 'Deepak Fertilisers',
          'Deepak Fertilisers and Petrochemicals Corpn': 'Deepak Fertilisers', 'One 97 Communications': 'Paytm (One 97)',
-         'Siemens Energy India': 'Siemens Energy', 'Cummins India': 'Cummins', 'Deepak Fertilisers and Petrochemicals Corp': 'Deepak Fertilisers'}
+         'Siemens Energy India': 'Siemens Energy', 'Cummins India': 'Cummins', 'Multi Commodity Exchange of India': 'MCX', 'Prestige Estates Projects': 'Prestige Estates', 'Action Construction Equipment': 'ACE (Action Constr.)', 'Oracle Financial Services Software': 'Oracle Fin. Services', 'Five-Star Business Finance': 'Five-Star Finance', 'Zee Entertainment Enterprises': 'Zee Entertainment', 'Sun Tv Network': 'Sun TV Network', 'Jammu and Kashmir Bank': 'J&K Bank', 'Brainbees Solutions': 'FirstCry (Brainbees)', 'Deepak Fertilisers and Petrochemicals Corp': 'Deepak Fertilisers'}
 def clean(n):
     n = re.sub(r'\s+(Ltd\.?|Limited)$', '', n.strip(), flags=re.I).strip(' .,')
     n = re.sub(r'\s+(Corporation|Company|Co\.?)$', '', n, flags=re.I)

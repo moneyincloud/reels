@@ -1005,6 +1005,25 @@
    "scheduled": "2026-11-27 18:00 IST IG reel + trial + story 19:00 + YT Short (own auto-poster)",
    "queue_id": "kaadu-bank-ep2-2026-11-27",
    "files": "autopost/media/kaadu-bank-ep2-kili-hot-tip-*"
+  },
+  {
+   "date": "2026-11-27",
+   "slug": "weekmov-2026-11-27",
+   "tag": "movers-weekly",
+   "topic": "Top 10 weekly gainers/losers 23–27 Nov 2026 (Nifty 100/Midcap 150/Smallcap 250): top gainer Jupiter Wagons +17.6%, top loser APL Apollo Tubes −28.9%; Nifty 50 −0.8%",
+   "voices": "gain=male(am_michael), loss=female(af_heart)",
+   "length_s": {
+    "gain": 41.7,
+    "loss": 40.5
+   },
+   "data": "INDmoney 1week candles, 500/500 constituents, 4 sessions (24 Nov holiday); extremes spot-checked vs 1day candles",
+   "status": "queued",
+   "scheduled": "2026-11-28 07:00 gainers, 09:00 losers IST (YT+IG+trial+story); standing order owner chat 16 Nov 2026 09:46 IST",
+   "queue_id": [
+    "top-gainers-this-week-nifty-large-mid-smallcap-2026-11-27",
+    "top-losers-this-week-nifty-large-mid-smallcap-2026-11-27"
+   ],
+   "files": "autopost/media/top-{gainers,losers}-this-week-nifty-large-mid-smallcap-2026-11-27*"
   }
  ],
  "next_ideas": [
