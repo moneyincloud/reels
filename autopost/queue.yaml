@@ -14,3 +14,38 @@
   yt_title: "10 Auto Stocks: Record Car Sales, So Why Are Car Stocks Down? #shorts"
   yt_description: "10 Indian auto stocks: October 2026 sales, top-selling model, export markets and 1-year stock move. Record car sales, yet all four listed carmakers fell over the year while two-wheeler and truck makers rose.\nSources: Oct 2026 company sales releases (Autocar India, Rushlane, Autopunditz, Autocar Pro); prices NSE via INDmoney (27 Nov 2026).\nNot a buy/sell call. Education only. I may hold some of the stocks named."
   yt_tags: ["auto stocks india", "maruti share", "tata motors share", "tvs motor share", "bajaj auto", "hero motocorp", "royal enfield", "moneyincloud"]
+
+- id: weekly-recap-2026-11-27
+  approved: true   # standing order: Friday weekly recap task (27 Nov 2026)
+  publish_at: 2026-11-27 16:00
+  platforms: [youtube]
+  yt_long: true
+  video: this-week-in-indian-market-weekly-recap-21-27-nov-2026.mp4
+  cover: this-week-in-indian-market-weekly-recap-21-27-nov-2026-thumbnail.jpg
+  yt_title: "This Week in the Indian Market (21–27 Nov 2026): Paytm, Auto Stocks & more"
+  yt_description: |
+    6 stories from this week in about 9 minutes: Paytm and IREDA as "multibagger or trap", why record car sales didn't lift car stocks, a "multibagger penny stocks" list checked, and this week's IPOs (Foodlink, Integris Medtech, Mahanadi Coalfields, Crystal Crop).
+    Every number is from company filings, exchange data or named reports, with the source and date on screen in each part.
+
+    Chapters
+    0:00 Intro
+    0:27 Paytm: multibagger or trap?
+    1:55 Record car sales, car stocks down
+    3:41 IREDA: 32 to 310 to 132
+    5:09 Penny multibagger list: 10 of 10 fell
+    6:20 IPOs this week: Foodlink, Integris
+    7:45 IPO report: Mahanadi, Crystal Crop
+    9:10 Wrap-up
+
+    Key numbers & sources
+    • Paytm: IPO ₹2,150 (Nov 2021) → record low ₹310 (9 May 2024) → ₹1,768.90 (26 Nov 2026); Q2 FY27 revenue ₹2,648 cr (+28%), profit ₹225 cr (Business Standard 18 Nov 2021; Business Today 9 May 2024; One 97 Communications Q2 FY27 filing, 26 Oct 2026; NSE via INDmoney, 26 Nov 2026).
+    • Auto stocks: October 2026 sales and 1-year price moves of 10 automakers (company sales releases via Autocar India, Rushlane, Autocar Pro, Oct 2026; NSE via INDmoney, 27 Nov 2026 vs 28 Nov 2025).
+    • IREDA: IPO ₹32 (Nov 2023) → ₹310 intraday high (15 Jul 2024) → ₹132.20 (23 Nov 2026); Q2 FY27 profit ₹554 cr (5paisa; Business Standard; IREDA Q2 FY27 results, 19 Oct 2026; NSE via INDmoney).
+    • Penny list: 10 of 10 stocks below the list price; ₹1 lakh split equally ≈ ₹63,810 (Jainam blog list, updated Jun 2026; NSE via INDmoney, 26 Nov 2026).
+    • IPOs this week: Foodlink F&B FY26 revenue ₹567.5 cr; Integris Medtech FY25 revenue ₹1,902 cr (RHP/DRHP summaries via chittorgarh.com, 20 Nov 2026; dates goodreturns.in, 22 Nov 2026).
+    • IPO report: Mahanadi Coalfields ₹8,981 cr, 1.52x subscribed; Crystal Crop ₹455 cr, 17.68x (Chittorgarh & Trendlyne subscription data, 20 & 23 Nov 2026; Business Standard, 19 Nov 2026).
+
+    Not a buy/sell call. Education only, not investment advice. I may hold some of the stocks named. Made with the help of Claude, an Anthropic product.
+
+    #IndianStockMarket #StockMarketIndia #WeeklyRecap
+  yt_tags: ["indian stock market", "stock market this week", "weekly market recap", "paytm share", "ireda share", "auto stocks india", "penny stocks", "ipo this week", "mahanadi coalfields ipo", "crystal crop ipo", "moneyincloud"]
