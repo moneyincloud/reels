@@ -1,9 +1,10 @@
-{"title":"THIS WEEK IN THE INDIAN MARKET","dates":"24 – 30 OCT 2026","voice":"am_michael",
-"out":"../out/weekly_2026-10-30.mp4",
-"chapters":[
-{"file":"/home/claude/reels/2026-10-26/52week_lows_v2_reel.mp4","title":"5 giants at 52-week lows"},
-{"file":"/home/claude/reels/2026-10-29/recharge_reel.mp4","title":"Recharge price hike: do this first"},
-{"file":"/home/claude/reels/2026-10-24/crashes_30yrs_reel.mp4","title":"Every market crash in 30 years"},
-{"file":"/home/claude/reels/2026-10-25/jio_allotment_reel.mp4","title":"Jio IPO: did you get shares?"},
-{"file":"/home/claude/reels/2026-10-28/quiz3_reel.mp4","title":"Money quiz: 3 questions"},
-{"file":"/home/claude/reels/2026-10-24/kings_test_reel.mp4","title":"The King's Test: how to pick a stock"}]}
+{"title": "THIS WEEK IN THE INDIAN MARKET", "dates": "21 – 27 NOV 2026", "voice": "am_michael",
+ "out": "../out/weekly_2026-11-27.mp4",
+ "chapters": [
+  {"file": "/home/claude/reels/autopost/media/paytm-multibagger-or-trap-ipo-2150-low-310-today-1769.mp4", "title": "Paytm: multibagger or trap?"},
+  {"file": "/home/claude/reels/autopost/media/10-auto-stocks-record-car-sales-why-car-stocks-down.mp4", "title": "Record car sales, car stocks down"},
+  {"file": "/home/claude/reels/autopost/media/ireda-multibagger-or-trap-32-to-310-to-132.mp4", "title": "IREDA: 32 to 310 to 132"},
+  {"file": "/home/claude/reels/autopost/media/multibagger-penny-stocks-list-2026-checked-10-out-of-10-fell.mp4", "title": "Penny multibagger list: 10 of 10 fell"},
+  {"file": "/home/claude/reels/autopost/media/ipos-this-week-foodlink-integris-medtech-business-price-band-23-nov-2026.mp4", "title": "IPOs this week: Foodlink, Integris"},
+  {"file": "/home/claude/reels/autopost/media/ipo-listing-report-mahanadi-coalfields-crystal-crop-eaaa-25-nov-2026.mp4", "title": "IPO report: Mahanadi, Crystal Crop"}
+ ]}
