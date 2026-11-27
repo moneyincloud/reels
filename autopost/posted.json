@@ -433,6 +433,14 @@
    "error": null,
    "api": "https://graph.facebook.com/v23.0",
    "at": "2026-11-27T11:12:10.214374+05:30"
+  },
+  "2026-11-27T11:43:06.899001+05:30": {
+   "ok": true,
+   "username": "moneyincloud",
+   "media_count": 135,
+   "error": null,
+   "api": "https://graph.facebook.com/v23.0",
+   "at": "2026-11-27T11:43:06.899001+05:30"
   }
  },
  "tax-gst-carousel-2026-11-13": {
@@ -1327,6 +1335,18 @@
   "youtube_thumb": {
    "ok": true,
    "at": "2026-11-27T11:14:29.357139+05:30"
+  }
+ },
+ "weekly-recap-2026-11-27": {
+  "youtube": {
+   "video_id": "fLfJhua_MEQ",
+   "url": "https://www.youtube.com/watch?v=fLfJhua_MEQ",
+   "publish_at": "2026-11-27T10:30:00Z",
+   "at": "2026-11-27T11:43:17.266555+05:30"
+  },
+  "youtube_thumb": {
+   "ok": true,
+   "at": "2026-11-27T11:43:18.819213+05:30"
   }
  }
 }
