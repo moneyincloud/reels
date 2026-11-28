@@ -118,22 +118,22 @@ path {{ fill:none; stroke:var(--ink); stroke-width:6; stroke-linecap:round; stro
   <audio id="vo" src="assets/vo_mix.wav" data-start="0" data-duration="{DUR}" data-track-index="9" data-volume="1"></audio>
 
   <section class="scene clip" id="sc0" data-start="0" data-duration="{SC[0][1] + 0.3:.2f}" data-track-index="1"><div class="inner" id="in0"><div id="kw"><span>15 PENNY STOCKS · {esc(M['week_pill'])}</span></div><div class="cam" id="cam0">
-    <div id="big4"><div class="boil" style="position:absolute;inset:0"><svg viewBox="0 0 700 440"><path id="circ4" d="" /></svg><div class="num"><b>{NUP}</b><i>/ {len(W)}</i></div></div></div>
+    <div id="big4"><div class="boil" style="position:absolute;inset:0"><svg viewBox="0 0 700 440"><path id="circ4" d="" /></svg><div class="num"><b>{M.get("big_num",NUP)}</b><i>{M.get("big_den","/ "+str(len(W)))}</i></div></div></div>
     <div id="qbig" class="boil">?</div>
-    <div id="uplab" class="hand">went <span style="color:var(--grn)">UP</span> this week</div>
-    <div id="qm" class="hand">what do they have in common?</div>
+    <div id="uplab" class="hand">{M.get("uplab",'went <span style="color:var(--grn)">UP</span> this week')}</div>
+    <div id="qm" class="hand">{M.get("qm","what do they have in common?")}</div>
   </div></div></section>
 
   <section class="scene clip" id="sc1" data-start="{SC[1][0]:.2f}" data-duration="{SC[1][1] - SC[1][0] + 0.3:.2f}" data-track-index="2"><div class="inner" id="in1"><div id="kw1" class="kwc"><span>15 PENNY STOCKS · {esc(M['week_pill'])}</span></div><div class="cam" id="cam1">
     <div id="big15"><div class="boil" style="position:absolute;inset:0"><svg viewBox="0 0 400 400"><path id="circ15" d="" /></svg><div class="num">15</div></div></div>
     <div id="sub15" class="hand">Nifty 500 stocks<br/>under <span style="color:var(--blue)">₹{M['cap']}</span></div>
-    <div id="src15">Friday close {esc(M['end_label'])} vs {esc(M['prev_label'])} · NSE via INDmoney</div>
+    <div id="src15">{esc(M.get("src15","Friday close "+M["end_label"]+" vs "+M["prev_label"]+" · NSE via INDmoney"))}</div>
   </div></div></section>
 
   <section class="scene clip" id="sc2" data-start="{SC[2][0]:.2f}" data-duration="{SC[2][1] - SC[2][0] + 0.3:.2f}" data-track-index="3"><div class="inner" id="in2"><div class="cam" id="cam2">
     <div class="ttl hand" id="t2">this week, best <span style="color:var(--grn)">→</span> worst</div>
     {cards}
-    <div id="stampB">ALL {NUP} = BANKS</div>
+    <div id="stampB" style="{M.get("stamp_style","")}">{M.get("stamp","ALL "+str(NUP)+" = BANKS")}</div>
   </div>
     <div id="twist" class="hand">ALL {len(W)}: <b>below their 1-year high</b></div>
     <div id="twist2" class="hand">{esc(rp['name'])}: <b style="color:var(--red)">{rp['below_hi']:.1f}%</b> from ₹{rp['hi52']:g} high</div>
