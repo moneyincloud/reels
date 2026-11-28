@@ -1,5 +1,5 @@
 {
- "last_voice": "female",
+ "last_voice": "male",
  "history": [
   {
    "date": "2026-10-23",
@@ -1024,6 +1024,25 @@
     "top-losers-this-week-nifty-large-mid-smallcap-2026-11-27"
    ],
    "files": "autopost/media/top-{gainers,losers}-this-week-nifty-large-mid-smallcap-2026-11-27*"
+  },
+  {
+   "date": "2026-11-28",
+   "slug": "penny15_1128",
+   "tag": "penny-weekly",
+   "topic": "15 Penny Stocks of the Week 23–27 Nov 2026 (Nifty 500 under ₹50): same 15 names as last week; 4 rose again but none were banks (last week's 4 bank winners all fell); top Bharat Coking Coal +2.17%, Vedanta Iron & Steel +1.72% (last week's worst), worst Tata Teleservices −6.14%; all 15 below 1-yr high (Reliance Power −58.1%)",
+   "series": "15 Penny Stocks of the Week",
+   "angle": "result-first (reversal of last week)",
+   "style": "doodle HyperFrames (motion/penny15) + camera moves, no subtitles",
+   "voice": "am_michael",
+   "length_s": 74.6,
+   "hook": "You won't guess what happened to last week's four winning penny stocks.",
+   "hook_score": 76.4,
+   "thumb_theme": "blue",
+   "data": "studio/weekmov CSVs (movers run 27 Nov, INDmoney 1week candles, 4 sessions, 24 Nov holiday); 52w high + mcap from get_indian_stocks_details; BHARATCOAL/TTML spot-checked vs 1day candles",
+   "status": "queued",
+   "scheduled": "2026-11-28 12:00 IST IG reel + trial + story 13:00 + YT Short (own auto-poster)",
+   "queue_id": "penny15-weekly-2026-11-28",
+   "files": "autopost/media/15-penny-stocks-this-week-india-23-27-nov-2026*"
   }
  ],
  "next_ideas": [
